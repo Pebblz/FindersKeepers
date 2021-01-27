@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Player : MonoBehaviour
 {
-    public GameObject PickUp;
+    GameObject PickUp;
 
     public int score = 0;
 
@@ -24,24 +24,34 @@ public class Player : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        //if the player holds q
         if(Input.GetKeyDown(KeyCode.Q))
         {
+            //this is for if you want to pick up a obj 
+            // hold q
             isPickingUpOBJ = true;
         } else
         {
             isPickingUpOBJ = false;
         }
-
+        #region Movement
         float H = Input.GetAxisRaw("Horizontal");
         float V = Input.GetAxisRaw("Vertical");
 
         Vector3 tempVect = new Vector3(H, 0, V);
         tempVect = tempVect.normalized * speed * Time.deltaTime;
         rb.MovePosition(transform.position + tempVect);
+        #endregion
     }
+    //you'll never guess what this func does 
     public void DestroyPickUp()
     {
         if (PickUp != null)
             Destroy(PickUp);   
+    }
+    //or this one
+    public void SetPickUpOBJ(GameObject OBJ)
+    {
+        PickUp = OBJ;
     }
 }
