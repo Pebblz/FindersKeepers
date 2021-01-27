@@ -27,8 +27,6 @@ public class Player : MonoBehaviour
         //if the player holds q
         if(Input.GetKeyDown(KeyCode.Q))
         {
-            //this is for if you want to pick up a obj 
-            // hold q
             isPickingUpOBJ = true;
         } else
         {

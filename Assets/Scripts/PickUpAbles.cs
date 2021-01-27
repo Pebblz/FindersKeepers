@@ -6,6 +6,8 @@ public class PickUpAbles : MonoBehaviour
 {
     //an [] of Player objs
     GameObject[] Player = new GameObject[4];
+
+    bool IsPickedUped;
     //this is an awake because it'll do this whenever this object gets spawned
     void Awake()
     {
@@ -22,13 +24,16 @@ public class PickUpAbles : MonoBehaviour
             if(Vector3.Distance(this.gameObject.transform.position,Player[i].transform.position) < 5)
             {
                 //if he's getting ready to pick up the obj
-                if(Player[i].GetComponent<Player>().isHoldingOBJ == false && Player[i].GetComponent<Player>().isPickingUpOBJ == true)
+                if(Player[i].GetComponent<Player>().isHoldingOBJ == false && 
+                    Player[i].GetComponent<Player>().isPickingUpOBJ == true && IsPickedUped == false) 
                 {
                     //does this stuff
                     transform.parent = Player[i].transform;
                     transform.position = Player[i].transform.position + new Vector3(0, 1, 0);
                     Player[i].GetComponent<Player>().SetPickUpOBJ(this.gameObject);
                     Player[i].GetComponent<Player>().isHoldingOBJ = true;
+
+                    IsPickedUped = true;
                 }
             }
         }
