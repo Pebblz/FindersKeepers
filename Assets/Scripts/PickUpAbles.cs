@@ -21,7 +21,7 @@ public class PickUpAbles : MonoBehaviour
                 {
                     transform.parent = Player[i].transform;
                     transform.position = Player[i].transform.position + new Vector3(0, 1, 0);
-                    Player[i].GetComponent<Player>().PickUp =  this.gameObject;
+                    Player[i].GetComponent<Player>().SetPickUpOBJ(this.gameObject);
                     Player[i].GetComponent<Player>().isHoldingOBJ = true;
                 }
             }

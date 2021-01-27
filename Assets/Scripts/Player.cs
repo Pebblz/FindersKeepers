@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Player : MonoBehaviour
 {
-    public GameObject PickUp;
+    GameObject PickUp;
 
     public int score = 0;
 
@@ -43,5 +43,9 @@ public class Player : MonoBehaviour
     {
         if (PickUp != null)
             Destroy(PickUp);   
+    }
+    public void SetPickUpOBJ(GameObject OBJ)
+    {
+        PickUp = OBJ;
     }
 }
