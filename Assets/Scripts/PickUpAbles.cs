@@ -5,13 +5,11 @@ using UnityEngine;
 public class PickUpAbles : MonoBehaviour
 {
     GameObject[] Player = new GameObject[4];
-    // Start is called before the first frame update
     void Awake()
     {
         Player = GameObject.FindGameObjectsWithTag("Player");
     }
 
-    // Update is called once per frame
     void Update()
     {
         
@@ -23,6 +21,8 @@ public class PickUpAbles : MonoBehaviour
                 {
                     transform.parent = Player[i].transform;
                     transform.position = Player[i].transform.position + new Vector3(0, 1, 0);
+                    Player[i].GetComponent<Player>().PickUp =  this.gameObject;
+                    Player[i].GetComponent<Player>().isHoldingOBJ = true;
                 }
             }
         }

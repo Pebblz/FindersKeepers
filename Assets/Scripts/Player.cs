@@ -4,8 +4,12 @@ using UnityEngine;
 
 public class Player : MonoBehaviour
 {
+    public GameObject PickUp;
+
+    public int score = 0;
 
     Rigidbody rb;
+
     [SerializeField]
     float speed;
 
@@ -34,5 +38,10 @@ public class Player : MonoBehaviour
         Vector3 tempVect = new Vector3(H, 0, V);
         tempVect = tempVect.normalized * speed * Time.deltaTime;
         rb.MovePosition(transform.position + tempVect);
+    }
+    public void DestroyPickUp()
+    {
+        if (PickUp != null)
+            Destroy(PickUp);   
     }
 }
