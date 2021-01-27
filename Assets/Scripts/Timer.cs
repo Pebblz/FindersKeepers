@@ -5,6 +5,12 @@ using UnityEngine.UI;
 
 public class Timer : MonoBehaviour
 {
+    /*Flower boxing because im a professional
+     *coded by Pat Naatz
+     * time elapsed 10 minutes (mostly comments)
+     */
+
+
     [SerializeField] Text text;
     //[SerializeField] int minutes = 1;
     [SerializeField] int seconds = 90;
