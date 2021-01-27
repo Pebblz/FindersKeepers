@@ -8,6 +8,9 @@ public class Player : MonoBehaviour
     Rigidbody rb;
     [SerializeField]
     float speed;
+
+    public bool isHoldingOBJ;
+    public bool isPickingUpOBJ;
     // Start is called before the first frame update
     void Start()
     {
@@ -17,6 +20,14 @@ public class Player : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if(Input.GetKeyDown(KeyCode.Q))
+        {
+            isPickingUpOBJ = true;
+        } else
+        {
+            isPickingUpOBJ = false;
+        }
+
         float H = Input.GetAxisRaw("Horizontal");
         float V = Input.GetAxisRaw("Vertical");
 
