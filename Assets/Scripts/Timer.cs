@@ -12,37 +12,52 @@ public class Timer : MonoBehaviour
     void Start()
     {
         if(text == null)
-        {
-            text = gameObject.GetComponent<Text>();
+        {//if text wasn't set
+            text = gameObject.GetComponent<Text>(); // try to find the text on this object
+            if(text == null)
+            {//if text is still null
+                Destroy(this);
+            }
         }
         //seconds += minutes * 60;
         //minutes = 0;
+
+        seconds++; //buffer for coroutine
+
+        //start timer
         StartCoroutine("CountDown");
     }
 
+    //the actual timer
     IEnumerator CountDown()
     {
         while (seconds != 0)
-        {
+        {//while not done
+            //count down
             seconds--;
-            text.text = Parse(seconds);
 
-            yield return new WaitForSeconds(1);
+            UpdateText(seconds);
+
+            //wait for 1 second
+            yield return new WaitForSeconds(1); //WaitForSeconds is effect by timescale
         }
 
+        //when timer ends
         text.text = "Times up";
+    }
+
+    void UpdateText(int seconds)
+    {
+        text.text = Parse(seconds);
     }
 
     string Parse(int seconds)
     {
+        //set minutes
         int minutes = seconds / 60;
-        seconds %= 60;
+        seconds %= 60; //remove minutes from seconds
 
+                                            //if less than 10 seconds add a 0 infront
         return minutes.ToString() + ":" + ((seconds < 10) ? "0" : "") + seconds.ToString();
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
     }
 }
