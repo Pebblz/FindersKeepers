@@ -8,6 +8,7 @@ public class PickUpAbles : MonoBehaviour
     GameObject[] Player = new GameObject[4];
 
     bool IsPickedUped;
+    GameObject PlayerThatPickUpOBJ;
     //this is an awake because it'll do this whenever this object gets spawned
     void Awake()
     {
@@ -32,7 +33,8 @@ public class PickUpAbles : MonoBehaviour
                     transform.position = Player[i].transform.position + new Vector3(0, 1, 0);
                     Player[i].GetComponent<Player>().SetPickUpOBJ(this.gameObject);
                     Player[i].GetComponent<Player>().isHoldingOBJ = true;
-                    Object.FindObjectOfType<TodoList>().PickUpObject(this); //tells the list it was picked up
+                    PlayerThatPickUpOBJ = Player[i];
+                    //Object.FindObjectOfType<TodoList>().PickUpObject(this); //tells the list it was picked up
                     IsPickedUped = true;
                 }
             }
