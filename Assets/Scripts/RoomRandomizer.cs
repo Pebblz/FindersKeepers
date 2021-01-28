@@ -34,7 +34,7 @@ public class RoomRandomizer : MonoBehaviour
         {
             spawnpoint = roomSpawnpoints[i];
             //pick a random room and place it at the spawnpoints location and rotation (rotation might be a little funky)
-            room = rooms[Random.Range(0, 3)];
+            room = rooms[Random.Range(0, 9)];
             room.transform.position = spawnpoint.transform.position;
             room.transform.rotation = spawnpoint.transform.rotation;
         }
