@@ -29,6 +29,7 @@ public class PickUpAbles : MonoBehaviour
                     transform.position = Player[i].transform.position + new Vector3(0, 1, 0);
                     Player[i].GetComponent<Player>().SetPickUpOBJ(this.gameObject);
                     Player[i].GetComponent<Player>().isHoldingOBJ = true;
+                    Object.FindObjectOfType<TodoList>().PickUpObject(this);
                 }
             }
         }
