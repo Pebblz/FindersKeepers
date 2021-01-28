@@ -53,7 +53,10 @@ public class Player : MonoBehaviourPunCallbacks, IPunObservable
             }
             for (int i = 0; i < localObject.Length; i++)
             {
-                localObject[i].SetActive(false);
+                if (localObject[i] != null)
+                {
+                    localObject[i].SetActive(false);
+                }
             }
         }
 

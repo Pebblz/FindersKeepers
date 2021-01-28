@@ -507,9 +507,7 @@ MonoBehaviour:
   - {fileID: 7003869036460688388}
   - {fileID: 7003869036460688394}
   localObject:
-  - {fileID: 0}
   - {fileID: 7003869036911661424}
-  - {fileID: 0}
   score: 0
   isFiring: 0
   StunCounter: 0
