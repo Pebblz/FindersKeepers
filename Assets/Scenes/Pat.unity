@@ -1496,6 +1496,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   score: 0
   speed: 5
+  taserOBJ: {fileID: 0}
   isHoldingOBJ: 0
   isPickingUpOBJ: 0
 --- !u!54 &1786126652
@@ -1706,7 +1707,7 @@ GameObject:
   - component: {fileID: 1951057471}
   m_Layer: 0
   m_Name: Test PickUp (5)
-  m_TagString: Moveable
+  m_TagString: Undefined
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
