@@ -191,10 +191,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: eaba19edffef540419ceadbea10a17fa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  roomNumber: 0
+  roomSpawnpoints: []
+  rooms: []
   spawnpoint: {fileID: 854227624}
-  spawnpoint2: {fileID: 1847093737}
-  spawnpoint3: {fileID: 1755411792}
   room: {fileID: 0}
 --- !u!65 &209427967
 BoxCollider:
@@ -266,7 +265,7 @@ Transform:
   m_LocalScale: {x: 5, y: 5, z: 5}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 10
+  m_RootOrder: 11
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!54 &209427971
 Rigidbody:
@@ -331,10 +330,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: eaba19edffef540419ceadbea10a17fa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  roomNumber: 0
+  roomSpawnpoints: []
+  rooms: []
   spawnpoint: {fileID: 854227624}
-  spawnpoint2: {fileID: 1847093737}
-  spawnpoint3: {fileID: 1755411792}
   room: {fileID: 0}
 --- !u!65 &640863098
 BoxCollider:
@@ -406,7 +404,7 @@ Transform:
   m_LocalScale: {x: 5, y: 5, z: 5}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 9
+  m_RootOrder: 10
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!54 &640863102
 Rigidbody:
@@ -448,7 +446,7 @@ GameObject:
   - component: {fileID: 854227625}
   m_Layer: 0
   m_Name: Test room spawn
-  m_TagString: Untagged
+  m_TagString: RoomSpawn
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -688,6 +686,8 @@ MonoBehaviour:
   taserOBJ: {fileID: 0}
   isHoldingOBJ: 0
   isPickingUpOBJ: 0
+  mainCam: {fileID: 0}
+  turnSmoothTime: 0.1
 --- !u!54 &1096045244
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -880,10 +880,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: eaba19edffef540419ceadbea10a17fa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  roomNumber: 0
+  roomSpawnpoints: []
+  rooms: []
   spawnpoint: {fileID: 854227624}
-  spawnpoint2: {fileID: 1847093737}
-  spawnpoint3: {fileID: 1755411792}
   room: {fileID: 0}
 --- !u!65 &1141564398
 BoxCollider:
@@ -956,7 +955,7 @@ Transform:
   m_Children:
   - {fileID: 1347429110}
   m_Father: {fileID: 0}
-  m_RootOrder: 7
+  m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: 0, y: 90, z: 0}
 --- !u!54 &1141564402
 Rigidbody:
@@ -1228,7 +1227,7 @@ GameObject:
   - component: {fileID: 1755411793}
   m_Layer: 0
   m_Name: Test room spawn 3
-  m_TagString: Untagged
+  m_TagString: RoomSpawn
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1240,13 +1239,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1755411792}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 28.1, y: 0, z: 51.4}
+  m_LocalRotation: {x: 0, y: -0.7071068, z: 0, w: 0.7071068}
+  m_LocalPosition: {x: 29.9, y: 0, z: 50.1}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 11
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_RootOrder: 8
+  m_LocalEulerAnglesHint: {x: 0, y: -90, z: 0}
 --- !u!1 &1847093737
 GameObject:
   m_ObjectHideFlags: 0
@@ -1258,7 +1257,7 @@ GameObject:
   - component: {fileID: 1847093738}
   m_Layer: 0
   m_Name: Test room spawn 2
-  m_TagString: Untagged
+  m_TagString: RoomSpawn
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1275,5 +1274,5 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 8
+  m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}

@@ -8,6 +8,8 @@ TagManager:
   - Room
   - Undefined
   - Moveable
+  - Ground
+  - RoomSpawn
   layers:
   - Default
   - TransparentFX

@@ -4,66 +4,49 @@ using UnityEngine;
 
 public class RoomRandomizer : MonoBehaviour
 {
+    // arrays of spawnpoints and rooms respectively 
+    public GameObject[] roomSpawnpoints;
+    public GameObject[] rooms;
 
-    public float roomNumber;
-    //this is bad code this is bad code this is bad code these variables are cringe
+    // spawnpoint and room duh
     public GameObject spawnpoint;
-    public GameObject spawnpoint2;
-    public GameObject spawnpoint3;
     public GameObject room;
 
     // Start is called before the first frame update
     void Start()
     {
-       roomNumber =  Random.Range(0, 3);
-        room = this.gameObject;
+        // finding the game objects with the right tags
+        roomSpawnpoints = GameObject.FindGameObjectsWithTag("RoomSpawn");
+        rooms = GameObject.FindGameObjectsWithTag("Room");
         RandomizeRoom();
-        // spawnpoint = GameObject.FindGameObjectWithTag("RoomSpawn");
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+        // woooooosh (because its empty)
     }
 
     void RandomizeRoom()
     {
-        roomNumber = Random.Range(0, 3);
-
-        switch (roomNumber)
+        // go through the spawnpoint array
+        for(int i = 0; i < roomSpawnpoints.Length; i++)
         {
-            case 0:
-                room.transform.position = spawnpoint.transform.position;
-                room.transform.rotation = spawnpoint.transform.rotation;
-                break;
-            case 1:
-                room.transform.position = spawnpoint2.transform.position;
-                room.transform.rotation = spawnpoint2.transform.rotation;
-                break;
-            case 2:
-                room.transform.position = spawnpoint3.transform.position;
-                room.transform.rotation = spawnpoint3.transform.rotation;
-                break;
-            case 3:
-                //Debug.Log("3");
-                break;
-            case 4:
-                //Debug.Log("4");
-                break;
-            case 5:
-                // Debug.Log("5");
-                break;
+            spawnpoint = roomSpawnpoints[i];
+            //pick a random room and place it at the spawnpoints location and rotation (rotation might be a little funky)
+            room = rooms[Random.Range(0, 3)];
+            room.transform.position = spawnpoint.transform.position;
+            room.transform.rotation = spawnpoint.transform.rotation;
         }
+
     }
 
     private void OnTriggerStay(Collider col)
     {
         if (col.gameObject.tag == "Room")
         {
+            // if the room collides with another room, re randomie
             RandomizeRoom();
         }
-
-        
     }
 }
