@@ -49,6 +49,8 @@ public class Player : MonoBehaviourPunCallbacks, IPunObservable
         }
 
         DontDestroyOnLoad(this.gameObject);
+        DontDestroyOnLoad(mainCam);
+
     }
 
     // Start is called before the first frame update
@@ -56,8 +58,7 @@ public class Player : MonoBehaviourPunCallbacks, IPunObservable
     {
         rb = Player.localInstance.GetComponent<Rigidbody>();
         distToGround = GetComponent<Collider>().bounds.extents.y;
-        mainCam = GameObject.Find("Main Camera").GetComponent<Transform>();
-        DontDestroyOnLoad(mainCam);
+       // mainCam = GameObject.Find("Main Camera").GetComponent<Transform>();
     }
 
     // Update is called once per frame
