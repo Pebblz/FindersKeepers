@@ -67,6 +67,18 @@ ModelImporter:
     4300018: pCube19
     4300020: pCube20
     4300022: pCube21
+    6400000: pCube11
+    6400002: pCube12
+    6400004: pCube13
+    6400006: pCube14
+    6400008: pCube15
+    6400010: pCube16
+    6400012: pCube17
+    6400014: pCube18
+    6400016: pCube19
+    6400018: pCube20
+    6400020: pCube21
+    6400022: pPlane2
   externalObjects: {}
   materials:
     importMaterials: 1
@@ -100,7 +112,7 @@ ModelImporter:
     lODScreenPercentages: []
     globalScale: 1
     meshCompression: 0
-    addColliders: 0
+    addColliders: 1
     useSRGBMaterialColor: 1
     importVisibility: 1
     importBlendShapes: 1

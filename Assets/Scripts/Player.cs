@@ -11,26 +11,34 @@ public class Player : MonoBehaviour
     Rigidbody rb;
     float StunCounter;
     [SerializeField]
-    float speed;
+    float speed = 5;
     [SerializeField]
     GameObject taserOBJ;
     public bool isHoldingOBJ;
     public bool isPickingUpOBJ;
     public Transform mainCam;
+    public GameObject freeLookCam;
     public float turnSmoothTime = 0.1f;
     float turnSmoothVelocity;
+    Vector3 moveDir;
+
+
+    public PowerUp currentPowerUp;
+    public float powerUpTimer = 0;
+    public bool powerUpTimerActive = false;
 
     // Start is called before the first frame update
     void Start()
     {
         rb = GetComponent<Rigidbody>();
         mainCam = GameObject.Find("Main Camera").GetComponent<Transform>();
+        freeLookCam = GameObject.Find("FreeLookCam");
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+
         //if the player holds q
         if (Input.GetKeyDown(KeyCode.Q))
         {
@@ -42,9 +50,9 @@ public class Player : MonoBehaviour
         }
         if (Input.GetKeyDown(KeyCode.Space) && TasersLeft > 0)
         {
-
             shootTaser();
         }
+
         #region Movement
         float H = Input.GetAxisRaw("Horizontal");
         float V = Input.GetAxisRaw("Vertical");
@@ -65,8 +73,8 @@ public class Player : MonoBehaviour
                 transform.rotation = Quaternion.Euler(0f, smoothAngle, 0f);
 
                 //converts rotation to direction / gives the direction you want to move in taking camera into account
-                Vector3 moveDir = Quaternion.Euler(0f, targetAngle, 0f) * Vector3.forward;
-     
+                moveDir = Quaternion.Euler(0f, targetAngle, 0f) * Vector3.forward;
+
                 rb.MovePosition(transform.position += moveDir.normalized * speed * Time.deltaTime);
             }
             else
@@ -74,11 +82,12 @@ public class Player : MonoBehaviour
                 StunCounter -= Time.deltaTime;
             }
         }
-
-       // Vector3 tempVect = new Vector3(H, 0, V);
-       // tempVect = tempVect.normalized * speed * Time.deltaTime;
-       
         #endregion
+
+        if (powerUpTimerActive)
+        {
+            updatePowerUp();
+        }
     }
     //you'll never guess what this func does 
     public void DestroyPickUp()
@@ -105,5 +114,48 @@ public class Player : MonoBehaviour
     public void StunPlayer()
     {
         StunCounter = 3;
+    }
+    public void setSpeed(float newSpeed)
+    {
+        speed = newSpeed;
+    }
+    public float getSpeed()
+    {
+        return speed;
+    }
+
+    public void setPowerUp(PowerUp newPowerUp)
+    {
+        currentPowerUp = newPowerUp;
+    }
+
+    public PowerUp getPowerUp()
+    {
+        return currentPowerUp;
+    }
+
+    public void activatePowerUp()
+    {
+        powerUpTimerActive = true;
+        powerUpTimer = 20 % 60;
+    }
+
+    public void deactivatePowerUp()
+    {
+        powerUpTimerActive = false;
+        currentPowerUp.deactivate(this);
+        powerUpTimer = 0;
+    }
+    public void updatePowerUp()
+    {
+        if (powerUpTimer > 0)
+        {
+            currentPowerUp.activate(this);
+            powerUpTimer -= Time.deltaTime;
+        }
+        else
+        {
+            deactivatePowerUp();
+        }
     }
 }
