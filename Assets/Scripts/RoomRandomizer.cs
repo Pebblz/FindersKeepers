@@ -6,6 +6,7 @@ public class RoomRandomizer : MonoBehaviour
 {
 
     public float roomNumber;
+    //this is bad code this is bad code this is bad code these variables are cringe
     public GameObject spawnpoint;
     public GameObject spawnpoint2;
     public GameObject spawnpoint3;
