@@ -21,8 +21,8 @@ public class Player : MonoBehaviour
     public float turnSmoothTime = 0.1f;
     float turnSmoothVelocity;
     Vector3 moveDir;
-
-
+    float distToGround;
+    float jumpspeed = 5;
     public PowerUp currentPowerUp;
     public float powerUpTimer = 0;
     public bool powerUpTimerActive = false;
@@ -31,6 +31,7 @@ public class Player : MonoBehaviour
     void Start()
     {
         rb = GetComponent<Rigidbody>();
+        distToGround = GetComponent<Collider>().bounds.extents.y;
         mainCam = GameObject.Find("Main Camera").GetComponent<Transform>();
         freeLookCam = GameObject.Find("FreeLookCam");
     }
@@ -48,7 +49,7 @@ public class Player : MonoBehaviour
         {
             isPickingUpOBJ = false;
         }
-        if (Input.GetKeyDown(KeyCode.Space) && TasersLeft > 0)
+        if (Input.GetKeyDown(KeyCode.E) && TasersLeft > 0)
         {
             shootTaser();
         }
@@ -82,12 +83,20 @@ public class Player : MonoBehaviour
                 StunCounter -= Time.deltaTime;
             }
         }
+        if (Input.GetKeyDown(KeyCode.Space) && IsGrounded())
+        {
+            rb.velocity = new Vector3(direction.x, jumpspeed, direction.z);
+        }
         #endregion
 
         if (powerUpTimerActive)
         {
             updatePowerUp();
         }
+    }
+    bool IsGrounded()
+    {
+        return Physics.Raycast(transform.position, -Vector3.up, distToGround + 0.1f);
     }
     //you'll never guess what this func does 
     public void DestroyPickUp()
