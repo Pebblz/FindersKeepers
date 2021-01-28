@@ -13,14 +13,14 @@ public class DropOffZoneScript : MonoBehaviour
         if(c.tag == "Player")
         {
             //then it makes sure to see if the players holding an object
-           if( c.GetComponent<Player>().isHoldingOBJ == true)
+           if( c.GetComponent<PlayerPickUp>().isHoldingOBJ == true)
             {
                 //then it'll encroment the score by 1 
                 c.GetComponent<Player>().score += 1;
                 //destroy the pickuped obj
-                c.GetComponent<Player>().DestroyPickUp();
+                c.GetComponent<PlayerPickUp>().DestroyPickUp();
                 //and set his holding obj to false
-                c.GetComponent<Player>().isHoldingOBJ = false;
+                c.GetComponent<PlayerPickUp>().isHoldingOBJ = false;
             }
         }
     }
