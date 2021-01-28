@@ -1,8 +1,9 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Photon.Pun;
 
-public class Player : MonoBehaviour
+public class Player : MonoBehaviourPun
 {
     public GameObject PickUp;
 
@@ -28,6 +29,10 @@ public class Player : MonoBehaviour
     public PowerUp currentPowerUp;
     public float powerUpTimer = 0;
     public bool powerUpTimerActive = false;
+
+
+    #region monobehaviour callbacks
+    
 
     // Start is called before the first frame update
     void Start()
@@ -105,6 +110,9 @@ public class Player : MonoBehaviour
             updatePowerUp();
         }
     }
+
+    #endregion
+
     bool IsGrounded()
     {
         return Physics.Raycast(transform.position, -Vector3.up, distToGround + 0.1f);
