@@ -13,6 +13,17 @@ public class GameManager : MonoBehaviourPunCallbacks
     public GameObject playerPrefab;
     void Start()
     {
+        Instance = this;
+        if(playerPrefab == null)
+        {
+            Debug.LogError("No Player prefab provided");
+        } else if(Player.localInstance == null)
+        {
+            PhotonNetwork.Instantiate(this.playerPrefab.name, new Vector3(0f, 5f, 0f), Quaternion.identity);
+        } else
+        {
+            Debug.Log("Ignoring PLayer load");
+        }
     }
 
 
@@ -21,9 +32,36 @@ public class GameManager : MonoBehaviourPunCallbacks
     {
         SceneManager.LoadScene(0);
     }
+
+    public override void OnPlayerEnteredRoom(Photon.Realtime.Player newPlayer)
+    {
+        if (PhotonNetwork.IsMasterClient)
+        {
+            LoadArena();
+        }
+    }
+
+
+    public override void OnPlayerLeftRoom(Photon.Realtime.Player otherPlayer)
+    {
+        if (PhotonNetwork.IsMasterClient)
+        {
+            LoadArena();
+        }
+    }
+
     #endregion
 
+    void LoadArena()
+    {
+        if (!PhotonNetwork.IsMasterClient)
+        {
+            Debug.LogError("A non master client attempted to load level");
+        }
 
+        //TODO: Change to game scene
+        PhotonNetwork.LoadLevel("Lobby");
+    }
 
 
     public void LeaveRoom()

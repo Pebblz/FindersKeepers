@@ -3,11 +3,17 @@ using System.Collections.Generic;
 using UnityEngine;
 using Photon.Pun;
 
-public class Player : MonoBehaviourPun
+public class Player : MonoBehaviourPunCallbacks, IPunObservable
 {
+    [SerializeField]
     public GameObject PickUp;
 
+
+    public static GameObject localInstance;
+    
     public int score = 0;
+    public bool isFiring = false;
+
     int TasersLeft = 30;
     Rigidbody rb;
     float StunCounter;
@@ -15,6 +21,7 @@ public class Player : MonoBehaviourPun
     float speed = 5;
     [SerializeField]
     GameObject taserOBJ;
+
     public bool isHoldingOBJ;
     public bool isPickingUpOBJ;
     public Transform mainCam;
@@ -32,7 +39,17 @@ public class Player : MonoBehaviourPun
 
 
     #region monobehaviour callbacks
-    
+
+
+    private void Awake()
+    {
+        if (photonView.IsMine)
+        {
+            Player.localInstance = this.gameObject;
+        }
+
+        DontDestroyOnLoad(this.gameObject);
+    }
 
     // Start is called before the first frame update
     void Start()
@@ -67,6 +84,7 @@ public class Player : MonoBehaviourPun
         }
         if (Input.GetKeyDown(KeyCode.E) && TasersLeft > 0)
         {
+            isFiring = true;
             shootTaser();
         }
 
@@ -130,6 +148,7 @@ public class Player : MonoBehaviourPun
     }
     void shootTaser()
     {
+
         //this spawns the bullet 
         GameObject temp = Instantiate(taserOBJ, this.gameObject.transform.position, Quaternion.identity);
         //this makes sure player doesn't shoot himself 
@@ -138,6 +157,7 @@ public class Player : MonoBehaviourPun
         temp.GetComponent<Rigidbody>().velocity = transform.forward * 10f;
         //you lose a taser if you shoot a taser
         TasersLeft -= 1;
+        isFiring = false;
     }
     public void StunPlayer()
     {
@@ -186,4 +206,26 @@ public class Player : MonoBehaviourPun
             deactivatePowerUp();
         }
     }
+
+    public void OnPhotonSerializeView(PhotonStream stream, PhotonMessageInfo info)
+    {
+
+
+        if (stream.IsWriting)
+        {
+            //data that gets sent to other players
+            stream.SendNext(isFiring);
+            stream.SendNext(score);
+            stream.SendNext(isHoldingOBJ);
+            stream.SendNext(PickUp);
+        } else
+        {
+            //data recieved from other players
+            this.isFiring = (bool)stream.ReceiveNext();
+            this.score = (int)stream.ReceiveNext();
+            this.isHoldingOBJ = (bool)stream.ReceiveNext();
+            this.PickUp = (this.isHoldingOBJ) ? (GameObject) stream.ReceiveNext() : null;
+
+        }
+    } 
 }
