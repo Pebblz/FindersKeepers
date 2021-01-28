@@ -372,7 +372,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   score: 0
+  TasersLeft: 0
   speed: 5
+  taserOBJ: {fileID: 4751874367746483087, guid: cc0600f2633c23d488311098e39e359c,
+    type: 3}
   isHoldingOBJ: 0
   isPickingUpOBJ: 0
 --- !u!1 &1813743984
@@ -450,13 +453,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1813743984}
-  m_LocalRotation: {x: 0.7071068, y: 0, z: 0, w: 0.7071068}
-  m_LocalPosition: {x: 0.23, y: 6.6, z: 0.38}
+  m_LocalRotation: {x: 0.5735764, y: 0, z: 0, w: 0.8191521}
+  m_LocalPosition: {x: 0.23, y: 6.49, z: -2.9}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1607123299}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 90, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 70, y: 0, z: 0}
 --- !u!1 &2005146530
 GameObject:
   m_ObjectHideFlags: 0
