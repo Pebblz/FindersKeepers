@@ -54,7 +54,7 @@ public class Player : MonoBehaviourPunCallbacks, IPunObservable
     // Start is called before the first frame update
     void Start()
     {
-        rb = GetComponent<Rigidbody>();
+        rb = Player.localInstance.GetComponent<Rigidbody>();
         distToGround = GetComponent<Collider>().bounds.extents.y;
         mainCam = GameObject.Find("Main Camera").GetComponent<Transform>();
         freeLookCam = GameObject.Find("FreeLookCam");
@@ -216,15 +216,13 @@ public class Player : MonoBehaviourPunCallbacks, IPunObservable
             //data that gets sent to other players
             stream.SendNext(isFiring);
             stream.SendNext(score);
-            stream.SendNext(isHoldingOBJ);
-            stream.SendNext(PickUp);
+        
         } else
         {
             //data recieved from other players
             this.isFiring = (bool)stream.ReceiveNext();
             this.score = (int)stream.ReceiveNext();
-            this.isHoldingOBJ = (bool)stream.ReceiveNext();
-            this.PickUp = (this.isHoldingOBJ) ? (GameObject) stream.ReceiveNext() : null;
+     
 
         }
     } 
