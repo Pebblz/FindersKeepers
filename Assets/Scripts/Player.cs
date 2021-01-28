@@ -57,6 +57,7 @@ public class Player : MonoBehaviourPunCallbacks, IPunObservable
         rb = Player.localInstance.GetComponent<Rigidbody>();
         distToGround = GetComponent<Collider>().bounds.extents.y;
         mainCam = GameObject.Find("Main Camera").GetComponent<Transform>();
+        DontDestroyOnLoad(mainCam);
     }
 
     // Update is called once per frame
