@@ -16,10 +16,15 @@ public class Player : MonoBehaviour
     GameObject taserOBJ;
     public bool isHoldingOBJ;
     public bool isPickingUpOBJ;
+    public Transform mainCam;
+    public float turnSmoothTime = 0.1f;
+    float turnSmoothVelocity;
+
     // Start is called before the first frame update
     void Start()
     {
         rb = GetComponent<Rigidbody>();
+        mainCam = GameObject.Find("Main Camera").GetComponent<Transform>();
     }
 
     // Update is called once per frame
@@ -44,16 +49,35 @@ public class Player : MonoBehaviour
         float H = Input.GetAxisRaw("Horizontal");
         float V = Input.GetAxisRaw("Vertical");
 
-        Vector3 tempVect = new Vector3(H, 0, V);
-        tempVect = tempVect.normalized * speed * Time.deltaTime;
-        if (StunCounter <= 0)
+        Vector3 direction = new Vector3(H, 0, V).normalized;
+
+        if (direction.magnitude >= 0.1f)
         {
-            rb.MovePosition(transform.position + tempVect);
+            if (StunCounter <= 0)
+            {
+                //sees how much is needed to rotate to match camera
+                float targetAngle = Mathf.Atan2(direction.x, direction.z) * Mathf.Rad2Deg + mainCam.localEulerAngles.y;
+
+                //used to smooth the angle needed to move to avoid snapping to directions
+                float smoothAngle = Mathf.SmoothDampAngle(transform.eulerAngles.y, targetAngle, ref turnSmoothVelocity, turnSmoothTime);
+
+                //rotate player
+                transform.rotation = Quaternion.Euler(0f, smoothAngle, 0f);
+
+                //converts rotation to direction / gives the direction you want to move in taking camera into account
+                Vector3 moveDir = Quaternion.Euler(0f, targetAngle, 0f) * Vector3.forward;
+     
+                rb.MovePosition(transform.position += moveDir.normalized * speed * Time.deltaTime);
+            }
+            else
+            {
+                StunCounter -= Time.deltaTime;
+            }
         }
-        else
-        {
-            StunCounter -= Time.deltaTime;
-        }
+
+       // Vector3 tempVect = new Vector3(H, 0, V);
+       // tempVect = tempVect.normalized * speed * Time.deltaTime;
+       
         #endregion
     }
     //you'll never guess what this func does 
