@@ -532,7 +532,7 @@ PrefabInstance:
     - target: {fileID: 4127483226348314059, guid: 25074177c843b64428a38e42ebbe5ee5,
         type: 3}
       propertyPath: m_LocalRotation.x
-      value: -0.0000000094652775
+      value: -0.000000002427387
       objectReference: {fileID: 0}
     - target: {fileID: 4127483226348314059, guid: 25074177c843b64428a38e42ebbe5ee5,
         type: 3}
@@ -547,7 +547,7 @@ PrefabInstance:
     - target: {fileID: 4127483226348314059, guid: 25074177c843b64428a38e42ebbe5ee5,
         type: 3}
       propertyPath: m_LocalRotation.w
-      value: -0.00000004530359
+      value: -0.000000011618186
       objectReference: {fileID: 0}
     - target: {fileID: 4127483226348314059, guid: 25074177c843b64428a38e42ebbe5ee5,
         type: 3}
@@ -662,7 +662,7 @@ PrefabInstance:
     - target: {fileID: 4127483226981964423, guid: 25074177c843b64428a38e42ebbe5ee5,
         type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0.0000000013126702
+      value: -0.000000009433889
       objectReference: {fileID: 0}
     - target: {fileID: 4127483226981964423, guid: 25074177c843b64428a38e42ebbe5ee5,
         type: 3}
@@ -677,7 +677,7 @@ PrefabInstance:
     - target: {fileID: 4127483226981964423, guid: 25074177c843b64428a38e42ebbe5ee5,
         type: 3}
       propertyPath: m_LocalRotation.w
-      value: 0.000000009307087
+      value: -0.00000006688807
       objectReference: {fileID: 0}
     - target: {fileID: 4127483226981964423, guid: 25074177c843b64428a38e42ebbe5ee5,
         type: 3}
@@ -697,7 +697,7 @@ PrefabInstance:
     - target: {fileID: 4127483227208251397, guid: 25074177c843b64428a38e42ebbe5ee5,
         type: 3}
       propertyPath: m_LocalRotation.x
-      value: -0.00000000137397
+      value: -0.0000000067472485
       objectReference: {fileID: 0}
     - target: {fileID: 4127483227208251397, guid: 25074177c843b64428a38e42ebbe5ee5,
         type: 3}
@@ -712,7 +712,12 @@ PrefabInstance:
     - target: {fileID: 4127483227208251397, guid: 25074177c843b64428a38e42ebbe5ee5,
         type: 3}
       propertyPath: m_LocalRotation.w
-      value: -0.000000009741704
+      value: -0.000000047839283
+      objectReference: {fileID: 0}
+    - target: {fileID: 7848933938110418566, guid: 25074177c843b64428a38e42ebbe5ee5,
+        type: 3}
+      propertyPath: viewIdField
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 25074177c843b64428a38e42ebbe5ee5, type: 3}
@@ -1177,6 +1182,26 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Flicker SpotLight
+      objectReference: {fileID: 0}
+    - target: {fileID: 1103756744152003060, guid: cad5bf98db31c2d4e9c744fab477d385,
+        type: 3}
+      propertyPath: m_Color.r
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1103756744152003060, guid: cad5bf98db31c2d4e9c744fab477d385,
+        type: 3}
+      propertyPath: m_Color.g
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1103756744152003060, guid: cad5bf98db31c2d4e9c744fab477d385,
+        type: 3}
+      propertyPath: m_Color.b
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1103756744152003060, guid: cad5bf98db31c2d4e9c744fab477d385,
+        type: 3}
+      propertyPath: m_Color.a
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1103756744152003061, guid: cad5bf98db31c2d4e9c744fab477d385,
         type: 3}
