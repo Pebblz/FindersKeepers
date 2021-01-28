@@ -501,11 +501,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   localScripts:
-  - {fileID: 7003869036460688386}
-  - {fileID: 7003869036460688387}
-  - {fileID: 7003869036460688444}
-  - {fileID: 7003869036460688388}
   - {fileID: 7003869036460688394}
+  - {fileID: 7003869036460688388}
+  - {fileID: 7003869036460688395}
   localObject:
   - {fileID: 7003869036911661424}
   score: 0
