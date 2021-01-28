@@ -26,6 +26,7 @@ public class Player_MoveMeant : MonoBehaviour
         {
             rb = GetComponent<Rigidbody>();
         }
+        mainCam = GameObject.Find("Main Camera").GetComponent<Transform>();
     }
 
     // Update is called once per frame
