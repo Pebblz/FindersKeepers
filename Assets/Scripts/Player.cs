@@ -61,7 +61,7 @@ public class Player : MonoBehaviourPunCallbacks, IPunObservable
         }
 
         mainCam = GameObject.Find("Main Camera").GetComponent<Transform>();
-        //DontDestroyOnLoad(this.gameObject);
+        DontDestroyOnLoad(this.gameObject);
         //DontDestroyOnLoad(mainCam);
 
     }
