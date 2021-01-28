@@ -60,7 +60,7 @@ public class GameManager : MonoBehaviourPunCallbacks
         }
 
         //TODO: Change to game scene
-        PhotonNetwork.LoadLevel("Lobby");
+        PhotonNetwork.LoadLevel("Lobby_" + PhotonNetwork.CurrentRoom.PlayerCount);
     }
 
 

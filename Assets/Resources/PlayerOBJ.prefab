@@ -127,6 +127,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   PickUp: {fileID: 0}
   score: 0
+  isFiring: 0
   speed: 5
   taserOBJ: {fileID: 4751874367746483087, guid: cc0600f2633c23d488311098e39e359c,
     type: 3}
