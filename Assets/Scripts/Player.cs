@@ -25,6 +25,7 @@ public class Player : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        
         //if the player holds q
         if (Input.GetKeyDown(KeyCode.Q))
         {
