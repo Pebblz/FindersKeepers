@@ -10,7 +10,6 @@ public class RoomRandomizer : MonoBehaviour
     public GameObject spawnpoint2;
     public GameObject spawnpoint3;
     public GameObject room;
-    //public bool roomTaken = false;
 
     // Start is called before the first frame update
     void Start()
@@ -62,7 +61,6 @@ public class RoomRandomizer : MonoBehaviour
         if (col.gameObject.tag == "Room")
         {
             RandomizeRoom();
-            Debug.Log("oops");
         }
 
         
