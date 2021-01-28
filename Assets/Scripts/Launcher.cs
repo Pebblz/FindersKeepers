@@ -64,6 +64,7 @@ public class Launcher : MonoBehaviourPunCallbacks
         }
     }
 
+
     #endregion
 
     #region PhotonCallbacks
@@ -92,7 +93,9 @@ public class Launcher : MonoBehaviourPunCallbacks
     public override void OnJoinRandomFailed(short returnCode, string message)
     {
         Debug.Log("Failed to Join Random Room");
-        PhotonNetwork.CreateRoom(null, new RoomOptions { MaxPlayers = maxPlayersPerRoom });
+        string roomName = roomCode.text;
+        Debug.Log("Creating room " + roomName);
+        PhotonNetwork.CreateRoom(roomName, new RoomOptions { MaxPlayers = maxPlayersPerRoom });
     }
 
     public override void OnJoinedRoom()
