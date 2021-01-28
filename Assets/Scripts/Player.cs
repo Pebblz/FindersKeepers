@@ -17,7 +17,7 @@ public class Player : MonoBehaviourPunCallbacks, IPunObservable
 
 
     public static GameObject localInstance;
-    
+
     public int score = 0;
     public bool isFiring = false;
 
@@ -40,21 +40,22 @@ public class Player : MonoBehaviourPunCallbacks, IPunObservable
 
     private void Awake()
     {
-        //if (photonView.IsMine)
-        //{
+        if (photonView.IsMine)
+        {
             gameObject.tag = "Player";
             Player.localInstance = this.gameObject;
-        //} else
-        //    {
-        //        for (int i = 0; i<localScripts.Length; i++)
-        //        {
-        //            localScripts[i].enabled = false;
-        //        }
-        //        for (int i = 0; i<localObject.Length; i++)
-        //        {
-        //            localObject[i].SetActive(false);
-        //        }
-        //    }
+        }
+        else
+        {
+            for (int i = 0; i < localScripts.Length; i++)
+            {
+                localScripts[i].enabled = false;
+            }
+            for (int i = 0; i < localObject.Length; i++)
+            {
+                localObject[i].SetActive(false);
+            }
+        }
 
         mainCam = GameObject.Find("Main Camera").GetComponent<Transform>();
         DontDestroyOnLoad(this.gameObject);
@@ -132,14 +133,15 @@ public class Player : MonoBehaviourPunCallbacks, IPunObservable
             //data that gets sent to other players
             stream.SendNext(isFiring);
             stream.SendNext(score);
-        
-        } else
+
+        }
+        else
         {
             //data recieved from other players
             this.isFiring = (bool)stream.ReceiveNext();
             this.score = (int)stream.ReceiveNext();
-     
+
 
         }
-    } 
+    }
 }
