@@ -42,4 +42,12 @@ public class PickUpAbles : MonoBehaviour
 
 
     }
+    public void DropPickUp()
+    {
+        transform.position = PlayerThatPickUpOBJ.transform.position + PlayerThatPickUpOBJ.transform.forward * 1.5f;
+        transform.rotation = new Quaternion(0, PlayerThatPickUpOBJ.transform.rotation.y, 0, PlayerThatPickUpOBJ.transform.rotation.w);
+        transform.parent = null;
+        IsPickedUped = false;
+        PlayerThatPickUpOBJ = null;
+    }
 }

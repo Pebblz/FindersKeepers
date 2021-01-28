@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Player : MonoBehaviour
 {
-    GameObject PickUp;
+    public GameObject PickUp;
 
     public int score = 0;
     int TasersLeft = 30;
@@ -23,6 +23,8 @@ public class Player : MonoBehaviour
     Vector3 moveDir;
     float distToGround;
     float jumpspeed = 5;
+    float pickUpTimer;
+
     public PowerUp currentPowerUp;
     public float powerUpTimer = 0;
     public bool powerUpTimerActive = false;
@@ -39,11 +41,20 @@ public class Player : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
+        pickUpTimer -= Time.deltaTime;
         //if the player holds q
-        if (Input.GetKeyDown(KeyCode.Q))
+        if (Input.GetKeyDown(KeyCode.Q) && pickUpTimer <= 0)
         {
-            isPickingUpOBJ = true;
+            if (PickUp == null)
+            {
+                isPickingUpOBJ = true;
+            } else
+            {
+                PickUp.GetComponent<PickUpAbles>().DropPickUp();
+                PickUp = null;
+                isHoldingOBJ = false;
+            }
+            pickUpTimer = 1;
         }
         else
         {
