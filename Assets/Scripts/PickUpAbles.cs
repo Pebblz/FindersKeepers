@@ -45,6 +45,7 @@ public class PickUpAbles : MonoBehaviourPunCallbacks, IPunObservable
             }
         }
     }
+
     public void DropPickUp()
     {
         transform.position = PlayerThatPickUpOBJ.transform.position + PlayerThatPickUpOBJ.transform.forward * 1.5f;
@@ -60,14 +61,14 @@ public class PickUpAbles : MonoBehaviourPunCallbacks, IPunObservable
         {
             //data that gets sent to other players
             stream.SendNext(IsPickedUped);
-            //stream.SendNext(this.transform.position);
+            stream.SendNext(PlayerThatPickUpOBJ);
 
         }
         else
         {
             //data recieved from other players
             IsPickedUped = (bool)stream.ReceiveNext();
-            //transform.position = (Vector3)stream.ReceiveNext();
+            PlayerThatPickUpOBJ.transform.position = (Vector3)stream.ReceiveNext();
 
 
         }

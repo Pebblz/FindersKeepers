@@ -1,8 +1,8 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
-public class PlayerPickUp : MonoBehaviour
+using Photon.Pun;
+public class PlayerPickUp : MonoBehaviourPunCallbacks, IPunObservable
 {
     [SerializeField]
     public GameObject PickUp;
@@ -52,5 +52,24 @@ public class PlayerPickUp : MonoBehaviour
     {
         PickUp = OBJ;
     }
+    public void OnPhotonSerializeView(PhotonStream stream, PhotonMessageInfo info)
+    {
 
+        if (stream.IsWriting)
+        {
+            //data that gets sent to other players
+            stream.SendNext(PickUp);
+            //stream.SendNext(PlayerThatPickUpOBJ);
+
+        }
+        else
+        {
+            //data recieved from other players
+            PickUp = (GameObject)stream.ReceiveNext();
+            //PlayerThatPickUpOBJ.transform.position = (Vector3)stream.ReceiveNext();
+
+
+        }
+
+    }
 }
