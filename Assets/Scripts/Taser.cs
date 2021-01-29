@@ -17,6 +17,7 @@ public class Taser : MonoBehaviourPunCallbacks
         DestroyTimer -= Time.deltaTime;
         if (DestroyTimer <= 0)
         {
+            pv.TransferOwnership(PhotonNetwork.LocalPlayer);
             PhotonNetwork.Destroy(this.gameObject);
         }
     }
@@ -24,9 +25,9 @@ public class Taser : MonoBehaviourPunCallbacks
     {
         if(col.tag == "Player" && col.gameObject != PlayerWhoShotThis)
         {
-            //col.GetComponent<Player>().StunPlayer();
-            //col.GetComponent<PlayerPickUp>().DropOBJ();
-
+            col.GetComponent<Player>().StunPlayer();
+            col.GetComponent<PlayerPickUp>().DropOBJ();
+            pv.TransferOwnership(PhotonNetwork.LocalPlayer);
             PhotonNetwork.Destroy(this.gameObject);
         }
         
