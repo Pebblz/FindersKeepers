@@ -39,13 +39,20 @@ public class PickUpAbles : MonoBehaviourPunCallbacks, IPunObservable
                     IsPickedUped = true;
                 }
             }
-            if (Player[i].GetComponent<PlayerPickUp>().PickUp == this.gameObject)
-            {
-                transform.position = Player[i].transform.position + new Vector3(0, 1, 0);
-            }
+
 
         }
+        photonView.RPC("MovingOBJ", RpcTarget.All);
     }
+    [PunRPC]
+    public void MovingOBJ()
+    {
+        if (PlayerThatPickUpOBJ.GetComponent<PlayerPickUp>().PickUp == this.gameObject)
+        {
+            transform.position = PlayerThatPickUpOBJ.transform.position + new Vector3(0, 1, 0);
+        }
+    }
+
 
     public void DropPickUp()
     {
