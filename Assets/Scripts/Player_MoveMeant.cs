@@ -7,7 +7,6 @@ public class Player_MoveMeant : MonoBehaviourPunCallbacks, IPunObservable
 {
 
 
-    [SerializeField]
     float speed = 5;
 
     public Transform mainCam;
