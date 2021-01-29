@@ -9,6 +9,8 @@ public class PlayerPickUp : MonoBehaviourPunCallbacks, IPunObservable
     int sceneID, lastIndex;
     public bool isHoldingOBJ = false;
     public bool isPickingUpOBJ = false;
+    [SerializeField]
+    int ThrowForce;
     Animator Anim;
     float pickUpTimer;
     Scene scene;
@@ -34,7 +36,7 @@ public class PlayerPickUp : MonoBehaviourPunCallbacks, IPunObservable
         if (photonView.IsMine)
         {
             //if the player holds q
-            if (Input.GetKeyDown(KeyCode.Q) && pickUpTimer < 0)
+            if (Input.GetButtonDown("Fire1") && pickUpTimer < 0)
             {
                 if (PickUp == null)
                 {
@@ -52,7 +54,10 @@ public class PlayerPickUp : MonoBehaviourPunCallbacks, IPunObservable
             {
                 isPickingUpOBJ = false;
             }
-
+            if(Input.GetButtonDown("Fire2") && PickUp != null)
+            {
+                ThrowOBJ(ThrowForce);
+            }
             if (isHoldingOBJ == true)
             {
                 Anim.SetBool("IsCarry", true);
@@ -68,6 +73,18 @@ public class PlayerPickUp : MonoBehaviourPunCallbacks, IPunObservable
     {
         if (PickUp != null)
             Destroy(PickUp);
+    }
+    public void ThrowOBJ(int Force)
+    {
+        if (PickUp != null)
+        {           
+
+            PickUp.GetComponent<Rigidbody>().AddForce(transform.forward * Force, ForceMode.Impulse);
+            PickUp.GetComponent<PickUpAbles>().IsPickedUped = false;
+            PickUp.GetComponent<PickUpAbles>().PlayerThatPickUpOBJ = null;
+            isHoldingOBJ = false;
+            PickUp = null;
+        }
     }
     //or this one
     public void SetPickUpOBJ(GameObject OBJ)

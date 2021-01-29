@@ -9,7 +9,7 @@ public class PickUpAbles : MonoBehaviourPunCallbacks, IPunObservable
     public GameObject player;
     GameObject[] gs = new GameObject[4];
     public bool IsPickedUped;
-    GameObject PlayerThatPickUpOBJ;
+    public GameObject PlayerThatPickUpOBJ;
     public PhotonView pv;
 
     //this is an awake because it'll do this whenever this object gets spawned

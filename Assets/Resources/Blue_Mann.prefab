@@ -1186,6 +1186,7 @@ MonoBehaviour:
   PickUp: {fileID: 0}
   isHoldingOBJ: 0
   isPickingUpOBJ: 0
+  ThrowForce: 10
 --- !u!114 &5126625709053849364
 MonoBehaviour:
   m_ObjectHideFlags: 0
