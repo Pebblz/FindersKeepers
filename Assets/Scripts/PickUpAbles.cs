@@ -38,7 +38,7 @@ public class PickUpAbles : MonoBehaviourPunCallbacks, IPunObservable
 
             if (PlayerThatPickUpOBJ != null)
             {
-                if (this.gameObject == PlayerThatPickUpOBJ.GetComponent<PlayerPickUp>().PickUp)
+                if (this.gameObject == player.GetComponent<PlayerPickUp>().PickUp)
                 {
                     pv.RPC("MovePickUp", RpcTarget.AllViaServer);
                 }
@@ -71,20 +71,7 @@ public class PickUpAbles : MonoBehaviourPunCallbacks, IPunObservable
     [PunRPC]
     public void MovePickUp()
     {
-        if (pv.IsMine || PhotonNetwork.IsMasterClient)
-        {
-            if (PlayerThatPickUpOBJ != null)
-            {
-                gameObject.transform.position = PlayerThatPickUpOBJ.transform.position + new Vector3(0, 1, 0);
-            }
-        }
-        else
-        {
-            if (PlayerThatPickUpOBJ != null)
-            {
-                gameObject.transform.position = PlayerThatPickUpOBJ.transform.position + new Vector3(0, 1, 0);
-            }
-        }
+        gameObject.transform.position = player.transform.position + new Vector3(0, 1, 0);         
     }
 
 
