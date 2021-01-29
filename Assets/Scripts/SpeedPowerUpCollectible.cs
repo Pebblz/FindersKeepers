@@ -1,6 +1,8 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Photon.Pun;
+
 
 public class SpeedPowerUpCollectible : MonoBehaviour
 {
@@ -21,7 +23,8 @@ public class SpeedPowerUpCollectible : MonoBehaviour
             }
             collision.collider.gameObject.GetComponent<Player>().setPowerUp(powerUp);
             collision.collider.gameObject.GetComponent<Player>().activatePowerUp();
-            Destroy(this.gameObject);
+            //Destroy(this.gameObject);
+            PhotonNetwork.Destroy(this.gameObject);
         }
     }
 }

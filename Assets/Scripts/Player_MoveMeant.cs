@@ -7,13 +7,12 @@ public class Player_MoveMeant : MonoBehaviourPunCallbacks, IPunObservable
 {
 
 
-    [SerializeField]
     float speed = 5;
 
     public Transform mainCam;
     Animator Anim; 
     Player ThisPlayer;
-    Rigidbody rb;
+    public Rigidbody rb;
     float distToGround;
     float jumpspeed = 5;
     Vector3 moveDir;

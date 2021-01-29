@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Photon.Pun;
 
 public class WallPowerUpCollectible : MonoBehaviour
 {
@@ -21,7 +22,7 @@ public class WallPowerUpCollectible : MonoBehaviour
             }
             collision.collider.gameObject.GetComponent<Player>().setPowerUp(powerUp);
             collision.collider.gameObject.GetComponent<Player>().activatePowerUp();
-            Destroy(this.gameObject);
+            PhotonNetwork.Destroy(this.gameObject);
         }
     }
 }
