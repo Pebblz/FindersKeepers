@@ -2,24 +2,35 @@
 using System.Collections.Generic;
 using UnityEngine;
 using Photon.Pun;
+using UnityEngine.SceneManagement;
 public class PlayerPickUp : MonoBehaviourPunCallbacks, IPunObservable
 {
     public GameObject PickUp;
-
+    int sceneID, lastIndex;
     public bool isHoldingOBJ = false;
     public bool isPickingUpOBJ = false;
     Animator Anim;
     float pickUpTimer;
+    Scene scene ;
     // Start is called before the first frame update
     void Awake()
     {
         Anim = GetComponent<Animator>();
+        scene = SceneManager.GetActiveScene();
+        sceneID = scene.buildIndex;
     }
 
     // Update is called once per frame
     void Update()
     {
+        scene = SceneManager.GetActiveScene();
         pickUpTimer -= Time.deltaTime;
+        if(sceneID != lastIndex)
+        {
+            isPickingUpOBJ = false;
+            PickUp = null;
+            lastIndex = sceneID;
+        }
         if (photonView.IsMine)
         {
             //if the player holds q

@@ -26,7 +26,7 @@ public class PlayerTaser : MonoBehaviourPunCallbacks, IPunObservable
     {
 
         //this spawns the bullet 
-        GameObject temp = Instantiate(taserOBJ, this.gameObject.transform.position, Quaternion.identity);
+        GameObject temp = Instantiate(taserOBJ, this.gameObject.transform.position + new Vector3(0, 1.2f,0), Quaternion.identity);
         //this makes sure player doesn't shoot himself 
         temp.GetComponent<Taser>().PlayerWhoShotThis = gameObject;
         //bullet go forward
