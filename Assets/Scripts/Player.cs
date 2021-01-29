@@ -16,7 +16,7 @@ public class Player : MonoBehaviourPunCallbacks, IPunObservable
     public GameObject[] localObject;
 
 
-    public GameObject localInstance;
+    public static GameObject localInstance;
 
     public int score = 0;
     public bool isFiring = false;
@@ -43,7 +43,7 @@ public class Player : MonoBehaviourPunCallbacks, IPunObservable
         if (photonView.IsMine)
         {
             gameObject.tag = "Player";
-            localInstance = this.gameObject;
+            Player.localInstance = this.gameObject;
         }
         else
         {
@@ -61,7 +61,7 @@ public class Player : MonoBehaviourPunCallbacks, IPunObservable
         }
 
         mainCam = GameObject.Find("Main Camera").GetComponent<Transform>();
-        //DontDestroyOnLoad(this.transform.parent.gameObject);
+        DontDestroyOnLoad(this.transform.parent.gameObject);
         DontDestroyOnLoad(mainCam);
 
     }
