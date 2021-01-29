@@ -7,7 +7,7 @@ using System;
 public class PickUpAbles : MonoBehaviourPunCallbacks, IPunObservable
 {
     //an [] of Player objs
-    GameObject Player;
+    GameObject[] Player = new GameObject[4];
 
     bool IsPickedUped;
     GameObject PlayerThatPickUpOBJ;
@@ -15,28 +15,33 @@ public class PickUpAbles : MonoBehaviourPunCallbacks, IPunObservable
     void Awake()
     {
         //finds the players
-        Player = GameObject.FindGameObjectWithTag("Player");
+        Player = GameObject.FindGameObjectsWithTag("Player");
     }
 
     void Update()
     {
 
-
-        //checks how close the players are to the obj 
-        if (Vector3.Distance(this.gameObject.transform.position, Player.transform.position) < 5)
+        for (int i = 0; i < Player.Length; i++)
         {
-            //if he's getting ready to pick up the obj
-            if (Player.GetComponent<PlayerPickUp>().isHoldingOBJ == false &&
-                Player.GetComponent<PlayerPickUp>().isPickingUpOBJ == true && IsPickedUped == false)
+            //checks how close the players are to the obj 
+            if (Vector3.Distance(this.gameObject.transform.position, Player[i].transform.position) < 5)
             {
-                //does this stuff
-                transform.parent = Player.transform;
-                transform.position = Player.transform.position + new Vector3(0, 1, 0);
-                Player.GetComponent<PlayerPickUp>().SetPickUpOBJ(this.gameObject);
-                Player.GetComponent<PlayerPickUp>().isHoldingOBJ = true;
-                PlayerThatPickUpOBJ = Player;
-                //Object.FindObjectOfType<TodoList>().PickUpObject(this); //tells the list it was picked up
-                IsPickedUped = true;
+                //if he's getting ready to pick up the obj
+                if (Player[i].GetComponent<PlayerPickUp>().isHoldingOBJ == false &&
+                    Player[i].GetComponent<PlayerPickUp>().isPickingUpOBJ == true && IsPickedUped == false)
+                {
+                    //does this stuff
+                    transform.position = Player[i].transform.position + new Vector3(0, 1, 0);
+                    Player[i].GetComponent<PlayerPickUp>().SetPickUpOBJ(this.gameObject);
+                    Player[i].GetComponent<PlayerPickUp>().isHoldingOBJ = true;
+                    PlayerThatPickUpOBJ = Player[i];
+                    //Object.FindObjectOfType<TodoList>().PickUpObject(this); //tells the list it was picked up
+                    IsPickedUped = true;
+                }
+            }
+            if(Player[i].GetComponent<PlayerPickUp>().PickUp == this.gameObject)
+            {
+                transform.position = Player[i].transform.position + new Vector3(0, 1, 0);
             }
         }
     }
@@ -44,7 +49,6 @@ public class PickUpAbles : MonoBehaviourPunCallbacks, IPunObservable
     {
         transform.position = PlayerThatPickUpOBJ.transform.position + PlayerThatPickUpOBJ.transform.forward * 1.5f;
         transform.rotation = new Quaternion(0, PlayerThatPickUpOBJ.transform.rotation.y, 0, PlayerThatPickUpOBJ.transform.rotation.w);
-        transform.parent = null;
         IsPickedUped = false;
         PlayerThatPickUpOBJ = null;
     }
@@ -69,4 +73,11 @@ public class PickUpAbles : MonoBehaviourPunCallbacks, IPunObservable
         }
 
     }
+    //public override void OnPlayerLeftRoom(Photon.Realtime.Player otherPlayer)
+    //{
+        //transform.position = transform.position - new Vector3(0, 1, 0);
+        //transform.parent = null;
+        //IsPickedUped = false;
+        //PlayerThatPickUpOBJ = null;
+    //}
 }
