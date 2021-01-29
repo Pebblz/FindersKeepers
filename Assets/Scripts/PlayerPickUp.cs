@@ -22,13 +22,13 @@ public class PlayerPickUp : MonoBehaviourPunCallbacks, IPunObservable
         pickUpTimer -= Time.deltaTime;
         if (photonView.IsMine)
         {
-            //&& pickUpTimer <= 0
             //if the player holds q
             if (Input.GetKeyDown(KeyCode.Q) )
             {
                 if (PickUp == null)
                 {
                     isPickingUpOBJ = true;
+                    print(isPickingUpOBJ);
                 }
                 else
                 {
