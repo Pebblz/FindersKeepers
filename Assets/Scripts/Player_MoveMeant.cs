@@ -59,25 +59,24 @@ public class Player_MoveMeant : MonoBehaviourPunCallbacks, IPunObservable
                     moveDir = Quaternion.Euler(0f, targetAngle, 0f) * Vector3.forward;
 
                     rb.MovePosition(transform.position += moveDir.normalized * speed * Time.deltaTime);
-
-                    if (rb.velocity.x < .1f && rb.velocity.z < .1f)
-                    {
-                        Anim.SetBool("IsRunning", true);
-                    } else
-                    {
-                        Anim.SetBool("IsRunning", false);
-                    }
+                    Anim.SetBool("IsRunning", true);
+  
                 }
                 else
                 {
                     ThisPlayer.StunCounter -= Time.deltaTime;
                 }
             }
+            else
+            {
+                Anim.SetBool("IsRunning", false);
+            }
             if (Input.GetKeyDown(KeyCode.Space) && IsGrounded())
             {
                 rb.velocity = new Vector3(direction.x, jumpspeed, direction.z);
             }
-            #endregion
+        #endregion
+
         }
     }
     public void setSpeed(float newSpeed)
