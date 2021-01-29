@@ -78,9 +78,12 @@ public class Player : MonoBehaviourPunCallbacks, IPunObservable
     // Update is called once per frame
     void Update()
     {
-        if (powerUpTimerActive)
+        if (photonView.IsMine)
         {
-            updatePowerUp();
+            if (powerUpTimerActive)
+            {
+                updatePowerUp();
+            }        
         }
     }
 
