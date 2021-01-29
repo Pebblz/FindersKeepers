@@ -48,12 +48,12 @@ public class PickUpAbles : MonoBehaviourPunCallbacks, IPunObservable
         }
         if (photonView.IsMine)
         {
-
-            MovingOBJ(TextPos);
+            if(IsPickedUped)
+                MovingOBJ(TextPos);
         }
         else
         {
-            if (IsPickedUped)
+            if (!IsPickedUped)
             {
                 photonView.RPC("MovingOBJ", RpcTarget.All, TextPos);
             }
@@ -62,12 +62,7 @@ public class PickUpAbles : MonoBehaviourPunCallbacks, IPunObservable
     [PunRPC]
     public void MovingOBJ(Vector3 PlayerPickUPOBJ)
     {
-        if (PlayerThatPickUpOBJ != null)
-        {
-
-                transform.position = TextPos;
-            
-        }
+        transform.position = TextPos;
     }
 
 
