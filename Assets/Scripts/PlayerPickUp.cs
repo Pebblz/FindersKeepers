@@ -20,10 +20,9 @@ public class PlayerPickUp : MonoBehaviourPunCallbacks, IPunObservable
     void Update()
     {
         pickUpTimer -= Time.deltaTime;
-        //if (photonView.IsMine)
-        //{
+
             //if the player holds q
-            if (Input.GetKeyDown(KeyCode.Q) )
+            if (Input.GetKeyDown(KeyCode.Q) && pickUpTimer < 0)
             {
                 if (PickUp == null)
                 {
@@ -41,8 +40,6 @@ public class PlayerPickUp : MonoBehaviourPunCallbacks, IPunObservable
             {
                 isPickingUpOBJ = false;
             }
-        //}
-   
     }
     //you'll never guess what this func does 
     public void DestroyPickUp()

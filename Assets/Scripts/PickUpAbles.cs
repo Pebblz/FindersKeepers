@@ -48,19 +48,11 @@ public class PickUpAbles : MonoBehaviourPunCallbacks, IPunObservable
 
             if (this.gameObject == player.GetComponent<PlayerPickUp>().PickUp)
             {
-                //pv.RPC("MovePickUp", RpcTarget.AllViaServer);
                 gameObject.transform.position = player.transform.position + new Vector3(0, 1, 0);
             }
         }
 
     }
-
-    [PunRPC]
-    public void MovePickUp()
-    {
-        gameObject.transform.position = player.transform.position + new Vector3(0, 1, 0);         
-    }
-
 
     public void DropPickUp()
     {
@@ -75,14 +67,11 @@ public class PickUpAbles : MonoBehaviourPunCallbacks, IPunObservable
 
         //if (stream.IsWriting)
         //{
-        //    //data that gets sent to other players
-        //    stream.SendNext(this.gameObject.transform.position);
-        //    //stream.SendNext(PlayerThatPickUpOBJ);
+
         //}
         //else
         //{
-        //    //data recieved from other players
-        //    this.gameObject.transform.position = (Vector3)stream.ReceiveNext();
+
         //}
 
     }
