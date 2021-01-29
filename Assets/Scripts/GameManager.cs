@@ -50,7 +50,7 @@ public class GameManager : MonoBehaviourPunCallbacks
     {
         if (PhotonNetwork.IsMasterClient)
         {
-            Destroy(temp.gameObject);
+            Destroy(temp.transform.parent.gameObject);
             LoadArena();
         }
     }
