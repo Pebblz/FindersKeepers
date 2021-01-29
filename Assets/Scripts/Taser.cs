@@ -24,7 +24,7 @@ public class Taser : MonoBehaviourPunCallbacks
     {
         if(col.tag == "Player" && col.gameObject != PlayerWhoShotThis)
         {
-            col.GetComponent<Player>().StunPlayer();
+            //col.GetComponent<Player>().StunPlayer();
             //col.GetComponent<PlayerPickUp>().DropOBJ();
 
             PhotonNetwork.Destroy(this.gameObject);
