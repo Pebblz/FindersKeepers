@@ -106,6 +106,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ef2cc569ed02b6144a11655a0504931c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  pv: {fileID: 0}
 --- !u!114 &3042207556186816138
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -126,7 +127,7 @@ MonoBehaviour:
   OwnershipTransfer: 0
   ObservedComponents:
   - {fileID: 8208378521621173754}
-  viewIdField: 1
+  viewIdField: 0
   InstantiationId: 0
   isRuntimeInstantiated: 0
 --- !u!114 &8208378521621173754
