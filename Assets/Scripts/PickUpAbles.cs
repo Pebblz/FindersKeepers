@@ -25,30 +25,28 @@ public class PickUpAbles : MonoBehaviourPunCallbacks, IPunObservable
             player = GameObject.FindGameObjectWithTag("Player");
         }
 
-        
+
 
         if (photonView.IsMine)
         {
-
-            
-        }
-        if (Vector3.Distance(this.gameObject.transform.position, player.transform.position) < 5)
-        {
-
-            if (player.GetComponent<PlayerPickUp>().isHoldingOBJ == false &&
-                            player.GetComponent<PlayerPickUp>().isPickingUpOBJ == true && IsPickedUped == false)
+            if (Vector3.Distance(this.gameObject.transform.position, player.transform.position) < 5)
             {
-                player.GetComponent<PlayerPickUp>().SetPickUpOBJ(this.gameObject);
-                player.GetComponent<PlayerPickUp>().isHoldingOBJ = true;
-                PlayerThatPickUpOBJ = player;
-                pv.TransferOwnership(PhotonNetwork.LocalPlayer);
-                IsPickedUped = true;
-            }
+
+                if (player.GetComponent<PlayerPickUp>().isHoldingOBJ == false &&
+                                player.GetComponent<PlayerPickUp>().isPickingUpOBJ == true && IsPickedUped == false)
+                {
+                    player.GetComponent<PlayerPickUp>().SetPickUpOBJ(this.gameObject);
+                    player.GetComponent<PlayerPickUp>().isHoldingOBJ = true;
+                    PlayerThatPickUpOBJ = player;
+                    pv.TransferOwnership(PhotonNetwork.LocalPlayer);
+                    IsPickedUped = true;
+                }
 
 
-            if (this.gameObject == player.GetComponent<PlayerPickUp>().PickUp)
-            {
-                gameObject.transform.position = player.transform.position + new Vector3(0, 2.5f, 0);
+                if (this.gameObject == player.GetComponent<PlayerPickUp>().PickUp)
+                {
+                    gameObject.transform.position = player.transform.position + new Vector3(0, 2.5f, 0);
+                }
             }
         }
 
@@ -65,14 +63,14 @@ public class PickUpAbles : MonoBehaviourPunCallbacks, IPunObservable
     public void OnPhotonSerializeView(PhotonStream stream, PhotonMessageInfo info)
     {
 
-        //if (stream.IsWriting)
-        //{
-
-        //}
-        //else
-        //{
-
-        //}
+        if (stream.IsWriting)
+        {
+            stream.SendNext(IsPickedUped);
+        }
+        else
+        {
+            IsPickedUped = (bool)stream.ReceiveNext();
+        }
 
     }
 }
