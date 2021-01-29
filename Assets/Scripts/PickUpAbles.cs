@@ -68,7 +68,7 @@ public class PickUpAbles : MonoBehaviourPunCallbacks, IPunObservable
     [PunRPC]
     public void MovePickUp()
     {
-        if (IsPickedUped)
+        if (pv.IsMine || PhotonNetwork.IsMasterClient)
         {
             gameObject.transform.position = player.transform.position + new Vector3(0, 1, 0);
         }
