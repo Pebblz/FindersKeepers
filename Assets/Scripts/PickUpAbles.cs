@@ -11,6 +11,7 @@ public class PickUpAbles : MonoBehaviourPunCallbacks, IPunObservable
 
     bool IsPickedUped;
     GameObject PlayerThatPickUpOBJ;
+    Vector3 TextPos;
     //this is an awake because it'll do this whenever this object gets spawned
     void Awake()
     {
@@ -20,8 +21,7 @@ public class PickUpAbles : MonoBehaviourPunCallbacks, IPunObservable
 
     void Update()
     {
-        if (photonView.IsMine)
-        {
+
             for (int i = 0; i < Player.Length; i++)
             {
                 //checks how close the players are to the obj 
@@ -42,26 +42,31 @@ public class PickUpAbles : MonoBehaviourPunCallbacks, IPunObservable
 
 
             }
+        if(PlayerThatPickUpOBJ != null)
+        {
+           TextPos = PlayerThatPickUpOBJ.transform.position + new Vector3(0, 1, 0);
+        }
+        if (photonView.IsMine)
+        {
 
-            MovingOBJ(PlayerThatPickUpOBJ.GetComponent<PlayerPickUp>().PickUp);
+            MovingOBJ(TextPos);
         }
         else
         {
             if (IsPickedUped)
             {
-                photonView.RPC("MovingOBJ", RpcTarget.All, PlayerThatPickUpOBJ.GetComponent<PlayerPickUp>().PickUp);
+                photonView.RPC("MovingOBJ", RpcTarget.All, TextPos);
             }
         }
     }
     [PunRPC]
-    public void MovingOBJ(GameObject PlayerPickUPOBJ)
+    public void MovingOBJ(Vector3 PlayerPickUPOBJ)
     {
         if (PlayerThatPickUpOBJ != null)
         {
-            if (PlayerPickUPOBJ == this.gameObject)
-            {
-                transform.position = PlayerThatPickUpOBJ.transform.position + new Vector3(0, 1, 0);
-            }
+
+                transform.position = TextPos;
+            
         }
     }
 
