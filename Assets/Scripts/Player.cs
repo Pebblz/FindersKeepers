@@ -147,11 +147,5 @@ public class Player : MonoBehaviourPunCallbacks, IPunObservable
 
         }
     }
-    public override void OnPlayerLeftRoom(Photon.Realtime.Player otherPlayer)
-    {
-        if (PhotonNetwork.IsMasterClient)
-        {
-            Destroy(this.transform.parent.gameObject);
-        }
-    }
+    
 }

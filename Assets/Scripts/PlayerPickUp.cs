@@ -40,6 +40,10 @@ public class PlayerPickUp : MonoBehaviourPunCallbacks, IPunObservable
         {
             isPickingUpOBJ = false;
         }
+        if(isHoldingOBJ == true)
+        {
+            PickUp.transform.position = transform.position + new Vector3(0, 1, 0);
+        }
     }
     //you'll never guess what this func does 
     public void DestroyPickUp()
@@ -58,14 +62,14 @@ public class PlayerPickUp : MonoBehaviourPunCallbacks, IPunObservable
         if (stream.IsWriting)
         {
             //data that gets sent to other players
-            //stream.SendNext(PickUp);
+            stream.SendNext(isHoldingOBJ);
             //stream.SendNext(PlayerThatPickUpOBJ);
 
         }
         else
         {
             //data recieved from other players
-            //PickUp = (GameObject)stream.ReceiveNext();
+            isHoldingOBJ = (bool)stream.ReceiveNext();
             //PlayerThatPickUpOBJ.transform.position = (Vector3)stream.ReceiveNext();
 
 
