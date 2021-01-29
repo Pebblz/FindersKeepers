@@ -15,7 +15,6 @@ public class Player : MonoBehaviourPunCallbacks, IPunObservable
     //player (ex. Camera, AudioListener etc.)
     public GameObject[] localObject;
 
-
     public static GameObject localInstance;
 
     public int score = 0;
@@ -44,7 +43,6 @@ public class Player : MonoBehaviourPunCallbacks, IPunObservable
         {
             gameObject.tag = "Player";
             Player.localInstance = gameObject;
-
             mainCam = GameObject.Find("Main Camera").GetComponent<Transform>();
             DontDestroyOnLoad(mainCam);
 

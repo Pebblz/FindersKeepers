@@ -11,7 +11,7 @@ public class Player_MoveMeant : MonoBehaviourPunCallbacks, IPunObservable
     float speed = 5;
 
     public Transform mainCam;
-
+    Animator Anim; 
     Player ThisPlayer;
     Rigidbody rb;
     float distToGround;
@@ -28,6 +28,7 @@ public class Player_MoveMeant : MonoBehaviourPunCallbacks, IPunObservable
             rb = GetComponent<Rigidbody>();
         }
         mainCam = GameObject.Find("Main Camera").GetComponent<Transform>();
+        Anim = GetComponent<Animator>();
     }
 
     // Update is called once per frame
@@ -58,6 +59,14 @@ public class Player_MoveMeant : MonoBehaviourPunCallbacks, IPunObservable
                     moveDir = Quaternion.Euler(0f, targetAngle, 0f) * Vector3.forward;
 
                     rb.MovePosition(transform.position += moveDir.normalized * speed * Time.deltaTime);
+
+                    if (rb.velocity.x < .1f && rb.velocity.z < .1f)
+                    {
+                        Anim.SetBool("IsRunning", true);
+                    } else
+                    {
+                        Anim.SetBool("IsRunning", false);
+                    }
                 }
                 else
                 {
