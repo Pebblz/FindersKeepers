@@ -61,7 +61,7 @@ public class Player : MonoBehaviourPunCallbacks, IPunObservable
         }
 
         mainCam = GameObject.Find("Main Camera").GetComponent<Transform>();
-        //DontDestroyOnLoad(this.transform.parent.gameObject);
+        DontDestroyOnLoad(this.transform.parent.gameObject);
         DontDestroyOnLoad(mainCam);
 
     }
@@ -145,6 +145,13 @@ public class Player : MonoBehaviourPunCallbacks, IPunObservable
             this.score = (int)stream.ReceiveNext();
 
 
+        }
+    }
+    public override void OnPlayerLeftRoom(Photon.Realtime.Player otherPlayer)
+    {
+        if (PhotonNetwork.IsMasterClient)
+        {
+            Destroy(this.transform.parent.gameObject);
         }
     }
 }
