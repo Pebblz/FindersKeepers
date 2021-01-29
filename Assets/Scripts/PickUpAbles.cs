@@ -41,6 +41,7 @@ public class PickUpAbles : MonoBehaviourPunCallbacks, IPunObservable
                 player.GetComponent<PlayerPickUp>().SetPickUpOBJ(this.gameObject);
                 player.GetComponent<PlayerPickUp>().isHoldingOBJ = true;
                 PlayerThatPickUpOBJ = player;
+                pv.TransferOwnership(PhotonNetwork.LocalPlayer);
                 IsPickedUped = true;
             }
 
