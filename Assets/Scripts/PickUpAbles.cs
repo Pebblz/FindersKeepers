@@ -15,7 +15,7 @@ public class PickUpAbles : MonoBehaviourPunCallbacks, IPunObservable
     public PhotonView pv;
 
     //this is an awake because it'll do this whenever this object gets spawned
-    void Awake()
+    void Start()
     {
         //finds the players
         // Player = GameObject.FindGameObjectsWithTag("Player");
