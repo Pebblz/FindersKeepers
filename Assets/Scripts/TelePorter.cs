@@ -18,13 +18,13 @@ public class TelePorter : MonoBehaviourPunCallbacks
 
         if (col.tag == "Player")
         {
-                if (TimeToTelePort <= 0)
-                {
-                    col.transform.position = OtherTelePorter.transform.position;
-                    col.GetComponent<PlayerPickUp>().ResetPickUpPos();
-                    OtherTelePorter.GetComponent<TelePorter>().TimeToTelePort = 1;
-                    
-                }
+            if (TimeToTelePort <= 0)
+            {
+                col.transform.position = OtherTelePorter.transform.position;
+                col.GetComponent<PlayerPickUp>().ResetPickUpPos();
+                OtherTelePorter.GetComponent<TelePorter>().TimeToTelePort = 1;
+
+            }
         }
     }
 }
