@@ -49,6 +49,10 @@ public class PickUpAbles : MonoBehaviourPunCallbacks, IPunObservable
             {
                 transform.position = Vector3.Lerp(transform.position, latestPos, Time.deltaTime * 5);
                 transform.rotation = Quaternion.Lerp(transform.rotation, latestRot, Time.deltaTime * 5);
+            } else
+            {
+                transform.position = Vector3.Lerp(transform.position, latestPos, Time.deltaTime * 5);
+                transform.rotation = Quaternion.Lerp(transform.rotation, latestRot, Time.deltaTime * 5);
             }
         }
     }
