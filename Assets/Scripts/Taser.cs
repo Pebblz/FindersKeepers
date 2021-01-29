@@ -6,13 +6,16 @@ public class Taser : MonoBehaviourPunCallbacks
 {
     //this is so the player doesn't shoot himself 
     public GameObject PlayerWhoShotThis;
-
+    PhotonView pv;
     float DestroyTimer = .7f;
     void Update()
     {
         DestroyTimer -= Time.deltaTime;
         if (DestroyTimer <= 0)
+        {
+            pv.TransferOwnership(PhotonNetwork.LocalPlayer);
             PhotonNetwork.Destroy(this.gameObject);
+        }
     }
     private void OnTriggerEnter(Collider col)
     {
@@ -20,6 +23,7 @@ public class Taser : MonoBehaviourPunCallbacks
         {
             col.GetComponent<Player>().StunPlayer();
             col.GetComponent<PlayerPickUp>().DropOBJ();
+            pv.TransferOwnership(PhotonNetwork.LocalPlayer);
             PhotonNetwork.Destroy(this.gameObject);
         }
         
