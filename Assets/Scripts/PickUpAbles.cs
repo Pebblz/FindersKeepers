@@ -7,68 +7,74 @@ using System;
 public class PickUpAbles : MonoBehaviourPunCallbacks, IPunObservable
 {
     //an [] of Player objs
-    GameObject[] Player = new GameObject[4];
-
+    // GameObject[] Player = new GameObject[4];
+    GameObject player;
     bool IsPickedUped;
     GameObject PlayerThatPickUpOBJ;
-    Vector3 TextPos;
+    //Vector3 TextPos;
+    public PhotonView pv;
+
     //this is an awake because it'll do this whenever this object gets spawned
     void Awake()
     {
         //finds the players
-        Player = GameObject.FindGameObjectsWithTag("Player");
+        // Player = GameObject.FindGameObjectsWithTag("Player");
+        player = GameObject.FindGameObjectWithTag("Player");
+        pv = GetComponent<PhotonView>();
     }
 
     void Update()
     {
-
-            for (int i = 0; i < Player.Length; i++)
+        if (pv.IsMine)
+        {
+            if (Vector3.Distance(this.gameObject.transform.position, player.transform.position) < 5)
             {
-                //checks how close the players are to the obj 
-                if (Vector3.Distance(this.gameObject.transform.position, Player[i].transform.position) < 5)
+                if (player.GetComponent<PlayerPickUp>().isHoldingOBJ == false &&
+                            player.GetComponent<PlayerPickUp>().isPickingUpOBJ == true && IsPickedUped == false)
                 {
-                    //if he's getting ready to pick up the obj
-                    if (Player[i].GetComponent<PlayerPickUp>().isHoldingOBJ == false &&
-                        Player[i].GetComponent<PlayerPickUp>().isPickingUpOBJ == true && IsPickedUped == false)
-                    {
-
-                        Player[i].GetComponent<PlayerPickUp>().SetPickUpOBJ(this.gameObject);
-                        Player[i].GetComponent<PlayerPickUp>().isHoldingOBJ = true;
-                        PlayerThatPickUpOBJ = Player[i];
-                        //Object.FindObjectOfType<TodoList>().PickUpObject(this); //tells the list it was picked up
-                        IsPickedUped = true;
-                    }
+                    player.GetComponent<PlayerPickUp>().SetPickUpOBJ(this.gameObject);
+                    player.GetComponent<PlayerPickUp>().isHoldingOBJ = true;
+                    PlayerThatPickUpOBJ = player;
+                    IsPickedUped = true;
                 }
 
+                if (this.gameObject == player.GetComponent<PlayerPickUp>().PickUp)
+                {
+                    this.gameObject.transform.position = player.transform.position + new Vector3(0, 1, 0);
+                }
+                //for (int i = 0; i < Player.Length; i++)
+                //{
+                //    //checks how close the players are to the obj 
+                //    if (Vector3.Distance(this.gameObject.transform.position, Player[i].transform.position) < 5)
+                //    {
+                //        //if he's getting ready to pick up the obj
+                //        if (Player[i].GetComponent<PlayerPickUp>().isHoldingOBJ == false &&
+                //            Player[i].GetComponent<PlayerPickUp>().isPickingUpOBJ == true && IsPickedUped == false)
+                //        {
 
-            }
-        if(PlayerThatPickUpOBJ != null)
-        {
-           TextPos = PlayerThatPickUpOBJ.transform.position + new Vector3(0, 1, 0);
-        }
-        if (photonView.IsMine)
-        {
+                //            Player[i].GetComponent<PlayerPickUp>().SetPickUpOBJ(this.gameObject);
+                //            Player[i].GetComponent<PlayerPickUp>().isHoldingOBJ = true;
+                //            PlayerThatPickUpOBJ = Player[i];
+                //            //Object.FindObjectOfType<TodoList>().PickUpObject(this); //tells the list it was picked up
+                //            IsPickedUped = true;
+                //        }
+                //    }
 
-            MovingOBJ(TextPos);
-        }
-        else
-        {
-            if (IsPickedUped)
-            {
-                photonView.RPC("MovingOBJ", RpcTarget.All, TextPos);
+
+                //}
             }
         }
     }
-    [PunRPC]
-    public void MovingOBJ(Vector3 PlayerPickUPOBJ)
-    {
-        if (PlayerThatPickUpOBJ != null)
-        {
+    //[PunRPC]
+    //public void MovingOBJ(Vector3 PlayerPickUPOBJ)
+    //{
+    //    if (PlayerThatPickUpOBJ != null)
+    //    {
 
-                transform.position = TextPos;
+    //           // transform.position = TextPos;
             
-        }
-    }
+    //    }
+    //}
 
 
     public void DropPickUp()
@@ -82,18 +88,18 @@ public class PickUpAbles : MonoBehaviourPunCallbacks, IPunObservable
     public void OnPhotonSerializeView(PhotonStream stream, PhotonMessageInfo info)
     {
 
-        if (stream.IsWriting)
-        {
-            //data that gets sent to other players
-            stream.SendNext(IsPickedUped);
-            //stream.SendNext(PlayerThatPickUpOBJ);
-        }
-        else
-        {
-            //data recieved from other players
-            IsPickedUped = (bool)stream.ReceiveNext();
+        //if (stream.IsWriting)
+        //{
+        //    //data that gets sent to other players
+        //    stream.SendNext(IsPickedUped);
+        //    //stream.SendNext(PlayerThatPickUpOBJ);
+        //}
+        //else
+        //{
+        //    //data recieved from other players
+        //    IsPickedUped = (bool)stream.ReceiveNext();
 
-        }
+        //}
 
     }
 }
