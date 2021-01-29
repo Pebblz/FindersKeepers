@@ -78,6 +78,13 @@ public class PickUpAbles : MonoBehaviourPunCallbacks, IPunObservable
                 gameObject.transform.position = PlayerThatPickUpOBJ.transform.position + new Vector3(0, 1, 0);
             }
         }
+        else
+        {
+            if (PlayerThatPickUpOBJ != null)
+            {
+                gameObject.transform.position = PlayerThatPickUpOBJ.transform.position + new Vector3(0, 1, 0);
+            }
+        }
     }
 
 
