@@ -60,24 +60,17 @@ public class PickUpAbles : MonoBehaviourPunCallbacks, IPunObservable
         {
             //data that gets sent to other players
             stream.SendNext(IsPickedUped);
-            stream.SendNext(this.transform.position);
+            //stream.SendNext(this.transform.position);
 
         }
         else
         {
             //data recieved from other players
             IsPickedUped = (bool)stream.ReceiveNext();
-            transform.position = (Vector3)stream.ReceiveNext();
+            //transform.position = (Vector3)stream.ReceiveNext();
 
 
         }
 
     }
-    //public override void OnPlayerLeftRoom(Photon.Realtime.Player otherPlayer)
-    //{
-        //transform.position = transform.position - new Vector3(0, 1, 0);
-        //transform.parent = null;
-        //IsPickedUped = false;
-        //PlayerThatPickUpOBJ = null;
-    //}
 }
