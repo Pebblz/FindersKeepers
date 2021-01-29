@@ -134,14 +134,14 @@ public class Player : MonoBehaviourPunCallbacks, IPunObservable
         if (stream.IsWriting)
         {
             //data that gets sent to other players
-            stream.SendNext(isFiring);
+            //stream.SendNext(isFiring);
             //stream.SendNext(score);
 
         }
         else
         {
             //data recieved from other players
-            this.isFiring = (bool)stream.ReceiveNext();
+            //this.isFiring = (bool)stream.ReceiveNext();
             //this.score = (int)stream.ReceiveNext();
 
 
