@@ -49,17 +49,18 @@ public class Player : MonoBehaviourPunCallbacks, IPunObservable
         }
         else
         {
-            for (int i = 0; i < localScripts.Length; i++)
-            {
-                localScripts[i].enabled = false;
-            }
-            for (int i = 0; i < localObject.Length; i++)
-            {
-                if (localObject[i] != null)
-                {
-                    localObject[i].SetActive(false);
-                }
-            }
+            freeLookCam.SetActive(false);
+            //for (int i = 0; i < localScripts.Length; i++)
+            //{
+            //    localScripts[i].enabled = false;
+            //}
+            //for (int i = 0; i < localObject.Length; i++)
+            //{
+            //    if (localObject[i] != null)
+            //    {
+            //        localObject[i].SetActive(false);
+            //    }
+            //}
         }
         DontDestroyOnLoad(this);
 

@@ -70,6 +70,7 @@ public class PlayerPickUp : MonoBehaviourPunCallbacks, IPunObservable
             stream.SendNext(isPickingUpOBJ);
             //stream.SendNext(PlayerThatPickUpOBJ);
 
+            
         }
         else
         {
