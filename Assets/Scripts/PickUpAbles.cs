@@ -27,8 +27,7 @@ public class PickUpAbles : MonoBehaviourPunCallbacks, IPunObservable
 
 
 
-        if (photonView.IsMine)
-        {
+
             if (Vector3.Distance(this.gameObject.transform.position, player.transform.position) < 5)
             {
 
@@ -48,7 +47,9 @@ public class PickUpAbles : MonoBehaviourPunCallbacks, IPunObservable
                     gameObject.transform.position = player.transform.position + new Vector3(0, 2.5f, 0);
                 }
             }
-        }
+        //if (photonView.IsMine)
+        //{
+        //}
 
     }
 
