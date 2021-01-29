@@ -9,6 +9,7 @@ public class PickUpAbles : MonoBehaviourPunCallbacks, IPunObservable
     //an [] of Player objs
     // GameObject[] Player = new GameObject[4];
     public GameObject player;
+    GameObject[] gs = new GameObject[4];
     bool IsPickedUped;
     GameObject PlayerThatPickUpOBJ;
     //Vector3 TextPos;
@@ -25,12 +26,17 @@ public class PickUpAbles : MonoBehaviourPunCallbacks, IPunObservable
 
     void Update()
     {
-        player = GameObject.FindGameObjectWithTag("Player");
+        if(player == null)
+            player = GameObject.FindGameObjectWithTag("Player");
+
+        gs = GameObject.FindGameObjectsWithTag("Player");
+
         if (photonView.IsMine)
         {
+
             if (Vector3.Distance(this.gameObject.transform.position, player.transform.position) < 5)
             {
-                print("g");
+
                 if (player.GetComponent<PlayerPickUp>().isHoldingOBJ == false &&
                                 player.GetComponent<PlayerPickUp>().isPickingUpOBJ == true && IsPickedUped == false)
                 {
