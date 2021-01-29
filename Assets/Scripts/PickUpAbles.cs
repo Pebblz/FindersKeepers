@@ -25,10 +25,6 @@ public class PickUpAbles : MonoBehaviourPunCallbacks, IPunObservable
 
     void Update()
     {
-        if (!pv.IsMine)
-        {
-            return;
-        }
             if (Vector3.Distance(this.gameObject.transform.position, player.transform.position) < 5)
             {
                 if (player.GetComponent<PlayerPickUp>().isHoldingOBJ == false &&
@@ -42,7 +38,7 @@ public class PickUpAbles : MonoBehaviourPunCallbacks, IPunObservable
 
                 if (this.gameObject == player.GetComponent<PlayerPickUp>().PickUp)
                 {
-                    pv.RPC("MovePickUp", RpcTarget.AllViaServer);
+                    pv.RPC("MovePickUp", RpcTarget.AllViaServer, player);
                 }
                 //for (int i = 0; i < Player.Length; i++)
                 //{
@@ -70,7 +66,7 @@ public class PickUpAbles : MonoBehaviourPunCallbacks, IPunObservable
     }
 
     [PunRPC]
-    public void MovePickUp()
+    public void MovePickUp(Player player)
     {
         this.gameObject.transform.position = player.transform.position + new Vector3(0, 1, 0);
     }
