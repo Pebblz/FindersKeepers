@@ -118,7 +118,7 @@ GameObject:
   - component: {fileID: 7003869035903933414}
   m_Layer: 0
   m_Name: PlayerOBJ
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -506,6 +506,7 @@ MonoBehaviour:
   - {fileID: 7003869036460688395}
   localObject:
   - {fileID: 7003869036911661424}
+  localInstance: {fileID: 0}
   score: 0
   isFiring: 0
   StunCounter: 0
