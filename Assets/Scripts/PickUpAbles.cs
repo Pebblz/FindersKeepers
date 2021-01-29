@@ -25,8 +25,10 @@ public class PickUpAbles : MonoBehaviourPunCallbacks, IPunObservable
 
     void Update()
     {
-        if (pv.IsMine)
+        if (!pv.IsMine)
         {
+            return;
+        }
             if (Vector3.Distance(this.gameObject.transform.position, player.transform.position) < 5)
             {
                 if (player.GetComponent<PlayerPickUp>().isHoldingOBJ == false &&
@@ -63,7 +65,7 @@ public class PickUpAbles : MonoBehaviourPunCallbacks, IPunObservable
 
                 //}
             }
-        }
+        
         
     }
 
