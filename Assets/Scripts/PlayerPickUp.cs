@@ -20,9 +20,9 @@ public class PlayerPickUp : MonoBehaviourPunCallbacks, IPunObservable
     // Update is called once per frame
     void Update()
     {
+        pickUpTimer -= Time.deltaTime;
         if (photonView.IsMine)
         {
-            pickUpTimer -= Time.deltaTime;
             //if the player holds q
             if (Input.GetKeyDown(KeyCode.Q) && pickUpTimer <= 0)
             {
