@@ -47,15 +47,11 @@ public class PickUpAbles : MonoBehaviourPunCallbacks, IPunObservable
                     gameObject.transform.position = player.transform.position + new Vector3(0, 2.5f, 0);
                 }
             }
-        //if (photonView.IsMine)
-        //{
-        //}
-
     }
 
     public void DropPickUp()
     {
-        transform.position = PlayerThatPickUpOBJ.transform.position + PlayerThatPickUpOBJ.transform.forward * 1.5f;
+        transform.position = PlayerThatPickUpOBJ.transform.position + new Vector3(0,.5f,0) + PlayerThatPickUpOBJ.transform.forward * 1.5f;
         transform.rotation = new Quaternion(0, PlayerThatPickUpOBJ.transform.rotation.y, 0, PlayerThatPickUpOBJ.transform.rotation.w);
         IsPickedUped = false;
         PlayerThatPickUpOBJ = null;
