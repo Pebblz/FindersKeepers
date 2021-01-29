@@ -46,14 +46,15 @@ public class Player : MonoBehaviourPunCallbacks, IPunObservable
             Player.localInstance = gameObject;
 
             mainCam = GameObject.Find("Main Camera").GetComponent<Transform>();
-            DontDestroyOnLoad(this.transform.parent.gameObject);
-            DontDestroyOnLoad(mainCam);
+
 
         }
         else
         {
             freeLookCam.SetActive(false);
         }
+        DontDestroyOnLoad(this.transform.parent.gameObject);
+        DontDestroyOnLoad(mainCam);
         //else
         //{
         //    for (int i = 0; i < localScripts.Length; i++)
@@ -69,7 +70,7 @@ public class Player : MonoBehaviourPunCallbacks, IPunObservable
         //    }
         //}
 
-        
+
 
     }
 
