@@ -50,6 +50,12 @@ public class Launcher : MonoBehaviourPunCallbacks
     public void Connect()
     {
         string roomName = roomCode.text;
+
+        if (string.IsNullOrEmpty(roomName))
+        {
+            Debug.LogError("Room name was not provided");
+            return;
+        }
         progressLabel.SetActive(true);
         controlPanel.SetActive(false);
 

@@ -61,7 +61,7 @@ public class Player : MonoBehaviourPunCallbacks, IPunObservable
                 }
             }
         }
-        DontDestroyOnLoad(this.gameObject);
+        DontDestroyOnLoad(this);
 
 
 
