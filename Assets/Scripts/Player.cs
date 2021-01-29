@@ -16,7 +16,7 @@ public class Player : MonoBehaviourPunCallbacks, IPunObservable
     public GameObject[] localObject;
 
 
-    public static GameObject localInstance;
+    public GameObject localInstance;
 
     public int score = 0;
     public bool isFiring = false;
@@ -43,7 +43,7 @@ public class Player : MonoBehaviourPunCallbacks, IPunObservable
         if (photonView.IsMine)
         {
             gameObject.tag = "Player";
-            Player.localInstance = this.gameObject;
+            localInstance = this.gameObject;
         }
         else
         {
