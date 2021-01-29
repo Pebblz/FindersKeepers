@@ -63,10 +63,6 @@ public class Player : MonoBehaviourPunCallbacks, IPunObservable
                 }
             }
         }
-        //else
-        //{
-        //    freeLookCam.SetActive(false);
-        //}
         DontDestroyOnLoad(this.transform.parent.gameObject);
 
 
