@@ -74,6 +74,10 @@ public class PlayerPickUp : MonoBehaviourPunCallbacks, IPunObservable
     {
         PickUp = OBJ;
     }
+    public void ResetPickUpPos()
+    {
+        PickUp.transform.position = transform.position + new Vector3(0, 2.5f, 0);
+    }
     public void DropOBJ()
     {
         if (PickUp != null)
