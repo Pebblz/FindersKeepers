@@ -73,7 +73,10 @@ public class PickUpAbles : MonoBehaviourPunCallbacks, IPunObservable
     {
         if (pv.IsMine || PhotonNetwork.IsMasterClient)
         {
-            gameObject.transform.position = PlayerThatPickUpOBJ.transform.position + new Vector3(0, 1, 0);
+            if (PlayerThatPickUpOBJ != null)
+            {
+                gameObject.transform.position = PlayerThatPickUpOBJ.transform.position + new Vector3(0, 1, 0);
+            }
         }
     }
 
