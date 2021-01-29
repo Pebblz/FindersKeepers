@@ -32,6 +32,7 @@ public class PickUpAbles : MonoBehaviourPunCallbacks, IPunObservable
                 {
                     //does this stuff
                     transform.position = Player[i].transform.position + new Vector3(0, 1, 0);
+                    transform.parent = Player[i].transform;
                     Player[i].GetComponent<PlayerPickUp>().SetPickUpOBJ(this.gameObject);
                     Player[i].GetComponent<PlayerPickUp>().isHoldingOBJ = true;
                     PlayerThatPickUpOBJ = Player[i];
@@ -39,10 +40,10 @@ public class PickUpAbles : MonoBehaviourPunCallbacks, IPunObservable
                     IsPickedUped = true;
                 }
             }
-            if(Player[i].GetComponent<PlayerPickUp>().PickUp == this.gameObject)
-            {
-                transform.position = Player[i].transform.position + new Vector3(0, 1, 0);
-            }
+            //if(Player[i].GetComponent<PlayerPickUp>().PickUp == this.gameObject)
+            //{
+            //    transform.position = Player[i].transform.position + new Vector3(0, 1, 0);
+            //}
         }
     }
 
@@ -50,6 +51,7 @@ public class PickUpAbles : MonoBehaviourPunCallbacks, IPunObservable
     {
         transform.position = PlayerThatPickUpOBJ.transform.position + PlayerThatPickUpOBJ.transform.forward * 1.5f;
         transform.rotation = new Quaternion(0, PlayerThatPickUpOBJ.transform.rotation.y, 0, PlayerThatPickUpOBJ.transform.rotation.w);
+        transform.parent = null;
         IsPickedUped = false;
         PlayerThatPickUpOBJ = null;
     }
