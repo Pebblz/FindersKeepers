@@ -42,6 +42,7 @@ public class PickUpAbles : MonoBehaviourPunCallbacks, IPunObservable
             if(Player[i].GetComponent<PlayerPickUp>().PickUp == this.gameObject)
             {
                 transform.position = Player[i].transform.position + new Vector3(0, 1, 0);
+                print(Player[i].name);
             }
         }
     }
