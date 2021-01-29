@@ -36,7 +36,7 @@ public class PickUpAbles : MonoBehaviourPunCallbacks, IPunObservable
                     IsPickedUped = true;
                 }
 
-                if (this.gameObject == player.GetComponent<PlayerPickUp>().PickUp)
+                if (this.gameObject == PlayerThatPickUpOBJ.GetComponent<PlayerPickUp>().PickUp)
                 {
                     pv.RPC("MovePickUp", RpcTarget.AllViaServer);
                 }
@@ -70,7 +70,7 @@ public class PickUpAbles : MonoBehaviourPunCallbacks, IPunObservable
     {
         if (pv.IsMine || PhotonNetwork.IsMasterClient)
         {
-            gameObject.transform.position = player.transform.position + new Vector3(0, 1, 0);
+            gameObject.transform.position = PlayerThatPickUpOBJ.transform.position + new Vector3(0, 1, 0);
         }
     }
 
