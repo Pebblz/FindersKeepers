@@ -19,20 +19,22 @@ public class PickUpAbles : MonoBehaviourPunCallbacks, IPunObservable
     {
         //finds the players
         // Player = GameObject.FindGameObjectsWithTag("Player");
-        player = GameObject.FindGameObjectWithTag("Player");
+
         pv = GetComponent<PhotonView>();
     }
 
     void Update()
     {
+        player = GameObject.FindGameObjectWithTag("Player");
         if (photonView.IsMine)
         {
             if (Vector3.Distance(this.gameObject.transform.position, player.transform.position) < 5)
             {
+                print("g");
                 if (player.GetComponent<PlayerPickUp>().isHoldingOBJ == false &&
                                 player.GetComponent<PlayerPickUp>().isPickingUpOBJ == true && IsPickedUped == false)
                 {
-                    print("Works");
+                    //print("Works");
                     player.GetComponent<PlayerPickUp>().SetPickUpOBJ(this.gameObject);
                     player.GetComponent<PlayerPickUp>().isHoldingOBJ = true;
                     PlayerThatPickUpOBJ = player;
