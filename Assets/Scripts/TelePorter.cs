@@ -15,11 +15,11 @@ public class TelePorter : MonoBehaviourPunCallbacks
     }
     private void OnTriggerEnter(Collider col)
     {
-
-        if(col.tag == "Player")
+        if (photonView.IsMine)
         {
-            if (photonView.IsMine)
+            if (col.tag == "Player")
             {
+
                 if (TimeToTelePort <= 0)
                 {
                     col.transform.position = OtherTelePorter.transform.position;
