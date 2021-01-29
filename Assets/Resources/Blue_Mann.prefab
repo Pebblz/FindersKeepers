@@ -1025,11 +1025,11 @@ GameObject:
   - component: {fileID: 6614253366803283322}
   - component: {fileID: 3901159511243375289}
   - component: {fileID: 4926105320417589826}
-  - component: {fileID: 3243736804027209406}
   - component: {fileID: 5328103404824497446}
   - component: {fileID: 8286713377810215024}
   - component: {fileID: 5126625709053849364}
   - component: {fileID: 7887116270099603163}
+  - component: {fileID: 593724963358965743}
   m_Layer: 0
   m_Name: Blue_Mann
   m_TagString: Untagged
@@ -1157,20 +1157,6 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
---- !u!64 &3243736804027209406
-MeshCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5695364295554685960}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Convex: 0
-  m_CookingOptions: 14
-  m_Mesh: {fileID: 4300000, guid: f3e4713dab6ebaa409c1e25703112c9d, type: 3}
 --- !u!114 &5328103404824497446
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1241,6 +1227,19 @@ MonoBehaviour:
   freeLookCam: {fileID: 0}
   powerUpTimer: 0
   powerUpTimerActive: 0
+--- !u!65 &593724963358965743
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5695364295554685960}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1, y: 1.6, z: 1}
+  m_Center: {x: 0, y: 0.8, z: 0}
 --- !u!1 &5695364295554685962
 GameObject:
   m_ObjectHideFlags: 0
