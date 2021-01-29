@@ -5,7 +5,7 @@ using UnityEngine;
 public class PickUpAbles : MonoBehaviour
 {
     //an [] of Player objs
-    GameObject[] Player = new GameObject[4];
+    GameObject Player;
 
     bool IsPickedUped;
     GameObject PlayerThatPickUpOBJ;
@@ -13,34 +13,30 @@ public class PickUpAbles : MonoBehaviour
     void Awake()
     {
         //finds the players
-        Player = GameObject.FindGameObjectsWithTag("Player");
+        Player = GameObject.FindGameObjectWithTag("Player");
     }
 
     void Update()
     {
-        
-        for(int i = 0; i < Player.Length; i++)
+
+
+        //checks how close the players are to the obj 
+        if (Vector3.Distance(this.gameObject.transform.position, Player.transform.position) < 5)
         {
-            //checks how close the players are to the obj 
-            if(Vector3.Distance(this.gameObject.transform.position,Player[i].transform.position) < 5)
+            //if he's getting ready to pick up the obj
+            if (Player.GetComponent<PlayerPickUp>().isHoldingOBJ == false &&
+                Player.GetComponent<PlayerPickUp>().isPickingUpOBJ == true && IsPickedUped == false)
             {
-                //if he's getting ready to pick up the obj
-                if(Player[i].GetComponent<PlayerPickUp>().isHoldingOBJ == false && 
-                    Player[i].GetComponent<PlayerPickUp>().isPickingUpOBJ == true && IsPickedUped == false) 
-                {
-                    //does this stuff
-                    transform.parent = Player[i].transform;
-                    transform.position = Player[i].transform.position + new Vector3(0, 1, 0);
-                    Player[i].GetComponent<PlayerPickUp>().SetPickUpOBJ(this.gameObject);
-                    Player[i].GetComponent<PlayerPickUp>().isHoldingOBJ = true;
-                    PlayerThatPickUpOBJ = Player[i];
-                    //Object.FindObjectOfType<TodoList>().PickUpObject(this); //tells the list it was picked up
-                    IsPickedUped = true;
-                }
+                //does this stuff
+                transform.parent = Player.transform;
+                transform.position = Player.transform.position + new Vector3(0, 1, 0);
+                Player.GetComponent<PlayerPickUp>().SetPickUpOBJ(this.gameObject);
+                Player.GetComponent<PlayerPickUp>().isHoldingOBJ = true;
+                PlayerThatPickUpOBJ = Player;
+                //Object.FindObjectOfType<TodoList>().PickUpObject(this); //tells the list it was picked up
+                IsPickedUped = true;
             }
         }
-
-
     }
     public void DropPickUp()
     {
