@@ -20,29 +20,29 @@ public class PickUpAbles : MonoBehaviourPunCallbacks, IPunObservable
 
     void Update()
     {
-
-        for (int i = 0; i < Player.Length; i++)
-        {
-            //checks how close the players are to the obj 
-            if (Vector3.Distance(this.gameObject.transform.position, Player[i].transform.position) < 5)
-            {
-                //if he's getting ready to pick up the obj
-                if (Player[i].GetComponent<PlayerPickUp>().isHoldingOBJ == false &&
-                    Player[i].GetComponent<PlayerPickUp>().isPickingUpOBJ == true && IsPickedUped == false)
-                {
-
-                    Player[i].GetComponent<PlayerPickUp>().SetPickUpOBJ(this.gameObject);
-                    Player[i].GetComponent<PlayerPickUp>().isHoldingOBJ = true;
-                    PlayerThatPickUpOBJ = Player[i];
-                    //Object.FindObjectOfType<TodoList>().PickUpObject(this); //tells the list it was picked up
-                    IsPickedUped = true;
-                }
-            }
-
-
-        }
         if (photonView.IsMine)
         {
+            for (int i = 0; i < Player.Length; i++)
+            {
+                //checks how close the players are to the obj 
+                if (Vector3.Distance(this.gameObject.transform.position, Player[i].transform.position) < 5)
+                {
+                    //if he's getting ready to pick up the obj
+                    if (Player[i].GetComponent<PlayerPickUp>().isHoldingOBJ == false &&
+                        Player[i].GetComponent<PlayerPickUp>().isPickingUpOBJ == true && IsPickedUped == false)
+                    {
+
+                        Player[i].GetComponent<PlayerPickUp>().SetPickUpOBJ(this.gameObject);
+                        Player[i].GetComponent<PlayerPickUp>().isHoldingOBJ = true;
+                        PlayerThatPickUpOBJ = Player[i];
+                        //Object.FindObjectOfType<TodoList>().PickUpObject(this); //tells the list it was picked up
+                        IsPickedUped = true;
+                    }
+                }
+
+
+            }
+
             MovingOBJ(PlayerThatPickUpOBJ.GetComponent<PlayerPickUp>().PickUp);
         }
         else
