@@ -32,6 +32,7 @@ public class PickUpAbles : MonoBehaviourPunCallbacks, IPunObservable
                 if (player.GetComponent<PlayerPickUp>().isHoldingOBJ == false &&
                                 player.GetComponent<PlayerPickUp>().isPickingUpOBJ == true && IsPickedUped == false)
                 {
+                    print("Works");
                     player.GetComponent<PlayerPickUp>().SetPickUpOBJ(this.gameObject);
                     player.GetComponent<PlayerPickUp>().isHoldingOBJ = true;
                     PlayerThatPickUpOBJ = player;
