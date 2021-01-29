@@ -20,25 +20,28 @@ public class PlayerPickUp : MonoBehaviourPunCallbacks, IPunObservable
     // Update is called once per frame
     void Update()
     {
-        pickUpTimer -= Time.deltaTime;
-        //if the player holds q
-        if (Input.GetKeyDown(KeyCode.Q) && pickUpTimer <= 0)
+        if (photonView.IsMine)
         {
-            if (PickUp == null)
+            pickUpTimer -= Time.deltaTime;
+            //if the player holds q
+            if (Input.GetKeyDown(KeyCode.Q) && pickUpTimer <= 0)
             {
-                isPickingUpOBJ = true;
+                if (PickUp == null)
+                {
+                    isPickingUpOBJ = true;
+                }
+                else
+                {
+                    PickUp.GetComponent<PickUpAbles>().DropPickUp();
+                    PickUp = null;
+                    isHoldingOBJ = false;
+                }
+                pickUpTimer = 1;
             }
             else
             {
-                PickUp.GetComponent<PickUpAbles>().DropPickUp();
-                PickUp = null;
-                isHoldingOBJ = false;
+                isPickingUpOBJ = false;
             }
-            pickUpTimer = 1;
-        }
-        else
-        {
-            isPickingUpOBJ = false;
         }
    
     }

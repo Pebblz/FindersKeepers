@@ -43,33 +43,39 @@ public class Player : MonoBehaviourPunCallbacks, IPunObservable
         if (photonView.IsMine)
         {
             gameObject.tag = "Player";
-            Player.localInstance = this.gameObject;
+            Player.localInstance = gameObject;
+
+            mainCam = GameObject.Find("Main Camera").GetComponent<Transform>();
+            DontDestroyOnLoad(this.transform.parent.gameObject);
+            DontDestroyOnLoad(mainCam);
+
         }
         else
         {
-            for (int i = 0; i < localScripts.Length; i++)
-            {
-                localScripts[i].enabled = false;
-            }
-            for (int i = 0; i < localObject.Length; i++)
-            {
-                if (localObject[i] != null)
-                {
-                    localObject[i].SetActive(false);
-                }
-            }
+            freeLookCam.SetActive(false);
         }
+        //else
+        //{
+        //    for (int i = 0; i < localScripts.Length; i++)
+        //    {
+        //        localScripts[i].enabled = false;
+        //    }
+        //    for (int i = 0; i < localObject.Length; i++)
+        //    {
+        //        if (localObject[i] != null)
+        //        {
+        //            localObject[i].SetActive(false);
+        //        }
+        //    }
+        //}
 
-        mainCam = GameObject.Find("Main Camera").GetComponent<Transform>();
-        DontDestroyOnLoad(this.transform.parent.gameObject);
-        DontDestroyOnLoad(mainCam);
+        
 
     }
 
     // Start is called before the first frame update
     void Start()
     {
-
     }
 
     // Update is called once per frame

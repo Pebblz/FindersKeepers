@@ -25,6 +25,8 @@ public class PickUpAbles : MonoBehaviourPunCallbacks, IPunObservable
 
     void Update()
     {
+        if (photonView.IsMine)
+        {
             if (Vector3.Distance(this.gameObject.transform.position, player.transform.position) < 5)
             {
                 if (player.GetComponent<PlayerPickUp>().isHoldingOBJ == false &&
@@ -36,12 +38,13 @@ public class PickUpAbles : MonoBehaviourPunCallbacks, IPunObservable
                     IsPickedUped = true;
                 }
 
-            
+
                 if (this.gameObject == player.GetComponent<PlayerPickUp>().PickUp)
                 {
-                    pv.RPC("MovePickUp", RpcTarget.AllViaServer);
+                    //pv.RPC("MovePickUp", RpcTarget.AllViaServer);
+                    gameObject.transform.position = player.transform.position + new Vector3(0, 1, 0);
                 }
-            
+
                 //for (int i = 0; i < Player.Length; i++)
                 //{
                 //    //checks how close the players are to the obj 
@@ -63,6 +66,7 @@ public class PickUpAbles : MonoBehaviourPunCallbacks, IPunObservable
 
                 //}
             }
+        }
         
         
     }

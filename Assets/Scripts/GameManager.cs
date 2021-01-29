@@ -7,25 +7,32 @@ using Photon.Pun;
 
 public class GameManager : MonoBehaviourPunCallbacks
 {
-    public static GameManager Instance;
+    static public GameManager Instance;
 
+    private GameObject instance;
     [Tooltip("The prefab used to load multiple players")]
-    public GameObject playerPrefab;
+
+    [SerializeField]
+    private GameObject playerPrefab;
     void Start()
     {
         Instance = this;
-        if(playerPrefab == null)
+        if (playerPrefab == null)
         {
             Debug.LogError("No Player prefab provided");
-        } 
-        
-        if(Player.localInstance == null)
+        }
+        else
         {
-            Debug.Log("Adding player #" + PhotonNetwork.CurrentRoom.PlayerCount);
-            PhotonNetwork.Instantiate(this.playerPrefab.name, new Vector3(0f, 5f, 0f), Quaternion.identity);
-        } else
-        {
-            Debug.Log("Ignoring PLayer load");
+
+            if (Player.localInstance == null)
+            {
+                Debug.Log("Adding player #" + PhotonNetwork.CurrentRoom.PlayerCount);
+                PhotonNetwork.Instantiate(this.playerPrefab.name, new Vector3(0f, 5f, 0f), Quaternion.identity);
+            }
+            else
+            {
+                Debug.Log("Ignoring PLayer load");
+            }
         }
     }
 

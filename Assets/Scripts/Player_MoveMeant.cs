@@ -33,41 +33,43 @@ public class Player_MoveMeant : MonoBehaviourPunCallbacks, IPunObservable
     // Update is called once per frame
     void Update()
     {
-
-        #region Movement
-        float H = Input.GetAxisRaw("Horizontal");
-        float V = Input.GetAxisRaw("Vertical");
-
-        Vector3 direction = new Vector3(H, 0, V).normalized;
-
-        if (direction.magnitude >= 0.1f)
+        if (photonView.IsMine)
         {
-            if (ThisPlayer.StunCounter <= 0)
+            #region Movement
+            float H = Input.GetAxisRaw("Horizontal");
+            float V = Input.GetAxisRaw("Vertical");
+
+            Vector3 direction = new Vector3(H, 0, V).normalized;
+
+            if (direction.magnitude >= 0.1f)
             {
-                //sees how much is needed to rotate to match camera
-                float targetAngle = Mathf.Atan2(direction.x, direction.z) * Mathf.Rad2Deg + mainCam.localEulerAngles.y;
+                if (ThisPlayer.StunCounter <= 0)
+                {
+                    //sees how much is needed to rotate to match camera
+                    float targetAngle = Mathf.Atan2(direction.x, direction.z) * Mathf.Rad2Deg + mainCam.localEulerAngles.y;
 
-                //used to smooth the angle needed to move to avoid snapping to directions
-                float smoothAngle = Mathf.SmoothDampAngle(transform.eulerAngles.y, targetAngle, ref turnSmoothVelocity, turnSmoothTime);
+                    //used to smooth the angle needed to move to avoid snapping to directions
+                    float smoothAngle = Mathf.SmoothDampAngle(transform.eulerAngles.y, targetAngle, ref turnSmoothVelocity, turnSmoothTime);
 
-                //rotate player
-                transform.rotation = Quaternion.Euler(0f, smoothAngle, 0f);
+                    //rotate player
+                    transform.rotation = Quaternion.Euler(0f, smoothAngle, 0f);
 
-                //converts rotation to direction / gives the direction you want to move in taking camera into account
-                moveDir = Quaternion.Euler(0f, targetAngle, 0f) * Vector3.forward;
+                    //converts rotation to direction / gives the direction you want to move in taking camera into account
+                    moveDir = Quaternion.Euler(0f, targetAngle, 0f) * Vector3.forward;
 
-                rb.MovePosition(transform.position += moveDir.normalized * speed * Time.deltaTime);
+                    rb.MovePosition(transform.position += moveDir.normalized * speed * Time.deltaTime);
+                }
+                else
+                {
+                    ThisPlayer.StunCounter -= Time.deltaTime;
+                }
             }
-            else
+            if (Input.GetKeyDown(KeyCode.Space) && IsGrounded())
             {
-                ThisPlayer.StunCounter -= Time.deltaTime;
+                rb.velocity = new Vector3(direction.x, jumpspeed, direction.z);
             }
+            #endregion
         }
-        if (Input.GetKeyDown(KeyCode.Space) && IsGrounded())
-        {
-            rb.velocity = new Vector3(direction.x, jumpspeed, direction.z);
-        }
-        #endregion  
     }
     public void setSpeed(float newSpeed)
     {
