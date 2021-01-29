@@ -19,7 +19,7 @@ public class Taser : MonoBehaviour
         if(col.tag == "Player" && col.gameObject != PlayerWhoShotThis)
         {
             col.GetComponent<Player>().StunPlayer();
-            Destroy(gameObject);
+            Destroy(this.gameObject);
         }
         
     }
