@@ -45,15 +45,11 @@ public class PickUpAbles : MonoBehaviourPunCallbacks, IPunObservable
             {
                 transform.position = Player[i].transform.position + new Vector3(0, 1, 0);
             }
-            if (!photonView.IsMine && valuesReceived)
-            {
-                transform.position = Vector3.Lerp(transform.position, latestPos, Time.deltaTime * 5);
-                transform.rotation = Quaternion.Lerp(transform.rotation, latestRot, Time.deltaTime * 5);
-            } else
-            {
-                transform.position = Vector3.Lerp(transform.position, latestPos, Time.deltaTime * 5);
-                transform.rotation = Quaternion.Lerp(transform.rotation, latestRot, Time.deltaTime * 5);
-            }
+            //if (!photonView.IsMine && valuesReceived)
+            //{
+            //    transform.position = Vector3.Lerp(transform.position, latestPos, Time.deltaTime * 5);
+            //    transform.rotation = Quaternion.Lerp(transform.rotation, latestRot, Time.deltaTime * 5);
+            //}
         }
     }
 
@@ -83,7 +79,7 @@ public class PickUpAbles : MonoBehaviourPunCallbacks, IPunObservable
             //PlayerThatPickUpOBJ.transform.position = (Vector3)stream.ReceiveNext();
             latestPos = (Vector3)stream.ReceiveNext();
             latestRot = (Quaternion)stream.ReceiveNext();
-            valuesReceived = true;
+            //valuesReceived = true;
         }
 
     }
