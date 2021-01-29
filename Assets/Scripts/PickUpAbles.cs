@@ -68,7 +68,7 @@ public class PickUpAbles : MonoBehaviourPunCallbacks, IPunObservable
     [PunRPC]
     public void MovePickUp()
     {
-        gameObject.transform.position = player.transform.position + new Vector3(0, 1, 0);
+        gameObject.transform.position = PlayerThatPickUpOBJ.transform.position + new Vector3(0, 1, 0);
     }
 
 
