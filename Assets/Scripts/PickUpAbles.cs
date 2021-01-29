@@ -30,7 +30,6 @@ public class PickUpAbles : MonoBehaviourPunCallbacks, IPunObservable
                 if (Player[i].GetComponent<PlayerPickUp>().isHoldingOBJ == false &&
                     Player[i].GetComponent<PlayerPickUp>().isPickingUpOBJ == true && IsPickedUped == false)
                 {
-                    //does this stuff
 
                     Player[i].GetComponent<PlayerPickUp>().SetPickUpOBJ(this.gameObject);
                     Player[i].GetComponent<PlayerPickUp>().isHoldingOBJ = true;
@@ -48,7 +47,10 @@ public class PickUpAbles : MonoBehaviourPunCallbacks, IPunObservable
         }
         else
         {
-            photonView.RPC("MovingOBJ", RpcTarget.All, PlayerThatPickUpOBJ.GetComponent<PlayerPickUp>().PickUp);
+            if (IsPickedUped)
+            {
+                photonView.RPC("MovingOBJ", RpcTarget.All, PlayerThatPickUpOBJ.GetComponent<PlayerPickUp>().PickUp);
+            }
         }
     }
     [PunRPC]
@@ -78,13 +80,13 @@ public class PickUpAbles : MonoBehaviourPunCallbacks, IPunObservable
         if (stream.IsWriting)
         {
             //data that gets sent to other players
-            //stream.SendNext(IsPickedUped);
+            stream.SendNext(IsPickedUped);
             //stream.SendNext(PlayerThatPickUpOBJ);
         }
         else
         {
             //data recieved from other players
-            //IsPickedUped = (bool)stream.ReceiveNext();
+            IsPickedUped = (bool)stream.ReceiveNext();
 
         }
 
