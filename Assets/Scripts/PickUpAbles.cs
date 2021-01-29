@@ -36,13 +36,12 @@ public class PickUpAbles : MonoBehaviourPunCallbacks, IPunObservable
                     IsPickedUped = true;
                 }
 
-            if (PlayerThatPickUpOBJ != null)
-            {
+            
                 if (this.gameObject == player.GetComponent<PlayerPickUp>().PickUp)
                 {
                     pv.RPC("MovePickUp", RpcTarget.AllViaServer);
                 }
-            }
+            
                 //for (int i = 0; i < Player.Length; i++)
                 //{
                 //    //checks how close the players are to the obj 
