@@ -8,6 +8,10 @@ public class Taser : MonoBehaviourPunCallbacks
     public GameObject PlayerWhoShotThis;
     PhotonView pv;
     float DestroyTimer = .7f;
+    void Awake()
+    {
+        pv = GetComponent<PhotonView>();
+    }
     void Update()
     {
         DestroyTimer -= Time.deltaTime;
