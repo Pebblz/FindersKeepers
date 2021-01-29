@@ -42,7 +42,7 @@ public class PlayerPickUp : MonoBehaviourPunCallbacks, IPunObservable
                 isPickingUpOBJ = false;
             }
 
-            if (isPickingUpOBJ == true)
+            if (isHoldingOBJ == true)
             {
                 Anim.SetBool("IsCarry", true);
             }
