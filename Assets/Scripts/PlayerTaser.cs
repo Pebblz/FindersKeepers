@@ -11,13 +11,6 @@ public class PlayerTaser : MonoBehaviourPunCallbacks, IPunObservable
 
     int TasersLeft = 2;
 
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
     void Update()
     {
         if (photonView.IsMine)
@@ -45,6 +38,5 @@ public class PlayerTaser : MonoBehaviourPunCallbacks, IPunObservable
 
     public void OnPhotonSerializeView(PhotonStream stream, PhotonMessageInfo info)
     {
-        throw new NotImplementedException();
     }
 }
