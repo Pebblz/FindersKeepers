@@ -55,6 +55,7 @@ public class PlayerPickUp : MonoBehaviourPunCallbacks, IPunObservable
     public void SetPickUpOBJ(GameObject OBJ)
     {
         PickUp = OBJ;
+        print("Works");
     }
     public void OnPhotonSerializeView(PhotonStream stream, PhotonMessageInfo info)
     {
