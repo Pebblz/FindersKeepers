@@ -4,11 +4,10 @@ using UnityEngine;
 using Photon.Pun;
 public class PlayerPickUp : MonoBehaviourPunCallbacks, IPunObservable
 {
-    [SerializeField]
     public GameObject PickUp;
 
-    public bool isHoldingOBJ;
-    public bool isPickingUpOBJ;
+    public bool isHoldingOBJ = false;
+    public bool isPickingUpOBJ = false;
 
     float pickUpTimer;
     // Start is called before the first frame update
@@ -23,8 +22,9 @@ public class PlayerPickUp : MonoBehaviourPunCallbacks, IPunObservable
         pickUpTimer -= Time.deltaTime;
         if (photonView.IsMine)
         {
+            //&& pickUpTimer <= 0
             //if the player holds q
-            if (Input.GetKeyDown(KeyCode.Q) && pickUpTimer <= 0)
+            if (Input.GetKeyDown(KeyCode.Q) )
             {
                 if (PickUp == null)
                 {
@@ -55,7 +55,6 @@ public class PlayerPickUp : MonoBehaviourPunCallbacks, IPunObservable
     public void SetPickUpOBJ(GameObject OBJ)
     {
         PickUp = OBJ;
-        print("Works");
     }
     public void OnPhotonSerializeView(PhotonStream stream, PhotonMessageInfo info)
     {
