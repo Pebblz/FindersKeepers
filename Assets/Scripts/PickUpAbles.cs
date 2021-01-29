@@ -44,19 +44,19 @@ public class PickUpAbles : MonoBehaviourPunCallbacks, IPunObservable
         }
         if (photonView.IsMine)
         {
-
+            MovingOBJ(PlayerThatPickUpOBJ.GetComponent<PlayerPickUp>().PickUp);
         }
         else
         {
-            photonView.RPC("MovingOBJ", RpcTarget.All);
+            photonView.RPC("MovingOBJ", RpcTarget.All, PlayerThatPickUpOBJ.GetComponent<PlayerPickUp>().PickUp);
         }
     }
     [PunRPC]
-    public void MovingOBJ()
+    public void MovingOBJ(GameObject PlayerPickUPOBJ)
     {
         if (PlayerThatPickUpOBJ != null)
         {
-            if (PlayerThatPickUpOBJ.GetComponent<PlayerPickUp>().PickUp == this.gameObject)
+            if (PlayerPickUPOBJ == this.gameObject)
             {
                 transform.position = PlayerThatPickUpOBJ.transform.position + new Vector3(0, 1, 0);
             }
