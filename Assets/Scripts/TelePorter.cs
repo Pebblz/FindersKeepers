@@ -1,8 +1,8 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
-public class TelePorter : MonoBehaviour
+using Photon.Pun;
+public class TelePorter : MonoBehaviourPunCallbacks
 {
     [SerializeField]
     GameObject OtherTelePorter;
@@ -15,12 +15,16 @@ public class TelePorter : MonoBehaviour
     }
     private void OnTriggerEnter(Collider col)
     {
+
         if(col.tag == "Player")
         {
-            if (TimeToTelePort <= 0)
+            if (photonView.IsMine)
             {
-                col.transform.position = OtherTelePorter.transform.position;
-                OtherTelePorter.GetComponent<TelePorter>().TimeToTelePort = 1;
+                if (TimeToTelePort <= 0)
+                {
+                    col.transform.position = OtherTelePorter.transform.position;
+                    OtherTelePorter.GetComponent<TelePorter>().TimeToTelePort = 1;
+                }
             }
         }
     }
