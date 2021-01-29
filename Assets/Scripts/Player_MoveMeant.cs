@@ -1,8 +1,9 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Photon.Pun;
 
-public class Player_MoveMeant : MonoBehaviour
+public class Player_MoveMeant : MonoBehaviourPunCallbacks, IPunObservable
 {
 
 
@@ -79,5 +80,9 @@ public class Player_MoveMeant : MonoBehaviour
     bool IsGrounded()
     {
         return Physics.Raycast(transform.position, -Vector3.up, distToGround + 0.1f);
+    }
+    public void OnPhotonSerializeView(PhotonStream stream, PhotonMessageInfo info)
+    {
+
     }
 }
