@@ -107,17 +107,17 @@ public class PickUpAbles : MonoBehaviourPunCallbacks, IPunObservable
     public void OnPhotonSerializeView(PhotonStream stream, PhotonMessageInfo info)
     {
 
-        if (stream.IsWriting)
-        {
-            //data that gets sent to other players
-            stream.SendNext(this.gameObject.transform.position);
-            //stream.SendNext(PlayerThatPickUpOBJ);
-        }
-        else
-        {
-            //data recieved from other players
-            this.gameObject.transform.position = (Vector3)stream.ReceiveNext();
-        }
+        //if (stream.IsWriting)
+        //{
+        //    //data that gets sent to other players
+        //    stream.SendNext(this.gameObject.transform.position);
+        //    //stream.SendNext(PlayerThatPickUpOBJ);
+        //}
+        //else
+        //{
+        //    //data recieved from other players
+        //    this.gameObject.transform.position = (Vector3)stream.ReceiveNext();
+        //}
 
     }
 }
