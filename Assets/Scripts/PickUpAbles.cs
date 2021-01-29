@@ -8,9 +8,11 @@ public class PickUpAbles : MonoBehaviourPunCallbacks, IPunObservable
 {
     //an [] of Player objs
     GameObject[] Player = new GameObject[4];
-
+    Vector3 latestPos;
+    Quaternion latestRot;
+    bool valuesReceived = false;
     bool IsPickedUped;
-    Transform PlayerThatPickUpOBJ;
+    GameObject PlayerThatPickUpOBJ;
     //this is an awake because it'll do this whenever this object gets spawned
     void Awake()
     {
@@ -32,9 +34,9 @@ public class PickUpAbles : MonoBehaviourPunCallbacks, IPunObservable
                 {
                     //does this stuff
 
-                    Player[i].GetComponent<PlayerPickUp>().SetPickUpOBJ(this.gameObject.transform);
+                    Player[i].GetComponent<PlayerPickUp>().SetPickUpOBJ(this.gameObject);
                     Player[i].GetComponent<PlayerPickUp>().isHoldingOBJ = true;
-                    PlayerThatPickUpOBJ = Player[i].transform;
+                    PlayerThatPickUpOBJ = Player[i];
                     //Object.FindObjectOfType<TodoList>().PickUpObject(this); //tells the list it was picked up
                     IsPickedUped = true;
                 }
@@ -43,6 +45,11 @@ public class PickUpAbles : MonoBehaviourPunCallbacks, IPunObservable
             {
                 transform.position = Player[i].transform.position + new Vector3(0, 1, 0);
             }
+            if (!photonView.IsMine && valuesReceived)
+            {
+                transform.position = Vector3.Lerp(transform.position, latestPos, Time.deltaTime * 5);
+                transform.rotation = Quaternion.Lerp(transform.rotation, latestRot, Time.deltaTime * 5);
+            }
         }
     }
 
@@ -50,7 +57,6 @@ public class PickUpAbles : MonoBehaviourPunCallbacks, IPunObservable
     {
         transform.position = PlayerThatPickUpOBJ.transform.position + PlayerThatPickUpOBJ.transform.forward * 1.5f;
         transform.rotation = new Quaternion(0, PlayerThatPickUpOBJ.transform.rotation.y, 0, PlayerThatPickUpOBJ.transform.rotation.w);
-        transform.parent = null;
         IsPickedUped = false;
         PlayerThatPickUpOBJ = null;
     }
@@ -63,15 +69,17 @@ public class PickUpAbles : MonoBehaviourPunCallbacks, IPunObservable
             //data that gets sent to other players
             //stream.SendNext(IsPickedUped);
             //stream.SendNext(PlayerThatPickUpOBJ);
-
+            stream.SendNext(transform.position);
+            stream.SendNext(transform.rotation);
         }
         else
         {
             //data recieved from other players
             //IsPickedUped = (bool)stream.ReceiveNext();
             //PlayerThatPickUpOBJ.transform.position = (Vector3)stream.ReceiveNext();
-
-
+            latestPos = (Vector3)stream.ReceiveNext();
+            latestRot = (Quaternion)stream.ReceiveNext();
+            valuesReceived = true;
         }
 
     }

@@ -5,7 +5,7 @@ using Photon.Pun;
 public class PlayerPickUp : MonoBehaviourPunCallbacks, IPunObservable
 {
     [SerializeField]
-    public Transform PickUp;
+    public GameObject PickUp;
 
     public bool isHoldingOBJ;
     public bool isPickingUpOBJ;
@@ -49,7 +49,7 @@ public class PlayerPickUp : MonoBehaviourPunCallbacks, IPunObservable
             Destroy(PickUp);
     }
     //or this one
-    public void SetPickUpOBJ(Transform OBJ)
+    public void SetPickUpOBJ(GameObject OBJ)
     {
         PickUp = OBJ;
     }
@@ -59,14 +59,14 @@ public class PlayerPickUp : MonoBehaviourPunCallbacks, IPunObservable
         if (stream.IsWriting)
         {
             //data that gets sent to other players
-            stream.SendNext(PickUp);
+            //stream.SendNext(PickUp);
             //stream.SendNext(PlayerThatPickUpOBJ);
 
         }
         else
         {
             //data recieved from other players
-            PickUp = (Transform)stream.ReceiveNext();
+            //PickUp = (Transform)stream.ReceiveNext();
             //PlayerThatPickUpOBJ.transform.position = (Vector3)stream.ReceiveNext();
 
 
