@@ -61,14 +61,14 @@ public class PickUpAbles : MonoBehaviourPunCallbacks, IPunObservable
         {
             //data that gets sent to other players
             stream.SendNext(IsPickedUped);
-            stream.SendNext(PlayerThatPickUpOBJ);
+            //stream.SendNext(PlayerThatPickUpOBJ);
 
         }
         else
         {
             //data recieved from other players
             IsPickedUped = (bool)stream.ReceiveNext();
-            PlayerThatPickUpOBJ.transform.position = (Vector3)stream.ReceiveNext();
+            //PlayerThatPickUpOBJ.transform.position = (Vector3)stream.ReceiveNext();
 
 
         }
