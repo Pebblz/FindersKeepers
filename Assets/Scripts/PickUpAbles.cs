@@ -38,7 +38,7 @@ public class PickUpAbles : MonoBehaviourPunCallbacks, IPunObservable
 
                 if (this.gameObject == player.GetComponent<PlayerPickUp>().PickUp)
                 {
-                    pv.RPC("MovePickUp", RpcTarget.AllViaServer, player);
+                    pv.RPC("MovePickUp", RpcTarget.AllViaServer);
                 }
                 //for (int i = 0; i < Player.Length; i++)
                 //{
@@ -66,7 +66,7 @@ public class PickUpAbles : MonoBehaviourPunCallbacks, IPunObservable
     }
 
     [PunRPC]
-    public void MovePickUp(Player player)
+    public void MovePickUp()
     {
         gameObject.transform.position = player.transform.position + new Vector3(0, 1, 0);
     }
