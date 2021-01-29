@@ -10,7 +10,7 @@ public class PickUpAbles : MonoBehaviourPunCallbacks, IPunObservable
     GameObject[] Player = new GameObject[4];
 
     bool IsPickedUped;
-    GameObject PlayerThatPickUpOBJ;
+    Transform PlayerThatPickUpOBJ;
     //this is an awake because it'll do this whenever this object gets spawned
     void Awake()
     {
@@ -34,15 +34,15 @@ public class PickUpAbles : MonoBehaviourPunCallbacks, IPunObservable
                     transform.position = Player[i].transform.position + new Vector3(0, 1, 0);
                     Player[i].GetComponent<PlayerPickUp>().SetPickUpOBJ(this.gameObject);
                     Player[i].GetComponent<PlayerPickUp>().isHoldingOBJ = true;
-                    PlayerThatPickUpOBJ = Player[i];
+                    PlayerThatPickUpOBJ = Player[i].transform;
                     //Object.FindObjectOfType<TodoList>().PickUpObject(this); //tells the list it was picked up
                     IsPickedUped = true;
                 }
             }
-            //if(Player[i].GetComponent<PlayerPickUp>().PickUp == this.gameObject)
-            //{
-            //    transform.position = Player[i].transform.position + new Vector3(0, 1, 0);
-            //}
+            if(Player[i].GetComponent<PlayerPickUp>().PickUp == this.gameObject)
+            {
+                transform.position = Player[i].transform.position + new Vector3(0, 1, 0);
+            }
         }
     }
 
@@ -68,7 +68,7 @@ public class PickUpAbles : MonoBehaviourPunCallbacks, IPunObservable
         {
             //data recieved from other players
             IsPickedUped = (bool)stream.ReceiveNext();
-            PlayerThatPickUpOBJ.transform.position = (Vector3)stream.ReceiveNext();
+            PlayerThatPickUpOBJ = (Transform)stream.ReceiveNext();
 
 
         }
