@@ -18,7 +18,7 @@ public class Taser : MonoBehaviourPunCallbacks
         if (DestroyTimer <= 0)
         {
             pv.TransferOwnership(PhotonNetwork.LocalPlayer);
-            PhotonNetwork.Destroy(this.gameObject);
+            //PhotonNetwork.Destroy(this.gameObject);
         }
     }
     private void OnTriggerEnter(Collider col)
