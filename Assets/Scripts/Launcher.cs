@@ -76,7 +76,8 @@ public class Launcher : MonoBehaviourPunCallbacks
     {
         if (isConnecting)
         {
-            PhotonNetwork.JoinRandomRoom();
+            string roomName = roomCode.text;
+            PhotonNetwork.JoinOrCreateRoom(roomName, new RoomOptions { MaxPlayers = maxPlayersPerRoom }, TypedLobby.Default);
             isConnecting = false;
         }
     }
