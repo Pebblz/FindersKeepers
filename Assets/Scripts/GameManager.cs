@@ -11,6 +11,7 @@ public class GameManager : MonoBehaviourPunCallbacks
 
     [Tooltip("The prefab used to load multiple players")]
     public GameObject playerPrefab;
+    GameObject temp;
     void Start()
     {
         Instance = this;
@@ -22,7 +23,7 @@ public class GameManager : MonoBehaviourPunCallbacks
         if(Player.localInstance == null)
         {
             Debug.Log("Adding player #" + PhotonNetwork.CurrentRoom.PlayerCount);
-            PhotonNetwork.Instantiate(this.playerPrefab.name, new Vector3(0f, 5f, 0f), Quaternion.identity);
+            temp = PhotonNetwork.Instantiate(this.playerPrefab.name, new Vector3(0f, 5f, 0f), Quaternion.identity);
         } else
         {
             Debug.Log("Ignoring PLayer load");
@@ -49,6 +50,7 @@ public class GameManager : MonoBehaviourPunCallbacks
     {
         if (PhotonNetwork.IsMasterClient)
         {
+            Destroy(temp.gameObject);
             LoadArena();
         }
     }
