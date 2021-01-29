@@ -20,34 +20,36 @@ public class PlayerPickUp : MonoBehaviourPunCallbacks, IPunObservable
     void Update()
     {
         pickUpTimer -= Time.deltaTime;
-
-        //if the player holds q
-        if (Input.GetKeyDown(KeyCode.Q) && pickUpTimer < 0)
+        if (photonView.IsMine)
         {
-            if (PickUp == null)
+            //if the player holds q
+            if (Input.GetKeyDown(KeyCode.Q) && pickUpTimer < 0)
             {
-                isPickingUpOBJ = true;
+                if (PickUp == null)
+                {
+                    isPickingUpOBJ = true;
+                }
+                else
+                {
+                    PickUp.GetComponent<PickUpAbles>().DropPickUp();
+                    PickUp = null;
+                    isHoldingOBJ = false;
+                }
+                pickUpTimer = 1;
             }
             else
             {
-                PickUp.GetComponent<PickUpAbles>().DropPickUp();
-                PickUp = null;
-                isHoldingOBJ = false;
+                isPickingUpOBJ = false;
             }
-            pickUpTimer = 1;
-        }
-        else
-        {
-            isPickingUpOBJ = false;
-        }
 
-        if (isPickingUpOBJ == true)
-        {
-            Anim.SetBool("IsCarry", true);
-        }
-        else
-        {
-            Anim.SetBool("IsCarry", false);
+            if (isPickingUpOBJ == true)
+            {
+                Anim.SetBool("IsCarry", true);
+            }
+            else
+            {
+                Anim.SetBool("IsCarry", false);
+            }
         }
     }
     //you'll never guess what this func does 
