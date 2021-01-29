@@ -11,7 +11,7 @@ public class PlayerPickUp : MonoBehaviourPunCallbacks, IPunObservable
     public bool isPickingUpOBJ = false;
     Animator Anim;
     float pickUpTimer;
-    Scene scene ;
+    Scene scene;
     // Start is called before the first frame update
     void Awake()
     {
@@ -25,7 +25,7 @@ public class PlayerPickUp : MonoBehaviourPunCallbacks, IPunObservable
     {
         scene = SceneManager.GetActiveScene();
         pickUpTimer -= Time.deltaTime;
-        if(sceneID != lastIndex)
+        if (sceneID != lastIndex)
         {
             isPickingUpOBJ = false;
             PickUp = null;
@@ -42,7 +42,7 @@ public class PlayerPickUp : MonoBehaviourPunCallbacks, IPunObservable
                 }
                 else
                 {
-                    PickUp.GetComponent<PickUpAbles>().DropPickUp();
+                    DropOBJ();
                     PickUp = null;
                     isHoldingOBJ = false;
                 }
@@ -74,6 +74,13 @@ public class PlayerPickUp : MonoBehaviourPunCallbacks, IPunObservable
     {
         PickUp = OBJ;
     }
+    public void DropOBJ()
+    {
+        if (PickUp != null)
+        {
+            PickUp.GetComponent<PickUpAbles>().DropPickUp();
+        }
+    }
     public void OnPhotonSerializeView(PhotonStream stream, PhotonMessageInfo info)
     {
 
@@ -83,7 +90,7 @@ public class PlayerPickUp : MonoBehaviourPunCallbacks, IPunObservable
             stream.SendNext(isPickingUpOBJ);
             //stream.SendNext(PlayerThatPickUpOBJ);
 
-            
+
         }
         else
         {

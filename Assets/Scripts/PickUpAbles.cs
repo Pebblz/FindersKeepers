@@ -28,30 +28,30 @@ public class PickUpAbles : MonoBehaviourPunCallbacks, IPunObservable
 
 
 
-            if (Vector3.Distance(this.gameObject.transform.position, player.transform.position) < 5)
+        if (Vector3.Distance(this.gameObject.transform.position, player.transform.position) < 5)
+        {
+
+            if (player.GetComponent<PlayerPickUp>().isHoldingOBJ == false &&
+                player.GetComponent<PlayerPickUp>().isPickingUpOBJ == true && IsPickedUped == false)
             {
-
-                if (player.GetComponent<PlayerPickUp>().isHoldingOBJ == false &&
-                                player.GetComponent<PlayerPickUp>().isPickingUpOBJ == true && IsPickedUped == false)
-                {
-                    player.GetComponent<PlayerPickUp>().SetPickUpOBJ(this.gameObject);
-                    player.GetComponent<PlayerPickUp>().isHoldingOBJ = true;
-                    PlayerThatPickUpOBJ = player;
-                    pv.TransferOwnership(PhotonNetwork.LocalPlayer);
-                    IsPickedUped = true;
-                }
-
-
-                if (this.gameObject == player.GetComponent<PlayerPickUp>().PickUp)
-                {
-                    gameObject.transform.position = player.transform.position + new Vector3(0, 2.5f, 0);
-                }
+                player.GetComponent<PlayerPickUp>().SetPickUpOBJ(this.gameObject);
+                player.GetComponent<PlayerPickUp>().isHoldingOBJ = true;
+                PlayerThatPickUpOBJ = player;
+                pv.TransferOwnership(PhotonNetwork.LocalPlayer);
+                IsPickedUped = true;
             }
+
+
+            if (this.gameObject == player.GetComponent<PlayerPickUp>().PickUp)
+            {
+                gameObject.transform.position = player.transform.position + new Vector3(0, 2.5f, 0);
+            }
+        }
     }
 
     public void DropPickUp()
     {
-        transform.position = PlayerThatPickUpOBJ.transform.position + new Vector3(0,.5f,0) + PlayerThatPickUpOBJ.transform.forward * 1.5f;
+        transform.position = PlayerThatPickUpOBJ.transform.position + new Vector3(0, .5f, 0) + PlayerThatPickUpOBJ.transform.forward * 1.5f;
         transform.rotation = new Quaternion(0, PlayerThatPickUpOBJ.transform.rotation.y, 0, PlayerThatPickUpOBJ.transform.rotation.w);
         IsPickedUped = false;
         PlayerThatPickUpOBJ = null;

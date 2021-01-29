@@ -4,7 +4,7 @@ using UnityEngine;
 using Photon.Pun;
 using System;
 
-public class PlayerTaser : MonoBehaviourPunCallbacks, IPunObservable
+public class PlayerTaser : MonoBehaviourPunCallbacks
 {
     [SerializeField]
     GameObject taserOBJ;
@@ -34,9 +34,5 @@ public class PlayerTaser : MonoBehaviourPunCallbacks, IPunObservable
         //you lose a taser if you shoot a taser
         TasersLeft -= 1;
         GetComponent<Player>().isFiring = false;
-    }
-
-    public void OnPhotonSerializeView(PhotonStream stream, PhotonMessageInfo info)
-    {
     }
 }
