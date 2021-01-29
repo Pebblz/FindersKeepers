@@ -25,8 +25,8 @@ public class PickUpAbles : MonoBehaviourPunCallbacks, IPunObservable
 
     void Update()
     {
-        if (pv.IsMine)
-        {
+        //if (pv.IsMine)
+       // {
             if (Vector3.Distance(this.gameObject.transform.position, player.transform.position) < 5)
             {
                 if (player.GetComponent<PlayerPickUp>().isHoldingOBJ == false &&
@@ -63,26 +63,31 @@ public class PickUpAbles : MonoBehaviourPunCallbacks, IPunObservable
 
                 //}
             }
-        }
-        else if(!pv.IsMine)
-        {
-            if (Vector3.Distance(this.gameObject.transform.position, player.transform.position) < 5)
-            {
-                if (player.GetComponent<PlayerPickUp>().isHoldingOBJ == false &&
-                            player.GetComponent<PlayerPickUp>().isPickingUpOBJ == true && IsPickedUped == false)
-                {
-                    player.GetComponent<PlayerPickUp>().SetPickUpOBJ(this.gameObject);
-                    player.GetComponent<PlayerPickUp>().isHoldingOBJ = true;
-                    PlayerThatPickUpOBJ = player;
-                    IsPickedUped = true;
-                }
 
-                if (this.gameObject == player.GetComponent<PlayerPickUp>().PickUp)
-                {
-                    this.gameObject.transform.position = player.transform.position + new Vector3(0, 1, 0);
-                }
-            }
+            if(IsPickedUped && !PhotonNetwork.IsMasterClient)
+        {
+            this.gameObject.transform.position = player.transform.position + new Vector3(0, 1, 0);
         }
+        // }
+        //else if(!pv.IsMine)
+        //{
+        //    if (Vector3.Distance(this.gameObject.transform.position, player.transform.position) < 5)
+        //    {
+        //        if (player.GetComponent<PlayerPickUp>().isHoldingOBJ == false &&
+        //                    player.GetComponent<PlayerPickUp>().isPickingUpOBJ == true && IsPickedUped == false)
+        //        {
+        //            player.GetComponent<PlayerPickUp>().SetPickUpOBJ(this.gameObject);
+        //            player.GetComponent<PlayerPickUp>().isHoldingOBJ = true;
+        //            PlayerThatPickUpOBJ = player;
+        //            IsPickedUped = true;
+        //        }
+
+        //        if (this.gameObject == player.GetComponent<PlayerPickUp>().PickUp)
+        //        {
+        //            this.gameObject.transform.position = player.transform.position + new Vector3(0, 1, 0);
+        //        }
+        //    }
+        //}
     }
 
     //public void MovingOBJ(Vector3 PlayerPickUPOBJ)
