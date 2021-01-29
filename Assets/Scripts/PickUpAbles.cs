@@ -62,7 +62,8 @@ public class PickUpAbles : MonoBehaviourPunCallbacks, IPunObservable
     [PunRPC]
     public void MovingOBJ(Vector3 PlayerPickUPOBJ)
     {
-        transform.position = TextPos;
+
+            transform.position = TextPos;
     }
 
 
