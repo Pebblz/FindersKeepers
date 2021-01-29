@@ -8,7 +8,7 @@ public class PickUpAbles : MonoBehaviourPunCallbacks, IPunObservable
 {
     //an [] of Player objs
     // GameObject[] Player = new GameObject[4];
-    GameObject player;
+    public GameObject player;
     bool IsPickedUped;
     GameObject PlayerThatPickUpOBJ;
     //Vector3 TextPos;
