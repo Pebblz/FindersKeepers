@@ -1,8 +1,10 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Photon.Pun;
+using System;
 
-public class PlayerTaser : MonoBehaviour
+public class PlayerTaser : MonoBehaviourPunCallbacks, IPunObservable
 {
     [SerializeField]
     GameObject taserOBJ;
@@ -18,10 +20,13 @@ public class PlayerTaser : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.E) && TasersLeft > 0)
+        if (photonView.IsMine)
         {
-            GetComponent<Player>().isFiring = true;
-            shootTaser();
+            if (Input.GetKeyDown(KeyCode.E) && TasersLeft > 0)
+            {
+                GetComponent<Player>().isFiring = true;
+                shootTaser();
+            }
         }
     }
     void shootTaser()
@@ -36,5 +41,10 @@ public class PlayerTaser : MonoBehaviour
         //you lose a taser if you shoot a taser
         TasersLeft -= 1;
         GetComponent<Player>().isFiring = false;
+    }
+
+    public void OnPhotonSerializeView(PhotonStream stream, PhotonMessageInfo info)
+    {
+        throw new NotImplementedException();
     }
 }
