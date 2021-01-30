@@ -150,6 +150,14 @@ public class GameManager : MonoBehaviourPunCallbacks
         PhotonNetwork.LoadLevel("Lobby_" + PhotonNetwork.CurrentRoom.PlayerCount);
     }
 
+    public void LoadGame()
+    {
+        if (PhotonNetwork.IsMasterClient)
+        {
+            PhotonNetwork.LoadLevel("Main Game");
+        }
+    }
+
 
     public void LeaveRoom()
     {
