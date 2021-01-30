@@ -26,9 +26,6 @@ public class PickUpAbles : MonoBehaviourPunCallbacks, IPunObservable
             player = GameObject.FindGameObjectWithTag("Player");
         }
 
-
-
-
         if (Vector3.Distance(this.gameObject.transform.position, player.transform.position) < 5)
         {
 
@@ -49,16 +46,18 @@ public class PickUpAbles : MonoBehaviourPunCallbacks, IPunObservable
             }
             
         }
-        //for some reason this doen't work
+
         if (this.transform.position.y <= -100)
         {
             ResetPos();
         }
     }
+    //changes the ownership of the GameObject
     public void ChangeOwnerShip()
     {
         pv.TransferOwnership(PhotonNetwork.LocalPlayer);
     }
+    //Drops the GameObject
     public void DropPickUp()
     {
         transform.position = PlayerThatPickUpOBJ.transform.position + new Vector3(0, .5f, 0) + PlayerThatPickUpOBJ.transform.forward * 1.5f;
@@ -66,6 +65,8 @@ public class PickUpAbles : MonoBehaviourPunCallbacks, IPunObservable
         IsPickedUped = false;
         PlayerThatPickUpOBJ = null;
     }
+    //Resets the Position of the GameObject
+    //to the position that it started at 
     void ResetPos()
     {       
         GetComponent<Rigidbody>().velocity = Vector3.zero;
@@ -78,10 +79,12 @@ public class PickUpAbles : MonoBehaviourPunCallbacks, IPunObservable
         if (stream.IsWriting)
         {
             stream.SendNext(IsPickedUped);
+            stream.SendNext(OriginalPos);
         }
         else
         {
             IsPickedUped = (bool)stream.ReceiveNext();
+            OriginalPos = (Vector3)stream.ReceiveNext();
         }
 
     }
