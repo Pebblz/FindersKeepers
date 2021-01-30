@@ -15,6 +15,7 @@ public class GameManager : MonoBehaviourPunCallbacks
     public GameObject[] playerPrefabs;
     [SerializeField]
     private GameObject playerPrefab;
+<<<<<<< Updated upstream
     public GameObject startButton;
 
 
@@ -29,6 +30,10 @@ public class GameManager : MonoBehaviourPunCallbacks
 
     [SerializeField] Transform[] RespawnPoints;
     [SerializeField] TodoList list;
+=======
+    [SerializeField]
+    private GameObject speedPowerPrefab;
+>>>>>>> Stashed changes
 
     public static GameObject[] Randomize(IEnumerable<GameObject> source)
     {
@@ -61,15 +66,18 @@ public class GameManager : MonoBehaviourPunCallbacks
                 int thatFuckingIdx = (PhotonNetwork.CurrentRoom.PlayerCount > 1)? FindFirstNotUsedSkin() : 0;
                 Debug.Log("Loading player skin: " + this.playerPrefabs[thatFuckingIdx].name);
 
-                PhotonNetwork.Instantiate("Players/" + this.playerPrefabs[thatFuckingIdx].name, new Vector3(0f, 5f, 0f), Quaternion.identity);
-                var props = new ExitGames.Client.Photon.Hashtable();
+
+            PhotonNetwork.Instantiate("Players/" + this.playerPrefabs[thatFuckingIdx].name, new Vector3(0f, 5f, 0f), Quaternion.identity);
+
+            var props = new ExitGames.Client.Photon.Hashtable();
                 props.Add("skin", this.playerPrefabs[thatFuckingIdx].name);
                 PhotonNetwork.PlayerList[PhotonNetwork.CurrentRoom.PlayerCount -1].SetCustomProperties(props);
         
         }
         else
         {
-                Debug.Log("Ignoring PLayer load");
+
+            Debug.Log("Ignoring PLayer load");
         }
 
         if (startButton != null)

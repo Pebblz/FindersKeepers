@@ -107,6 +107,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   pickUpNoise: {fileID: 0}
+  pc: {fileID: 0}
   collided: 0
 --- !u!114 &9201184666710003443
 MonoBehaviour:

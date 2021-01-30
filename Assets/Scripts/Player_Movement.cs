@@ -45,11 +45,10 @@ public class Player_Movement : MonoBehaviourPunCallbacks, IPunObservable
     {
         if (!photonView.IsMine)
         {
-            Debug.Log("a");
             return;
         }
 
-            if (photonView.IsMine)
+        if (photonView.IsMine)
         {
             #region Movement
             float H = Input.GetAxisRaw("Horizontal");

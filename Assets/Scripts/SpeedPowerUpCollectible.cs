@@ -6,42 +6,45 @@ using Photon.Pun;
 
 public class SpeedPowerUpCollectible : MonoBehaviourPunCallbacks, IPunObservable
 {
+    public static GameObject Instance = null;
     public PowerUp powerUp;
     public AudioClip pickUpNoise;
+    public PowerUpSpawner pc;
     public bool collided = false;
 
     public void Awake()
     {
-        powerUp = new SpeedPowerUp();
+            powerUp = new SpeedPowerUp();
+            //gameObject.tag = "PowerUpCollectible";
+            SpeedPowerUpCollectible.Instance = gameObject;
+            pc = GameObject.Find("powerUpSpawner").GetComponent<PowerUpSpawner>();
     }
 
     public void Update()
     {
 
-        //if (photonView.IsMine)
-        //{
-        //    if (collided)
-        //    {
-        //        PhotonNetwork.Destroy(this.gameObject);
-        //    }
-        //}
+        if (photonView.IsMine)
+        {
+            if (collided)
+            {
+                pc.removeFromList();
+                //photonView.RPC("DestroyGlobally", RpcTarget.All);
+
+                DestroyGlobally();
+            }
+        }
         //else
         //{
         //    photonView.TransferOwnership(PhotonNetwork.LocalPlayer);
         //    if (collided)
         //    {
-        //        PhotonNetwork.Destroy(this.gameObject);
+        //        //photonView.TransferOwnership(PhotonNetwork.MasterClient);
+        //        //PhotonNetwork.Destroy(this.gameObject);
         //    }
         //}
     }
     public void OnCollisionEnter(Collision collision)
     {
-        if (!photonView.IsMine)
-        {
-            Debug.Log("o");
-            return;
-        }
-
         if (collision.collider.tag == "Player" && !collided)
         {
             if (collision.collider.gameObject.GetComponent<Player>().getPowerUp() != null)
@@ -51,13 +54,26 @@ public class SpeedPowerUpCollectible : MonoBehaviourPunCallbacks, IPunObservable
             collision.collider.gameObject.GetComponent<Player>().setPowerUp(powerUp);
             collision.collider.gameObject.GetComponent<Player>().activatePowerUp();
 
-            if(photonView.IsMine)
-            {
-                Destroy(gameObject);
-                gameObject.GetComponent<PhotonView>().TransferOwnership(this.gameObject.GetComponent<PhotonView>().Owner);
-                gameObject.GetComponent<PhotonView>().RPC("DestroyGlobally", RpcTarget.All);
-            }          
-           // collided = true;
+            collided = true;
+
+            //if (photonView.IsMine)
+            //{
+            //    pc.removeFromList();
+            //    //photonView.RPC("DestroyGlobally", RpcTarget.All);
+
+            //    DestroyGlobally();
+            //}
+            //else
+            //{
+            //    photonView.TransferOwnership(PhotonNetwork.MasterClient);
+            //    PhotonNetwork.Destroy(this.gameObject);
+            //}
+            //// }
+            // else
+            // {
+            //     //GetComponent<PhotonView>().RPC("DestroyGlobally", RpcTarget.All);
+            // /}
+            // // collided = true;
         }        
     }
 
@@ -65,18 +81,18 @@ public class SpeedPowerUpCollectible : MonoBehaviourPunCallbacks, IPunObservable
 
     public void DestroyGlobally()
     {
-        PhotonNetwork.Destroy(gameObject);
+        PhotonNetwork.Destroy(this.gameObject);
     }
 
     public void OnPhotonSerializeView(PhotonStream stream, PhotonMessageInfo info)
     {
-        //if(stream.IsWriting)
-        //{
-        //    stream.SendNext(collided);
-        //}
-        //else
-        //{
-        //    collided = (bool)stream.ReceiveNext();
-        //}
+        if (stream.IsWriting)
+        {
+            stream.SendNext(collided);
+        }
+        else
+        {
+            collided = (bool)stream.ReceiveNext();
+        }
     }
 }

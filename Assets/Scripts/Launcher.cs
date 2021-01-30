@@ -111,6 +111,7 @@ public class Launcher : MonoBehaviourPunCallbacks
         {
             Debug.Log("Loading the Lobby");
 
+
             PhotonNetwork.LoadLevel("Lobby_1");
         }
     }
