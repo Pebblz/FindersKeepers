@@ -13,9 +13,14 @@ public class PickUpAbles : MonoBehaviourPunCallbacks, IPunObservable
     public PhotonView pv;
     Vector3 OriginalPos;
     public bool IsThisOBJForPoints;
+    Quaternion startingRot;
+    [SerializeField]
+    bool hasGravity = true;
     //this is an awake because it'll do this whenever this object gets spawned
     void Awake()
     {
+        startingRot = transform.rotation;
+        GetComponent<Rigidbody>().useGravity = hasGravity;
         OriginalPos = transform.position;
         pv = GetComponent<PhotonView>();
     }
@@ -33,6 +38,8 @@ public class PickUpAbles : MonoBehaviourPunCallbacks, IPunObservable
             if (player.GetComponent<PlayerPickUp>().isHoldingOBJ == false &&
                 player.GetComponent<PlayerPickUp>().isPickingUpOBJ == true && IsPickedUped == false)
             {
+                GetComponent<Rigidbody>().constraints = RigidbodyConstraints.None;
+                UseGravity(true);
                 player.GetComponent<PlayerPickUp>().SetPickUpOBJ(this.gameObject);
                 player.GetComponent<PlayerPickUp>().isHoldingOBJ = true;
                 PlayerThatPickUpOBJ = player;
@@ -70,11 +77,28 @@ public class PickUpAbles : MonoBehaviourPunCallbacks, IPunObservable
     //to the position that it started at 
     [PunRPC]
     void ResetPos()
-    {       
+    {
+
         GetComponent<Rigidbody>().velocity = Vector3.zero;
-        GetComponent<Rigidbody>().rotation = Quaternion.identity;
+        GetComponent<Rigidbody>().rotation = startingRot;
         transform.position = OriginalPos;
+        if (hasGravity == false)
+        {
+            GetComponent<Rigidbody>().useGravity = hasGravity;
+            GetComponent<Rigidbody>().constraints = RigidbodyConstraints.FreezePositionY;
+            GetComponent<Rigidbody>().constraints = RigidbodyConstraints.FreezeRotation;
+        }
+   
         //ChangeOwnerShip();
+    }
+    //this is for pictures, or anything that we would want to float
+    //but still be pickupable
+    void UseGravity(bool does_it)
+    {
+        if (GetComponent<Rigidbody>().useGravity == false)
+        {
+            GetComponent<Rigidbody>().useGravity = does_it;
+        }
     }
     public void OnPhotonSerializeView(PhotonStream stream, PhotonMessageInfo info)
     {
