@@ -15,6 +15,14 @@ public class GameManager : MonoBehaviourPunCallbacks
     public GameObject[] playerPrefabs;
     [SerializeField]
     private GameObject playerPrefab;
+
+    public static GameObject[] Randomize(IEnumerable<GameObject> source)
+    {
+        System.Random rnd = new System.Random();
+        return source.OrderBy<GameObject, int>((item) => rnd.Next()).ToArray();
+    }
+
+
     void Start()
     {
         // do some linq stuff to order the players
@@ -23,6 +31,7 @@ public class GameManager : MonoBehaviourPunCallbacks
                         orderby s.name descending
                         select s;
         playerPrefabs = temp.ToArray();
+        playerPrefabs = GameManager.Randomize(playerPrefabs);
 
 
         Instance = this;
