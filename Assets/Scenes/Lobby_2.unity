@@ -126,7 +126,7 @@ GameObject:
   - component: {fileID: 17933713}
   m_Layer: 5
   m_Name: Start
-  m_TagString: Untagged
+  m_TagString: StartButton
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2266,6 +2266,7 @@ MonoBehaviour:
   playerPrefabs: []
   playerPrefab: {fileID: 5695364295554685960, guid: 3d4ebffe9e80f354881176f281dcc62f,
     type: 3}
+  startButton: {fileID: 0}
   RespawnPoints: []
   list: {fileID: 0}
 --- !u!4 &1878075112

@@ -10,6 +10,7 @@ TagManager:
   - Moveable
   - Ground
   - RoomSpawn
+  - StartButton
   layers:
   - Default
   - TransparentFX
