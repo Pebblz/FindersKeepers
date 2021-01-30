@@ -8,12 +8,18 @@ public class DropOffZoneScript : MonoBehaviourPunCallbacks
     //so guess what this little thing does 
     //i'll give you a sec to figure it out 
     //so what it does is if you enter the trigger it does the stuff 
+    
+
+    private void Start()
+    {
+        
+    }
     private void OnTriggerEnter(Collider c)
     {
         //if a Player enters the room
         if(c.tag == "Player")
         {
-            if (photonView.IsMine)
+            if (c.GetComponent<PhotonView>().IsMine)
             {
                 //then it makes sure to see if the players holding an object
                 if (c.GetComponent<PlayerPickUp>().isHoldingOBJ == true)
