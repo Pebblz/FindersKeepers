@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using Photon.Realtime;
 using ExitGames.Client.Photon;
+using Photon.Pun;
 
 public class RoomRandomizer : MonoBehaviour, IOnEventCallback
 {
@@ -16,6 +17,8 @@ public class RoomRandomizer : MonoBehaviour, IOnEventCallback
 
     private HashSet<int> numbersInThing;
 
+    
+
     // Start is called before the first frame update
     void Start()
     {
@@ -24,7 +27,8 @@ public class RoomRandomizer : MonoBehaviour, IOnEventCallback
         rooms = GameObject.FindGameObjectsWithTag("Room");
 
         numbersInThing = new HashSet<int>();
-       // RandomizeRoom();
+        // RandomizeRoom();
+        PhotonView photonView = PhotonView.Get(this);
     }
 
     void RandomizeRoom()
@@ -62,10 +66,11 @@ public class RoomRandomizer : MonoBehaviour, IOnEventCallback
     public void OnEvent(EventData photonEvent)
     {
         byte eventCode = photonEvent.Code;
-
-        if(eventCode == GameManager.RandomRoomEventCode)
+        Debug.Log("kokmongus");
+        if (eventCode == GameManager.RandomRoomEventCode)
         {
             RandomizeRoom();
+            
         }
     }
 }
