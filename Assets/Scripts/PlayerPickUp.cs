@@ -95,7 +95,6 @@ public class PlayerPickUp : MonoBehaviourPunCallbacks, IPunObservable
     {
         if (PickUp != null)
         {
-            PickUp.GetComponent<PickUpAbles>().ChangeOwnerShip();
             PickUp.transform.position = transform.position + new Vector3(0, 2.5f, 0);
         }
     }

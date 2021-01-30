@@ -68,6 +68,7 @@ public class PickUpAbles : MonoBehaviourPunCallbacks, IPunObservable
     }
     void ResetPos()
     {
+        ChangeOwnerShip();
         GetComponent<Rigidbody>().velocity = Vector3.zero;
         transform.position = OriginalPos;
     }
