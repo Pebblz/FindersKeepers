@@ -436,11 +436,13 @@ MonoBehaviour:
   ObservedComponentsFoldoutOpen: 1
   Group: 0
   prefixField: -1
-  observableSearch: 0
+  observableSearch: 2
   Synchronization: 1
   OwnershipTransfer: 1
   ObservedComponents:
-  - {fileID: 0}
+  - {fileID: 252774816}
+  - {fileID: 252774817}
+  - {fileID: 252774819}
   viewIdField: 2
   InstantiationId: 0
   isRuntimeInstantiated: 0
@@ -1153,8 +1155,18 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3042207556186816138, guid: 16cacda0d1fc0de4c87632277f6e7a74,
         type: 3}
+      propertyPath: ObservedComponents.Array.size
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 3042207556186816138, guid: 16cacda0d1fc0de4c87632277f6e7a74,
+        type: 3}
       propertyPath: viewIdField
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3042207556186816138, guid: 16cacda0d1fc0de4c87632277f6e7a74,
+        type: 3}
+      propertyPath: observableSearch
+      value: 2
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 16cacda0d1fc0de4c87632277f6e7a74, type: 3}
