@@ -49,7 +49,7 @@ public class PickUpAbles : MonoBehaviourPunCallbacks, IPunObservable
 
         if (this.transform.position.y <= -100)
         {
-            ResetPos();
+            pv.RPC("ResetPos", RpcTarget.All);
         }
     }
     //changes the ownership of the GameObject
@@ -67,6 +67,7 @@ public class PickUpAbles : MonoBehaviourPunCallbacks, IPunObservable
     }
     //Resets the Position of the GameObject
     //to the position that it started at 
+    [PunRPC]
     void ResetPos()
     {       
         GetComponent<Rigidbody>().velocity = Vector3.zero;
