@@ -29,7 +29,7 @@ public class DropOffZoneScript : MonoBehaviourPunCallbacks
                         //then it'll encroment the score by 1 
                         c.GetComponent<Player>().score += 1;
                         //destroy the pickuped obj
-                        c.GetComponent<PlayerPickUp>().DestroyPickUp();
+                        this.photonView.RPC("DestroyPickUp", RpcTarget.All);
                         //and set his holding obj to false
                         c.GetComponent<PlayerPickUp>().isHoldingOBJ = false;
                     }
