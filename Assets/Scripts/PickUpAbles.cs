@@ -12,6 +12,7 @@ public class PickUpAbles : MonoBehaviourPunCallbacks, IPunObservable
     public GameObject PlayerThatPickUpOBJ;
     public PhotonView pv;
     Vector3 OriginalPos;
+    public bool IsThisOBJForPoints;
     //this is an awake because it'll do this whenever this object gets spawned
     void Awake()
     {
