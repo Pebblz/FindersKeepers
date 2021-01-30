@@ -83,7 +83,7 @@ public class PlayerPickUp : MonoBehaviourPunCallbacks, IPunObservable, IOnEventC
     {
         if (PickUp != null)
         {
-            Destroy(PickUp);
+            Destroy(PickUp.gameObject);
         }
     }
     public void ThrowOBJ(int Force)
