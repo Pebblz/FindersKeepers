@@ -15,7 +15,6 @@ public class GameManager : MonoBehaviourPunCallbacks
     public GameObject[] playerPrefabs;
     [SerializeField]
     private GameObject playerPrefab;
-<<<<<<< Updated upstream
     public GameObject startButton;
 
 
@@ -30,10 +29,8 @@ public class GameManager : MonoBehaviourPunCallbacks
 
     [SerializeField] Transform[] RespawnPoints;
     [SerializeField] TodoList list;
-=======
     [SerializeField]
     private GameObject speedPowerPrefab;
->>>>>>> Stashed changes
 
     public static GameObject[] Randomize(IEnumerable<GameObject> source)
     {
