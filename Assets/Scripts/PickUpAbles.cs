@@ -11,10 +11,11 @@ public class PickUpAbles : MonoBehaviourPunCallbacks, IPunObservable
     public bool IsPickedUped;
     public GameObject PlayerThatPickUpOBJ;
     public PhotonView pv;
-
+    Vector3 OriginalPos;
     //this is an awake because it'll do this whenever this object gets spawned
     void Awake()
     {
+        OriginalPos = transform.position;
         pv = GetComponent<PhotonView>();
     }
 
@@ -46,6 +47,12 @@ public class PickUpAbles : MonoBehaviourPunCallbacks, IPunObservable
             {
                 gameObject.transform.position = player.transform.position + new Vector3(0, 2.5f, 0);
             }
+            
+        }
+        //for some reason this doen't work
+        if (this.transform.position.y <= -100)
+        {
+            ResetPos();
         }
     }
 
@@ -56,7 +63,11 @@ public class PickUpAbles : MonoBehaviourPunCallbacks, IPunObservable
         IsPickedUped = false;
         PlayerThatPickUpOBJ = null;
     }
-
+    void ResetPos()
+    {
+        GetComponent<Rigidbody>().velocity = Vector3.zero;
+        transform.position = OriginalPos;
+    }
     public void OnPhotonSerializeView(PhotonStream stream, PhotonMessageInfo info)
     {
 
