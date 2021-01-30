@@ -75,7 +75,7 @@ public class Player_Movement : MonoBehaviourPunCallbacks, IPunObservable
 
                     rb.MovePosition(transform.position += moveDir.normalized * speed * Time.deltaTime);
                     Anim.SetBool("IsRunning", true);
-                  //  Sound.Play(); //play running sound
+                    Sound.Play(); //play running sound
                 }
                 else
                 {
@@ -86,7 +86,7 @@ public class Player_Movement : MonoBehaviourPunCallbacks, IPunObservable
             else
             {
                 Anim.SetBool("IsRunning", false);
-                //Sound.Stop(); //stop running sound
+                Sound.Stop(); //stop running sound
             }
             if (Input.GetKeyDown(KeyCode.Space) && IsGrounded())
             {
