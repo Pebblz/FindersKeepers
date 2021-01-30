@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -8,32 +9,38 @@ using Photon.Pun;
 public class GameManager : MonoBehaviourPunCallbacks
 {
     static public GameManager Instance;
-
+    public bool OnlyOnePlayer = false;
     private GameObject instance;
     [Tooltip("The prefab used to load multiple players")]
-
+    public GameObject[] playerPrefabs;
     [SerializeField]
     private GameObject playerPrefab;
     void Start()
     {
+        // do some linq stuff to order the players
+        var playerfabs  = Resources.LoadAll<GameObject>("Players");
+        var temp = from s in playerfabs
+                        orderby s.name descending
+                        select s;
+        playerPrefabs = temp.ToArray();
+
+
         Instance = this;
-        if (playerPrefab == null)
+        if (OnlyOnePlayer)
         {
-            Debug.LogError("No Player prefab provided");
+            PhotonNetwork.Instantiate(playerPrefab.name, new Vector3(0f, 5f, 0f), Quaternion.identity);
+        }
+        else if (Player.localInstance == null)
+        {
+                Debug.Log("Adding player #" + PhotonNetwork.CurrentRoom.PlayerCount);
+                int thatFuckingIdx = PhotonNetwork.CurrentRoom.PlayerCount;
+                PhotonNetwork.Instantiate("Players/" + this.playerPrefabs[thatFuckingIdx].name, new Vector3(0f, 5f, 0f), Quaternion.identity);
         }
         else
         {
-
-            if (Player.localInstance == null)
-            {
-                Debug.Log("Adding player #" + PhotonNetwork.CurrentRoom.PlayerCount);
-                PhotonNetwork.Instantiate(this.playerPrefab.name, new Vector3(0f, 5f, 0f), Quaternion.identity);
-            }
-            else
-            {
                 Debug.Log("Ignoring PLayer load");
-            }
         }
+        
     }
 
 
