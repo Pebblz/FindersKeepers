@@ -1832,8 +1832,7 @@ MonoBehaviour:
   isFiring: 0
   StunCounter: 0
   mainCam: {fileID: 0}
-  freeLookCam: {fileID: 4442471349586592551, guid: c0f64cdc486992f4a8814c3a3e31e9a6,
-    type: 3}
+  freeLookCam: {fileID: 4555932089189620208}
   powerUpTimer: 0
   powerUpTimerActive: 0
   pm: {fileID: 0}
