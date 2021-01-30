@@ -83,7 +83,7 @@ public class PlayerPickUp : MonoBehaviourPunCallbacks, IPunObservable, IOnEventC
     {
         if (PickUp != null)
         {
-            PickUp.SetActive(false);
+            Destroy(PickUp);
         }
     }
     public void ThrowOBJ(int Force)
@@ -152,6 +152,11 @@ public class PlayerPickUp : MonoBehaviourPunCallbacks, IPunObservable, IOnEventC
             isPickingUpOBJ = false;
             PickUp = null;
             isHoldingOBJ = false;
+        } else if (eventCode == NetworkCodes.DeleteObjectInDropoffCode)
+        {
+            DestroyPickUp();
         }
+
+       
     }
 }
