@@ -78,8 +78,7 @@ public class PlayerPickUp : MonoBehaviourPunCallbacks, IPunObservable, IOnEventC
             }
         }
     }
-    
-    [PunRPC]
+    //you'll never guess what this func does 
     public void DestroyPickUp()
     {
         if (PickUp != null)
