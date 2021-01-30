@@ -33,8 +33,14 @@ public class GameManager : MonoBehaviourPunCallbacks
         else if (Player.localInstance == null)
         {
                 Debug.Log("Adding player #" + PhotonNetwork.CurrentRoom.PlayerCount);
-                int thatFuckingIdx = PhotonNetwork.CurrentRoom.PlayerCount;
+                
+                
+                int thatFuckingIdx = (PhotonNetwork.CurrentRoom.PlayerCount > 1)? FindFirstNotUsedSkin() : 0;
                 PhotonNetwork.Instantiate("Players/" + this.playerPrefabs[thatFuckingIdx].name, new Vector3(0f, 5f, 0f), Quaternion.identity);
+                var props = new ExitGames.Client.Photon.Hashtable();
+                props.Add("color", this.playerPrefabs[thatFuckingIdx].name);
+                PhotonNetwork.PlayerList[PhotonNetwork.CurrentRoom.PlayerCount].SetCustomProperties(props);
+        
         }
         else
         {
@@ -43,6 +49,41 @@ public class GameManager : MonoBehaviourPunCallbacks
         
     }
 
+    public int FindFirstNotUsedSkin()
+    {
+        
+        List<string> allPlayerTypes = new List<string>();
+        foreach(var p in this.playerPrefabs)
+        {
+            allPlayerTypes.Add(p.name);
+        }
+
+        List<string> activePlayerTypes = getActivePlayerTypes();
+
+        if(activePlayerTypes.Count == 1)
+        {
+            return 0;
+        }
+        var firstItem = allPlayerTypes.Except(activePlayerTypes).ToArray()[0];
+        for(int i = 0; i < allPlayerTypes.Count; i++)
+        {
+            if(allPlayerTypes[i] == firstItem)
+            {
+                return i;
+            }
+        }
+        return 0;
+    }
+
+    public List<string> getActivePlayerTypes()
+    {
+        List<string> typesOfColors = new List<string>();
+        foreach(var player in PhotonNetwork.PlayerList)
+        {
+            typesOfColors.Add((string)player.CustomProperties["skin"]);
+        }
+        return typesOfColors;
+    }
 
     #region photon callbacks
     public override void OnLeftRoom()
