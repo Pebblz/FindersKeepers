@@ -3,8 +3,18 @@ using System.Collections.Generic;
 using UnityEngine;
 using Photon.Pun;
 using UnityEngine.SceneManagement;
+
+[RequireComponent(typeof(AudioSource))]
 public class PlayerPickUp : MonoBehaviourPunCallbacks, IPunObservable
 {
+    /*Flower Box
+     * 
+     * Edited By: Pat Naatz
+     * 
+     * Added Pick Up Sound
+     */
+
+
     public GameObject PickUp;
     int sceneID, lastIndex;
     public bool isHoldingOBJ = false;
@@ -14,12 +24,17 @@ public class PlayerPickUp : MonoBehaviourPunCallbacks, IPunObservable
     Animator Anim;
     float pickUpTimer;
     Scene scene;
+
+    AudioSource Sound;
+    [SerializeField] AudioClip PickUpSound;
+
     // Start is called before the first frame update
     void Awake()
     {
         Anim = GetComponent<Animator>();
         scene = SceneManager.GetActiveScene();
         sceneID = scene.buildIndex;
+        Sound = GetComponent<AudioSource>();
     }
 
     // Update is called once per frame
@@ -33,7 +48,7 @@ public class PlayerPickUp : MonoBehaviourPunCallbacks, IPunObservable
             PickUp = null;
             lastIndex = sceneID;
         }
-        if (photonView.IsMine)
+        //if (photonView.IsMine)
         {
             //if the player holds q
             if (Input.GetButtonDown("Fire1") && pickUpTimer < 0)
@@ -61,6 +76,7 @@ public class PlayerPickUp : MonoBehaviourPunCallbacks, IPunObservable
             if (isHoldingOBJ == true)
             {
                 Anim.SetBool("IsCarry", true);
+                Sound.PlayOneShot(PickUpSound); //play pickup sound
             }
             else
             {

@@ -3,9 +3,15 @@ using System.Collections.Generic;
 using UnityEngine;
 using Photon.Pun;
 
+[RequireComponent(typeof(AudioSource))]
 public class Player_Movement : MonoBehaviourPunCallbacks, IPunObservable
 {
-
+    /*Flower box
+     * 
+     * Edited by: Pat Naatz
+     * 
+     * Added walking sound
+     */
 
     float speed = 5;
 
@@ -18,6 +24,9 @@ public class Player_Movement : MonoBehaviourPunCallbacks, IPunObservable
     Vector3 moveDir;
     public float turnSmoothTime = 0.1f;
     float turnSmoothVelocity;
+
+    AudioSource Sound;
+
     void Awake()
     {
         distToGround = GetComponent<Collider>().bounds.extents.y;
@@ -28,12 +37,13 @@ public class Player_Movement : MonoBehaviourPunCallbacks, IPunObservable
         }
         mainCam = GameObject.Find("Main Camera").GetComponent<Transform>();
         Anim = GetComponent<Animator>();
+        Sound = GetComponent<AudioSource>();
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (!photonView.IsMine)
+      //  if (!photonView.IsMine)
         {
             Debug.Log("a");
             return;
@@ -65,7 +75,7 @@ public class Player_Movement : MonoBehaviourPunCallbacks, IPunObservable
 
                     rb.MovePosition(transform.position += moveDir.normalized * speed * Time.deltaTime);
                     Anim.SetBool("IsRunning", true);
-  
+                    Sound.Play(); //play running sound
                 }
                 else
                 {
@@ -76,6 +86,7 @@ public class Player_Movement : MonoBehaviourPunCallbacks, IPunObservable
             else
             {
                 Anim.SetBool("IsRunning", false);
+                Sound.Stop(); //stop running sound
             }
             if (Input.GetKeyDown(KeyCode.Space) && IsGrounded())
             {
