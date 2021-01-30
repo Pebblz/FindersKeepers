@@ -39,7 +39,7 @@ public class GameManager : MonoBehaviourPunCallbacks
                 PhotonNetwork.Instantiate("Players/" + this.playerPrefabs[thatFuckingIdx].name, new Vector3(0f, 5f, 0f), Quaternion.identity);
                 var props = new ExitGames.Client.Photon.Hashtable();
                 props.Add("color", this.playerPrefabs[thatFuckingIdx].name);
-                PhotonNetwork.PlayerList[PhotonNetwork.CurrentRoom.PlayerCount].SetCustomProperties(props);
+                PhotonNetwork.PlayerList[PhotonNetwork.CurrentRoom.PlayerCount -1].SetCustomProperties(props);
         
         }
         else
