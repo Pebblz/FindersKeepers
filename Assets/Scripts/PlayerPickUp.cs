@@ -155,6 +155,7 @@ public class PlayerPickUp : MonoBehaviourPunCallbacks, IPunObservable, IOnEventC
             DropOBJ();
             isPickingUpOBJ = false;
             PickUp = null;
+            isHoldingOBJ = false;
         }
     }
 }
