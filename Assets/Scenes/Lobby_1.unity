@@ -277,6 +277,7 @@ MonoBehaviour:
   IsPickedUped: 0
   PlayerThatPickUpOBJ: {fileID: 0}
   pv: {fileID: 0}
+  IsThisOBJForPoints: 0
 --- !u!114 &284403535
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -862,7 +863,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 681564348}
   m_LocalRotation: {x: 0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 10.104422, y: 7.0910263, z: -0.054782104}
+  m_LocalPosition: {x: 10.104422, y: 5.6, z: -0.054782104}
   m_LocalScale: {x: 0.01, y: 0.01, z: 0.01}
   m_Children: []
   m_Father: {fileID: 2025357992}
@@ -1425,6 +1426,7 @@ MonoBehaviour:
   IsPickedUped: 0
   PlayerThatPickUpOBJ: {fileID: 0}
   pv: {fileID: 0}
+  IsThisOBJForPoints: 0
 --- !u!114 &1473402777
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1751,6 +1753,7 @@ MonoBehaviour:
   IsPickedUped: 0
   PlayerThatPickUpOBJ: {fileID: 0}
   pv: {fileID: 0}
+  IsThisOBJForPoints: 0
 --- !u!65 &1671854928
 BoxCollider:
   m_ObjectHideFlags: 0
