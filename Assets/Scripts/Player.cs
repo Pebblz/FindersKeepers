@@ -40,7 +40,7 @@ public class Player : MonoBehaviourPunCallbacks, IPunObservable
 
     private void Awake()
     {
-        if (photonView.IsMine)
+       // if (photonView.IsMine)
         {
             gameObject.tag = "Player";
             Player.localInstance = gameObject;
@@ -49,9 +49,9 @@ public class Player : MonoBehaviourPunCallbacks, IPunObservable
             DontDestroyOnLoad(mainCam);
 
         }
-        else
+        //else
         {
-            freeLookCam.SetActive(false);
+         //   freeLookCam.SetActive(false);
             //for (int i = 0; i < localScripts.Length; i++)
             //{
             //    localScripts[i].enabled = false;
