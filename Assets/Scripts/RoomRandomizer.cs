@@ -12,19 +12,17 @@ public class RoomRandomizer : MonoBehaviour
     public GameObject spawnpoint;
     public GameObject room;
 
+    private HashSet<int> numbersInThing;
+
     // Start is called before the first frame update
     void Start()
     {
         // finding the game objects with the right tags
         roomSpawnpoints = GameObject.FindGameObjectsWithTag("RoomSpawn");
         rooms = GameObject.FindGameObjectsWithTag("Room");
-        RandomizeRoom();
-    }
 
-    // Update is called once per frame
-    void Update()
-    {
-        // woooooosh (because its empty)
+        numbersInThing = new HashSet<int>();
+        RandomizeRoom();
     }
 
     void RandomizeRoom()
@@ -32,9 +30,18 @@ public class RoomRandomizer : MonoBehaviour
         // go through the spawnpoint array
         for(int i = 0; i < roomSpawnpoints.Length; i++)
         {
+            int index = Random.Range(0, 11);
+
+            while (numbersInThing.Contains(index))
+            {
+                index = Random.Range(0, 11);
+            }
+
+            numbersInThing.Add(index);
+
             spawnpoint = roomSpawnpoints[i];
             //pick a random room and place it at the spawnpoints location and rotation (rotation might be a little funky)
-            room = rooms[Random.Range(0, 11)];
+            room = rooms[index];
             room.transform.position = spawnpoint.transform.position;
             room.transform.rotation = spawnpoint.transform.rotation;
         }
