@@ -22,23 +22,25 @@ public class SpeedPowerUpCollectible : MonoBehaviourPunCallbacks, IPunObservable
 
     public void Update()
     {
-
-        if (PhotonNetwork.IsMasterClient)
+        if (photonView.IsMine)
         {
-            if (collided)
+            if (PhotonNetwork.IsMasterClient)
             {
-                pc.removeFromList();
-                //photonView.RPC("DestroyGlobally", RpcTarget.All);
+                if (collided)
+                {
+                    pc.removeFromList();
+                    //photonView.RPC("DestroyGlobally", RpcTarget.All);
 
-                DestroyGlobally();
+                    DestroyGlobally();
+                }
             }
-        }
-        else
-        {
-            if (collided)
+            else if(!PhotonNetwork.IsMasterClient)
             {
-                photonView.TransferOwnership(PhotonNetwork.LocalPlayer);
-                PhotonNetwork.Destroy(this.gameObject);
+                if (collided)
+                {
+                    photonView.TransferOwnership(PhotonNetwork.LocalPlayer);
+                    PhotonNetwork.Destroy(this.gameObject);
+                }
             }
         }
     }
