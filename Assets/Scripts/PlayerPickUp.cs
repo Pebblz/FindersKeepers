@@ -18,14 +18,13 @@ public class PlayerPickUp : MonoBehaviourPunCallbacks, IPunObservable, IOnEventC
 
 
     public GameObject PickUp;
-    int sceneID, lastIndex;
     public bool isHoldingOBJ = false;
     public bool isPickingUpOBJ = false;
     [SerializeField]
     int ThrowForce;
     Animator Anim;
     float pickUpTimer;
-    Scene scene;
+
 
     AudioSource Sound;
     [SerializeField] AudioClip PickUpSound;
@@ -34,22 +33,15 @@ public class PlayerPickUp : MonoBehaviourPunCallbacks, IPunObservable, IOnEventC
     void Awake()
     {
         Anim = GetComponent<Animator>();
-        scene = SceneManager.GetActiveScene();
-        sceneID = scene.buildIndex;
         Sound = GetComponent<AudioSource>();
     }
 
     // Update is called once per frame
     void Update()
     {
-        //scene = SceneManager.GetActiveScene();
+      
         pickUpTimer -= Time.deltaTime;
-        //if (sceneID != lastIndex)
-        //{
-        //    isPickingUpOBJ = false;
-        //    PickUp = null;
-        //    lastIndex = sceneID;
-        //}
+
         if (photonView.IsMine)
         {
             //if the player holds q
@@ -145,10 +137,12 @@ public class PlayerPickUp : MonoBehaviourPunCallbacks, IPunObservable, IOnEventC
 
     }
 
+   
     public void OnEvent(EventData photonEvent)
     {
         byte eventCode = photonEvent.Code;
         
+        //remove all objects player is carrying when the scene is switched
         if (eventCode == GameManager.NetworkSceneChangedEventCode)
         {
             Debug.Log("Event Code: " + eventCode);
