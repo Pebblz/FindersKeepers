@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: e1fe842dc3c8dab4aaebe3029946a682
+guid: f3e5da19700d819478995ba193cb3ec8
 ModelImporter:
   serializedVersion: 23
   fileIDToRecycleName:
@@ -14,8 +14,29 @@ ModelImporter:
     100016: pCube19
     100018: pCube20
     100020: pCube21
-    100022: pPlane2
-    100024: //RootNode
+    100022: pCylinder1
+    100024: pCylinder2
+    100026: polySurface5
+    100028: pPlane15
+    100030: pPlane2
+    100032: pPlane7
+    100034: //RootNode
+    100036: transform1
+    100038: transform10
+    100040: transform11
+    100042: transform12
+    100044: transform13
+    100046: transform14
+    100048: transform15
+    100050: transform16
+    100052: transform2
+    100054: transform3
+    100056: transform4
+    100058: transform5
+    100060: transform6
+    100062: transform7
+    100064: transform8
+    100066: transform9
     400000: pCube11
     400002: pCube12
     400004: pCube13
@@ -27,58 +48,33 @@ ModelImporter:
     400016: pCube19
     400018: pCube20
     400020: pCube21
-    400022: pPlane2
-    400024: //RootNode
-    2100000: lambert3
-    2100002: lambert1
-    2300000: pCube11
-    2300002: pCube12
-    2300004: pCube13
-    2300006: pCube14
-    2300008: pCube15
-    2300010: pCube16
-    2300012: pCube17
-    2300014: pCube18
-    2300016: pCube19
-    2300018: pCube20
-    2300020: pCube21
-    2300022: pPlane2
-    3300000: pCube11
-    3300002: pCube12
-    3300004: pCube13
-    3300006: pCube14
-    3300008: pCube15
-    3300010: pCube16
-    3300012: pCube17
-    3300014: pCube18
-    3300016: pCube19
-    3300018: pCube20
-    3300020: pCube21
-    3300022: pPlane2
-    4300000: pPlane2
-    4300002: pCube11
-    4300004: pCube12
-    4300006: pCube13
-    4300008: pCube14
-    4300010: pCube15
-    4300012: pCube16
-    4300014: pCube17
-    4300016: pCube18
-    4300018: pCube19
-    4300020: pCube20
-    4300022: pCube21
-    6400000: pCube11
-    6400002: pCube12
-    6400004: pCube13
-    6400006: pCube14
-    6400008: pCube15
-    6400010: pCube16
-    6400012: pCube17
-    6400014: pCube18
-    6400016: pCube19
-    6400018: pCube20
-    6400020: pCube21
-    6400022: pPlane2
+    400022: pCylinder1
+    400024: pCylinder2
+    400026: polySurface5
+    400028: pPlane15
+    400030: pPlane2
+    400032: pPlane7
+    400034: //RootNode
+    400036: transform1
+    400038: transform10
+    400040: transform11
+    400042: transform12
+    400044: transform13
+    400046: transform14
+    400048: transform15
+    400050: transform16
+    400052: transform2
+    400054: transform3
+    400056: transform4
+    400058: transform5
+    400060: transform6
+    400062: transform7
+    400064: transform8
+    400066: transform9
+    2100000: lambert4
+    2300000: polySurface5
+    3300000: polySurface5
+    4300000: polySurface5
   externalObjects: {}
   materials:
     importMaterials: 1
@@ -112,7 +108,7 @@ ModelImporter:
     lODScreenPercentages: []
     globalScale: 1
     meshCompression: 0
-    addColliders: 1
+    addColliders: 0
     useSRGBMaterialColor: 1
     importVisibility: 1
     importBlendShapes: 1
