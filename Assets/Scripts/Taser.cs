@@ -1,4 +1,4 @@
-﻿using System.Collections;
+﻿using System;
 using System.Collections.Generic;
 using UnityEngine;
 using Photon.Pun;
@@ -6,12 +6,7 @@ public class Taser : MonoBehaviourPunCallbacks
 {
     //this is so the player doesn't shoot himself 
     public GameObject PlayerWhoShotThis;
-    PhotonView pv;
     float DestroyTimer = .7f;
-    void Awake()
-    {
-        pv = GetComponent<PhotonView>();
-    }
     void Update()
     {
         DestroyTimer -= Time.deltaTime;

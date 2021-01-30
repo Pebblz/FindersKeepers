@@ -38,7 +38,7 @@ public class PickUpAbles : MonoBehaviourPunCallbacks, IPunObservable
                 player.GetComponent<PlayerPickUp>().SetPickUpOBJ(this.gameObject);
                 player.GetComponent<PlayerPickUp>().isHoldingOBJ = true;
                 PlayerThatPickUpOBJ = player;
-                pv.TransferOwnership(PhotonNetwork.LocalPlayer);
+                ChangeOwnerShip();
                 IsPickedUped = true;
             }
 
@@ -55,7 +55,10 @@ public class PickUpAbles : MonoBehaviourPunCallbacks, IPunObservable
             ResetPos();
         }
     }
-
+    public void ChangeOwnerShip()
+    {
+        pv.TransferOwnership(PhotonNetwork.LocalPlayer);
+    }
     public void DropPickUp()
     {
         transform.position = PlayerThatPickUpOBJ.transform.position + new Vector3(0, .5f, 0) + PlayerThatPickUpOBJ.transform.forward * 1.5f;
