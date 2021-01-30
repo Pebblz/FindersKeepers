@@ -17,19 +17,17 @@ public class Taser : MonoBehaviourPunCallbacks
         DestroyTimer -= Time.deltaTime;
         if (DestroyTimer <= 0)
         {
-            if (PhotonNetwork.IsMasterClient) {
-                PhotonNetwork.Destroy(this.gameObject);
-            }
+            Destroy(this.gameObject);
         }
     }
     private void OnTriggerEnter(Collider col)
     {
-        if(col.tag == "Player" && col.gameObject != PlayerWhoShotThis)
+        if (col.tag == "Player" && col.gameObject != PlayerWhoShotThis)
         {
             col.GetComponent<Player>().StunPlayer();
             col.GetComponent<PlayerPickUp>().DropOBJ();
             Destroy(this.gameObject);
         }
-        
+
     }
 }
