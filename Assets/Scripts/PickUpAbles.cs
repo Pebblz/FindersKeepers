@@ -67,10 +67,10 @@ public class PickUpAbles : MonoBehaviourPunCallbacks, IPunObservable
         PlayerThatPickUpOBJ = null;
     }
     void ResetPos()
-    {
-        ChangeOwnerShip();
+    {       
         GetComponent<Rigidbody>().velocity = Vector3.zero;
         transform.position = OriginalPos;
+        ChangeOwnerShip();
     }
     public void OnPhotonSerializeView(PhotonStream stream, PhotonMessageInfo info)
     {
