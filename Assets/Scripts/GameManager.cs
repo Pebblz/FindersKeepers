@@ -44,7 +44,7 @@ public class GameManager : MonoBehaviourPunCallbacks
 
     void Start()
     {
-        DontDestroyOnLoad(this);
+        DontDestroyOnLoad(this.gameObject);
         // do some linq stuff to order the players
         var playerfabs  = Resources.LoadAll<GameObject>("Players");
         var temp = from s in playerfabs
