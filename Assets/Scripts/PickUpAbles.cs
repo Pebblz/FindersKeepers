@@ -72,7 +72,7 @@ public class PickUpAbles : MonoBehaviourPunCallbacks, IPunObservable
     {       
         GetComponent<Rigidbody>().velocity = Vector3.zero;
         transform.position = OriginalPos;
-        ChangeOwnerShip();
+        //ChangeOwnerShip();
     }
     public void OnPhotonSerializeView(PhotonStream stream, PhotonMessageInfo info)
     {
