@@ -177,6 +177,7 @@ public class GameManager : MonoBehaviourPunCallbacks
         {
             NetworkSceneChangedRaiseEvent();
             PhotonNetwork.LoadLevel("Main Game");
+            RandomRoomEvent();
             
         }
     }
@@ -195,6 +196,15 @@ public class GameManager : MonoBehaviourPunCallbacks
         object[] content = new object[] { };
         RaiseEventOptions options = new RaiseEventOptions { Receivers = ReceiverGroup.All };
         PhotonNetwork.RaiseEvent(NetworkSceneChangedEventCode, content, options, SendOptions.SendReliable);
+    }
+
+    public const byte RandomRoomEventCode = 2;
+
+    private void RandomRoomEvent()
+    {
+        object[] content = new object[] { };
+        RaiseEventOptions options = new RaiseEventOptions { Receivers = ReceiverGroup.All };
+        PhotonNetwork.RaiseEvent(RandomRoomEventCode, content, options, SendOptions.SendReliable);
     }
     #endregion
 

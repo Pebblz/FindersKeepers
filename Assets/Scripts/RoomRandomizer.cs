@@ -1,8 +1,10 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Photon.Realtime;
+using ExitGames.Client.Photon;
 
-public class RoomRandomizer : MonoBehaviour
+public class RoomRandomizer : MonoBehaviour, IOnEventCallback
 {
     // arrays of spawnpoints and rooms respectively 
     public GameObject[] roomSpawnpoints;
@@ -22,7 +24,7 @@ public class RoomRandomizer : MonoBehaviour
         rooms = GameObject.FindGameObjectsWithTag("Room");
 
         numbersInThing = new HashSet<int>();
-        RandomizeRoom();
+       // RandomizeRoom();
     }
 
     void RandomizeRoom()
@@ -53,6 +55,16 @@ public class RoomRandomizer : MonoBehaviour
         if (col.gameObject.tag == "Room")
         {
             // if the room collides with another room, re randomie
+          // RandomizeRoom();
+        }
+    }
+
+    public void OnEvent(EventData photonEvent)
+    {
+        byte eventCode = photonEvent.Code;
+
+        if(eventCode == GameManager.RandomRoomEventCode)
+        {
             RandomizeRoom();
         }
     }
