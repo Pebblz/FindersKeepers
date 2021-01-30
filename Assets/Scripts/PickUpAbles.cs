@@ -79,12 +79,12 @@ public class PickUpAbles : MonoBehaviourPunCallbacks, IPunObservable
         if (stream.IsWriting)
         {
             stream.SendNext(IsPickedUped);
-            stream.SendNext(OriginalPos);
+            //stream.SendNext(OriginalPos);
         }
         else
         {
             IsPickedUped = (bool)stream.ReceiveNext();
-            OriginalPos = (Vector3)stream.ReceiveNext();
+            //OriginalPos = (Vector3)stream.ReceiveNext();
         }
 
     }
