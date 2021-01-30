@@ -166,16 +166,18 @@ public class GameManager : MonoBehaviourPunCallbacks
         {
             Debug.LogError("A non master client attempted to load level");
         }
-
-        //TODO: Change to game scene
+        NetworkSceneChangedRaiseEvent();
         PhotonNetwork.LoadLevel("Lobby_" + PhotonNetwork.CurrentRoom.PlayerCount);
+       
     }
 
     public void LoadGame()
     {
         if (PhotonNetwork.IsMasterClient)
         {
+            NetworkSceneChangedRaiseEvent();
             PhotonNetwork.LoadLevel("Main Game");
+            
         }
     }
 
@@ -188,7 +190,7 @@ public class GameManager : MonoBehaviourPunCallbacks
     #region Network Events
     // the flag for raising a Network Event
     public const byte NetworkSceneChangedEventCode = 1;
-    private void SendMoveUnitsToTargetPositionEvent()
+    private void NetworkSceneChangedRaiseEvent()
     {
         object[] content = new object[] { };
         RaiseEventOptions options = new RaiseEventOptions { Receivers = ReceiverGroup.All };
