@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using Photon.Pun;
 
-public class Player_MoveMeant : MonoBehaviourPunCallbacks, IPunObservable
+public class Player_Movement : MonoBehaviourPunCallbacks, IPunObservable
 {
 
 

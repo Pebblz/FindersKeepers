@@ -32,7 +32,7 @@ public class Player : MonoBehaviourPunCallbacks, IPunObservable
     public PowerUp currentPowerUp;
     public float powerUpTimer = 0;
     public bool powerUpTimerActive = false;
-    public Player_MoveMeant pm;
+    public Player_Movement pm;
 
 
     #region monobehaviour callbacks
@@ -45,7 +45,7 @@ public class Player : MonoBehaviourPunCallbacks, IPunObservable
             gameObject.tag = "Player";
             Player.localInstance = gameObject;
             mainCam = GameObject.Find("Main Camera").GetComponent<Transform>();
-            pm = GetComponent<Player_MoveMeant>();
+            pm = GetComponent<Player_Movement>();
             DontDestroyOnLoad(mainCam);
 
         }
