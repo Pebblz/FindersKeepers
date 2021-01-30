@@ -148,9 +148,11 @@ public class PlayerPickUp : MonoBehaviourPunCallbacks, IPunObservable, IOnEventC
     public void OnEvent(EventData photonEvent)
     {
         byte eventCode = photonEvent.Code;
-
-        if(eventCode == GameManager.NetworkSceneChangedEventCode)
+        
+        if (eventCode == GameManager.NetworkSceneChangedEventCode)
         {
+            Debug.Log("Event Code: " + eventCode);
+            DropOBJ();
             isPickingUpOBJ = false;
             PickUp = null;
         }
