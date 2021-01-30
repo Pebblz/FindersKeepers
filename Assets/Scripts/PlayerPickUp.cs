@@ -48,7 +48,7 @@ public class PlayerPickUp : MonoBehaviourPunCallbacks, IPunObservable
             PickUp = null;
             lastIndex = sceneID;
         }
-        //if (photonView.IsMine)
+        if (photonView.IsMine)
         {
             //if the player holds q
             if (Input.GetButtonDown("Fire1") && pickUpTimer < 0)
