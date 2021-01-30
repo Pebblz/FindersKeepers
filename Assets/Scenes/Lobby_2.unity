@@ -528,6 +528,18 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 329137956}
   m_CullTransparentMesh: 0
+--- !u!114 &435929705 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 114912456663065696, guid: ec2ba40b76f726c40bb47c430c4c6bfe,
+    type: 3}
+  m_PrefabInstance: {fileID: 1572617207}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 627855c7f81362d41938ffe0b1475957, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &444398183
 GameObject:
   m_ObjectHideFlags: 0
@@ -1806,6 +1818,90 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e2a1a0d6c55c78942b6b05c0a1553b52, type: 3}
+--- !u!1001 &1572617207
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 114371356789249202, guid: ec2ba40b76f726c40bb47c430c4c6bfe,
+        type: 3}
+      propertyPath: ObservedComponents.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114371356789249202, guid: ec2ba40b76f726c40bb47c430c4c6bfe,
+        type: 3}
+      propertyPath: ObservedComponents.Array.data[0]
+      value: 
+      objectReference: {fileID: 435929705}
+    - target: {fileID: 114371356789249202, guid: ec2ba40b76f726c40bb47c430c4c6bfe,
+        type: 3}
+      propertyPath: viewIdField
+      value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: 7691131963199392356, guid: ec2ba40b76f726c40bb47c430c4c6bfe,
+        type: 3}
+      propertyPath: m_Name
+      value: powerUpSpawner
+      objectReference: {fileID: 0}
+    - target: {fileID: 7722119786360816003, guid: ec2ba40b76f726c40bb47c430c4c6bfe,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 4.8482447
+      objectReference: {fileID: 0}
+    - target: {fileID: 7722119786360816003, guid: ec2ba40b76f726c40bb47c430c4c6bfe,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -1.0751417
+      objectReference: {fileID: 0}
+    - target: {fileID: 7722119786360816003, guid: ec2ba40b76f726c40bb47c430c4c6bfe,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 14.137655
+      objectReference: {fileID: 0}
+    - target: {fileID: 7722119786360816003, guid: ec2ba40b76f726c40bb47c430c4c6bfe,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7722119786360816003, guid: ec2ba40b76f726c40bb47c430c4c6bfe,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7722119786360816003, guid: ec2ba40b76f726c40bb47c430c4c6bfe,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7722119786360816003, guid: ec2ba40b76f726c40bb47c430c4c6bfe,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7722119786360816003, guid: ec2ba40b76f726c40bb47c430c4c6bfe,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 18
+      objectReference: {fileID: 0}
+    - target: {fileID: 7722119786360816003, guid: ec2ba40b76f726c40bb47c430c4c6bfe,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7722119786360816003, guid: ec2ba40b76f726c40bb47c430c4c6bfe,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7722119786360816003, guid: ec2ba40b76f726c40bb47c430c4c6bfe,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: ec2ba40b76f726c40bb47c430c4c6bfe, type: 3}
 --- !u!1 &1709282350
 GameObject:
   m_ObjectHideFlags: 0
@@ -2269,6 +2365,7 @@ MonoBehaviour:
   startButton: {fileID: 0}
   RespawnPoints: []
   list: {fileID: 0}
+  speedPowerPrefab: {fileID: 0}
 --- !u!4 &1878075112
 Transform:
   m_ObjectHideFlags: 0
