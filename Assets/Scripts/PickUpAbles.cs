@@ -27,7 +27,7 @@ public class PickUpAbles : MonoBehaviourPunCallbacks, IPunObservable
             player = GameObject.FindGameObjectWithTag("Player");
         }
 
-        if (Vector3.Distance(this.gameObject.transform.position, player.transform.position) < 5)
+        if (Vector3.Distance(this.gameObject.transform.position, player.transform.position) < 3.5f)
         {
 
             if (player.GetComponent<PlayerPickUp>().isHoldingOBJ == false &&
@@ -72,6 +72,7 @@ public class PickUpAbles : MonoBehaviourPunCallbacks, IPunObservable
     void ResetPos()
     {       
         GetComponent<Rigidbody>().velocity = Vector3.zero;
+        GetComponent<Rigidbody>().rotation = Quaternion.identity;
         transform.position = OriginalPos;
         //ChangeOwnerShip();
     }
