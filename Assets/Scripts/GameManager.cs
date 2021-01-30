@@ -15,6 +15,7 @@ public class GameManager : MonoBehaviourPunCallbacks
     public GameObject[] playerPrefabs;
     [SerializeField]
     private GameObject playerPrefab;
+    public GameObject startButton;
 
 
     enum GameState
@@ -71,6 +72,15 @@ public class GameManager : MonoBehaviourPunCallbacks
                 Debug.Log("Ignoring PLayer load");
         }
         
+
+        if(PhotonNetwork.IsMasterClient)
+        {
+            startButton.SetActive(true);
+        }
+        else
+        {
+            startButton.SetActive(false);
+        }
     }
 
     public int FindFirstNotUsedSkin()
