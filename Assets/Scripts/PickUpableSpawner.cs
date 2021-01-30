@@ -5,8 +5,11 @@ using Photon.Pun;
 
 public class PickUpableSpawner : MonoBehaviourPunCallbacks
 {
+    [SerializeField]
     GameObject[] PickablesToSpawn = new GameObject[99];
+    [SerializeField]
     GameObject[] PickablesSpawnLocation = new GameObject[99];
+
     GameObject[] CurrentlySpawnedOBJ = new GameObject[99];
     // Start is called before the first frame update
     void Start()
