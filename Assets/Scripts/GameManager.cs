@@ -191,21 +191,21 @@ public class GameManager : MonoBehaviourPunCallbacks
 
     #region Network Events
     // the flag for raising a Network Event
-    public const byte NetworkSceneChangedEventCode = 1;
+    
     private void NetworkSceneChangedRaiseEvent()
     {
         object[] content = new object[] { };
         RaiseEventOptions options = new RaiseEventOptions { Receivers = ReceiverGroup.All };
-        PhotonNetwork.RaiseEvent(NetworkSceneChangedEventCode, content, options, SendOptions.SendReliable);
+        PhotonNetwork.RaiseEvent(NetworkCodes.NetworkSceneChangedEventCode, content, options, SendOptions.SendReliable);
     }
 
-    public const byte RandomRoomEventCode = 2;
+    
 
     private void RandomRoomEvent()
     {
         object[] content = new object[] { };
         RaiseEventOptions options = new RaiseEventOptions { Receivers = ReceiverGroup.All };
-        PhotonNetwork.RaiseEvent(RandomRoomEventCode, content, options, SendOptions.SendReliable);
+        PhotonNetwork.RaiseEvent(NetworkCodes.RandomRoomEventCode, content, options, SendOptions.SendReliable);
     }
     #endregion
 

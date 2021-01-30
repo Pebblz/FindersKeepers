@@ -145,7 +145,7 @@ public class PlayerPickUp : MonoBehaviourPunCallbacks, IPunObservable, IOnEventC
         byte eventCode = photonEvent.Code;
         
         //remove all objects player is carrying when the scene is switched
-        if (eventCode == GameManager.NetworkSceneChangedEventCode)
+        if (eventCode == NetworkCodes.NetworkSceneChangedEventCode)
         {
             Debug.Log("Event Code: " + eventCode);
             DropOBJ();

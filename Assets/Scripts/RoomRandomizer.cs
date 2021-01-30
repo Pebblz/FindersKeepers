@@ -67,7 +67,7 @@ public class RoomRandomizer : MonoBehaviour, IOnEventCallback
     {
         byte eventCode = photonEvent.Code;
         Debug.Log("kokmongus");
-        if (eventCode == GameManager.RandomRoomEventCode)
+        if (eventCode == NetworkCodes.RandomRoomEventCode)
         {
             RandomizeRoom();
             

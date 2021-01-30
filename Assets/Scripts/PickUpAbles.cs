@@ -3,6 +3,9 @@ using System.Collections.Generic;
 using UnityEngine;
 using Photon.Pun;
 using System;
+using Photon.Realtime;
+using ExitGames.Client.Photon;
+
 
 public class PickUpAbles : MonoBehaviourPunCallbacks, IPunObservable
 {
