@@ -112,6 +112,7 @@ MonoBehaviour:
   IsPickedUped: 0
   PlayerThatPickUpOBJ: {fileID: 0}
   pv: {fileID: 0}
+  IsThisOBJForPoints: 1
 --- !u!114 &3042207556186816138
 MonoBehaviour:
   m_ObjectHideFlags: 0

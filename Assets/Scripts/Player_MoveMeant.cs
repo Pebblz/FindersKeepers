@@ -33,7 +33,13 @@ public class Player_MoveMeant : MonoBehaviourPunCallbacks, IPunObservable
     // Update is called once per frame
     void Update()
     {
-        if (photonView.IsMine)
+        if (!photonView.IsMine)
+        {
+            Debug.Log("a");
+            return;
+        }
+
+            if (photonView.IsMine)
         {
             #region Movement
             float H = Input.GetAxisRaw("Horizontal");
@@ -64,6 +70,7 @@ public class Player_MoveMeant : MonoBehaviourPunCallbacks, IPunObservable
                 else
                 {
                     ThisPlayer.StunCounter -= Time.deltaTime;
+
                 }
             }
             else
