@@ -5,6 +5,8 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 
 using Photon.Pun;
+using Photon.Realtime;
+using ExitGames.Client.Photon;
 
 public class GameManager : MonoBehaviourPunCallbacks
 {
@@ -16,6 +18,7 @@ public class GameManager : MonoBehaviourPunCallbacks
     [SerializeField]
     private GameObject playerPrefab;
     public GameObject startButton;
+
 
 
     enum GameState
@@ -181,6 +184,17 @@ public class GameManager : MonoBehaviourPunCallbacks
     {
         PhotonNetwork.LeaveRoom();
     }
+
+    #region Network Events
+    // the flag for raising a Network Event
+    public const byte NetworkSceneChangedEventCode = 1;
+    private void SendMoveUnitsToTargetPositionEvent()
+    {
+        object[] content = new object[] { };
+        RaiseEventOptions options = new RaiseEventOptions { Receivers = ReceiverGroup.All };
+        PhotonNetwork.RaiseEvent(NetworkSceneChangedEventCode, content, options, SendOptions.SendReliable);
+    }
+    #endregion
 
     #region In game Scene Management
     /// <summary>

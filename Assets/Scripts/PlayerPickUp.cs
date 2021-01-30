@@ -3,9 +3,11 @@ using System.Collections.Generic;
 using UnityEngine;
 using Photon.Pun;
 using UnityEngine.SceneManagement;
+using Photon.Realtime;
+using ExitGames.Client.Photon;
 
 [RequireComponent(typeof(AudioSource))]
-public class PlayerPickUp : MonoBehaviourPunCallbacks, IPunObservable
+public class PlayerPickUp : MonoBehaviourPunCallbacks, IPunObservable, IOnEventCallback
 {
     /*Flower Box
      * 
@@ -40,14 +42,14 @@ public class PlayerPickUp : MonoBehaviourPunCallbacks, IPunObservable
     // Update is called once per frame
     void Update()
     {
-        scene = SceneManager.GetActiveScene();
+        //scene = SceneManager.GetActiveScene();
         pickUpTimer -= Time.deltaTime;
-        if (sceneID != lastIndex)
-        {
-            isPickingUpOBJ = false;
-            PickUp = null;
-            lastIndex = sceneID;
-        }
+        //if (sceneID != lastIndex)
+        //{
+        //    isPickingUpOBJ = false;
+        //    PickUp = null;
+        //    lastIndex = sceneID;
+        //}
         if (photonView.IsMine)
         {
             //if the player holds q
@@ -141,5 +143,16 @@ public class PlayerPickUp : MonoBehaviourPunCallbacks, IPunObservable
 
         }
 
+    }
+
+    public void OnEvent(EventData photonEvent)
+    {
+        byte eventCode = photonEvent.Code;
+
+        if(eventCode == GameManager.NetworkSceneChangedEventCode)
+        {
+            isPickingUpOBJ = false;
+            PickUp = null;
+        }
     }
 }
