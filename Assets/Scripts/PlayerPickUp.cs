@@ -154,7 +154,12 @@ public class PlayerPickUp : MonoBehaviourPunCallbacks, IPunObservable, IOnEventC
             isHoldingOBJ = false;
         } else if (eventCode == NetworkCodes.DeleteObjectInDropoffCode)
         {
-            DestroyPickUp();
+            
+            object o = photonEvent.CustomData;
+            Debug.Log("Custom Data: " + o);
+            int id = (int)o;
+            PhotonView toDestroy = PhotonView.Find(id);
+            PhotonView.Destroy(toDestroy.gameObject);
         }
 
        
