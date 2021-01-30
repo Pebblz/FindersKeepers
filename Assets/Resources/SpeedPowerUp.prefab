@@ -107,6 +107,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   pickUpNoise: {fileID: 0}
+  collided: 0
 --- !u!114 &9201184666710003443
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -124,8 +125,9 @@ MonoBehaviour:
   prefixField: -1
   observableSearch: 2
   Synchronization: 1
-  OwnershipTransfer: 0
+  OwnershipTransfer: 1
   ObservedComponents:
+  - {fileID: 4443697703682703763}
   - {fileID: 1291699471381910814}
   viewIdField: 0
   InstantiationId: 0
