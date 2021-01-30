@@ -72,14 +72,17 @@ public class GameManager : MonoBehaviourPunCallbacks
                 Debug.Log("Ignoring PLayer load");
         }
 
-        startButton = GameObject.FindGameObjectWithTag("StartButton");
-        if(PhotonNetwork.IsMasterClient)
+        if (startButton != null)
         {
-            startButton.SetActive(true);
-        }
-        else
-        {
-            startButton.SetActive(false);
+            startButton = GameObject.FindGameObjectWithTag("StartButton");
+            if (PhotonNetwork.IsMasterClient)
+            {
+                startButton.SetActive(true);
+            }
+            else
+            {
+                startButton.SetActive(false);
+            }
         }
     }
 
