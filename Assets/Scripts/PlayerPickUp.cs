@@ -157,9 +157,9 @@ public class PlayerPickUp : MonoBehaviourPunCallbacks, IPunObservable, IOnEventC
             
             object o = photonEvent.CustomData;
             Debug.Log("Custom Data: " + o);
-            int id = (int)o;
+            int id = (int)((object[])o)[0];
             PhotonView toDestroy = PhotonView.Find(id);
-            PhotonView.Destroy(toDestroy.gameObject);
+            Destroy(toDestroy.gameObject);
         }
 
        
