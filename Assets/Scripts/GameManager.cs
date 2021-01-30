@@ -36,9 +36,11 @@ public class GameManager : MonoBehaviourPunCallbacks
                 
                 
                 int thatFuckingIdx = (PhotonNetwork.CurrentRoom.PlayerCount > 1)? FindFirstNotUsedSkin() : 0;
+                Debug.Log("Loading player skin: " + this.playerPrefabs[thatFuckingIdx].name);
+
                 PhotonNetwork.Instantiate("Players/" + this.playerPrefabs[thatFuckingIdx].name, new Vector3(0f, 5f, 0f), Quaternion.identity);
                 var props = new ExitGames.Client.Photon.Hashtable();
-                props.Add("color", this.playerPrefabs[thatFuckingIdx].name);
+                props.Add("skin", this.playerPrefabs[thatFuckingIdx].name);
                 PhotonNetwork.PlayerList[PhotonNetwork.CurrentRoom.PlayerCount -1].SetCustomProperties(props);
         
         }
@@ -59,7 +61,12 @@ public class GameManager : MonoBehaviourPunCallbacks
         }
 
         List<string> activePlayerTypes = getActivePlayerTypes();
-
+        string str = "";
+        foreach(string s in activePlayerTypes)
+        {
+            str += s + ", ";
+        }
+        Debug.Log("Active Player Types: " + str);
         if(activePlayerTypes.Count == 1)
         {
             return 0;
