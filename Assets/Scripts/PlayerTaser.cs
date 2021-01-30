@@ -26,13 +26,15 @@ public class PlayerTaser : MonoBehaviourPunCallbacks
     {
 
         //this spawns the bullet 
-        GameObject temp = PhotonNetwork.Instantiate("Test_Taser", this.gameObject.transform.position + new Vector3(0, 1.2f,0), Quaternion.identity);
+        GameObject projectile = PhotonNetwork.Instantiate("Test_Taser", this.gameObject.transform.position + new Vector3(0, 1.2f,0), Quaternion.identity);
         //this makes sure player doesn't shoot himself 
-        temp.GetComponent<Taser>().PlayerWhoShotThis = gameObject;
+        projectile.GetComponent<Taser>().PlayerWhoShotThis = gameObject;
         //bullet go forward
-        temp.GetComponent<Rigidbody>().velocity = transform.forward * 10f;
+        projectile.GetComponent<Rigidbody>().velocity = transform.forward * 10f;
         //you lose a taser if you shoot a taser
         TasersLeft -= 1;
         GetComponent<Player>().isFiring = false;
+
     }
+
 }
