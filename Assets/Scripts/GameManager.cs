@@ -16,6 +16,19 @@ public class GameManager : MonoBehaviourPunCallbacks
     [SerializeField]
     private GameObject playerPrefab;
 
+
+    enum GameState
+    {//Enum Gamestate instead of Scene management because we dont want to swap scenes to avoid online issues
+        Finding_Players = 1, //set to 1 for timer functionality
+        The_Run,
+        The_Game
+    }
+
+    static GameState gameState;
+
+    [SerializeField] Transform[] RespawnPoints;
+    [SerializeField] TodoList list;
+
     public static GameObject[] Randomize(IEnumerable<GameObject> source)
     {
         System.Random rnd = new System.Random();
@@ -142,4 +155,65 @@ public class GameManager : MonoBehaviourPunCallbacks
     {
         PhotonNetwork.LeaveRoom();
     }
+
+    #region In game Scene Management
+    /// <summary>
+    /// Continues the game without having to swap between scenes due to how the online portion works
+    /// </summary>
+    public void Continue()
+    {
+        gameState++; //increment gamestate
+
+        if (gameState == GameState.The_Run)
+        {
+            //rerandomize the room that way the people that join earlier do not get an advantage
+            SceneManager.LoadScene(SceneManager.GetActiveScene().name); //just to rerandomize the room, cant just call the roomrandomization function otherwise it will just rerandomize the exact same way as before.
+        }
+        else if ((int)gameState > 3)
+        { //if gameover
+            gameState = GameState.Finding_Players; //static so this variable must be manually reset
+            //SceneManager.LoadScene("EndScreen"); //end of game load endscreen   scene doesnt exist yet
+        }
+        else
+        {
+            Respawn();
+            //the timer is handled internally
+        }
+    }
+
+    void Respawn()
+    {
+        //assign neccesary variables
+        Player[] players = FindObjectsOfType<Player>();
+        int assignedRespawn = 0;
+
+        foreach (Player player in players)
+        {
+            //move player to assigned position
+            player.gameObject.transform.position = RespawnPoints[assignedRespawn].position;
+            //player.gameObject.transform.rotation = RespawnPoints[assignedRespawn].rotation;   I dont think we will care about rotation
+            assignedRespawn++;
+        }
+    }
+    #endregion
+
+    #region in game data checks
+    /// <summary>
+    /// returns the time this GameState should have ot be played out
+    /// </summary>
+    /// <returns></returns>
+    public int setTime()
+    {//for timer reseting
+        return (int)gameState * 30;
+    }
+
+    /// <summary>
+    /// Activates or deactivates the list
+    /// </summary>
+    /// <returns></returns>
+    public bool listActive()
+    {//for activating the list
+        return gameState >= GameState.The_Game;
+    }
+    #endregion
 }

@@ -14,10 +14,15 @@ public class Timer : MonoBehaviour
     [SerializeField] Text text;
     //[SerializeField] int minutes = 1;
     [SerializeField] int seconds = 90;
+
+
+    [SerializeField]GameManager gameManager;
     // Start is called before the first frame update
     void Start()
     {
-        if(text == null)
+        seconds = gameManager.setTime();
+
+        if (text == null)
         {//if text wasn't set
             text = gameObject.GetComponent<Text>(); // try to find the text on this object
             if(text == null)
@@ -49,6 +54,9 @@ public class Timer : MonoBehaviour
         }
 
         //when timer ends
+        gameManager.Continue();
+        seconds = gameManager.setTime();
+        StartCoroutine("CountDown");
         text.text = "Times up";
     }
 

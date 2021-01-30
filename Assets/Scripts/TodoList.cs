@@ -12,6 +12,7 @@ public class TodoList : MonoBehaviour
      */
 
     [SerializeField] Text text;
+    [SerializeField] GameManager gameManager;
     Dictionary<PickUpAbles, bool> list = new Dictionary<PickUpAbles, bool>();
 
     void Start()
@@ -57,10 +58,16 @@ public class TodoList : MonoBehaviour
 
     void PrintList()
     {
-        text.text = "List: \n";
-        foreach(KeyValuePair<PickUpAbles, bool> kvp in list)
-        {//foreach item in list
-            text.text += '\n' + kvp.Key.gameObject.name; //add name to list
+        if (gameManager.listActive())
+        {//if we want the list to show
+            text.text = "List: \n";
+            foreach (KeyValuePair<PickUpAbles, bool> kvp in list)
+            {//foreach item in list
+                text.text += '\n' + kvp.Key.gameObject.name; //add name to list
+            }
+        } else
+        {//if we dont
+            text.text = "";
         }
     }
 
