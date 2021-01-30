@@ -40,7 +40,7 @@ public class SpeedPowerUpCollectible : MonoBehaviourPunCallbacks, IPunObservable
                 {
                     PhotonNetwork.SetMasterClient(PhotonNetwork.LocalPlayer);
                     //PhotonNetwork.Destroy(this.gameObject);
-                    //photonView.RPC("DestroyGlobally", RpcTarget.All);
+                    photonView.RPC("DestroyGlobally", RpcTarget.All);
 
                 }
             }
