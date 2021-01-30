@@ -13,7 +13,7 @@ public class Timer : MonoBehaviour
 
     [SerializeField] Text text;
     //[SerializeField] int minutes = 1;
-    [SerializeField] int seconds = 90;
+    [SerializeField] int seconds = 30;
 
 
     [SerializeField]GameManager gameManager;
