@@ -1042,7 +1042,7 @@ MonoBehaviour:
   IsPickedUped: 0
   PlayerThatPickUpOBJ: {fileID: 0}
   pv: {fileID: 0}
-  IsThisOBJForPoints: 0
+  IsThisOBJForPoints: 1
   hasGravity: 1
 --- !u!65 &738189030
 BoxCollider:
@@ -1583,7 +1583,7 @@ MonoBehaviour:
   IsPickedUped: 0
   PlayerThatPickUpOBJ: {fileID: 0}
   pv: {fileID: 0}
-  IsThisOBJForPoints: 0
+  IsThisOBJForPoints: 1
   hasGravity: 1
 --- !u!114 &1257416275
 MonoBehaviour:
