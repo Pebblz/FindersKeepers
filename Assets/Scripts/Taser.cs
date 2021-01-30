@@ -17,7 +17,9 @@ public class Taser : MonoBehaviourPunCallbacks
         DestroyTimer -= Time.deltaTime;
         if (DestroyTimer <= 0)
         {
-            Destroy(this.gameObject);
+            if (PhotonNetwork.IsMasterClient) {
+                PhotonNetwork.Destroy(this.gameObject);
+            }
         }
     }
     private void OnTriggerEnter(Collider col)
