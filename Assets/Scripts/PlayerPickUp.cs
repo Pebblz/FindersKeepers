@@ -36,7 +36,7 @@ public class PlayerPickUp : MonoBehaviourPunCallbacks, IPunObservable, IOnEventC
         Anim = GetComponent<Animator>();
         Sound = GetComponent<AudioSource>();
         rb = GetComponent<Rigidbody>();
-        PickUpSpawner = GameObject.FindGameObjectWithTag("PickUpableSpawner");
+        PickUpSpawner = GameObject.FindGameObjectWithTag("PickUpSpawner");
     }
     
 
