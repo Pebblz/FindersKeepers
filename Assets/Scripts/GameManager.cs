@@ -226,7 +226,7 @@ public class GameManager : MonoBehaviourPunCallbacks
         if ((int)gameState > 3)
         { //if gameover
             gameState = GameState.The_Run; //static so this variable must be manually reset
-            //SceneManager.LoadScene("EndScreen"); //end of game load endscreen   scene doesnt exist yet
+            SceneManager.LoadScene("WinOrLose"); //end of game load endscreen   scene doesnt exist yet
         }
         else
         {

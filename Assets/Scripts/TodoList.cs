@@ -50,7 +50,7 @@ public class TodoList : MonoBehaviour
 
             //recalculate place
             place += Random.Range(0, playerCount);
-            place %= pickUpAbleList.Count;
+            place %= pickUpAbleList.Count - 1;
 
             //add to list and remove from available pickupable's
             list.Add(pickUpAbleList[place], false);
