@@ -19,7 +19,7 @@ public class TodoList : MonoBehaviour
     [SerializeField] GameManager gameManager;
     Dictionary<PickUpAbles, bool> list = new Dictionary<PickUpAbles, bool>();
 
-    void Start()
+    void Awake()
     {
         //if(text == null)
         //{ //if text isnt filled
