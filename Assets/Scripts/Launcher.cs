@@ -6,6 +6,8 @@ using Photon.Pun;
 using Photon.Realtime;
 using UnityEngine.UI;
 
+using UnityEngine.SceneManagement;
+
 public class Launcher : MonoBehaviourPunCallbacks
 {
 
@@ -70,6 +72,11 @@ public class Launcher : MonoBehaviourPunCallbacks
         }
     }
 
+
+    public void LoadCreditScene()
+    {
+        SceneManager.LoadScene("Credits");
+    }
 
     #endregion
 
