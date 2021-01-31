@@ -1789,7 +1789,7 @@ AnimatorState:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: Throw_Run
-  m_Speed: 0.5
+  m_Speed: 0.1
   m_CycleOffset: 0
   m_Transitions:
   - {fileID: 1101136814136486734}
@@ -1942,7 +1942,7 @@ AnimatorState:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: Throw_Idle
-  m_Speed: 0.5
+  m_Speed: 0.1
   m_CycleOffset: 0
   m_Transitions:
   - {fileID: 1101746409844062010}
@@ -2128,7 +2128,7 @@ AnimatorStateMachine:
     m_Position: {x: 12, y: 588, z: 0}
   - serializedVersion: 1
     m_State: {fileID: 1102384125290187144}
-    m_Position: {x: -1512, y: 1908, z: 0}
+    m_Position: {x: -1476, y: 1992, z: 0}
   - serializedVersion: 1
     m_State: {fileID: 1102015612321910072}
     m_Position: {x: 852, y: 2124, z: 0}
