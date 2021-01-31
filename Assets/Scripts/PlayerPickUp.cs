@@ -36,7 +36,7 @@ public class PlayerPickUp : MonoBehaviourPunCallbacks, IPunObservable, IOnEventC
         Anim = GetComponent<Animator>();
         Sound = GetComponent<AudioSource>();
         rb = GetComponent<Rigidbody>();
-        PickUpSpawner = GameObject.FindGameObjectWithTag("PickUpSpawner");
+        
     }
     
 
@@ -86,6 +86,7 @@ public class PlayerPickUp : MonoBehaviourPunCallbacks, IPunObservable, IOnEventC
     //no you really won't based off this name
     public void DestroyPickUp()
     {
+        PickUpSpawner = GameObject.FindGameObjectWithTag("PickUpSpawner");
         if (PickUp != null)
         {
             PickUpSpawner.GetComponent<PickUpableSpawner>().deleteOBJ(PickUp);
