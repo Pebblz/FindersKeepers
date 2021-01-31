@@ -1002,7 +1002,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Patrick Maatz
+  m_Text: Patrick Naatz
 --- !u!222 &637184842
 CanvasRenderer:
   m_ObjectHideFlags: 0
