@@ -5,6 +5,8 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 
 using Photon.Pun;
+using Photon.Realtime;
+using ExitGames.Client.Photon;
 
 public class GameManager : MonoBehaviourPunCallbacks
 {
@@ -16,6 +18,7 @@ public class GameManager : MonoBehaviourPunCallbacks
     [SerializeField]
     private GameObject playerPrefab;
     public GameObject startButton;
+
 
 
     enum GameState
@@ -163,16 +166,20 @@ public class GameManager : MonoBehaviourPunCallbacks
         {
             Debug.LogError("A non master client attempted to load level");
         }
-
-        //TODO: Change to game scene
+        NetworkSceneChangedRaiseEvent();
         PhotonNetwork.LoadLevel("Lobby_" + PhotonNetwork.CurrentRoom.PlayerCount);
+       
     }
 
     public void LoadGame()
     {
         if (PhotonNetwork.IsMasterClient)
         {
+            NetworkSceneChangedRaiseEvent();
+            
             PhotonNetwork.LoadLevel("Main Game");
+            
+            
         }
     }
 
@@ -181,6 +188,26 @@ public class GameManager : MonoBehaviourPunCallbacks
     {
         PhotonNetwork.LeaveRoom();
     }
+
+    #region Network Events
+    // the flag for raising a Network Event
+    
+    private void NetworkSceneChangedRaiseEvent()
+    {
+        object[] content = new object[] { };
+        RaiseEventOptions options = new RaiseEventOptions { Receivers = ReceiverGroup.All };
+        PhotonNetwork.RaiseEvent(NetworkCodes.NetworkSceneChangedEventCode, content, options, SendOptions.SendReliable);
+    }
+
+    
+
+    private void RandomRoomEvent()
+    {
+        object[] content = new object[] { };
+        RaiseEventOptions options = new RaiseEventOptions { Receivers = ReceiverGroup.All };
+        PhotonNetwork.RaiseEvent(NetworkCodes.RandomRoomEventCode, content, options, SendOptions.SendReliable);
+    }
+    #endregion
 
     #region In game Scene Management
     /// <summary>
