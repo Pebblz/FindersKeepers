@@ -103,8 +103,7 @@ public class PlayerPickUp : MonoBehaviourPunCallbacks, IPunObservable, IOnEventC
         PickUpSpawner = GameObject.FindGameObjectWithTag("PickUpSpawner");
 
 
-        if (PickUp != null)
-        {
+        
             //PickUpSpawner.GetComponent<PickUpableSpawner>().deleteOBJ(this.PickUp);
 
             if (photonView.IsMine)
@@ -123,7 +122,7 @@ public class PlayerPickUp : MonoBehaviourPunCallbacks, IPunObservable, IOnEventC
             PickUp = null;
             isPickingUpOBJ = false;
             isHoldingOBJ = false;
-        }
+        
         
     }
 
