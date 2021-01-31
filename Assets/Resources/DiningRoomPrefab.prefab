@@ -636,7 +636,7 @@ MonoBehaviour:
   pv: {fileID: 0}
   useGravity: 0
   IsThisOBJForPoints: 0
-  hasGravity: 1
+  hasGravity: 0
 --- !u!54 &1478791116190070086
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -725,7 +725,7 @@ MonoBehaviour:
   pv: {fileID: 0}
   useGravity: 0
   IsThisOBJForPoints: 0
-  hasGravity: 1
+  hasGravity: 0
 --- !u!114 &7085937911153014284
 MonoBehaviour:
   m_ObjectHideFlags: 0
