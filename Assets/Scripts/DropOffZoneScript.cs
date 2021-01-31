@@ -42,6 +42,7 @@ public class DropOffZoneScript : MonoBehaviourPunCallbacks
                         //destroy the pickuped obj
                         //deleteObjectInDropoffEvent(c.GetComponent<PlayerPickUp>().PickUp.GetComponent<PhotonView>().ViewID);
                         FindObjectOfType<TodoList>().ObjectFound(c.GetComponent<PlayerPickUp>().PickUp.GetComponent<PickUpAbles>());
+
                         c.GetComponent<PlayerPickUp>().DestroyPickUp();
 
                     }
@@ -50,10 +51,12 @@ public class DropOffZoneScript : MonoBehaviourPunCallbacks
         }
     }
 
-/// <summary>
-/// Raises an event to delete gameobject for a given photonViewId
-/// </summary>
-/// <param name="photonViewId">Id of object to be deleted</param>
+    
+
+    /// <summary>
+    /// Raises an event to delete gameobject for a given photonViewId
+    /// </summary>
+    /// <param name="photonViewId">Id of object to be deleted</param>
     private void deleteObjectInDropoffEvent(int photonViewId)
     {
         object[] content = new object[] { photonViewId };

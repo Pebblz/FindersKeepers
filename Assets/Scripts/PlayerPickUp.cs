@@ -116,7 +116,7 @@ public class PlayerPickUp : MonoBehaviourPunCallbacks, IPunObservable, IOnEventC
             else
             {
                 PickUp.transform.parent = null;
-                Destroy(PickUp);
+                photonView.RPC("DestroyThing", RpcTarget.All);
             }
 
 
@@ -125,6 +125,13 @@ public class PlayerPickUp : MonoBehaviourPunCallbacks, IPunObservable, IOnEventC
             isHoldingOBJ = false;
         }
         
+    }
+
+    [PunRPC]
+
+    public void DestroyThing()
+    {
+        Destroy(this.gameObject);
     }
     public void ThrowOBJ(int Force)
     {
