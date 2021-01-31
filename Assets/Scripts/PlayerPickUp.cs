@@ -28,7 +28,8 @@ public class PlayerPickUp : MonoBehaviourPunCallbacks, IPunObservable, IOnEventC
 
     GameObject PickUpSpawner;
     AudioSource Sound;
-    [SerializeField] AudioClip PickUpSound;
+    [SerializeField]
+    AudioClip PickUpSound;
 
     // Start is called before the first frame update
     void Awake()
@@ -36,14 +37,14 @@ public class PlayerPickUp : MonoBehaviourPunCallbacks, IPunObservable, IOnEventC
         Anim = GetComponent<Animator>();
         Sound = GetComponent<AudioSource>();
         rb = GetComponent<Rigidbody>();
-        
+
     }
-    
+
 
     // Update is called once per frame
     void Update()
     {
-      
+
         pickUpTimer -= Time.deltaTime;
 
         if (photonView.IsMine)
@@ -67,7 +68,7 @@ public class PlayerPickUp : MonoBehaviourPunCallbacks, IPunObservable, IOnEventC
             {
                 isPickingUpOBJ = false;
             }
-            if(Input.GetButtonDown("Fire2") && PickUp != null)
+            if (Input.GetButtonDown("Fire2") && PickUp != null)
             {
                 ThrowOBJ(ThrowForce);
             }
@@ -78,6 +79,11 @@ public class PlayerPickUp : MonoBehaviourPunCallbacks, IPunObservable, IOnEventC
             }
             else
             {
+                if (Anim.GetCurrentAnimatorStateInfo(0).length > 
+                    Anim.GetCurrentAnimatorStateInfo(0).normalizedTime)
+                {
+                    Anim.SetBool("IsThrowing", false);
+                }
                 Anim.SetBool("IsCarry", false);
             }
         }
@@ -97,8 +103,9 @@ public class PlayerPickUp : MonoBehaviourPunCallbacks, IPunObservable, IOnEventC
     }
     public void ThrowOBJ(int Force)
     {
+        Anim.SetBool("IsThrowing", true);
         if (PickUp != null)
-        {           
+        {
 
             PickUp.GetComponent<Rigidbody>().AddForce(transform.forward * Force, ForceMode.Impulse);
             PickUp.GetComponent<PickUpAbles>().IsPickedUped = false;
@@ -148,11 +155,11 @@ public class PlayerPickUp : MonoBehaviourPunCallbacks, IPunObservable, IOnEventC
 
     }
 
-   
+
     public void OnEvent(EventData photonEvent)
     {
         byte eventCode = photonEvent.Code;
-        
+
         //remove all objects player is carrying when the scene is switched
         if (eventCode == NetworkCodes.NetworkSceneChangedEventCode)
         {
@@ -161,11 +168,12 @@ public class PlayerPickUp : MonoBehaviourPunCallbacks, IPunObservable, IOnEventC
             isPickingUpOBJ = false;
             PickUp = null;
             isHoldingOBJ = false;
-        } else if (eventCode == NetworkCodes.DeleteObjectInDropoffCode)
+        }
+        else if (eventCode == NetworkCodes.DeleteObjectInDropoffCode)
         {
             DestroyPickUp();
         }
 
-       
+
     }
 }
