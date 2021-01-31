@@ -74,7 +74,7 @@ public class TodoList : MonoBehaviour
         //  //  text.text = "";
         //}
 
-        Debug.Log("Here");
+        Debug.Log(list.Count);
 
         FillImage(image);
         Debug.Log("2");
