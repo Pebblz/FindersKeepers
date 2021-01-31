@@ -157,8 +157,8 @@ public class PlayerPickUp : MonoBehaviourPunCallbacks, IPunObservable, IOnEventC
             isHoldingOBJ = false;
         } else if (eventCode == NetworkCodes.DeleteObjectInDropoffCode)
         {
-            
-         
+
+            DestroyPickUp();
         }
 
        
