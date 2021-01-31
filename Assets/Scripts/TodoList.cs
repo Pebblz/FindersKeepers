@@ -90,7 +90,7 @@ public class TodoList : MonoBehaviour
                 left.Add(obj);
             }
         }
-        int nextObject = Random.Range(0, left.Count + 1);
+        int nextObject = Random.Range(0, left.Count);
         PickUpAbles newObject = left[nextObject];
         Debug.Log(newObject.gameObject.name);
         img.sprite = newObject.image;
