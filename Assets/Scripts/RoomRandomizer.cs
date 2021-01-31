@@ -39,7 +39,7 @@ public class RoomRandomizer : MonoBehaviour/*, IOnEventCallback*/
         for (int i = 0; i < rooms.Count; i++)
         {
             GameObject temp = PhotonNetwork.Instantiate(rooms[i].name, roomSpawnpoints[i].transform.position, roomSpawnpoints[i].transform.rotation);
-            PrefabUtility.UnpackPrefabInstance(temp,PrefabUnpackMode.Completely,InteractionMode.AutomatedAction);
+            PrefabUtility.UnpackPrefabInstance(temp.gameObject,PrefabUnpackMode.Completely,InteractionMode.AutomatedAction);
             temp.transform.DetachChildren();
         }
 
