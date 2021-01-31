@@ -11,20 +11,24 @@ public class TodoList : MonoBehaviour
      * It DOES allow player to have the same object as eachother on their list and this was done intentionally
      */
 
-    [SerializeField] Text text;
+    //[SerializeField] Text text;
+    [SerializeField] Image image;
+    [SerializeField] Image image2;
+    [SerializeField] Image image3;
+
     [SerializeField] GameManager gameManager;
     Dictionary<PickUpAbles, bool> list = new Dictionary<PickUpAbles, bool>();
 
     void Start()
     {
-        if(text == null)
-        { //if text isnt filled
-            text = GetComponent<Text>(); //fill the text
-            if(text == null)
-            {//if text is still not filled
-                Destroy(text);
-            }
-        }
+        //if(text == null)
+        //{ //if text isnt filled
+        //    text = GetComponent<Text>(); //fill the text
+        //    if(text == null)
+        //    {//if text is still not filled
+        //        Destroy(text);
+        //    }
+        //}
 
         FillList();
         PrintList();
@@ -56,19 +60,41 @@ public class TodoList : MonoBehaviour
         }
     }
 
-    void PrintList()
+    public void PrintList()
     {
-        if (gameManager.listActive())
-        {//if we want the list to show
-            text.text = "List: \n";
-            foreach (KeyValuePair<PickUpAbles, bool> kvp in list)
-            {//foreach item in list
-                text.text += '\n' + kvp.Key.gameObject.name; //add name to list
+        ////if (gameManager.listActive())
+        ////{//if we want the list to show
+        //    text.text = "List: \n";
+        //    foreach (KeyValuePair<PickUpAbles, bool> kvp in list)
+        //    {//foreach item in list
+        //        text.text += '\n' + kvp.Key.gameObject.name; //add name to list
+        //    }
+        ////} else
+        //{//if we dont
+        //  //  text.text = "";
+        //}
+
+        Debug.Log("Here");
+
+        FillImage(image);
+        FillImage(image2);
+        FillImage(image3);
+    }
+
+    void FillImage(Image img)
+    {
+        List<PickUpAbles> left = new List<PickUpAbles>();
+        foreach (PickUpAbles obj in list.Keys)
+        {
+            if (!list[obj])
+            {
+                left.Add(obj);
             }
-        } else
-        {//if we dont
-            text.text = "";
         }
+        int nextObject = Random.Range(0, left.Count + 1);
+        PickUpAbles newObject = left[nextObject];
+        Debug.Log(newObject.gameObject.name);
+        img.sprite = newObject.image;
     }
 
     //Call this function when a pickupable is picked up

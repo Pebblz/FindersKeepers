@@ -29,8 +29,8 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1520989766553822247}
-  m_LocalRotation: {x: 0, y: -1, z: 0, w: 0}
-  m_LocalPosition: {x: 20.043, y: 0.37594, z: -0.096}
+  m_LocalRotation: {x: 0, y: 0.7071068, z: 0, w: 0.7071068}
+  m_LocalPosition: {x: -10.24, y: 0.475, z: 16.776}
   m_LocalScale: {x: 0.0047187987, y: 0.0047187987, z: 0.0047187987}
   m_Children:
   - {fileID: 2863385274706272947}
@@ -255,6 +255,7 @@ MonoBehaviour:
   useGravity: 0
   IsThisOBJForPoints: 0
   hasGravity: 1
+  image: {fileID: 21300000, guid: 72a817fef25cee04aa7dca2fc0119dee, type: 3}
 --- !u!114 &8967086282016149760
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -387,6 +388,7 @@ MonoBehaviour:
   useGravity: 0
   IsThisOBJForPoints: 0
   hasGravity: 1
+  image: {fileID: 21300000, guid: ddae05eceb3686d4cbac0c177d8c8087, type: 3}
 --- !u!54 &8534880063749645532
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -458,6 +460,7 @@ MonoBehaviour:
   useGravity: 0
   IsThisOBJForPoints: 0
   hasGravity: 1
+  image: {fileID: 21300000, guid: 9b1cc5ac15ed05f429eff030663fffe5, type: 3}
 --- !u!114 &6375879889004997791
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -593,6 +596,7 @@ MonoBehaviour:
   useGravity: 0
   IsThisOBJForPoints: 0
   hasGravity: 1
+  image: {fileID: 21300000, guid: bacbd806bffdec0469516deb5e55f1a8, type: 3}
 --- !u!54 &8404706962373232613
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -696,6 +700,7 @@ MonoBehaviour:
   useGravity: 0
   IsThisOBJForPoints: 0
   hasGravity: 1
+  image: {fileID: 21300000, guid: 2c0402d810526334dab6c01043ba8f3f, type: 3}
 --- !u!54 &1975505316167437419
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -744,6 +749,7 @@ MonoBehaviour:
   useGravity: 0
   IsThisOBJForPoints: 0
   hasGravity: 1
+  image: {fileID: 21300000, guid: e4e78189b3f7e9c48870d7453bf817b3, type: 3}
 --- !u!114 &1582542651504486112
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -875,6 +881,7 @@ MonoBehaviour:
   useGravity: 0
   IsThisOBJForPoints: 0
   hasGravity: 1
+  image: {fileID: 21300000, guid: 68854ac66bfd0034086ef1afdb507ae8, type: 3}
 --- !u!114 &1761050796307860344
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1007,6 +1014,7 @@ MonoBehaviour:
   useGravity: 0
   IsThisOBJForPoints: 0
   hasGravity: 1
+  image: {fileID: 21300000, guid: 32e1a26ad74c52941bd3cac2dc31ae75, type: 3}
 --- !u!114 &5831163490062898477
 MonoBehaviour:
   m_ObjectHideFlags: 0

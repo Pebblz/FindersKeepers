@@ -20,6 +20,8 @@ public class PickUpAbles : MonoBehaviourPunCallbacks, IPunObservable
     Quaternion startingRot;
     [SerializeField]
     bool hasGravity = true;
+    public Sprite image;
+
     //this is an awake because it'll do this whenever this object gets spawned
     void Awake()
     {

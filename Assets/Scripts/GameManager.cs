@@ -23,8 +23,8 @@ public class GameManager : MonoBehaviourPunCallbacks
 
     enum GameState
     {//Enum Gamestate instead of Scene management because we dont want to swap scenes to avoid online issues
-        Finding_Players = 1, //set to 1 for timer functionality
-        The_Run,
+        //Finding_Players = 1, //set to 1 for timer functionality
+        The_Run = 2,
         The_Game
     }
 
@@ -222,14 +222,10 @@ public class GameManager : MonoBehaviourPunCallbacks
     {
         gameState++; //increment gamestate
 
-        if (gameState == GameState.The_Run)
-        {
-            //rerandomize the room that way the people that join earlier do not get an advantage
-            SceneManager.LoadScene(SceneManager.GetActiveScene().name); //just to rerandomize the room, cant just call the roomrandomization function otherwise it will just rerandomize the exact same way as before.
-        }
-        else if ((int)gameState > 3)
+        
+        if ((int)gameState > 3)
         { //if gameover
-            gameState = GameState.Finding_Players; //static so this variable must be manually reset
+            gameState = GameState.The_Run; //static so this variable must be manually reset
             //SceneManager.LoadScene("EndScreen"); //end of game load endscreen   scene doesnt exist yet
         }
         else
@@ -252,6 +248,9 @@ public class GameManager : MonoBehaviourPunCallbacks
             //player.gameObject.transform.rotation = RespawnPoints[assignedRespawn].rotation;   I dont think we will care about rotation
             assignedRespawn++;
         }
+
+        Debug.Log("hello");
+        Object.FindObjectOfType<TodoList>().PrintList();
     }
     #endregion
 
