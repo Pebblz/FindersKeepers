@@ -31,7 +31,7 @@ public class RoomRandomizer : MonoBehaviour/*, IOnEventCallback*/
     void RandomizeRoom()
     {
         // go through the spawnpoint array
-        for (int i = 0; i < roomSpawnpoints.Count - 1; i++)
+        for (int i = 0; i < roomSpawnpoints.Count; i++)
         {
             int index = Random.Range(0, rooms.Count);
 
