@@ -79,7 +79,7 @@ MonoBehaviour:
   prefixField: -1
   observableSearch: 2
   Synchronization: 1
-  OwnershipTransfer: 0
+  OwnershipTransfer: 1
   ObservedComponents:
   - {fileID: 466168894801871001}
   - {fileID: 4344529342301572742}
@@ -215,7 +215,7 @@ MonoBehaviour:
   prefixField: -1
   observableSearch: 2
   Synchronization: 1
-  OwnershipTransfer: 0
+  OwnershipTransfer: 1
   ObservedComponents:
   - {fileID: 206537926070182139}
   - {fileID: 2975548670315566313}
@@ -314,7 +314,7 @@ MonoBehaviour:
   prefixField: -1
   observableSearch: 2
   Synchronization: 1
-  OwnershipTransfer: 0
+  OwnershipTransfer: 1
   ObservedComponents:
   - {fileID: 3425398165220731136}
   - {fileID: 7960960815017460428}
@@ -404,7 +404,7 @@ MonoBehaviour:
   prefixField: -1
   observableSearch: 2
   Synchronization: 1
-  OwnershipTransfer: 0
+  OwnershipTransfer: 1
   ObservedComponents:
   - {fileID: 4738493133136984863}
   - {fileID: 6253047962703737966}
@@ -543,7 +543,7 @@ MonoBehaviour:
   prefixField: -1
   observableSearch: 2
   Synchronization: 1
-  OwnershipTransfer: 0
+  OwnershipTransfer: 1
   ObservedComponents:
   - {fileID: 1099170016818410763}
   - {fileID: 2349328869537174717}
@@ -661,7 +661,7 @@ MonoBehaviour:
   prefixField: -1
   observableSearch: 2
   Synchronization: 1
-  OwnershipTransfer: 0
+  OwnershipTransfer: 1
   ObservedComponents:
   - {fileID: 142981061944646658}
   - {fileID: 1992633762323049916}
