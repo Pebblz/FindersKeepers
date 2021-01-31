@@ -24,16 +24,6 @@ public class SoundtrackManager : MonoBehaviour, IOnEventCallback
         original.Pause();
         this.soundtrack.Play();
     }
-
-    private void Update()
-    {
-        if (Input.GetKey(KeyCode.Space))
-        {
-            Destroy(this.gameObject);
-        }
-    }
-
-
     public void resumeOriginalTrack()
     {
 
