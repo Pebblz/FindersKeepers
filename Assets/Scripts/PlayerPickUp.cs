@@ -98,16 +98,15 @@ public class PlayerPickUp : MonoBehaviourPunCallbacks, IPunObservable, IOnEventC
 
     //you'll never guess what this func does 
     //no you really won't based off this name
-    public void DestroyPickUp(int ViewId)
+    public void DestroyPickUp()
     {
         PickUpSpawner = GameObject.FindGameObjectWithTag("PickUpSpawner");
-        GameObject temp = PhotonView.Find(ViewId).gameObject;
-        if (temp != null)
-        {
-            PickUpSpawner.GetComponent<PickUpableSpawner>().deleteOBJ(temp);
-        }
+
+
         if (PickUp != null)
         {
+            PickUpSpawner.GetComponent<PickUpableSpawner>().deleteOBJ(this.PickUp);
+        
             PickUp = null;
             isPickingUpOBJ = false;
             isHoldingOBJ = false;
@@ -185,7 +184,7 @@ public class PlayerPickUp : MonoBehaviourPunCallbacks, IPunObservable, IOnEventC
         else if (eventCode == NetworkCodes.DeleteObjectInDropoffCode)
         {
             int id = (int)((object[])photonEvent.CustomData)[0];
-            DestroyPickUp(id);
+           // DestroyPickUp(id);
         }
 
 
