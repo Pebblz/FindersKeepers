@@ -19,36 +19,40 @@ public class WinOrLoseScript : MonoBehaviour
     [SerializeField] AudioClip winSound;
     [SerializeField] AudioClip loseSound;
 
+    [SerializeField] Transform[] locations;
+
     // Start is called before the first frame update
     void Start()
     {
         //Get Scores from server
-        int thisPlayersScore = 0;
-        int[] scores = { };
-
+        Player[] players = FindObjectsOfType<Player>();
+ 
         //order the scores
-        scores = Order(scores);
+        players = Order(players);
 
 
-        if(thisPlayersScore == scores[0])
+        Display(players);
+    }
+
+    void Display(Player[] players)
+    {
+        int incrementation = 0;
+        foreach(Player player in players)
         {
-            Win();
-        } else
-        {
-            Lose();
+            player.gameObject.transform.position = locations[incrementation].position;
         }
     }
 
-    int[] Order(int[] scores)
+    Player[] Order(Player[] scores)
     {
         for(int current = 0; current < scores.Length; current++)
         {
             for(int after = current + 1; after < scores.Length; after++)
             {
-                if(scores[after] > scores[current])
+                if(scores[after].score > scores[current].score)
                 {
                     //swap scores
-                    int temp = scores[current];
+                    Player temp = scores[current];
                     scores[current] = scores[after];
                     scores[after] = temp;
                 }
