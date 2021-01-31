@@ -1947,7 +1947,11 @@ MonoBehaviour:
   audioSource: {fileID: 0}
   winSound: {fileID: 0}
   loseSound: {fileID: 0}
-  cameras: []
+  cameras:
+  - {fileID: 1912861029}
+  - {fileID: 1675092572}
+  - {fileID: 1787692485}
+  - {fileID: 2705029}
 --- !u!114 &1745689184
 MonoBehaviour:
   m_ObjectHideFlags: 0
