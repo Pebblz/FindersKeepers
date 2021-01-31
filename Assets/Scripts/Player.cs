@@ -137,7 +137,22 @@ public class Player : MonoBehaviourPunCallbacks, IPunObservable
             deactivatePowerUp();
         }
     }
-
+    public void FirstPlacePlayer()
+    {
+        Anim.SetBool("First", true);
+    }
+    public void SecondPlacePlayer()
+    {
+        Anim.SetBool("Second", true);
+    }
+    public void ThirdPlacePlayer()
+    {
+        Anim.SetBool("Third", true);
+    }
+    public void FourthPlacePlayer()
+    {
+        Anim.SetBool("Fourth", true);
+    }
     public void OnPhotonSerializeView(PhotonStream stream, PhotonMessageInfo info)
     {
 
