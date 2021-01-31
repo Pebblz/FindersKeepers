@@ -146,31 +146,16 @@ public class Player : MonoBehaviourPunCallbacks, IPunObservable
         {
             //data that gets sent to other players
             //stream.SendNext(isFiring);
-            //stream.SendNext(score);
+            stream.SendNext(score);
 
         }
         else
         {
             //data recieved from other players
             //this.isFiring = (bool)stream.ReceiveNext();
-            //this.score = (int)stream.ReceiveNext();
+            this.score = (int)stream.ReceiveNext();
 
 
-        }
-    }
-    
-
-    [PunRPC]
-    void incrementScore(string Name)
-    {
-        Debug.Log("triggered");
-        Player[] players = FindObjectsOfType<Player>();
-        foreach(Player player in players)
-        {
-            if (player.gameObject.name == Name)
-            {
-                player.score++;
-            }
         }
     }
 }
