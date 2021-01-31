@@ -33,8 +33,6 @@ public class DropOffZoneScript : MonoBehaviourPunCallbacks
                         c.GetComponent<Player>().score += 1;
                         //destroy the pickuped obj
                         deleteObjectInDropoffEvent(c.GetComponent<PhotonView>().ViewID);
-                        //and set his holding obj to false
-                        c.GetComponent<PlayerPickUp>().isHoldingOBJ = false;
                     }
                 }
             }
