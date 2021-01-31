@@ -12,7 +12,6 @@ public class RoomRandomizer : MonoBehaviour/*, IOnEventCallback*/
     // arrays of spawnpoints and rooms respectively 
     public List<GameObject> roomSpawnpoints;
     public List<GameObject> rooms;
-    GameObject temp;
     //  private HashSet<int> roomIdxSpawned;
     [SerializeField] TodoList todolist;
 
@@ -38,9 +37,9 @@ public class RoomRandomizer : MonoBehaviour/*, IOnEventCallback*/
         // go through the spawnpoint array
         for (int i = 0; i < rooms.Count; i++)
         {
-            temp = PhotonNetwork.Instantiate(rooms[i].name, roomSpawnpoints[i].transform.position, roomSpawnpoints[i].transform.rotation);
-            PrefabUtility.UnpackPrefabInstance(temp.gameObject,PrefabUnpackMode.Completely,InteractionMode.AutomatedAction);
-            temp.transform.DetachChildren();
+            PhotonNetwork.Instantiate(rooms[i].name, roomSpawnpoints[i].transform.position, roomSpawnpoints[i].transform.rotation);
+            //PrefabUtility.UnpackPrefabInstance(temp.gameObject,PrefabUnpackMode.Completely,InteractionMode.AutomatedAction);
+            //temp.transform.DetachChildren();
         }
 
         if(todolist != null)
