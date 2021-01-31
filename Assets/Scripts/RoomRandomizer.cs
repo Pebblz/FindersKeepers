@@ -12,11 +12,7 @@ public class RoomRandomizer : MonoBehaviour/*, IOnEventCallback*/
     public List<GameObject> roomSpawnpoints;
     public List<GameObject> rooms;
 
-    // spawnpoint and room duh
-    public GameObject spawnpoint;
-    public GameObject room;
-
-    private HashSet<int> numbersInThing;
+    private HashSet<int> roomIdxSpawned;
 
     
 
@@ -24,65 +20,35 @@ public class RoomRandomizer : MonoBehaviour/*, IOnEventCallback*/
     void Awake()
     {
         roomSpawnpoints = Resources.LoadAll<GameObject>("RoomSpawnLocations").ToList();
-        rooms = Resources.LoadAll<GameObject>("Rooms").ToList();
-        //// finding the game objects with the right tags
-        //roomSpawn.points = GameObject.FindGameObjectsWithTag("RoomSpawn");
-        //rooms = GameObject.FindGameObjectsWithTag("Room");
+        //rooms = Resources.LoadAll<GameObject>("Rooms").ToList();
+        //rooms = new List<GameObject>();
+        // rooms.Add(Resources.Load>("Rooms/"));
 
-        numbersInThing = new HashSet<int>();
-        spawnRooms();
+        roomIdxSpawned = new HashSet<int>();
+        RandomizeRoom();
     }
 
-    //void RandomizeRoom()
-    //{
-    //    // go through the spawnpoint array
-    //    for(int i = 0; i < roomSpawnpoints.Count - 1; i++)
-    //    {
-    //        int index = Random.Range(0, 11);
-
-    //        while (numbersInThing.Contains(index))
-    //        {
-    //            index = Random.Range(0, 11);
-    //        }
-
-    //        numbersInThing.Add(index);
-
-    //        spawnpoint = roomSpawnpoints[i];
-    //        //pick a random room and place it at the spawnpoints location and rotation (rotation might be a little funky)
-    //        room = rooms[index];
-    //        room.transform.position = spawnpoint.transform.position;
-    //        room.transform.rotation = spawnpoint.transform.rotation;
-    //    }
-
-    //}
-
-    void spawnRooms()
+    void RandomizeRoom()
     {
-        for(int i = 0; i < rooms.Count; i++)
+        // go through the spawnpoint array
+        for (int i = 0; i < roomSpawnpoints.Count - 1; i++)
         {
-            int rng = Random.Range(0, roomSpawnpoints.Count);
+            int index = Random.Range(0, rooms.Count);
 
-            PhotonNetwork.Instantiate(rooms[i].name, roomSpawnpoints[rng].transform.position, roomSpawnpoints[rng].transform.rotation);                
+            while (roomIdxSpawned.Contains(index))
+            {
+                index = Random.Range(0, rooms.Count);
+            }
+
+            roomIdxSpawned.Add(index);
+            string name = rooms[index].name;
+            Vector3 pos = roomSpawnpoints[index].transform.position;
+            Quaternion rot = roomSpawnpoints[index].transform.rotation;
+
+            PhotonNetwork.Instantiate(name, pos, rot);
+
         }
-    }
 
-    private void OnTriggerStay(Collider col)
-    {
-        if (col.gameObject.tag == "Room")
-        {
-            // if the room collides with another room, re randomie
-          // RandomizeRoom();
-        }
     }
-
-    //public void OnEvent(EventData photonEvent)
-    //{
-    //    byte eventCode = photonEvent.Code;
-    //    Debug.Log("kokmongus");
-    //    if (eventCode == NetworkCodes.RandomRoomEventCode)
-    //    {
-    //        RandomizeRoom();
-            
-    //    }
-    //}
+   
 }

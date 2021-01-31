@@ -1,30 +1,20 @@
 fileFormatVersion: 2
-guid: c38997787f7758b41ba1955298957249
+guid: 78afc9f1c1f1f3d44b9901c169bd80b5
 ModelImporter:
   serializedVersion: 23
   fileIDToRecycleName:
     100000: //RootNode
-    100002: pCube26
-    100004: pCube27
-    100006: pCube28
-    100008: transform76
-    100010: transform77
     400000: //RootNode
-    400002: pCube26
-    400004: pCube27
-    400006: pCube28
-    400008: transform76
-    400010: transform77
-    2100000: lambert1
-    2300000: pCube28
-    3300000: pCube28
-    4300000: pCube28
+    2100000: ceiling_light
+    2300000: //RootNode
+    3300000: //RootNode
+    4300000: pCube29
   externalObjects: {}
   materials:
     importMaterials: 1
     materialName: 0
     materialSearch: 1
-    materialLocation: 0
+    materialLocation: 1
   animations:
     legacyGenerateAnimations: 4
     bakeSimulation: 0
