@@ -1808,7 +1808,7 @@ MonoBehaviour:
   isHoldingOBJ: 0
   isPickingUpOBJ: 0
   ThrowForce: 10
-  PickUpSound: {fileID: 0}
+  PickUpSound: {fileID: 8300000, guid: 454563ed0f0b6554bbdca4c6225028af, type: 3}
 --- !u!114 &3029920177628803415
 MonoBehaviour:
   m_ObjectHideFlags: 0
