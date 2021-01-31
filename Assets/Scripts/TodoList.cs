@@ -41,10 +41,10 @@ public class TodoList : MonoBehaviour
 
         //get list of pickupables in game
         List<PickUpAbles> pickUpAbleList = new List<PickUpAbles>(Object.FindObjectsOfType<PickUpAbles>());
-
+        Debug.Log("Pickupables found" + pickUpAbleList.Count);
         
         int objectsPerPerson = pickUpAbleList.Count / playerCount;
-
+        Debug.Log("Objects per person " + objectsPerPerson);
         //fill list randomly
         int place = 0;
         while (list.Count < objectsPerPerson)
