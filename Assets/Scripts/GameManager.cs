@@ -264,7 +264,16 @@ public class GameManager : MonoBehaviourPunCallbacks
     /// <returns></returns>
     public int setTime()
     {//for timer reseting
-        return (int)gameState * 30;
+        switch (gameState)
+        {
+            case GameState.The_Run:
+                return 20;
+                break;
+            case GameState.The_Game:
+                return 120;
+                break;
+        }
+        return 1;
     }
 
     /// <summary>
