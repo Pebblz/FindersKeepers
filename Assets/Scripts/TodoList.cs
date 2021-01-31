@@ -94,6 +94,11 @@ public class TodoList : MonoBehaviour
         PickUpAbles newObject = left[nextObject];
         Debug.Log(newObject.gameObject.name);
         img.sprite = newObject.image;
+
+        //added to coordinate with pick up spawner
+        left[nextObject].tag = "PointsPickUp"; //sets tag
+        left[nextObject].IsThisOBJForPoints = true; //set true for points
+        FindObjectOfType<PickUpableSpawner>().FindOBJ();
     }
 
     //Call this function when a pickupable is picked up
@@ -123,6 +128,7 @@ public class TodoList : MonoBehaviour
                 }
             }
             list[obj] = true;
+
         }
     }
 }
