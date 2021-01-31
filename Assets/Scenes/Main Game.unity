@@ -892,7 +892,7 @@ PrefabInstance:
         type: 3}
       propertyPath: rooms.Array.data[0]
       value: 
-      objectReference: {fileID: 5835730053495897970, guid: d144893ea2c7f0c4ca39458c8f92a89f,
+      objectReference: {fileID: 3588212536366339312, guid: 74fcfb0fc821f1a4eae87ecfd52e6f1d,
         type: 3}
     - target: {fileID: 5227203648487104175, guid: 3b0593e8474656c408721ca7689c87a8,
         type: 3}
@@ -904,7 +904,7 @@ PrefabInstance:
         type: 3}
       propertyPath: rooms.Array.data[2]
       value: 
-      objectReference: {fileID: 3588212536366339312, guid: 74fcfb0fc821f1a4eae87ecfd52e6f1d,
+      objectReference: {fileID: 5835730053495897970, guid: d144893ea2c7f0c4ca39458c8f92a89f,
         type: 3}
     - target: {fileID: 5227203648487104175, guid: 3b0593e8474656c408721ca7689c87a8,
         type: 3}
@@ -958,68 +958,57 @@ PrefabInstance:
         type: 3}
       propertyPath: roomSpawnpoints.Array.data[0]
       value: 
-      objectReference: {fileID: 2513016418334689745, guid: 7f4b532d80abb774fbe7ebe3bfb6b5b9,
-        type: 3}
+      objectReference: {fileID: 0}
     - target: {fileID: 5227203648487104175, guid: 3b0593e8474656c408721ca7689c87a8,
         type: 3}
       propertyPath: roomSpawnpoints.Array.data[1]
       value: 
-      objectReference: {fileID: 4253976215839452272, guid: 7be5fec4b87a43945ba3ea5e7b502621,
-        type: 3}
+      objectReference: {fileID: 0}
     - target: {fileID: 5227203648487104175, guid: 3b0593e8474656c408721ca7689c87a8,
         type: 3}
       propertyPath: roomSpawnpoints.Array.data[2]
       value: 
-      objectReference: {fileID: 199421651266573637, guid: bde2efef5b3531945a816b98a1a2037e,
-        type: 3}
+      objectReference: {fileID: 0}
     - target: {fileID: 5227203648487104175, guid: 3b0593e8474656c408721ca7689c87a8,
         type: 3}
       propertyPath: roomSpawnpoints.Array.data[3]
       value: 
-      objectReference: {fileID: 4420429701685969389, guid: 5eeec33319dbcc84f929aaefac6417ba,
-        type: 3}
+      objectReference: {fileID: 0}
     - target: {fileID: 5227203648487104175, guid: 3b0593e8474656c408721ca7689c87a8,
         type: 3}
       propertyPath: roomSpawnpoints.Array.data[4]
       value: 
-      objectReference: {fileID: 1016790688922228579, guid: 958f120b9641dcd43a1e56d38fe78952,
-        type: 3}
+      objectReference: {fileID: 0}
     - target: {fileID: 5227203648487104175, guid: 3b0593e8474656c408721ca7689c87a8,
         type: 3}
       propertyPath: roomSpawnpoints.Array.data[5]
       value: 
-      objectReference: {fileID: 324857691344127098, guid: 6ed0786a75080d44f9775f8f890489b7,
-        type: 3}
+      objectReference: {fileID: 0}
     - target: {fileID: 5227203648487104175, guid: 3b0593e8474656c408721ca7689c87a8,
         type: 3}
       propertyPath: roomSpawnpoints.Array.data[6]
       value: 
-      objectReference: {fileID: 3668075411464147363, guid: 3f1f6cadb1a39de4c89f3d7addce5f94,
-        type: 3}
+      objectReference: {fileID: 0}
     - target: {fileID: 5227203648487104175, guid: 3b0593e8474656c408721ca7689c87a8,
         type: 3}
       propertyPath: roomSpawnpoints.Array.data[7]
       value: 
-      objectReference: {fileID: 604147851750038332, guid: 297e3bc56fb69144dafefa9e077182a1,
-        type: 3}
+      objectReference: {fileID: 0}
     - target: {fileID: 5227203648487104175, guid: 3b0593e8474656c408721ca7689c87a8,
         type: 3}
       propertyPath: roomSpawnpoints.Array.data[8]
       value: 
-      objectReference: {fileID: 2320786545076608677, guid: b8494477436569649bfc1317df05e283,
-        type: 3}
+      objectReference: {fileID: 0}
     - target: {fileID: 5227203648487104175, guid: 3b0593e8474656c408721ca7689c87a8,
         type: 3}
       propertyPath: roomSpawnpoints.Array.data[9]
       value: 
-      objectReference: {fileID: 7599864227191031180, guid: 3e4f252b3775764439a61ff3427444df,
-        type: 3}
+      objectReference: {fileID: 0}
     - target: {fileID: 5227203648487104175, guid: 3b0593e8474656c408721ca7689c87a8,
         type: 3}
       propertyPath: roomSpawnpoints.Array.data[10]
       value: 
-      objectReference: {fileID: 317342733351565455, guid: de8fb67f36dbc6a448f96f549685679e,
-        type: 3}
+      objectReference: {fileID: 0}
     - target: {fileID: 5275669910214295779, guid: 3b0593e8474656c408721ca7689c87a8,
         type: 3}
       propertyPath: m_Name
