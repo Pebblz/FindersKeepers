@@ -10,6 +10,11 @@ public class PlayerTaser : MonoBehaviourPunCallbacks
     GameObject taserOBJ;
 
     int TasersLeft = 2;
+    Animator Anim;
+    void Awake()
+    {
+        Anim = GetComponent<Animator>();
+    }
 
     void Update()
     {
@@ -17,8 +22,16 @@ public class PlayerTaser : MonoBehaviourPunCallbacks
         {
             if (Input.GetKeyDown(KeyCode.E) && TasersLeft > 0)
             {
-                GetComponent<Player>().isFiring = true;
-                shootTaser();
+                if (GetComponent<PlayerPickUp>().isHoldingOBJ == false)
+                {
+                    GetComponent<Player>().isFiring = true;
+                    shootTaser();
+                    Anim.SetBool("IsShooting",true);
+                }
+            }
+            if(Anim.GetCurrentAnimatorStateInfo(0).IsName("Shooting"))
+            {
+                Anim.SetBool("IsShooting", false);
             }
         }
     }

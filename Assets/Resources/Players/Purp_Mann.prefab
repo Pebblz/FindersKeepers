@@ -1709,6 +1709,9 @@ MonoBehaviour:
   - Type: 4
     SynchronizeType: 1
     Name: IsStunned
+  - Type: 4
+    SynchronizeType: 1
+    Name: IsShooting
   m_SynchronizeLayers:
   - SynchronizeType: 1
     LayerIndex: 0
