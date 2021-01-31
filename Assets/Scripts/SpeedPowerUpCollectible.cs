@@ -14,10 +14,10 @@ public class SpeedPowerUpCollectible : MonoBehaviourPunCallbacks, IPunObservable
 
     public void Awake()
     {
-            powerUp = new SpeedPowerUp();
-            //gameObject.tag = "PowerUpCollectible";
-            SpeedPowerUpCollectible.Instance = gameObject;
-            pc = GameObject.Find("powerUpSpawner").GetComponent<PowerUpSpawner>();
+        powerUp = new SpeedPowerUp();
+        //gameObject.tag = "PowerUpCollectible";
+        SpeedPowerUpCollectible.Instance = gameObject;
+        pc = GameObject.Find("powerUpSpawner").GetComponent<PowerUpSpawner>();
     }
 
     public void Update()
@@ -42,7 +42,7 @@ public class SpeedPowerUpCollectible : MonoBehaviourPunCallbacks, IPunObservable
 
         //    }
         //}
-        
+
     }
     public void OnCollisionEnter(Collision collision)
     {
@@ -57,25 +57,29 @@ public class SpeedPowerUpCollectible : MonoBehaviourPunCallbacks, IPunObservable
 
             collided = true;
 
-            //if (photonView.IsMine)
-            //{
-            //    pc.removeFromList();
-            //    //photonView.RPC("DestroyGlobally", RpcTarget.All);
+            if (photonView.IsMine)
+            {
+                //    pc.removeFromList();
+                //    //photonView.RPC("DestroyGlobally", RpcTarget.All);
 
-            //    DestroyGlobally();
-            //}
-            //else
-            //{
-            //    photonView.TransferOwnership(PhotonNetwork.MasterClient);
-            //    PhotonNetwork.Destroy(this.gameObject);
-            //}
-            //// }
-            // else
-            // {
-            //     //GetComponent<PhotonView>().RPC("DestroyGlobally", RpcTarget.All);
-            // /}
+                //    DestroyGlobally();
+                //}
+                //else
+                //{
+                //    photonView.TransferOwnership(PhotonNetwork.MasterClient);
+                //    PhotonNetwork.Destroy(this.gameObject);
+                //}
+                //// }
+                // else
+                // {
+                
+            }
+            if(collided)
+            {
+                DestroyGlobally();
+            }
             // // collided = true;
-        }        
+        }
     }
 
     [PunRPC]
