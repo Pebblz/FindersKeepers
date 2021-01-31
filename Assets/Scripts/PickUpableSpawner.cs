@@ -21,10 +21,10 @@ public class PickUpableSpawner : MonoBehaviourPunCallbacks
     {
         //this is here so when we randomize the rooms we can just have the 
         //empty gameobjects for where they will go in the room prefab
-        if (PhotonNetwork.MasterClient == PhotonNetwork.LocalPlayer)
-        {
-            SpawnOBJ();
-        }
+        //if (PhotonNetwork.MasterClient == PhotonNetwork.LocalPlayer)
+        //{
+          // SpawnOBJ();
+        //}
     }
 
     [PunRPC]
@@ -41,7 +41,7 @@ public class PickUpableSpawner : MonoBehaviourPunCallbacks
             }
         }
     }
-    [PunRPC]
+    //[PunRPC]
     public void FindOBJ()
     {
         CurrentlySpawnedOBJ = GameObject.FindGameObjectsWithTag("PointsPickUp");
