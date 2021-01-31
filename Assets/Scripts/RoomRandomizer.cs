@@ -12,7 +12,7 @@ public class RoomRandomizer : MonoBehaviour/*, IOnEventCallback*/
     // arrays of spawnpoints and rooms respectively 
     public List<GameObject> roomSpawnpoints;
     public List<GameObject> rooms;
-    GameObject temp
+    GameObject temp;
     //  private HashSet<int> roomIdxSpawned;
     [SerializeField] TodoList todolist;
 
