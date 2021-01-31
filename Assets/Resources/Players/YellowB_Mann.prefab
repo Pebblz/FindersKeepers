@@ -377,6 +377,9 @@ MonoBehaviour:
   - Type: 4
     SynchronizeType: 1
     Name: IsShooting
+  - Type: 4
+    SynchronizeType: 1
+    Name: IsThrowing
   m_SynchronizeLayers:
   - SynchronizeType: 1
     LayerIndex: 0
@@ -1836,7 +1839,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1796328567729566373}
-  m_LocalRotation: {x: 0.030750884, y: 0.6577071, z: -0.02688913, w: 0.75216544}
+  m_LocalRotation: {x: -0.002883797, y: 0.9956062, z: -0.087680034, w: -0.0327455}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -2116,7 +2119,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7466066670332019050}
-  m_LocalRotation: {x: 0.09796505, y: 0.6526589, z: -0.08566241, w: 0.7463922}
+  m_LocalRotation: {x: -0.005803752, y: 0.98375887, z: -0.1764597, w: -0.032355793}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
