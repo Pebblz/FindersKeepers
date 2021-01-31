@@ -37,7 +37,6 @@ public class PlayerPickUp : MonoBehaviourPunCallbacks, IPunObservable, IOnEventC
         Anim = GetComponent<Animator>();
         Sound = GetComponent<AudioSource>();
         rb = GetComponent<Rigidbody>();
-
     }
 
 
@@ -55,14 +54,14 @@ public class PlayerPickUp : MonoBehaviourPunCallbacks, IPunObservable, IOnEventC
                 if (PickUp == null)
                 {
                     isPickingUpOBJ = true;
-                    Sound.PlayOneShot(PickUpSound); //play pickup sound
+                
                 }
                 else
                 {
                     DropOBJ();
                     PickUp = null;
                     isHoldingOBJ = false;
-                    Sound.PlayOneShot(PickUpSound); //play pickup sound
+                    PlayerPickUpSound();
                 }
                 pickUpTimer = 1;
             }
@@ -90,6 +89,13 @@ public class PlayerPickUp : MonoBehaviourPunCallbacks, IPunObservable, IOnEventC
             }
         }
     }
+
+
+    public void PlayerPickUpSound()
+    {
+        Sound.PlayOneShot(PickUpSound); //play pickup sound
+    }
+
     //you'll never guess what this func does 
     //no you really won't based off this name
     public void DestroyPickUp()
