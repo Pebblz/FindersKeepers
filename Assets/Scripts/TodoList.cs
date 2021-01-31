@@ -74,10 +74,15 @@ public class TodoList : MonoBehaviour
 
         Debug.Log("Here");
 
-        foreach(Image image in images)
-        {
-            FillImage(image);
-        }
+        FillImage(images[0]);
+        Debug.Log("2");
+        FillImage(images[1]);
+        Debug.Log("3");
+        FillImage(images[2]);
+        //foreach(Image image in images)
+        //{
+        //    FillImage(image);
+        //}
     }
 
     void FillImage(Image img)
