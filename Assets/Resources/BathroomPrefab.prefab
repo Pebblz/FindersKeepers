@@ -392,7 +392,7 @@ MonoBehaviour:
   pv: {fileID: 0}
   useGravity: 0
   IsThisOBJForPoints: 0
-  hasGravity: 1
+  hasGravity: 0
 --- !u!114 &7706641340111534697
 MonoBehaviour:
   m_ObjectHideFlags: 0
