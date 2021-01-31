@@ -8,6 +8,8 @@ TagManager:
   - StartButton
   - RoomSpawn
   - PickUpSpawner
+  - Room
+  - LocationForPickUp
   layers:
   - Default
   - TransparentFX

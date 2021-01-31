@@ -435,6 +435,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Drop Off Point
       objectReference: {fileID: 0}
+    - target: {fileID: 4685019653898249704, guid: ea95fddb9df86f14b8c7c9f44f6a972e,
+        type: 3}
+      propertyPath: m_TagString
+      value: LocationForPickUp
+      objectReference: {fileID: 0}
     - target: {fileID: 4685019653898249709, guid: ea95fddb9df86f14b8c7c9f44f6a972e,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -1024,7 +1029,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 3
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 50, y: -30, z: 0}
 --- !u!1 &1251259029
 GameObject:
