@@ -127,15 +127,19 @@ public class TodoList : MonoBehaviour
     {
         if (list.ContainsKey(obj))
         {
-            foreach(Image image in images)
-            {
-                if(image.sprite == obj.image)
+            
+            if(image.sprite == obj.image)
                 {
                     FillImage(image);
                 }
+            else if(image2.sprite == obj.image)
+            {
+                FillImage(image2);
+            } else if(image3.sprite == obj.image)
+            {
+                FillImage(image3);
             }
             list[obj] = true;
-
         }
     }
 }
