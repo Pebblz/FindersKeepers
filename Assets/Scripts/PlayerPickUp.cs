@@ -79,11 +79,14 @@ public class PlayerPickUp : MonoBehaviourPunCallbacks, IPunObservable, IOnEventC
         }
     }
     //you'll never guess what this func does 
+    //no you really won't based off this name
     public void DestroyPickUp()
     {
         if (PickUp != null)
         {
-            Destroy(PickUp.gameObject);
+            PickUp.GetComponent<Rigidbody>().useGravity = false;
+            PickUp.GetComponent<BoxCollider>().enabled = false;
+            PickUp.transform.position = new Vector3(0, -40, 0);
         }
     }
     public void ThrowOBJ(int Force)
@@ -155,11 +158,7 @@ public class PlayerPickUp : MonoBehaviourPunCallbacks, IPunObservable, IOnEventC
         } else if (eventCode == NetworkCodes.DeleteObjectInDropoffCode)
         {
             
-            object o = photonEvent.CustomData;
-            Debug.Log("Custom Data: " + o);
-            int id = (int)((object[])o)[0];
-            PhotonView toDestroy = PhotonView.Find(id);
-            Destroy(toDestroy.gameObject);
+         
         }
 
        
