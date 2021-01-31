@@ -24,27 +24,25 @@ public class SpeedPowerUpCollectible : MonoBehaviourPunCallbacks, IPunObservable
     {
         if (photonView.IsMine)
         {
-            if (PhotonNetwork.IsMasterClient)
+            if (collided)
             {
-                if (collided)
-                {
-                    pc.removeFromList();
-                    //photonView.RPC("DestroyGlobally", RpcTarget.All);
+                pc.removeFromList();
+                photonView.RPC("DestroyGlobally", RpcTarget.All);
 
-                    DestroyGlobally();
-                }
-            }
-            else if(!PhotonNetwork.IsMasterClient)
-            {
-                if (collided)
-                {
-                    PhotonNetwork.SetMasterClient(PhotonNetwork.LocalPlayer);
-                    PhotonNetwork.Destroy(this.gameObject);
-                    //photonView.RPC("DestroyGlobally", RpcTarget.All);
-
-                }
+                //DestroyGlobally();
             }
         }
+        //else if (!PhotonNetwork.IsMasterClient)
+        //{
+        //    if (collided)
+        //    {
+        //        PhotonNetwork.SetMasterClient(PhotonNetwork.LocalPlayer);
+        //        PhotonNetwork.Destroy(this.gameObject);
+        //        //photonView.RPC("DestroyGlobally", RpcTarget.All);
+
+        //    }
+        //}
+        
     }
     public void OnCollisionEnter(Collision collision)
     {
@@ -84,6 +82,10 @@ public class SpeedPowerUpCollectible : MonoBehaviourPunCallbacks, IPunObservable
 
     public void DestroyGlobally()
     {
+        if(!PhotonNetwork.IsMasterClient)
+        {
+          photonView.TransferOwnership(PhotonNetwork.LocalPlayer);
+        }
         PhotonNetwork.Destroy(this.gameObject);
     }
 
