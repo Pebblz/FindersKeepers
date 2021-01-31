@@ -160,11 +160,13 @@ MonoBehaviour:
   ObservedComponentsFoldoutOpen: 1
   Group: 0
   prefixField: -1
-  observableSearch: 0
+  observableSearch: 2
   Synchronization: 1
   OwnershipTransfer: 1
   ObservedComponents:
-  - {fileID: 0}
+  - {fileID: 3791953997924415586}
+  - {fileID: 3791953997924415612}
+  - {fileID: 3791953997924415613}
   viewIdField: 0
   InstantiationId: 0
   isRuntimeInstantiated: 0
