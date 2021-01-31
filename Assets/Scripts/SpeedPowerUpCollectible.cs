@@ -14,10 +14,10 @@ public class SpeedPowerUpCollectible : MonoBehaviourPunCallbacks, IPunObservable
 
     public void Awake()
     {
-        powerUp = new SpeedPowerUp();
-        //gameObject.tag = "PowerUpCollectible";
-        SpeedPowerUpCollectible.Instance = gameObject;
-        pc = GameObject.Find("powerUpSpawner").GetComponent<PowerUpSpawner>();
+            powerUp = new SpeedPowerUp();
+            //gameObject.tag = "PowerUpCollectible";
+            SpeedPowerUpCollectible.Instance = gameObject;
+            pc = GameObject.Find("powerUpSpawner").GetComponent<PowerUpSpawner>();
     }
 
     public void Update()
@@ -42,7 +42,7 @@ public class SpeedPowerUpCollectible : MonoBehaviourPunCallbacks, IPunObservable
 
         //    }
         //}
-
+        
     }
     public void OnCollisionEnter(Collision collision)
     {
@@ -57,49 +57,36 @@ public class SpeedPowerUpCollectible : MonoBehaviourPunCallbacks, IPunObservable
 
             collided = true;
 
-            if (photonView.IsMine)
-            {
-                //    pc.removeFromList();
-                //    //photonView.RPC("DestroyGlobally", RpcTarget.All);
+            //if (photonView.IsMine)
+            //{
+            //    pc.removeFromList();
+            //    //photonView.RPC("DestroyGlobally", RpcTarget.All);
 
-                //    DestroyGlobally();
-                //}
-                //else
-                //{
-                //    photonView.TransferOwnership(PhotonNetwork.MasterClient);
-                //    PhotonNetwork.Destroy(this.gameObject);
-                //}
-                //// }
-                // else
-                // {
-                
-            }
-            if(collided)
-            {
-               pc.GetComponent<PowerUpSpawner>().DestroyGlobally();
-            }
+            //    DestroyGlobally();
+            //}
+            //else
+            //{
+            //    photonView.TransferOwnership(PhotonNetwork.MasterClient);
+            //    PhotonNetwork.Destroy(this.gameObject);
+            //}
+            //// }
+            // else
+            // {
+            //     //GetComponent<PhotonView>().RPC("DestroyGlobally", RpcTarget.All);
+            // /}
             // // collided = true;
-        }
+        }        
     }
 
     [PunRPC]
 
     public void DestroyGlobally()
     {
-        //if(!PhotonNetwork.IsMasterClient)
-        //{
-        //  photonView.TransferOwnership(PhotonNetwork.LocalPlayer);
-        //}
-        //PhotonNetwork.Destroy(this.gameObject);
-        if (GetComponent<PhotonView>().Owner == PhotonNetwork.LocalPlayer)
+        if(!PhotonNetwork.IsMasterClient)
         {
-            PhotonNetwork.Destroy(gameObject);
+          photonView.TransferOwnership(PhotonNetwork.LocalPlayer);
         }
-        else
-        {
-            GetComponent<PhotonView>().TransferOwnership(PhotonNetwork.LocalPlayer);
-            PhotonNetwork.Destroy(gameObject);
-        }
+        PhotonNetwork.Destroy(this.gameObject);
     }
 
     public void OnPhotonSerializeView(PhotonStream stream, PhotonMessageInfo info)
