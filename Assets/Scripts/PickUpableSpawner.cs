@@ -4,7 +4,7 @@ using UnityEngine;
 using Photon.Pun;
 using Photon.Realtime;
 using ExitGames.Client.Photon;
-public class PickUpableSpawner : MonoBehaviourPunCallbacks
+public class PickUpableSpawner : MonoBehaviourPunCallbacks, IPunObservable
 {
     //this script is only for pickupables that are for points 
     [SerializeField]
@@ -14,13 +14,19 @@ public class PickUpableSpawner : MonoBehaviourPunCallbacks
     GameObject[] PickablesSpawnLocation = new GameObject[99];
 
     GameObject[] CurrentlySpawnedOBJ = new GameObject[99];
+
+    bool onlyOnce;
     // Start is called before the first frame update
     void Awake()
     {
         //this is here so when we randomize the rooms we can just have the 
         //empty gameobjects for where they will go in the room prefab
         //PickablesToSpawn = GameObject.FindGameObjectsWithTag("LocationForPickUp");
-        SpawnOBJ();
+        if (onlyOnce == false)
+        {
+            SpawnOBJ();
+            onlyOnce = true;
+        }
 
     }
 
@@ -74,5 +80,25 @@ public class PickUpableSpawner : MonoBehaviourPunCallbacks
             }
         }
     }
+    public void OnPhotonSerializeView(PhotonStream stream, PhotonMessageInfo info)
+    {
 
+        if (stream.IsWriting)
+        {
+            //data that gets sent to other players
+            stream.SendNext(onlyOnce);
+            //stream.SendNext(PlayerThatPickUpOBJ);
+
+
+        }
+        else
+        {
+            //data recieved from other players
+            onlyOnce = (bool)stream.ReceiveNext();
+            //PlayerThatPickUpOBJ.transform.position = (Vector3)stream.ReceiveNext();
+
+
+        }
+
+    }
 }
