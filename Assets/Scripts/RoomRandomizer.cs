@@ -20,7 +20,7 @@ public class RoomRandomizer : MonoBehaviour, IOnEventCallback
     
 
     // Start is called before the first frame update
-    void Start()
+    void Awake()
     {
         // finding the game objects with the right tags
         roomSpawnpoints = GameObject.FindGameObjectsWithTag("RoomSpawn");

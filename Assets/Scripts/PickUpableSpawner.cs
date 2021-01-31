@@ -20,7 +20,13 @@ public class PickUpableSpawner : MonoBehaviourPunCallbacks
         //empty gameobjects for where they will go in the room prefab
         PickablesToSpawn = GameObject.FindGameObjectsWithTag("LocationForPickUp");
         SpawnOBJ();
+        if(photonView.Owner == PhotonNetwork.LocalPlayer)
+        {
 
+        } else
+        {
+            
+        }
     }
 
     // Update is called once per frame
