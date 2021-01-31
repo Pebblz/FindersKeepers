@@ -724,6 +724,12 @@ MonoBehaviour:
   - Type: 4
     SynchronizeType: 1
     Name: IsCarry
+  - Type: 4
+    SynchronizeType: 1
+    Name: IsJumping
+  - Type: 4
+    SynchronizeType: 1
+    Name: IsStunned
   m_SynchronizeLayers:
   - SynchronizeType: 1
     LayerIndex: 0
