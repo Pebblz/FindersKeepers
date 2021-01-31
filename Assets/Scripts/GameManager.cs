@@ -32,8 +32,8 @@ public class GameManager : MonoBehaviourPunCallbacks
 
     [SerializeField] Transform[] RespawnPoints;
     [SerializeField] TodoList list;
-    [SerializeField]
-    private GameObject speedPowerPrefab;
+   // [SerializeField]
+    //private GameObject speedPowerPrefab;
 
     public static GameObject[] Randomize(IEnumerable<GameObject> source)
     {

@@ -12,43 +12,40 @@ public class RoomRandomizer : MonoBehaviour/*, IOnEventCallback*/
     public List<GameObject> roomSpawnpoints;
     public List<GameObject> rooms;
 
-    private HashSet<int> roomIdxSpawned;
+  //  private HashSet<int> roomIdxSpawned;
 
     
 
     // Start is called before the first frame update
-    void Awake()
+    void Start()
     {
-        roomSpawnpoints = Resources.LoadAll<GameObject>("RoomSpawnLocations").ToList();
         //rooms = Resources.LoadAll<GameObject>("Rooms").ToList();
         //rooms = new List<GameObject>();
         // rooms.Add(Resources.Load>("Rooms/"));
 
-        roomIdxSpawned = new HashSet<int>();
-        RandomizeRoom();
+        //roomIdxSpawned = new HashSet<int>();
+        SpawnRooms();
+        RandomizeRooms();
     }
 
-    void RandomizeRoom()
+    void SpawnRooms()
     {
         // go through the spawnpoint array
-        for (int i = 0; i < roomSpawnpoints.Count; i++)
+        for (int i = 0; i < rooms.Count; i++)
         {
-            int index = Random.Range(0, rooms.Count);
-
-            while (roomIdxSpawned.Contains(index))
-            {
-                index = Random.Range(0, rooms.Count);
-            }
-
-            roomIdxSpawned.Add(index);
-            string name = rooms[index].name;
-            Vector3 pos = roomSpawnpoints[index].transform.position;
-            Quaternion rot = roomSpawnpoints[index].transform.rotation;
-
-            PhotonNetwork.Instantiate(name, pos, rot);
-
+            PhotonNetwork.Instantiate(rooms[i].name, roomSpawnpoints[i].transform.position, roomSpawnpoints[i].transform.rotation);
         }
+    }
+    void RandomizeRooms()
+    {
+        for (int i = 0; i < rooms.Count; i++)
+        {
+            int rng = Random.Range(0, roomSpawnpoints.Count);
 
+            rooms[i].transform.position = roomSpawnpoints[rng].transform.position;
+            rooms[i].transform.rotation = roomSpawnpoints[rng].transform.rotation;
+            roomSpawnpoints.Remove(roomSpawnpoints[rng]);
+        }
     }
    
 }

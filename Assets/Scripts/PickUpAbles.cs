@@ -36,6 +36,7 @@ public class PickUpAbles : MonoBehaviourPunCallbacks, IPunObservable
             player = GameObject.FindGameObjectWithTag("Player");
         }
 
+        //added this because of a error when a player leaves and rejoins
         if (player != null)
         {
             if (Vector3.Distance(this.gameObject.transform.position, player.transform.position) < 3.5f)
