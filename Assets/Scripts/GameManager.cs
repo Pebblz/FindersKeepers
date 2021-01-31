@@ -56,7 +56,7 @@ public class GameManager : MonoBehaviourPunCallbacks
         Instance = this;
         if (OnlyOnePlayer)
         {
-            PhotonNetwork.Instantiate(playerPrefab.name, new Vector3(0f, 5f, 0f), Quaternion.identity);
+            PhotonNetwork.Instantiate(playerPrefab.name, new Vector3(0f, 1f, 0f), Quaternion.identity);
         }
         else if (Player.localInstance == null)
         {
@@ -67,7 +67,7 @@ public class GameManager : MonoBehaviourPunCallbacks
                 Debug.Log("Loading player skin: " + this.playerPrefabs[thatFuckingIdx].name);
 
 
-            PhotonNetwork.Instantiate("Players/" + this.playerPrefabs[thatFuckingIdx].name, new Vector3(0f, 5f, 0f), Quaternion.identity);
+            PhotonNetwork.Instantiate("Players/" + this.playerPrefabs[thatFuckingIdx].name, new Vector3(0f, 1f, 0f), Quaternion.identity);
 
             var props = new ExitGames.Client.Photon.Hashtable();
                 props.Add("skin", this.playerPrefabs[thatFuckingIdx].name);
