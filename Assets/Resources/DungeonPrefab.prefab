@@ -46,7 +46,7 @@ MonoBehaviour:
   prefixField: -1
   observableSearch: 2
   Synchronization: 1
-  OwnershipTransfer: 0
+  OwnershipTransfer: 1
   ObservedComponents:
   - {fileID: 2814218494633825453}
   - {fileID: 8431301475786397129}
@@ -320,7 +320,7 @@ MonoBehaviour:
   prefixField: -1
   observableSearch: 2
   Synchronization: 1
-  OwnershipTransfer: 0
+  OwnershipTransfer: 1
   ObservedComponents:
   - {fileID: 6630503946809069189}
   - {fileID: 7380227685786217560}
@@ -446,7 +446,7 @@ MonoBehaviour:
   prefixField: -1
   observableSearch: 2
   Synchronization: 1
-  OwnershipTransfer: 0
+  OwnershipTransfer: 1
   ObservedComponents:
   - {fileID: 4457741948291394223}
   - {fileID: 7999995311413893278}
@@ -552,7 +552,7 @@ MonoBehaviour:
   prefixField: -1
   observableSearch: 2
   Synchronization: 1
-  OwnershipTransfer: 0
+  OwnershipTransfer: 1
   ObservedComponents:
   - {fileID: 6003898290284813153}
   - {fileID: 7241338032123073572}
@@ -691,7 +691,7 @@ MonoBehaviour:
   prefixField: -1
   observableSearch: 2
   Synchronization: 1
-  OwnershipTransfer: 0
+  OwnershipTransfer: 1
   ObservedComponents:
   - {fileID: 1035115842448716666}
   - {fileID: 5750289535102373383}
@@ -761,7 +761,7 @@ MonoBehaviour:
   prefixField: -1
   observableSearch: 2
   Synchronization: 1
-  OwnershipTransfer: 0
+  OwnershipTransfer: 1
   ObservedComponents:
   - {fileID: 2407361075837029343}
   - {fileID: 4192606735507607935}
@@ -1334,6 +1334,11 @@ PrefabInstance:
       propertyPath: ObservedComponents.Array.data[2]
       value: 
       objectReference: {fileID: 5990746887741593107}
+    - target: {fileID: 2530924643095148383, guid: 335ba28a903df294a9777511edc7693d,
+        type: 3}
+      propertyPath: OwnershipTransfer
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 8450410951283893300, guid: 335ba28a903df294a9777511edc7693d,
         type: 3}
       propertyPath: image
@@ -1459,6 +1464,11 @@ PrefabInstance:
       propertyPath: ObservedComponents.Array.data[2]
       value: 
       objectReference: {fileID: 6376531937486830093}
+    - target: {fileID: 2530924643095148383, guid: 335ba28a903df294a9777511edc7693d,
+        type: 3}
+      propertyPath: OwnershipTransfer
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 8450410951283893300, guid: 335ba28a903df294a9777511edc7693d,
         type: 3}
       propertyPath: image
