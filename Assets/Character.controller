@@ -116,6 +116,9 @@ AnimatorStateTransition:
   - m_ConditionMode: 1
     m_ConditionEvent: IsCarry
     m_EventTreshold: 0
+  - m_ConditionMode: 2
+    m_ConditionEvent: IsStunned
+    m_EventTreshold: 0
   m_DstStateMachine: {fileID: 0}
   m_DstState: {fileID: 1102754863711370460}
   m_Solo: 0
@@ -387,6 +390,9 @@ AnimatorStateTransition:
   - m_ConditionMode: 1
     m_ConditionEvent: IsCarry
     m_EventTreshold: 0
+  - m_ConditionMode: 2
+    m_ConditionEvent: IsStunned
+    m_EventTreshold: 0
   m_DstStateMachine: {fileID: 0}
   m_DstState: {fileID: 1102012564076653368}
   m_Solo: 0
@@ -468,6 +474,9 @@ AnimatorStateTransition:
   - m_ConditionMode: 2
     m_ConditionEvent: IsCarry
     m_EventTreshold: 0
+  - m_ConditionMode: 2
+    m_ConditionEvent: IsStunned
+    m_EventTreshold: 0
   m_DstStateMachine: {fileID: 0}
   m_DstState: {fileID: 1102825278816420082}
   m_Solo: 0
@@ -495,6 +504,9 @@ AnimatorStateTransition:
     m_EventTreshold: 0
   - m_ConditionMode: 2
     m_ConditionEvent: IsCarry
+    m_EventTreshold: 0
+  - m_ConditionMode: 2
+    m_ConditionEvent: IsStunned
     m_EventTreshold: 0
   m_DstStateMachine: {fileID: 0}
   m_DstState: {fileID: 1102833057064793368}
@@ -579,6 +591,9 @@ AnimatorStateTransition:
     m_EventTreshold: 0
   - m_ConditionMode: 1
     m_ConditionEvent: IsCarry
+    m_EventTreshold: 0
+  - m_ConditionMode: 2
+    m_ConditionEvent: IsStunned
     m_EventTreshold: 0
   m_DstStateMachine: {fileID: 0}
   m_DstState: {fileID: 1102454832648789966}
@@ -691,6 +706,9 @@ AnimatorStateTransition:
     m_EventTreshold: 0
   - m_ConditionMode: 2
     m_ConditionEvent: IsCarry
+    m_EventTreshold: 0
+  - m_ConditionMode: 2
+    m_ConditionEvent: IsStunned
     m_EventTreshold: 0
   m_DstStateMachine: {fileID: 0}
   m_DstState: {fileID: 1102382145451210122}
@@ -1076,13 +1094,13 @@ AnimatorStateMachine:
     m_Position: {x: 900, y: 444, z: 0}
   - serializedVersion: 1
     m_State: {fileID: 1102382145451210122}
-    m_Position: {x: 444, y: 312, z: 0}
+    m_Position: {x: 384, y: 336, z: 0}
   - serializedVersion: 1
     m_State: {fileID: 1102454832648789966}
     m_Position: {x: 420, y: 564, z: 0}
   - serializedVersion: 1
     m_State: {fileID: 1102191492579750106}
-    m_Position: {x: 420, y: -276, z: 0}
+    m_Position: {x: 780, y: -348, z: 0}
   m_ChildStateMachines: []
   m_AnyStateTransitions:
   - {fileID: 1101267068194525138}

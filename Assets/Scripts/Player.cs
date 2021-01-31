@@ -84,7 +84,21 @@ public class Player : MonoBehaviourPunCallbacks, IPunObservable
         if (powerUpTimerActive)
         {
             updatePowerUp();
-        }        
+        }    
+        
+        if(GetComponent<PhotonView>().IsMine)
+        {
+            if(StunCounter > 0)
+            {
+                Anim.SetBool("IsStunned", true);
+                Anim.SetBool("IsJumping", false);
+                Anim.SetBool("IsCarry", false);
+                Anim.SetBool("IsRunning", false);
+            } else
+            {
+                Anim.SetBool("IsStunned", false);
+            }
+        }   
     }
 
     #endregion
@@ -94,10 +108,7 @@ public class Player : MonoBehaviourPunCallbacks, IPunObservable
 
     public void StunPlayer()
     {
-        Anim.SetBool("IsStunned", true);
-        Anim.SetBool("IsJumping", false);
-        Anim.SetBool("IsCarry", false);
-        Anim.SetBool("IsRunning", false);
+  
         StunCounter = 3;
     }
 
