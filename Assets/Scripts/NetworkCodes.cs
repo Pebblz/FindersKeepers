@@ -9,4 +9,5 @@ public static class NetworkCodes
     public const byte NetworkSceneChangedEventCode = 1;
     public const byte RandomRoomEventCode = 2;
     public const byte DeleteObjectInDropoffCode = 3;
+    public const byte ChangeToGameMusicEvent = 4;
 }

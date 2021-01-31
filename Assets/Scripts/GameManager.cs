@@ -199,7 +199,12 @@ public class GameManager : MonoBehaviourPunCallbacks
         PhotonNetwork.RaiseEvent(NetworkCodes.NetworkSceneChangedEventCode, content, options, SendOptions.SendReliable);
     }
 
-    
+    private void MusicChangeRaiseEvent()
+    {
+        object[] content = new object[] { };
+        RaiseEventOptions options = new RaiseEventOptions { Receivers = ReceiverGroup.All };
+        PhotonNetwork.RaiseEvent(NetworkCodes.ChangeToGameMusicEvent, content, options, SendOptions.SendReliable);
+    }
 
     private void RandomRoomEvent()
     {

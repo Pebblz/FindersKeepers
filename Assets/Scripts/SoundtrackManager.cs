@@ -1,11 +1,15 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Photon.Pun;
+using Photon.Realtime;
+using ExitGames.Client.Photon;
 
-public class SoundtrackManager : MonoBehaviour
+public class SoundtrackManager : MonoBehaviour, IOnEventCallback
 {
     [SerializeField] AudioSource soundtrack;
-    
+    [SerializeField] AudioSource GameTheme;
+
     public void switchAudioTracks()
     {
         if(soundtrack == null)
@@ -51,6 +55,15 @@ public class SoundtrackManager : MonoBehaviour
         if (other.gameObject.tag == "Player")
         {
             resumeOriginalTrack();
+        }
+    }
+
+    public void OnEvent(EventData photonEvent)
+    {
+        byte eventCode = photonEvent.Code;
+        if(eventCode == NetworkCodes.ChangeToGameMusicEvent)
+        {
+            this.GameTheme.Play();
         }
     }
 }

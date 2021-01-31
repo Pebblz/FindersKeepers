@@ -31,6 +31,14 @@ public class DropOffZoneScript : MonoBehaviourPunCallbacks
                     {
                         //then it'll encroment the score by 1 
                         c.GetComponent<Player>().score += 1;
+                        
+                        if(c.GetComponent<PlayerPickUp>().PickUp.GetComponent<SoundtrackManager>() != null)
+                        {
+                            c.GetComponent<PlayerPickUp>()
+                                .PickUp.
+                                    GetComponent<SoundtrackManager>().resumeOriginalTrack();
+                        }
+
                         //destroy the pickuped obj
                         deleteObjectInDropoffEvent(c.GetComponent<PhotonView>().ViewID);
                     }
