@@ -2,8 +2,9 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using Photon.Pun;
 
-public class TodoList : MonoBehaviour
+public class TodoList : MonoBehaviourPunCallbacks, IPunObservable
 {
     /*Flower Boxing again
      * Programmer Patrick Naatz
@@ -147,6 +148,16 @@ public class TodoList : MonoBehaviour
                 FillImage(image3);
             }
             list[obj] = true;
+        }
+    }
+
+    public void OnPhotonSerializeView(PhotonStream stream, PhotonMessageInfo info)
+    {
+        if (stream.IsWriting)
+        {
+        }
+        else
+        {
         }
     }
 }

@@ -108,13 +108,13 @@ public class PlayerPickUp : MonoBehaviourPunCallbacks, IPunObservable, IOnEventC
 
             if (photonView.IsMine)
             {
-                PickUp.transform.parent = null;
-                // PhotonNetwork.Destroy(PickUp);
-                Destroy(PickUp);
+                //PickUp.transform.parent = null;
+                 PhotonNetwork.Destroy(PickUp);
+                //Destroy(PickUp);
             }
             else
             {
-                PickUp.transform.parent = null;
+                //PickUp.transform.parent = null;
                 photonView.RPC("DestroyThing", RpcTarget.All);
             }
 

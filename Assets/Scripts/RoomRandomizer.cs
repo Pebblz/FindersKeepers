@@ -7,7 +7,7 @@ using Photon.Pun;
 using System.Linq;
 using UnityEditor;
 
-public class RoomRandomizer : MonoBehaviour/*, IOnEventCallback*/
+public class RoomRandomizer : MonoBehaviourPunCallbacks, IPunObservable
 {
     // arrays of spawnpoints and rooms respectively 
     public List<GameObject> roomSpawnpoints;
@@ -27,7 +27,7 @@ public class RoomRandomizer : MonoBehaviour/*, IOnEventCallback*/
         if (PhotonNetwork.IsMasterClient)
         {
             SpawnRooms();
-            RandomizeRooms();
+            //RandomizeRooms();
         }
     }
 
@@ -37,28 +37,55 @@ public class RoomRandomizer : MonoBehaviour/*, IOnEventCallback*/
         // go through the spawnpoint array
         for (int i = 0; i < rooms.Count; i++)
         {
-            PhotonNetwork.Instantiate(rooms[i].name, roomSpawnpoints[i].transform.position, roomSpawnpoints[i].transform.rotation);
-            //PrefabUtility.UnpackPrefabInstance(temp.gameObject,PrefabUnpackMode.Completely,InteractionMode.AutomatedAction);
-            //temp.transform.DetachChildren();
-        }
+            GameObject g = rooms[i];
 
-        if(todolist != null)
-        {
-            todolist.Active();
-        }
-    }
-    void RandomizeRooms()
-    {
-
-        for (int i = 0; i < rooms.Count; i++)
-        {
             int rng = Random.Range(0, roomSpawnpoints.Count);
 
-            rooms[i].transform.position = roomSpawnpoints[rng].transform.position;
-            rooms[i].transform.rotation = roomSpawnpoints[rng].transform.rotation;
+            g.transform.position = roomSpawnpoints[rng].transform.position;
+            g.transform.rotation = roomSpawnpoints[rng].transform.rotation;
             roomSpawnpoints.Remove(roomSpawnpoints[rng]);
+
+            string[] n = g.name.Split('(');
+            Debug.Log(n[0]);
+
+            g.name = n[0];
+
+            PhotonNetwork.Instantiate(g.name, g.transform.position, g.transform.rotation);
         }
 
+            //PhotonNetwork.Instantiate(g.name, g.transform.position, g.transform.rotation);
+
+            //PrefabUtility.UnpackPrefabInstance(temp.gameObject,PrefabUnpackMode.Completely,InteractionMode.AutomatedAction);
+            //temp.transform.DetachChildren();
+        
+
+        if(todolist != null)
+        {        
+                todolist.Active();           
+        }
     }
+
+    public void OnPhotonSerializeView(PhotonStream stream, PhotonMessageInfo info)
+    {
+        if (stream.IsWriting)
+        {
+        }
+        else
+        {
+        }
+    }
+    //void RandomizeRooms()
+    //{
+
+    //    for (int i = 0; i < rooms.Count; i++)
+    //    {
+    //        int rng = Random.Range(0, roomSpawnpoints.Count);
+
+    //        rooms[i].transform.position = roomSpawnpoints[rng].transform.position;
+    //        rooms[i].transform.rotation = roomSpawnpoints[rng].transform.rotation;
+    //        roomSpawnpoints.Remove(roomSpawnpoints[rng]);
+    //    }
+
+    //}
 
 }

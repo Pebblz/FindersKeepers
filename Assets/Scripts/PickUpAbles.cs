@@ -47,6 +47,7 @@ public class PickUpAbles : MonoBehaviourPunCallbacks, IPunObservable
                 if (player.GetComponent<PlayerPickUp>().isHoldingOBJ == false &&
                     player.GetComponent<PlayerPickUp>().isPickingUpOBJ == true && IsPickedUped == false)
                 {
+                    this.gameObject.transform.parent = null;
                     GetComponent<Rigidbody>().constraints = RigidbodyConstraints.None;
                     player.GetComponent<PlayerPickUp>().PlayerPickUpSound();
                     UseGravity(true);
