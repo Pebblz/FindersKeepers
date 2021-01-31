@@ -41,7 +41,7 @@ public class PickUpableSpawner : MonoBehaviourPunCallbacks
             }
         }
     }
-    [PunRPC]
+    //[PunRPC]
     public void FindOBJ()
     {
         CurrentlySpawnedOBJ = GameObject.FindGameObjectsWithTag("PointsPickUp");
