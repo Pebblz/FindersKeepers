@@ -78,6 +78,16 @@ public class Launcher : MonoBehaviourPunCallbacks
         SceneManager.LoadScene("Credits");
     }
 
+
+    public void LoadHowToPlay()
+    {
+        SceneManager.LoadScene("HowToPlay");
+    }
+
+    public void Quit()
+    {
+        Quit();
+    }
     #endregion
 
     #region PhotonCallbacks
