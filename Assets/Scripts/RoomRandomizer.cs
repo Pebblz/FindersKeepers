@@ -13,7 +13,7 @@ public class RoomRandomizer : MonoBehaviour/*, IOnEventCallback*/
     public List<GameObject> rooms;
 
     //  private HashSet<int> roomIdxSpawned;
-
+    [SerializeField] TodoList todolist;
 
 
     // Start is called before the first frame update
@@ -40,7 +40,10 @@ public class RoomRandomizer : MonoBehaviour/*, IOnEventCallback*/
             PhotonNetwork.Instantiate(rooms[i].name, roomSpawnpoints[i].transform.position, roomSpawnpoints[i].transform.rotation);
         }
 
-
+        if(todolist != null)
+        {
+            todolist.Active();
+        }
     }
     void RandomizeRooms()
     {

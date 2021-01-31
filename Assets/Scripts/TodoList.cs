@@ -39,7 +39,7 @@ public class TodoList : MonoBehaviour
         PrintList();
     }
 
-    void FillList()
+    public void FillList()
     {
         //player count
         int playerCount = Object.FindObjectsOfType<Player>().Length;
@@ -58,7 +58,7 @@ public class TodoList : MonoBehaviour
 
             //recalculate place
             place += Random.Range(0, playerCount);
-            place %= pickUpAbleList.Count - 1;
+            place %= pickUpAbleList.Count;
 
             //add to list and remove from available pickupable's
             list.Add(pickUpAbleList[place], false);
@@ -103,6 +103,7 @@ public class TodoList : MonoBehaviour
                 left.Add(obj);
             }
         }
+        Debug.Log(left.Count);
         int nextObject = Random.Range(0, left.Count);
         PickUpAbles newObject = left.ToArray()[nextObject];
         Debug.Log(newObject.gameObject.name);

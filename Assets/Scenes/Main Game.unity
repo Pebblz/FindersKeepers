@@ -3126,7 +3126,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8703a48f44ccb8b45a96912a78b22981, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  text: {fileID: 0}
+  text: {fileID: 1995782008}
   seconds: 90
   gameManager: {fileID: 261794780}
 --- !u!114 &1995782008
