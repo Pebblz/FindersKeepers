@@ -38,13 +38,15 @@ public class RoomRandomizer : MonoBehaviour/*, IOnEventCallback*/
     }
     void RandomizeRooms()
     {
-        for (int i = 0; i < rooms.Count; i++)
-        {
-            int rng = Random.Range(0, roomSpawnpoints.Count);
+        if(PhotonNetwork.IsMasterClient) {
+            for (int i = 0; i < rooms.Count; i++)
+            {
+                int rng = Random.Range(0, roomSpawnpoints.Count);
 
-            rooms[i].transform.position = roomSpawnpoints[rng].transform.position;
-            rooms[i].transform.rotation = roomSpawnpoints[rng].transform.rotation;
-            roomSpawnpoints.Remove(roomSpawnpoints[rng]);
+                rooms[i].transform.position = roomSpawnpoints[rng].transform.position;
+                rooms[i].transform.rotation = roomSpawnpoints[rng].transform.rotation;
+                roomSpawnpoints.Remove(roomSpawnpoints[rng]);
+            }
         }
     }
    
