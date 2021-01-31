@@ -21,7 +21,6 @@ public class PickUpableSpawner : MonoBehaviourPunCallbacks, IPunObservable
     {
         //this is here so when we randomize the rooms we can just have the 
         //empty gameobjects for where they will go in the room prefab
-        //PickablesToSpawn = GameObject.FindGameObjectsWithTag("LocationForPickUp");
         if (onlyOnce == false)
         {
             SpawnOBJ();
@@ -49,6 +48,7 @@ public class PickUpableSpawner : MonoBehaviourPunCallbacks, IPunObservable
     [PunRPC]
     public void deleteOBJ(GameObject ObjectToDelete)
     {
+        //it works 
         if (ObjectToDelete.GetComponent<PhotonView>().Owner == PhotonNetwork.LocalPlayer)
         {
             PhotonNetwork.Destroy(ObjectToDelete);
@@ -64,8 +64,7 @@ public class PickUpableSpawner : MonoBehaviourPunCallbacks, IPunObservable
     [PunRPC]
     public void deleteAllOBJ()
     {
-        //this loops through all the currently spawned objs and 
-        //SHOULD delete all the obj's for all players 
+        //this loops through all the currently spawned objs and destroys them
         for(int i = 0; i < CurrentlySpawnedOBJ.Length; i++)
         {
             
