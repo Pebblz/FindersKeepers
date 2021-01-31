@@ -82,11 +82,20 @@ public class SpeedPowerUpCollectible : MonoBehaviourPunCallbacks, IPunObservable
 
     public void DestroyGlobally()
     {
-        if(!PhotonNetwork.IsMasterClient)
+        //if(!PhotonNetwork.IsMasterClient)
+        //{
+        //  photonView.TransferOwnership(PhotonNetwork.LocalPlayer);
+        //}
+        //PhotonNetwork.Destroy(this.gameObject);
+        if (GetComponent<PhotonView>().Owner == PhotonNetwork.LocalPlayer)
         {
-          photonView.TransferOwnership(PhotonNetwork.LocalPlayer);
+            PhotonNetwork.Destroy(gameObject);
         }
-        PhotonNetwork.Destroy(this.gameObject);
+        else
+        {
+            GetComponent<PhotonView>().TransferOwnership(PhotonNetwork.LocalPlayer);
+            PhotonNetwork.Destroy(gameObject);
+        }
     }
 
     public void OnPhotonSerializeView(PhotonStream stream, PhotonMessageInfo info)
