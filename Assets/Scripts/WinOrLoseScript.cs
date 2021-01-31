@@ -84,6 +84,8 @@ public class WinOrLoseScript : MonoBehaviour
             cam.transform.parent = player.transform;
             incrementation++;
             player.enabled = false;
+            player.freeLookCam.SetActive(false);
+            player.GetComponent<PlayerMovement>().enabled = false;
         }
     }
 
