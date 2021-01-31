@@ -14,6 +14,7 @@ public class PickUpAbles : MonoBehaviourPunCallbacks, IPunObservable
     public bool IsPickedUped;
     public GameObject PlayerThatPickUpOBJ;
     public PhotonView pv;
+    public bool useGravity;
     Vector3 OriginalPos;
     public bool IsThisOBJForPoints;
     Quaternion startingRot;
@@ -109,11 +110,13 @@ public class PickUpAbles : MonoBehaviourPunCallbacks, IPunObservable
         if (stream.IsWriting)
         {
             stream.SendNext(IsPickedUped);
+            stream.SendNext(useGravity);
             //stream.SendNext(OriginalPos);
         }
         else
         {
             IsPickedUped = (bool)stream.ReceiveNext();
+            this.GetComponent<Rigidbody>().useGravity = (bool)stream.ReceiveNext();
             //OriginalPos = (Vector3)stream.ReceiveNext();
         }
 

@@ -87,9 +87,8 @@ public class PlayerPickUp : MonoBehaviourPunCallbacks, IPunObservable, IOnEventC
     {
         if (PickUp != null)
         {
-            rb.useGravity = false;
-            rb.isKinematic = false;
-            rb.velocity = Vector3.zero;
+
+            PickUp.GetComponent<Rigidbody>().useGravity = false;
             PickUp.GetComponent<BoxCollider>().enabled = false;
            
             PickUp.transform.position = new Vector3(0, 70, 0);
