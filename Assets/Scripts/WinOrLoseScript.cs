@@ -42,6 +42,7 @@ public class WinOrLoseScript : MonoBehaviour
             //            player.gameObject.transform.position = locations[incrementation].position;
             Camera cam = cameras[incrementation];
             cam.transform.position = player.transform.position - new Vector3(0,0,-4);
+            cam.transform.parent = player.transform;
         }
     }
 
