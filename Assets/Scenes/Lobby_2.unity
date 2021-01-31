@@ -1023,6 +1023,7 @@ MonoBehaviour:
   - {fileID: 738189026}
   - {fileID: 738189027}
   - {fileID: 738189029}
+  - {fileID: 738189033}
   viewIdField: 7
   InstantiationId: 0
   isRuntimeInstantiated: 0
@@ -1086,6 +1087,22 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!114 &738189033
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 738189025}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 64179f3720bbfe947b7724caa67b7c1d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_SynchronizeVelocity: 1
+  m_SynchronizeAngularVelocity: 0
+  m_TeleportEnabled: 0
+  m_TeleportIfDistanceGreaterThan: 3
 --- !u!1001 &783366606
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2513,6 +2530,7 @@ MonoBehaviour:
   - {fileID: 1841508123}
   - {fileID: 1841508124}
   - {fileID: 1841508126}
+  - {fileID: 1841508129}
   viewIdField: 8
   InstantiationId: 0
   isRuntimeInstantiated: 0
@@ -2563,6 +2581,22 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!114 &1841508129
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1841508122}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 64179f3720bbfe947b7724caa67b7c1d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_SynchronizeVelocity: 1
+  m_SynchronizeAngularVelocity: 0
+  m_TeleportEnabled: 0
+  m_TeleportIfDistanceGreaterThan: 3
 --- !u!1001 &1904656104
 PrefabInstance:
   m_ObjectHideFlags: 0
