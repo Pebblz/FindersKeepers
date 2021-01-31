@@ -159,4 +159,18 @@ public class Player : MonoBehaviourPunCallbacks, IPunObservable
         }
     }
     
+
+    [PunRPC]
+    void incrementScore(string Name)
+    {
+        Debug.Log("triggered");
+        Player[] players = FindObjectsOfType<Player>();
+        foreach(Player player in players)
+        {
+            if (player.gameObject.name == Name)
+            {
+                player.score++;
+            }
+        }
+    }
 }

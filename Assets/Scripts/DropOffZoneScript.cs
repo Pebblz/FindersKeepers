@@ -11,11 +11,11 @@ public class DropOffZoneScript : MonoBehaviourPunCallbacks
     //so guess what this little thing does 
     //i'll give you a sec to figure it out 
     //so what it does is if you enter the trigger it does the stuff 
-    
 
+    PhotonView pv;
     private void Start()
     {
-        
+        pv = PhotonView.Get(this);   
     }
     private void OnTriggerEnter(Collider c)
     {
@@ -31,7 +31,7 @@ public class DropOffZoneScript : MonoBehaviourPunCallbacks
                     {
                         //then it'll encroment the score by 1 
                         c.GetComponent<Player>().score += 1;
-                        
+                        pv.RPC("incrementScore", RpcTarget.All, c.gameObject.name);
                         if(c.GetComponent<PlayerPickUp>().PickUp.GetComponent<SoundtrackManager>() != null)
                         {
                             c.GetComponent<PlayerPickUp>()
