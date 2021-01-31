@@ -1887,6 +1887,7 @@ GameObject:
   - component: {fileID: 534826609313063354}
   - component: {fileID: 437037575967082208}
   - component: {fileID: 82125259514355130}
+  - component: {fileID: 81295450538120260}
   m_Layer: 0
   m_Name: YellowW_Mann
   m_TagString: Untagged
@@ -2205,6 +2206,14 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!81 &81295450538120260
+AudioListener:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9098465297356852388}
+  m_Enabled: 1
 --- !u!1 &9098465297454044813
 GameObject:
   m_ObjectHideFlags: 0

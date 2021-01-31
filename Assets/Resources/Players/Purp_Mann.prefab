@@ -1638,6 +1638,7 @@ GameObject:
   - component: {fileID: 3027161190387459167}
   - component: {fileID: 3133802002501714401}
   - component: {fileID: 82271896144124406}
+  - component: {fileID: 81142475687910666}
   m_Layer: 0
   m_Name: Purp_Mann
   m_TagString: Untagged
@@ -1956,6 +1957,14 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!81 &81142475687910666
+AudioListener:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6276375194769605389}
+  m_Enabled: 1
 --- !u!1 &6276375194968157617
 GameObject:
   m_ObjectHideFlags: 0

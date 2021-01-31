@@ -659,6 +659,7 @@ GameObject:
   - component: {fileID: 7841016285988203082}
   - component: {fileID: 7903726455655163254}
   - component: {fileID: 82676115048042366}
+  - component: {fileID: 81402291679830082}
   m_Layer: 0
   m_Name: Green_Mann
   m_TagString: Untagged
@@ -977,6 +978,14 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!81 &81402291679830082
+AudioListener:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7803280100954126013}
+  m_Enabled: 1
 --- !u!1 &7803280100964664860
 GameObject:
   m_ObjectHideFlags: 0

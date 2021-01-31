@@ -1207,6 +1207,7 @@ GameObject:
   - component: {fileID: 2072708874087932319}
   - component: {fileID: 8757885532714352811}
   - component: {fileID: 82829182901033488}
+  - component: {fileID: 81504312043054774}
   m_Layer: 0
   m_Name: Blue_Mann
   m_TagString: Untagged
@@ -1522,6 +1523,14 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!81 &81504312043054774
+AudioListener:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4521306636031681356}
+  m_Enabled: 1
 --- !u!1 &4521306636031681358
 GameObject:
   m_ObjectHideFlags: 0

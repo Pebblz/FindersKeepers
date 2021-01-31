@@ -612,6 +612,7 @@ GameObject:
   - component: {fileID: 963548593296933559}
   - component: {fileID: 877896608455135955}
   - component: {fileID: 82618451122300590}
+  - component: {fileID: 81741223173586966}
   m_Layer: 0
   m_Name: Red_Mann
   m_TagString: Untagged
@@ -930,6 +931,14 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!81 &81741223173586966
+AudioListener:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3892860120512233310}
+  m_Enabled: 1
 --- !u!1 &3892860120531705989
 GameObject:
   m_ObjectHideFlags: 0
