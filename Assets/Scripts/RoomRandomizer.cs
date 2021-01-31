@@ -12,9 +12,9 @@ public class RoomRandomizer : MonoBehaviour/*, IOnEventCallback*/
     public List<GameObject> roomSpawnpoints;
     public List<GameObject> rooms;
 
-  //  private HashSet<int> roomIdxSpawned;
+    //  private HashSet<int> roomIdxSpawned;
 
-    
+
 
     // Start is called before the first frame update
     void Start()
@@ -24,33 +24,35 @@ public class RoomRandomizer : MonoBehaviour/*, IOnEventCallback*/
         // rooms.Add(Resources.Load>("Rooms/"));
 
         //roomIdxSpawned = new HashSet<int>();
-        SpawnRooms();
-        RandomizeRooms();
+        if (PhotonNetwork.IsMasterClient)
+        {
+            SpawnRooms();
+            RandomizeRooms();
+        }
     }
 
     void SpawnRooms()
     {
-        if (PhotonNetwork.IsMasterClient)
+
+        // go through the spawnpoint array
+        for (int i = 0; i < rooms.Count; i++)
         {
-                // go through the spawnpoint array
-                for (int i = 0; i < rooms.Count; i++)
-            {
-                PhotonNetwork.Instantiate(rooms[i].name, roomSpawnpoints[i].transform.position, roomSpawnpoints[i].transform.rotation);
-            }
+            PhotonNetwork.Instantiate(rooms[i].name, roomSpawnpoints[i].transform.position, roomSpawnpoints[i].transform.rotation);
         }
+
 
     }
     void RandomizeRooms()
     {
-      
-            for (int i = 0; i < rooms.Count; i++)
-            {
-                int rng = Random.Range(0, roomSpawnpoints.Count);
 
-                rooms[i].transform.position = roomSpawnpoints[rng].transform.position;
-                rooms[i].transform.rotation = roomSpawnpoints[rng].transform.rotation;
-                roomSpawnpoints.Remove(roomSpawnpoints[rng]);
-            }
+        for (int i = 0; i < rooms.Count; i++)
+        {
+            int rng = Random.Range(0, roomSpawnpoints.Count);
+
+            rooms[i].transform.position = roomSpawnpoints[rng].transform.position;
+            rooms[i].transform.rotation = roomSpawnpoints[rng].transform.rotation;
+            roomSpawnpoints.Remove(roomSpawnpoints[rng]);
+        }
     }
-   
+
 }
