@@ -19,7 +19,7 @@ public class GameManager : MonoBehaviourPunCallbacks
     private GameObject playerPrefab;
     public GameObject startButton;
 
-
+    bool PressPlayButtonOnce;
 
     enum GameState
     {//Enum Gamestate instead of Scene management because we dont want to swap scenes to avoid online issues
@@ -173,13 +173,15 @@ public class GameManager : MonoBehaviourPunCallbacks
 
     public void LoadGame()
     {
-        if (PhotonNetwork.IsMasterClient)
+
+        if (PhotonNetwork.IsMasterClient && PressPlayButtonOnce == false)
         {
             NetworkSceneChangedRaiseEvent();
             MusicChangeRaiseEvent();
             PhotonNetwork.LoadLevel("Main Game");
-            
-            
+            PressPlayButtonOnce = true;
+
+
         }
     }
 
