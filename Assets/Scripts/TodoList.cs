@@ -19,7 +19,7 @@ public class TodoList : MonoBehaviour
     [SerializeField] GameManager gameManager;
     Dictionary<PickUpAbles, bool> list = new Dictionary<PickUpAbles, bool>();
 
-    void Awake()
+    void Start()
     {
         //if(text == null)
         //{ //if text isnt filled
@@ -38,10 +38,11 @@ public class TodoList : MonoBehaviour
     {
         //player count
         int playerCount = Object.FindObjectsOfType<Player>().Length;
+        Debug.Log("Players Found " + playerCount);
 
         //get list of pickupables in game
         List<PickUpAbles> pickUpAbleList = new List<PickUpAbles>(Object.FindObjectsOfType<PickUpAbles>());
-        Debug.Log("Pickupables found" + pickUpAbleList.Count);
+        Debug.Log("Pickupables found " + pickUpAbleList.Count);
         
         int objectsPerPerson = pickUpAbleList.Count / playerCount;
         Debug.Log("Objects per person " + objectsPerPerson);
