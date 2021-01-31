@@ -176,7 +176,7 @@ public class GameManager : MonoBehaviourPunCallbacks
         if (PhotonNetwork.IsMasterClient)
         {
             NetworkSceneChangedRaiseEvent();
-            
+            MusicChangeRaiseEvent();
             PhotonNetwork.LoadLevel("Main Game");
             
             
