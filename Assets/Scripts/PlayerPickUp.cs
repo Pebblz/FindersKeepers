@@ -131,7 +131,7 @@ public class PlayerPickUp : MonoBehaviourPunCallbacks, IPunObservable, IOnEventC
 
     public void DestroyThing()
     {
-        Destroy(this.gameObject);
+        Destroy(PickUp);
     }
     public void ThrowOBJ(int Force)
     {
