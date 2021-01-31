@@ -1,10 +1,10 @@
 ﻿using System.Collections;
-using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 using Photon.Pun;
 using Photon.Realtime;
 using ExitGames.Client.Photon;
-public class PickUpableSpawner : MonoBehaviourPunCallbacks, IPunObservable
+public class PickUpableSpawner : MonoBehaviourPunCallbacks
 {
     //this script is only for pickupables that are for points 
     [SerializeField]
@@ -15,24 +15,22 @@ public class PickUpableSpawner : MonoBehaviourPunCallbacks, IPunObservable
 
     GameObject[] CurrentlySpawnedOBJ = new GameObject[99];
 
-    bool onlyOnce;
+
     // Start is called before the first frame update
     void Awake()
     {
         //this is here so when we randomize the rooms we can just have the 
         //empty gameobjects for where they will go in the room prefab
-        if (onlyOnce == false)
+        if (PhotonNetwork.MasterClient == PhotonNetwork.LocalPlayer)
         {
             SpawnOBJ();
-            onlyOnce = true;
         }
-
     }
 
     [PunRPC]
     public void SpawnOBJ()
     {
-        for(int i = 0; i < PickablesToSpawn.Length; i++)
+        for (int i = 0; i < PickablesToSpawn.Length; i++)
         {
             //this will loop through all the gameobjs that need to be spawned and spawn it at the given pos
             if (PickablesToSpawn[i] != null)
@@ -58,16 +56,16 @@ public class PickUpableSpawner : MonoBehaviourPunCallbacks, IPunObservable
             ObjectToDelete.GetComponent<PhotonView>().TransferOwnership(PhotonNetwork.LocalPlayer);
             PhotonNetwork.Destroy(ObjectToDelete);
         }
-        
+
     }
     //This'll be for if we want to reset the house when we start a new round
     [PunRPC]
     public void deleteAllOBJ()
     {
         //this loops through all the currently spawned objs and destroys them
-        for(int i = 0; i < CurrentlySpawnedOBJ.Length; i++)
+        for (int i = 0; i < CurrentlySpawnedOBJ.Length; i++)
         {
-            
+
             if (CurrentlySpawnedOBJ[i].GetComponent<PhotonView>().Owner == PhotonNetwork.LocalPlayer)
             {
                 PhotonNetwork.Destroy(CurrentlySpawnedOBJ[i]);
@@ -79,25 +77,5 @@ public class PickUpableSpawner : MonoBehaviourPunCallbacks, IPunObservable
             }
         }
     }
-    public void OnPhotonSerializeView(PhotonStream stream, PhotonMessageInfo info)
-    {
 
-        if (stream.IsWriting)
-        {
-            //data that gets sent to other players
-            stream.SendNext(onlyOnce);
-            //stream.SendNext(PlayerThatPickUpOBJ);
-
-
-        }
-        else
-        {
-            //data recieved from other players
-            onlyOnce = (bool)stream.ReceiveNext();
-            //PlayerThatPickUpOBJ.transform.position = (Vector3)stream.ReceiveNext();
-
-
-        }
-
-    }
 }
