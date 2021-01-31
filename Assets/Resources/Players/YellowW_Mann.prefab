@@ -1962,6 +1962,9 @@ MonoBehaviour:
   - Type: 4
     SynchronizeType: 1
     Name: IsShooting
+  - Type: 4
+    SynchronizeType: 1
+    Name: IsThrowing
   m_SynchronizeLayers:
   - SynchronizeType: 1
     LayerIndex: 0
@@ -2084,9 +2087,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   localScripts:
   - {fileID: 5328103404824497446, guid: c0f64cdc486992f4a8814c3a3e31e9a6, type: 3}
-  - {fileID: 5126625709053849364, guid: c0f64cdc486992f4a8814c3a3e31e9a6, type: 3}
-  - {fileID: 8286713377810215024, guid: c0f64cdc486992f4a8814c3a3e31e9a6, type: 3}
-  - {fileID: 534826609313063354}
   localObject:
   - {fileID: 0}
   score: 0
