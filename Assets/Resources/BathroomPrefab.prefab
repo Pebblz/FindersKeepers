@@ -102,7 +102,7 @@ MonoBehaviour:
   IsPickedUped: 0
   PlayerThatPickUpOBJ: {fileID: 0}
   pv: {fileID: 0}
-  useGravity: 0
+  useGravity: 1
   IsThisOBJForPoints: 0
   hasGravity: 1
   image: {fileID: 21300000, guid: 2e6cfb4385323ac499d1d62ececd4866, type: 3}
@@ -176,7 +176,7 @@ MonoBehaviour:
   IsPickedUped: 0
   PlayerThatPickUpOBJ: {fileID: 0}
   pv: {fileID: 0}
-  useGravity: 0
+  useGravity: 1
   IsThisOBJForPoints: 0
   hasGravity: 1
   image: {fileID: 21300000, guid: ee01981f515c61e4a9b305e6bfefb57a, type: 3}
@@ -314,7 +314,7 @@ MonoBehaviour:
   IsPickedUped: 0
   PlayerThatPickUpOBJ: {fileID: 0}
   pv: {fileID: 0}
-  useGravity: 0
+  useGravity: 1
   IsThisOBJForPoints: 0
   hasGravity: 1
   image: {fileID: 21300000, guid: 9a942af7dcb4dc848bfe6bae3db8e554, type: 3}
@@ -526,7 +526,7 @@ MonoBehaviour:
   IsPickedUped: 0
   PlayerThatPickUpOBJ: {fileID: 0}
   pv: {fileID: 0}
-  useGravity: 0
+  useGravity: 1
   IsThisOBJForPoints: 0
   hasGravity: 1
   image: {fileID: 21300000, guid: a312bf46a2149bc48a3af9ce0494cd70, type: 3}
@@ -747,7 +747,7 @@ MonoBehaviour:
   IsPickedUped: 0
   PlayerThatPickUpOBJ: {fileID: 0}
   pv: {fileID: 0}
-  useGravity: 0
+  useGravity: 1
   IsThisOBJForPoints: 0
   hasGravity: 1
   image: {fileID: 21300000, guid: 3c0bad0637abad94788cf36ad210223e, type: 3}
@@ -878,7 +878,7 @@ MonoBehaviour:
   IsPickedUped: 0
   PlayerThatPickUpOBJ: {fileID: 0}
   pv: {fileID: 0}
-  useGravity: 0
+  useGravity: 1
   IsThisOBJForPoints: 0
   hasGravity: 1
   image: {fileID: 21300000, guid: 111189e6b65e17f4581a274558c461cc, type: 3}
@@ -1344,6 +1344,11 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 21300000, guid: be714760a4161fa4ebc9cd8df2f50ef8,
         type: 3}
+    - target: {fileID: 8283746776263747182, guid: a03a9a41bbb703948b5602a6c1b5b958,
+        type: 3}
+      propertyPath: useGravity
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 8516441066866173296, guid: a03a9a41bbb703948b5602a6c1b5b958,
         type: 3}
       propertyPath: ObservedComponents.Array.size

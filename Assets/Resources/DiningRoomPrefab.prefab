@@ -96,7 +96,7 @@ MonoBehaviour:
   IsPickedUped: 0
   PlayerThatPickUpOBJ: {fileID: 0}
   pv: {fileID: 0}
-  useGravity: 0
+  useGravity: 1
   IsThisOBJForPoints: 0
   hasGravity: 1
   image: {fileID: 21300000, guid: 85a18eb5698c5c14a88ea7878e84128e, type: 3}
@@ -219,7 +219,7 @@ MonoBehaviour:
   IsPickedUped: 0
   PlayerThatPickUpOBJ: {fileID: 0}
   pv: {fileID: 0}
-  useGravity: 0
+  useGravity: 1
   IsThisOBJForPoints: 0
   hasGravity: 1
   image: {fileID: 21300000, guid: e3e12661f184e4a4f9ecf7df561e7530, type: 3}
@@ -494,7 +494,7 @@ MonoBehaviour:
   IsPickedUped: 0
   PlayerThatPickUpOBJ: {fileID: 0}
   pv: {fileID: 0}
-  useGravity: 0
+  useGravity: 1
   IsThisOBJForPoints: 0
   hasGravity: 1
   image: {fileID: 21300000, guid: 151e78443a9d0df4e9daac96c6e8233f, type: 3}
@@ -870,6 +870,11 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 21300000, guid: 8a221f88c5234d545ac6537f49de5a6b,
         type: 3}
+    - target: {fileID: 1747502438154966912, guid: 6c1bdd64f0e137846b704e0055ea6492,
+        type: 3}
+      propertyPath: useGravity
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 6006641564492850868, guid: 6c1bdd64f0e137846b704e0055ea6492,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -1000,6 +1005,11 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 21300000, guid: 8a221f88c5234d545ac6537f49de5a6b,
         type: 3}
+    - target: {fileID: 1747502438154966912, guid: 6c1bdd64f0e137846b704e0055ea6492,
+        type: 3}
+      propertyPath: useGravity
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 6006641564492850868, guid: 6c1bdd64f0e137846b704e0055ea6492,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -1373,6 +1383,11 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 21300000, guid: 8a221f88c5234d545ac6537f49de5a6b,
         type: 3}
+    - target: {fileID: 1747502438154966912, guid: 6c1bdd64f0e137846b704e0055ea6492,
+        type: 3}
+      propertyPath: useGravity
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 6006641564492850868, guid: 6c1bdd64f0e137846b704e0055ea6492,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -1584,6 +1599,11 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 21300000, guid: 8a221f88c5234d545ac6537f49de5a6b,
         type: 3}
+    - target: {fileID: 1747502438154966912, guid: 6c1bdd64f0e137846b704e0055ea6492,
+        type: 3}
+      propertyPath: useGravity
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 6006641564492850868, guid: 6c1bdd64f0e137846b704e0055ea6492,
         type: 3}
       propertyPath: m_LocalPosition.x

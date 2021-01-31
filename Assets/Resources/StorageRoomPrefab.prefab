@@ -112,7 +112,7 @@ MonoBehaviour:
   IsPickedUped: 0
   PlayerThatPickUpOBJ: {fileID: 0}
   pv: {fileID: 0}
-  useGravity: 0
+  useGravity: 1
   IsThisOBJForPoints: 0
   hasGravity: 1
   image: {fileID: 21300000, guid: e503880261315814f9ef521724ea14ae, type: 3}
@@ -304,7 +304,7 @@ MonoBehaviour:
   IsPickedUped: 0
   PlayerThatPickUpOBJ: {fileID: 0}
   pv: {fileID: 0}
-  useGravity: 0
+  useGravity: 1
   IsThisOBJForPoints: 0
   hasGravity: 1
   image: {fileID: 21300000, guid: f38cd7b127b7a854cb4a0a80d0c847fe, type: 3}
@@ -462,7 +462,7 @@ MonoBehaviour:
   IsPickedUped: 0
   PlayerThatPickUpOBJ: {fileID: 0}
   pv: {fileID: 0}
-  useGravity: 0
+  useGravity: 1
   IsThisOBJForPoints: 0
   hasGravity: 1
   image: {fileID: 21300000, guid: 69f6b396bf4ee464ea86d92a1a8a5aae, type: 3}
@@ -693,7 +693,7 @@ MonoBehaviour:
   IsPickedUped: 0
   PlayerThatPickUpOBJ: {fileID: 0}
   pv: {fileID: 0}
-  useGravity: 0
+  useGravity: 1
   IsThisOBJForPoints: 0
   hasGravity: 1
   image: {fileID: 21300000, guid: 69f6b396bf4ee464ea86d92a1a8a5aae, type: 3}
@@ -840,7 +840,7 @@ MonoBehaviour:
   IsPickedUped: 0
   PlayerThatPickUpOBJ: {fileID: 0}
   pv: {fileID: 0}
-  useGravity: 0
+  useGravity: 1
   IsThisOBJForPoints: 0
   hasGravity: 1
   image: {fileID: 21300000, guid: 3f6cf0d9b01f1574fabc4fd44b9b9e80, type: 3}
@@ -1254,7 +1254,7 @@ MonoBehaviour:
   IsPickedUped: 0
   PlayerThatPickUpOBJ: {fileID: 0}
   pv: {fileID: 0}
-  useGravity: 0
+  useGravity: 1
   IsThisOBJForPoints: 0
   hasGravity: 1
   image: {fileID: 21300000, guid: 8b4203cd0085d2b40b849171375fefa9, type: 3}
@@ -1373,7 +1373,7 @@ MonoBehaviour:
   IsPickedUped: 0
   PlayerThatPickUpOBJ: {fileID: 0}
   pv: {fileID: 0}
-  useGravity: 0
+  useGravity: 1
   IsThisOBJForPoints: 0
   hasGravity: 1
   image: {fileID: 21300000, guid: f38cd7b127b7a854cb4a0a80d0c847fe, type: 3}
@@ -1463,7 +1463,7 @@ MonoBehaviour:
   IsPickedUped: 0
   PlayerThatPickUpOBJ: {fileID: 0}
   pv: {fileID: 0}
-  useGravity: 0
+  useGravity: 1
   IsThisOBJForPoints: 0
   hasGravity: 1
   image: {fileID: 21300000, guid: c7f4be0c484c2a443beabbe7ed74e274, type: 3}
@@ -1595,7 +1595,7 @@ MonoBehaviour:
   IsPickedUped: 0
   PlayerThatPickUpOBJ: {fileID: 0}
   pv: {fileID: 0}
-  useGravity: 0
+  useGravity: 1
   IsThisOBJForPoints: 0
   hasGravity: 1
   image: {fileID: 21300000, guid: 54bd13ea50f4dff429d75b9ca97f8035, type: 3}

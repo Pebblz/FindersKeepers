@@ -84,7 +84,7 @@ MonoBehaviour:
   IsPickedUped: 0
   PlayerThatPickUpOBJ: {fileID: 0}
   pv: {fileID: 0}
-  useGravity: 0
+  useGravity: 1
   IsThisOBJForPoints: 0
   hasGravity: 1
   image: {fileID: 0}
@@ -215,7 +215,7 @@ MonoBehaviour:
   IsPickedUped: 0
   PlayerThatPickUpOBJ: {fileID: 0}
   pv: {fileID: 0}
-  useGravity: 0
+  useGravity: 1
   IsThisOBJForPoints: 0
   hasGravity: 1
   image: {fileID: 0}
@@ -312,7 +312,7 @@ MonoBehaviour:
   IsPickedUped: 0
   PlayerThatPickUpOBJ: {fileID: 0}
   pv: {fileID: 0}
-  useGravity: 0
+  useGravity: 1
   IsThisOBJForPoints: 0
   hasGravity: 1
   image: {fileID: 0}
@@ -402,7 +402,7 @@ MonoBehaviour:
   IsPickedUped: 0
   PlayerThatPickUpOBJ: {fileID: 0}
   pv: {fileID: 0}
-  useGravity: 0
+  useGravity: 1
   IsThisOBJForPoints: 0
   hasGravity: 1
   image: {fileID: 0}
@@ -566,7 +566,7 @@ MonoBehaviour:
   IsPickedUped: 0
   PlayerThatPickUpOBJ: {fileID: 0}
   pv: {fileID: 0}
-  useGravity: 0
+  useGravity: 1
   IsThisOBJForPoints: 0
   hasGravity: 1
   image: {fileID: 0}
@@ -631,7 +631,7 @@ MonoBehaviour:
   IsPickedUped: 0
   PlayerThatPickUpOBJ: {fileID: 0}
   pv: {fileID: 0}
-  useGravity: 0
+  useGravity: 1
   IsThisOBJForPoints: 0
   hasGravity: 1
   image: {fileID: 0}
