@@ -2,20 +2,21 @@
 using System.Collections.Generic;
 using UnityEngine;
 using Photon.Pun;
-
+using Photon.Realtime;
+using ExitGames.Client.Photon;
 public class PickUpableSpawner : MonoBehaviourPunCallbacks
 {
+    //this script is only for pickupables that are for points 
     [SerializeField]
     GameObject[] PickablesToSpawn = new GameObject[99];
+
     [SerializeField]
     GameObject[] PickablesSpawnLocation = new GameObject[99];
 
     GameObject[] CurrentlySpawnedOBJ = new GameObject[99];
     // Start is called before the first frame update
-    void Start()
+    void Awake()
     {
-        gameObject.tag = "PickUpSpawner";
-
         //this is here so when we randomize the rooms we can just have the 
         //empty gameobjects for where they will go in the room prefab
         PickablesToSpawn = GameObject.FindGameObjectsWithTag("LocationForPickUp");
@@ -23,12 +24,8 @@ public class PickUpableSpawner : MonoBehaviourPunCallbacks
 
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-    void SpawnOBJ()
+    [PunRPC]
+    public void SpawnOBJ()
     {
         for(int i = 0; i < PickablesToSpawn.Length; i++)
         {
@@ -44,19 +41,38 @@ public class PickUpableSpawner : MonoBehaviourPunCallbacks
 
     //This will be for when we need to destroy a GameOBJ for all players
     [PunRPC]
-    void deleteOBJ(GameObject ObjectToDelete)
+    public void deleteOBJ(GameObject ObjectToDelete)
     {
-        PhotonNetwork.Destroy(ObjectToDelete);
+        if (ObjectToDelete.GetComponent<PhotonView>().Owner == PhotonNetwork.LocalPlayer)
+        {
+            PhotonNetwork.Destroy(ObjectToDelete);
+        }
+        else
+        {
+            ObjectToDelete.GetComponent<PhotonView>().TransferOwnership(PhotonNetwork.LocalPlayer);
+            PhotonNetwork.Destroy(ObjectToDelete);
+        }
+        
     }
     //This'll be for if we want to reset the house when we start a new round
     [PunRPC]
-    void deleteAllOBJ()
+    public void deleteAllOBJ()
     {
         //this loops through all the currently spawned objs and 
         //SHOULD delete all the obj's for all players 
         for(int i = 0; i < CurrentlySpawnedOBJ.Length; i++)
         {
-            PhotonNetwork.Destroy(CurrentlySpawnedOBJ[i]);
+            
+            if (CurrentlySpawnedOBJ[i].GetComponent<PhotonView>().Owner == PhotonNetwork.LocalPlayer)
+            {
+                PhotonNetwork.Destroy(CurrentlySpawnedOBJ[i]);
+            }
+            else
+            {
+                CurrentlySpawnedOBJ[i].GetComponent<PhotonView>().TransferOwnership(PhotonNetwork.LocalPlayer);
+                PhotonNetwork.Destroy(CurrentlySpawnedOBJ[i]);
+            }
         }
     }
+
 }
