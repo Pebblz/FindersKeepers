@@ -33,7 +33,7 @@ public class Player : MonoBehaviourPunCallbacks, IPunObservable
     public float powerUpTimer = 0;
     public bool powerUpTimerActive = false;
     public Player_Movement pm;
-
+    Animator Anim;
 
     #region monobehaviour callbacks
 
@@ -42,6 +42,7 @@ public class Player : MonoBehaviourPunCallbacks, IPunObservable
     {
         if (photonView.IsMine)
         {
+            Anim = GetComponent<Animator>();
             gameObject.tag = "Player";
             Player.localInstance = gameObject;
             mainCam = GameObject.Find("Main Camera").GetComponent<Transform>();
@@ -93,6 +94,10 @@ public class Player : MonoBehaviourPunCallbacks, IPunObservable
 
     public void StunPlayer()
     {
+        Anim.SetBool("IsStunned", true);
+        Anim.SetBool("IsJumping", false);
+        Anim.SetBool("IsCarry", false);
+        Anim.SetBool("IsRunning", false);
         StunCounter = 3;
     }
 

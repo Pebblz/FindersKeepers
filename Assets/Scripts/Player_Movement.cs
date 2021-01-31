@@ -89,7 +89,12 @@ public class Player_Movement : MonoBehaviourPunCallbacks, IPunObservable
             }
             if (Input.GetKeyDown(KeyCode.Space) && IsGrounded())
             {
+                Anim.SetBool("IsJumping", true);
                 rb.velocity = new Vector3(direction.x, jumpspeed, direction.z);
+            }
+            if(!IsGrounded())
+            {
+                Anim.SetBool("IsJumping", false);
             }
         #endregion
 
