@@ -12,9 +12,9 @@ GameObject:
   - component: {fileID: 870782688236205063}
   - component: {fileID: 2691096689571849932}
   - component: {fileID: 9204677556852360772}
-  - component: {fileID: 5808248987611601399}
   - component: {fileID: 6528482136729190104}
   - component: {fileID: 8248162719199994066}
+  - component: {fileID: 1329701883607745635}
   m_Layer: 0
   m_Name: LivingRoomPrefab
   m_TagString: Room
@@ -98,22 +98,6 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1228.5873, y: 826.8927, z: 1228.5873}
   m_Center: {x: 0, y: 0, z: 0}
---- !u!54 &5808248987611601399
-Rigidbody:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 623806176000712920}
-  serializedVersion: 2
-  m_Mass: 1
-  m_Drag: 0
-  m_AngularDrag: 0.05
-  m_UseGravity: 0
-  m_IsKinematic: 0
-  m_Interpolate: 0
-  m_Constraints: 116
-  m_CollisionDetection: 0
 --- !u!114 &6528482136729190104
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -153,6 +137,20 @@ MonoBehaviour:
   m_SynchronizeRotation: 1
   m_SynchronizeScale: 0
   m_UseLocal: 1
+--- !u!64 &1329701883607745635
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 623806176000712920}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Convex: 0
+  m_CookingOptions: 14
+  m_Mesh: {fileID: 4300000, guid: f3e5da19700d819478995ba193cb3ec8, type: 3}
 --- !u!1001 &893892579054083989
 PrefabInstance:
   m_ObjectHideFlags: 0
