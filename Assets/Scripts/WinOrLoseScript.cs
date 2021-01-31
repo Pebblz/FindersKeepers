@@ -19,7 +19,7 @@ public class WinOrLoseScript : MonoBehaviour
     [SerializeField] AudioClip winSound;
     [SerializeField] AudioClip loseSound;
 
-    [SerializeField] Transform[] locations;
+    [SerializeField] Camera[] cameras;
 
     // Start is called before the first frame update
     void Start()
@@ -39,7 +39,9 @@ public class WinOrLoseScript : MonoBehaviour
         int incrementation = 0;
         foreach(Player player in players)
         {
-            player.gameObject.transform.position = locations[incrementation].position;
+            //            player.gameObject.transform.position = locations[incrementation].position;
+            Camera cam = cameras[incrementation];
+            cam.transform.position = player.transform.position - new Vector3(0,0,-4);
         }
     }
 
