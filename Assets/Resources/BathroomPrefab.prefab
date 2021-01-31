@@ -62,7 +62,7 @@ MonoBehaviour:
   prefixField: -1
   observableSearch: 2
   Synchronization: 1
-  OwnershipTransfer: 0
+  OwnershipTransfer: 1
   ObservedComponents:
   - {fileID: 3546951885376156283}
   - {fileID: 7479430895448775200}
@@ -152,7 +152,7 @@ MonoBehaviour:
   prefixField: -1
   observableSearch: 2
   Synchronization: 1
-  OwnershipTransfer: 0
+  OwnershipTransfer: 1
   ObservedComponents:
   - {fileID: 5241301906377184450}
   - {fileID: 7119742295276159519}
@@ -274,7 +274,7 @@ MonoBehaviour:
   prefixField: -1
   observableSearch: 2
   Synchronization: 1
-  OwnershipTransfer: 0
+  OwnershipTransfer: 1
   ObservedComponents:
   - {fileID: 546487538618256751}
   - {fileID: 1668475886729272225}
@@ -416,7 +416,7 @@ MonoBehaviour:
   prefixField: -1
   observableSearch: 2
   Synchronization: 1
-  OwnershipTransfer: 0
+  OwnershipTransfer: 1
   ObservedComponents:
   - {fileID: 198384971652950543}
   - {fileID: 6134142664068625099}
@@ -470,7 +470,7 @@ MonoBehaviour:
   prefixField: -1
   observableSearch: 2
   Synchronization: 1
-  OwnershipTransfer: 0
+  OwnershipTransfer: 1
   ObservedComponents:
   - {fileID: 2931660393838723744}
   - {fileID: 3103919378357721704}
@@ -768,7 +768,7 @@ MonoBehaviour:
   prefixField: -1
   observableSearch: 2
   Synchronization: 1
-  OwnershipTransfer: 0
+  OwnershipTransfer: 1
   ObservedComponents:
   - {fileID: 1835870848963008522}
   - {fileID: 4738068380751927925}
@@ -838,7 +838,7 @@ MonoBehaviour:
   prefixField: -1
   observableSearch: 2
   Synchronization: 1
-  OwnershipTransfer: 0
+  OwnershipTransfer: 1
   ObservedComponents:
   - {fileID: 5031686780415789257}
   - {fileID: 8133347528579504879}
@@ -1364,6 +1364,11 @@ PrefabInstance:
       propertyPath: ObservedComponents.Array.data[2]
       value: 
       objectReference: {fileID: 5320050634650182538}
+    - target: {fileID: 8516441066866173296, guid: a03a9a41bbb703948b5602a6c1b5b958,
+        type: 3}
+      propertyPath: OwnershipTransfer
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a03a9a41bbb703948b5602a6c1b5b958, type: 3}
 --- !u!1 &7909173091914343065 stripped
