@@ -19,7 +19,7 @@ public class PickUpableSpawner : MonoBehaviourPunCallbacks
     {
         //this is here so when we randomize the rooms we can just have the 
         //empty gameobjects for where they will go in the room prefab
-        PickablesToSpawn = GameObject.FindGameObjectsWithTag("LocationForPickUp");
+        //PickablesToSpawn = GameObject.FindGameObjectsWithTag("LocationForPickUp");
         SpawnOBJ();
 
     }
