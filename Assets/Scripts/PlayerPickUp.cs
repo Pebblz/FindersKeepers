@@ -42,7 +42,6 @@ public class PlayerPickUp : MonoBehaviourPunCallbacks, IPunObservable
     {
         scene = SceneManager.GetActiveScene();
         pickUpTimer -= Time.deltaTime;
-
         if (sceneID != lastIndex)
         {
             isPickingUpOBJ = false;
