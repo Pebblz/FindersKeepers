@@ -16,6 +16,19 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!65 &520739462255572061
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 294430780246785278}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 202.89697, y: 40.14219, z: 10.750204}
+  m_Center: {x: 5.726993, y: -32.1611, z: 111}
 --- !u!65 &2031999569554010306
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -42,6 +55,19 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 177.72179, y: 14.911688, z: 47.386787}
   m_Center: {x: 5.5202365, y: 35.793762, z: 90.221115}
+--- !u!65 &7819691588951161786
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 294430780246785278}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 202.89697, y: 40.14219, z: 10.750204}
+  m_Center: {x: 5.726993, y: -32.1611, z: -96.58423}
 --- !u!114 &1185860485902710175
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -116,32 +142,6 @@ MonoBehaviour:
   viewIdField: 0
   InstantiationId: 0
   isRuntimeInstantiated: 0
---- !u!65 &7819691588951161786
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 294430780246785278}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 202.89697, y: 40.14219, z: 10.750204}
-  m_Center: {x: 5.726993, y: -32.1611, z: -96.58423}
---- !u!65 &520739462255572061
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 294430780246785278}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 202.89697, y: 40.14219, z: 10.750204}
-  m_Center: {x: 5.726993, y: -32.1611, z: 111}
 --- !u!54 &5194931166530767413
 Rigidbody:
   m_ObjectHideFlags: 0
