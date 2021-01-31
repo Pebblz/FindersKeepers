@@ -20,6 +20,7 @@ public class PlayerPickUp : MonoBehaviourPunCallbacks, IPunObservable, IOnEventC
     public GameObject PickUp;
     public bool isHoldingOBJ = false;
     public bool isPickingUpOBJ = false;
+    Rigidbody rb;
     [SerializeField]
     int ThrowForce;
     Animator Anim;
@@ -34,7 +35,9 @@ public class PlayerPickUp : MonoBehaviourPunCallbacks, IPunObservable, IOnEventC
     {
         Anim = GetComponent<Animator>();
         Sound = GetComponent<AudioSource>();
+        rb = GetComponent<Rigidbody>();
     }
+    
 
     // Update is called once per frame
     void Update()
@@ -84,9 +87,12 @@ public class PlayerPickUp : MonoBehaviourPunCallbacks, IPunObservable, IOnEventC
     {
         if (PickUp != null)
         {
-            PickUp.GetComponent<Rigidbody>().useGravity = false;
+            rb.useGravity = false;
+            rb.isKinematic = false;
+            rb.velocity = Vector3.zero;
             PickUp.GetComponent<BoxCollider>().enabled = false;
-            PickUp.transform.position = new Vector3(0, -40, 0);
+           
+            PickUp.transform.position = new Vector3(0, 70, 0);
         }
     }
     public void ThrowOBJ(int Force)
