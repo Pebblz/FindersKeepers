@@ -12,9 +12,9 @@ public class TodoList : MonoBehaviour
      */
 
     //[SerializeField] Text text;
-    [SerializeField]Image image;
-    [SerializeField]Image image2;
-    [SerializeField]Image image3;
+    [SerializeField] Image image;
+    [SerializeField] Image image2;
+    [SerializeField] Image image3;
 
     [SerializeField] GameManager gameManager;
     Dictionary<PickUpAbles, bool> list = new Dictionary<PickUpAbles, bool>();
@@ -30,6 +30,11 @@ public class TodoList : MonoBehaviour
         //    }
         //}
 
+        
+    }
+
+    public void Active()
+    {
         FillList();
         PrintList();
     }
