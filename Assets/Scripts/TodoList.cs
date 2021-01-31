@@ -98,7 +98,7 @@ public class TodoList : MonoBehaviour
             }
         }
         int nextObject = Random.Range(0, left.Count);
-        PickUpAbles newObject = left[nextObject];
+        PickUpAbles newObject = left.ToArray()[nextObject];
         Debug.Log(newObject.gameObject.name);
         img.sprite = newObject.image;
 
