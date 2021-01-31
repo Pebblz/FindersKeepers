@@ -12,9 +12,7 @@ public class TodoList : MonoBehaviour
      */
 
     //[SerializeField] Text text;
-    [SerializeField] Image image;
-    [SerializeField] Image image2;
-    [SerializeField] Image image3;
+    [SerializeField] Image[] images;
 
     [SerializeField] GameManager gameManager;
     Dictionary<PickUpAbles, bool> list = new Dictionary<PickUpAbles, bool>();
@@ -76,9 +74,10 @@ public class TodoList : MonoBehaviour
 
         Debug.Log("Here");
 
-        FillImage(image);
-        FillImage(image2);
-        FillImage(image3);
+        foreach(Image image in images)
+        {
+            FillImage(image);
+        }
     }
 
     void FillImage(Image img)
@@ -98,17 +97,32 @@ public class TodoList : MonoBehaviour
     }
 
     //Call this function when a pickupable is picked up
-    public void PickUpObject(PickUpAbles pickUpAble)
-    {
-        if (list.ContainsKey(pickUpAble))
-        {
-            //declares as picked up
-            list[pickUpAble] = true;
-            Debug.Log(list[pickUpAble]);
+    //public void PickUpObject(PickUpAbles pickUpAble)
+    //{
+    //    if (list.ContainsKey(pickUpAble))
+    //    {
+    //        //declares as picked up
+    //        list[pickUpAble] = true;
+    //        Debug.Log(list[pickUpAble]);
 
-            //TODO change the list to signify said item was picked up
-            list.Remove(pickUpAble);
-            PrintList();
+    //        //TODO change the list to signify said item was picked up
+    //        list.Remove(pickUpAble);
+    //        PrintList();
+    //    }
+    //}
+
+    public void ObjectFound(PickUpAbles obj)
+    {
+        if (list.ContainsKey(obj))
+        {
+            foreach(Image image in images)
+            {
+                if(image.sprite == obj.image)
+                {
+                    FillImage(image);
+                }
+            }
+            list[obj] = true;
         }
     }
 }
