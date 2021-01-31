@@ -28,7 +28,7 @@ public class GameManager : MonoBehaviourPunCallbacks
         The_Game
     }
 
-    static GameState gameState;
+    static GameState gameState = GameState.The_Run;
 
     [SerializeField] Transform[] RespawnPoints;
     [SerializeField] TodoList list;
@@ -252,6 +252,7 @@ public class GameManager : MonoBehaviourPunCallbacks
         }
 
         Debug.Log("hello");
+        Object.FindObjectOfType<TodoList>().FillList();
         Object.FindObjectOfType<TodoList>().PrintList();
     }
     #endregion
