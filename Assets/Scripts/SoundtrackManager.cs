@@ -10,6 +10,8 @@ public class SoundtrackManager : MonoBehaviour, IOnEventCallback
     [SerializeField] AudioSource soundtrack;
     [SerializeField] AudioSource GameTheme;
 
+    [SerializeField] bool ignoreEvents = false;
+
     public void switchAudioTracks()
     {
         if(soundtrack == null)
@@ -60,10 +62,13 @@ public class SoundtrackManager : MonoBehaviour, IOnEventCallback
 
     public void OnEvent(EventData photonEvent)
     {
-        byte eventCode = photonEvent.Code;
-        if(eventCode == NetworkCodes.ChangeToGameMusicEvent)
+        if (ignoreEvents)
         {
-            this.GameTheme.Play();
+            byte eventCode = photonEvent.Code;
+            if (eventCode == NetworkCodes.ChangeToGameMusicEvent)
+            {
+                this.GameTheme.Play();
+            }
         }
     }
 }
