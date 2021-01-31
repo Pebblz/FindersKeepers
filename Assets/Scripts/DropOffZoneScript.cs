@@ -40,7 +40,7 @@ public class DropOffZoneScript : MonoBehaviourPunCallbacks
                         }
 
                         //destroy the pickuped obj
-                        deleteObjectInDropoffEvent(c.GetComponent<PhotonView>().ViewID);
+                        //deleteObjectInDropoffEvent(c.GetComponent<PhotonView>().ViewID);
                         FindObjectOfType<TodoList>().ObjectFound(c.GetComponent<PlayerPickUp>().PickUp.GetComponent<PickUpAbles>());
                     }
                 }
