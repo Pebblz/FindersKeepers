@@ -129,8 +129,8 @@ MonoBehaviour:
   PlayerThatPickUpOBJ: {fileID: 0}
   pv: {fileID: 0}
   useGravity: 0
-  IsThisOBJForPoints: 0
-  hasGravity: 0
+  IsThisOBJForPoints: 1
+  hasGravity: 1
 --- !u!114 &74387112307777047
 MonoBehaviour:
   m_ObjectHideFlags: 0

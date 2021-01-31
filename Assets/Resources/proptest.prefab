@@ -184,5 +184,5 @@ MonoBehaviour:
   PlayerThatPickUpOBJ: {fileID: 0}
   pv: {fileID: 0}
   useGravity: 0
-  IsThisOBJForPoints: 0
+  IsThisOBJForPoints: 1
   hasGravity: 1
