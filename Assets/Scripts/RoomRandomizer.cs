@@ -4,6 +4,7 @@ using UnityEngine;
 using Photon.Realtime;
 using ExitGames.Client.Photon;
 using Photon.Pun;
+using System.Linq;
 
 public class RoomRandomizer : MonoBehaviour/*, IOnEventCallback*/
 {
@@ -22,8 +23,8 @@ public class RoomRandomizer : MonoBehaviour/*, IOnEventCallback*/
     // Start is called before the first frame update
     void Awake()
     {
-        roomSpawnpoints = new List<GameObject>();
-        rooms = new List<GameObject>();
+        roomSpawnpoints = Resources.LoadAll<GameObject>("RoomSpawnLocations").ToList();
+        rooms = Resources.LoadAll<GameObject>("Rooms").ToList();
         //// finding the game objects with the right tags
         //roomSpawn.points = GameObject.FindGameObjectsWithTag("RoomSpawn");
         //rooms = GameObject.FindGameObjectsWithTag("Room");
