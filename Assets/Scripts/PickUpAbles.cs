@@ -36,27 +36,30 @@ public class PickUpAbles : MonoBehaviourPunCallbacks, IPunObservable
             player = GameObject.FindGameObjectWithTag("Player");
         }
 
-        if (Vector3.Distance(this.gameObject.transform.position, player.transform.position) < 3.5f)
+        if (player != null)
         {
-
-            if (player.GetComponent<PlayerPickUp>().isHoldingOBJ == false &&
-                player.GetComponent<PlayerPickUp>().isPickingUpOBJ == true && IsPickedUped == false)
+            if (Vector3.Distance(this.gameObject.transform.position, player.transform.position) < 3.5f)
             {
-                GetComponent<Rigidbody>().constraints = RigidbodyConstraints.None;
-                UseGravity(true);
-                player.GetComponent<PlayerPickUp>().SetPickUpOBJ(this.gameObject);
-                player.GetComponent<PlayerPickUp>().isHoldingOBJ = true;
-                PlayerThatPickUpOBJ = player;
-                ChangeOwnerShip();
-                IsPickedUped = true;
-            }
+
+                if (player.GetComponent<PlayerPickUp>().isHoldingOBJ == false &&
+                    player.GetComponent<PlayerPickUp>().isPickingUpOBJ == true && IsPickedUped == false)
+                {
+                    GetComponent<Rigidbody>().constraints = RigidbodyConstraints.None;
+                    UseGravity(true);
+                    player.GetComponent<PlayerPickUp>().SetPickUpOBJ(this.gameObject);
+                    player.GetComponent<PlayerPickUp>().isHoldingOBJ = true;
+                    PlayerThatPickUpOBJ = player;
+                    ChangeOwnerShip();
+                    IsPickedUped = true;
+                }
 
 
-            if (this.gameObject == player.GetComponent<PlayerPickUp>().PickUp)
-            {
-                gameObject.transform.position = player.transform.position + new Vector3(0, 2.5f, 0);
+                if (this.gameObject == player.GetComponent<PlayerPickUp>().PickUp)
+                {
+                    gameObject.transform.position = player.transform.position + new Vector3(0, 2.5f, 0);
+                }
+
             }
-            
         }
 
         if (this.transform.position.y <= -100)
