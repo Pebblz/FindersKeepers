@@ -7,11 +7,11 @@ using ExitGames.Client.Photon;
 public class PickUpableSpawner : MonoBehaviourPunCallbacks
 {
     //this script is only for pickupables that are for points 
-    [SerializeField]
-    GameObject[] PickablesToSpawn = new GameObject[99];
+    //[SerializeField]
+    //GameObject[] PickablesToSpawn = new GameObject[99];
 
-    [SerializeField]
-    GameObject[] PickablesSpawnLocation = new GameObject[99];
+    //[SerializeField]
+    //GameObject[] PickablesSpawnLocation = new GameObject[99];
 
     GameObject[] CurrentlySpawnedOBJ = new GameObject[99];
 
@@ -27,20 +27,20 @@ public class PickUpableSpawner : MonoBehaviourPunCallbacks
         //}
     }
 
-    [PunRPC]
-    public void SpawnOBJ()
-    {
-        for (int i = 0; i < PickablesToSpawn.Length; i++)
-        {
-            //this will loop through all the gameobjs that need to be spawned and spawn it at the given pos
-            if (PickablesToSpawn[i] != null)
-            {
-                //this'll add a new currently spawned obj to the array whenever a new obj gets created 
-                CurrentlySpawnedOBJ[i] = PhotonNetwork.Instantiate(PickablesToSpawn[i].name,
-                    PickablesSpawnLocation[i].transform.position, Quaternion.identity);
-            }
-        }
-    }
+    //[PunRPC]
+    //public void SpawnOBJ()
+    //{
+    //    for (int i = 0; i < PickablesToSpawn.Length; i++)
+    //    {
+    //        //this will loop through all the gameobjs that need to be spawned and spawn it at the given pos
+    //        if (PickablesToSpawn[i] != null)
+    //        {
+    //            //this'll add a new currently spawned obj to the array whenever a new obj gets created 
+    //            CurrentlySpawnedOBJ[i] = PhotonNetwork.Instantiate(PickablesToSpawn[i].name,
+    //                PickablesSpawnLocation[i].transform.position, Quaternion.identity);
+    //        }
+    //    }
+    //}
     //[PunRPC]
     public void FindOBJ()
     {
