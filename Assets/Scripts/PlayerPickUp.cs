@@ -55,12 +55,14 @@ public class PlayerPickUp : MonoBehaviourPunCallbacks, IPunObservable, IOnEventC
                 if (PickUp == null)
                 {
                     isPickingUpOBJ = true;
+                    Sound.PlayOneShot(PickUpSound); //play pickup sound
                 }
                 else
                 {
                     DropOBJ();
                     PickUp = null;
                     isHoldingOBJ = false;
+                    Sound.PlayOneShot(PickUpSound); //play pickup sound
                 }
                 pickUpTimer = 1;
             }
@@ -75,7 +77,7 @@ public class PlayerPickUp : MonoBehaviourPunCallbacks, IPunObservable, IOnEventC
             if (isHoldingOBJ == true)
             {
                 Anim.SetBool("IsCarry", true);
-                Sound.PlayOneShot(PickUpSound); //play pickup sound
+               
             }
             else
             {
