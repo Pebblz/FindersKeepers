@@ -12,7 +12,9 @@ public class TodoList : MonoBehaviour
      */
 
     //[SerializeField] Text text;
-    [SerializeField] Image[] images;
+    [SerializeField]Image image;
+    [SerializeField]Image image2;
+    [SerializeField]Image image3;
 
     [SerializeField] GameManager gameManager;
     Dictionary<PickUpAbles, bool> list = new Dictionary<PickUpAbles, bool>();
@@ -74,11 +76,11 @@ public class TodoList : MonoBehaviour
 
         Debug.Log("Here");
 
-        FillImage(images[0]);
+        FillImage(image);
         Debug.Log("2");
-        FillImage(images[1]);
+        FillImage(image2);
         Debug.Log("3");
-        FillImage(images[2]);
+        FillImage(image3);
         //foreach(Image image in images)
         //{
         //    FillImage(image);
@@ -125,15 +127,19 @@ public class TodoList : MonoBehaviour
     {
         if (list.ContainsKey(obj))
         {
-            foreach(Image image in images)
-            {
-                if(image.sprite == obj.image)
+            
+            if(image.sprite == obj.image)
                 {
                     FillImage(image);
                 }
+            else if(image2.sprite == obj.image)
+            {
+                FillImage(image2);
+            } else if(image3.sprite == obj.image)
+            {
+                FillImage(image3);
             }
             list[obj] = true;
-
         }
     }
 }

@@ -57,10 +57,12 @@ MonoBehaviour:
   ObservedComponentsFoldoutOpen: 1
   Group: 0
   prefixField: -1
-  observableSearch: 0
+  observableSearch: 2
   Synchronization: 1
-  OwnershipTransfer: 0
+  OwnershipTransfer: 1
   ObservedComponents:
+  - {fileID: 4083829004301324857}
+  - {fileID: 6720880807411811311}
   - {fileID: 8431714773886074947}
   viewIdField: 0
   InstantiationId: 0
@@ -177,13 +179,13 @@ MonoBehaviour:
   ObservedComponentsFoldoutOpen: 1
   Group: 0
   prefixField: -1
-  observableSearch: 0
+  observableSearch: 2
   Synchronization: 1
-  OwnershipTransfer: 0
+  OwnershipTransfer: 1
   ObservedComponents:
-  - {fileID: 7237027239555636164}
-  - {fileID: 5338075839369447462}
   - {fileID: 1319904013117543082}
+  - {fileID: 5338075839369447462}
+  - {fileID: 7237027239555636164}
   viewIdField: 0
   InstantiationId: 0
   isRuntimeInstantiated: 0
@@ -300,11 +302,13 @@ MonoBehaviour:
   ObservedComponentsFoldoutOpen: 1
   Group: 0
   prefixField: -1
-  observableSearch: 0
+  observableSearch: 2
   Synchronization: 1
-  OwnershipTransfer: 0
+  OwnershipTransfer: 1
   ObservedComponents:
   - {fileID: 3289958521540941449}
+  - {fileID: 8006116724956305020}
+  - {fileID: 8517387321488295511}
   viewIdField: 0
   InstantiationId: 0
   isRuntimeInstantiated: 0
@@ -397,12 +401,13 @@ MonoBehaviour:
   ObservedComponentsFoldoutOpen: 1
   Group: 0
   prefixField: -1
-  observableSearch: 0
+  observableSearch: 1
   Synchronization: 1
-  OwnershipTransfer: 0
+  OwnershipTransfer: 1
   ObservedComponents:
-  - {fileID: 6375171053473153865}
   - {fileID: 314794441717425008}
+  - {fileID: 6375171053473153865}
+  - {fileID: 8949994986163789889}
   viewIdField: 0
   InstantiationId: 0
   isRuntimeInstantiated: 0
@@ -580,10 +585,12 @@ MonoBehaviour:
   ObservedComponentsFoldoutOpen: 1
   Group: 0
   prefixField: -1
-  observableSearch: 0
+  observableSearch: 2
   Synchronization: 1
-  OwnershipTransfer: 0
+  OwnershipTransfer: 1
   ObservedComponents:
+  - {fileID: 1119754614150841449}
+  - {fileID: 2332464919780884801}
   - {fileID: 5211760823904911696}
   viewIdField: 0
   InstantiationId: 0
@@ -815,12 +822,12 @@ MonoBehaviour:
   ObservedComponentsFoldoutOpen: 1
   Group: 0
   prefixField: -1
-  observableSearch: 0
+  observableSearch: 2
   Synchronization: 1
-  OwnershipTransfer: 0
+  OwnershipTransfer: 1
   ObservedComponents:
-  - {fileID: 6631849332681788389}
   - {fileID: 2141457932560002679}
+  - {fileID: 6631849332681788389}
   - {fileID: 7863403587607506055}
   viewIdField: 0
   InstantiationId: 0
@@ -980,11 +987,13 @@ MonoBehaviour:
   ObservedComponentsFoldoutOpen: 1
   Group: 0
   prefixField: -1
-  observableSearch: 0
+  observableSearch: 2
   Synchronization: 1
-  OwnershipTransfer: 0
+  OwnershipTransfer: 1
   ObservedComponents:
+  - {fileID: 2734986518505845883}
   - {fileID: 3454383716590619830}
+  - {fileID: 6767939407831723846}
   viewIdField: 0
   InstantiationId: 0
   isRuntimeInstantiated: 0
