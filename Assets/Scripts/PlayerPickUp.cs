@@ -105,8 +105,20 @@ public class PlayerPickUp : MonoBehaviourPunCallbacks, IPunObservable, IOnEventC
 
         if (PickUp != null)
         {
-            PickUpSpawner.GetComponent<PickUpableSpawner>().deleteOBJ(this.PickUp);
-        
+            //PickUpSpawner.GetComponent<PickUpableSpawner>().deleteOBJ(this.PickUp);
+
+            if (photonView.IsMine)
+            {
+                PickUp.transform.parent = null;
+                PhotonNetwork.Destroy(PickUp);
+            }
+            else
+            {
+                PickUp.transform.parent = null;
+                Destroy(PickUp);
+            }
+
+
             PickUp = null;
             isPickingUpOBJ = false;
             isHoldingOBJ = false;
