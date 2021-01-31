@@ -20,30 +20,84 @@ public class WinOrLoseScript : MonoBehaviour
     [SerializeField] AudioClip loseSound;
 
     [SerializeField] Camera[] cameras;
+    [SerializeField] Transform[] podiums;
+    //[SerializeField] RawImage[] images;
 
+    Player[] players;
+
+    [SerializeField]GameObject quickRot;
     // Start is called before the first frame update
     void Start()
     {
         //Get Scores from server
-        Player[] players = FindObjectsOfType<Player>();
+        players = FindObjectsOfType<Player>();
  
         //order the scores
         players = Order(players);
 
+        for(int j = 0; j < players.Length; j++)
+        {
+            Player player = players[j];
+            switch(j)
+            {
+                case 0:
+                    player.GetComponent<Animator>().SetBool("First", true);
+                    break;
+                case 1:
+                    player.GetComponent<Animator>().SetBool("Second", true);
+                    break;
+                case 2:
+                    player.GetComponent<Animator>().SetBool("Third", true);
+                    break;
+                case 3:
+                    player.GetComponent<Animator>().SetBool("Fourth", true);
+                    break;
+            }
+        }
 
+        if(players.Length != 4)
+        {
+            players[players.Length - 1].GetComponent<Animator>().SetBool("Fourth", true);
+        }
+
+        //foreach(RawImage image in images)
+        //{
+        //    image.gameObject.SetActive(false);
+        //}
         Display(players);
+        StartCoroutine("Flash");
     }
+
+
+
+
 
     void Display(Player[] players)
     {
         int incrementation = 0;
         foreach(Player player in players)
         {
-            //            player.gameObject.transform.position = locations[incrementation].position;
+            player.gameObject.transform.position = podiums[incrementation].position + new Vector3(0,50 + incrementation * 50,0);
+            player.gameObject.transform.rotation = quickRot.transform.rotation;
             Camera cam = cameras[incrementation];
             cam.transform.position = player.transform.position - new Vector3(0, 0, 4);
             cam.transform.parent = player.transform;
+            incrementation++;
+            player.enabled = false;
         }
+    }
+
+    IEnumerator Flash()
+    {
+        //int incrementation = 0;
+        //foreach (Player player in players)
+        //{
+            yield return new WaitForSeconds(6);
+        //    //images[incrementation].gameObject.SetActive(true);
+        //    incrementation++;
+        //}
+
+        podiums[players.Length-1].gameObject.SetActive(false);
     }
 
     Player[] Order(Player[] scores)
