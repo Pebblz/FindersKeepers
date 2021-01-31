@@ -26,7 +26,7 @@ public class PlayerPickUp : MonoBehaviourPunCallbacks, IPunObservable, IOnEventC
     Animator Anim;
     float pickUpTimer;
 
-
+    GameObject PickUpSpawner;
     AudioSource Sound;
     [SerializeField] AudioClip PickUpSound;
 
@@ -36,6 +36,7 @@ public class PlayerPickUp : MonoBehaviourPunCallbacks, IPunObservable, IOnEventC
         Anim = GetComponent<Animator>();
         Sound = GetComponent<AudioSource>();
         rb = GetComponent<Rigidbody>();
+        PickUpSpawner = GameObject.FindGameObjectWithTag("PickUpableSpawner");
     }
     
 
@@ -87,11 +88,10 @@ public class PlayerPickUp : MonoBehaviourPunCallbacks, IPunObservable, IOnEventC
     {
         if (PickUp != null)
         {
-
-            PickUp.GetComponent<Rigidbody>().useGravity = false;
-            PickUp.GetComponent<BoxCollider>().enabled = false;
-           
-            PickUp.transform.position = new Vector3(0, 70, 0);
+            PickUpSpawner.GetComponent<PickUpableSpawner>().deleteOBJ(PickUp);
+            PickUp = null;
+            isPickingUpOBJ = false;
+            isHoldingOBJ = false;
         }
     }
     public void ThrowOBJ(int Force)
@@ -162,7 +162,6 @@ public class PlayerPickUp : MonoBehaviourPunCallbacks, IPunObservable, IOnEventC
             isHoldingOBJ = false;
         } else if (eventCode == NetworkCodes.DeleteObjectInDropoffCode)
         {
-
             DestroyPickUp();
         }
 
