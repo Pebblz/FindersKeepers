@@ -41,7 +41,11 @@ public class PickUpableSpawner : MonoBehaviourPunCallbacks
             }
         }
     }
-
+    [PunRPC]
+    public void FindOBJ()
+    {
+        CurrentlySpawnedOBJ = GameObject.FindGameObjectsWithTag("PointsPickUp");
+    }
     //This will be for when we need to destroy a GameOBJ for all players
     [PunRPC]
     public void deleteOBJ(GameObject ObjectToDelete)
