@@ -57,11 +57,13 @@ MonoBehaviour:
   ObservedComponentsFoldoutOpen: 1
   Group: 0
   prefixField: -1
-  observableSearch: 0
+  observableSearch: 2
   Synchronization: 1
   OwnershipTransfer: 0
   ObservedComponents:
+  - {fileID: 6129845564835231285}
   - {fileID: 6456095590818145883}
+  - {fileID: 8115752034759855729}
   viewIdField: 0
   InstantiationId: 0
   isRuntimeInstantiated: 0
@@ -161,11 +163,12 @@ MonoBehaviour:
   ObservedComponentsFoldoutOpen: 1
   Group: 0
   prefixField: -1
-  observableSearch: 0
+  observableSearch: 2
   Synchronization: 1
   OwnershipTransfer: 0
   ObservedComponents:
   - {fileID: 320091981192293958}
+  - {fileID: 2025949115122220586}
   - {fileID: 3401421622939564659}
   viewIdField: 0
   InstantiationId: 0
@@ -286,11 +289,13 @@ MonoBehaviour:
   ObservedComponentsFoldoutOpen: 1
   Group: 0
   prefixField: -1
-  observableSearch: 0
+  observableSearch: 2
   Synchronization: 1
   OwnershipTransfer: 0
   ObservedComponents:
   - {fileID: 2052078112845453253}
+  - {fileID: 3685003914796228462}
+  - {fileID: 3747585760360374331}
   viewIdField: 0
   InstantiationId: 0
   isRuntimeInstantiated: 0
@@ -539,11 +544,13 @@ MonoBehaviour:
   ObservedComponentsFoldoutOpen: 1
   Group: 0
   prefixField: -1
-  observableSearch: 0
+  observableSearch: 2
   Synchronization: 1
   OwnershipTransfer: 0
   ObservedComponents:
+  - {fileID: 1035057445384556141}
   - {fileID: 4953725408625725375}
+  - {fileID: 5849353110350933838}
   viewIdField: 0
   InstantiationId: 0
   isRuntimeInstantiated: 0
@@ -679,7 +686,7 @@ MonoBehaviour:
   ObservedComponentsFoldoutOpen: 1
   Group: 0
   prefixField: -1
-  observableSearch: 0
+  observableSearch: 2
   Synchronization: 1
   OwnershipTransfer: 0
   ObservedComponents:
@@ -791,10 +798,12 @@ MonoBehaviour:
   ObservedComponentsFoldoutOpen: 1
   Group: 0
   prefixField: -1
-  observableSearch: 0
+  observableSearch: 2
   Synchronization: 1
   OwnershipTransfer: 0
   ObservedComponents:
+  - {fileID: 453430008457972272}
+  - {fileID: 472205732634530773}
   - {fileID: 8293382747313288449}
   viewIdField: 0
   InstantiationId: 0
