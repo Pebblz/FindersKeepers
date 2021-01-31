@@ -76,7 +76,7 @@ public class SpeedPowerUpCollectible : MonoBehaviourPunCallbacks, IPunObservable
             }
             if(collided)
             {
-                DestroyGlobally();
+               pc.GetComponent<PowerUpSpawner>().DestroyGlobally();
             }
             // // collided = true;
         }
