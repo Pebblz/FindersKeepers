@@ -135,11 +135,13 @@ MonoBehaviour:
   ObservedComponentsFoldoutOpen: 1
   Group: 0
   prefixField: -1
-  observableSearch: 0
+  observableSearch: 2
   Synchronization: 1
   OwnershipTransfer: 0
   ObservedComponents:
   - {fileID: 1185860485902710175}
+  - {fileID: 2027702232267423871}
+  - {fileID: 4559570550120026592}
   viewIdField: 0
   InstantiationId: 0
   isRuntimeInstantiated: 0
@@ -187,12 +189,13 @@ MonoBehaviour:
   ObservedComponentsFoldoutOpen: 1
   Group: 0
   prefixField: -1
-  observableSearch: 0
+  observableSearch: 2
   Synchronization: 1
   OwnershipTransfer: 0
   ObservedComponents:
   - {fileID: 1587906730827084671}
   - {fileID: 4095449733884652945}
+  - {fileID: 6693067277613388312}
   viewIdField: 0
   InstantiationId: 0
   isRuntimeInstantiated: 0
@@ -344,12 +347,12 @@ MonoBehaviour:
   ObservedComponentsFoldoutOpen: 1
   Group: 0
   prefixField: -1
-  observableSearch: 0
+  observableSearch: 2
   Synchronization: 1
   OwnershipTransfer: 0
   ObservedComponents:
-  - {fileID: 1851255885445813764}
   - {fileID: 105302390171555234}
+  - {fileID: 1851255885445813764}
   - {fileID: 2347410196393558376}
   viewIdField: 0
   InstantiationId: 0
@@ -418,12 +421,13 @@ MonoBehaviour:
   ObservedComponentsFoldoutOpen: 1
   Group: 0
   prefixField: -1
-  observableSearch: 0
+  observableSearch: 2
   Synchronization: 1
   OwnershipTransfer: 0
   ObservedComponents:
   - {fileID: 162812978923560054}
   - {fileID: 3253936642260443762}
+  - {fileID: 8959033151313511714}
   viewIdField: 0
   InstantiationId: 0
   isRuntimeInstantiated: 0
@@ -520,10 +524,12 @@ MonoBehaviour:
   ObservedComponentsFoldoutOpen: 1
   Group: 0
   prefixField: -1
-  observableSearch: 0
+  observableSearch: 2
   Synchronization: 1
   OwnershipTransfer: 0
   ObservedComponents:
+  - {fileID: 534653517274432147}
+  - {fileID: 4909525057819581064}
   - {fileID: 5223826530037512423}
   viewIdField: 0
   InstantiationId: 0
@@ -660,11 +666,13 @@ MonoBehaviour:
   ObservedComponentsFoldoutOpen: 1
   Group: 0
   prefixField: -1
-  observableSearch: 0
+  observableSearch: 2
   Synchronization: 1
   OwnershipTransfer: 0
   ObservedComponents:
+  - {fileID: 2750918550212030306}
   - {fileID: 4721248223456411435}
+  - {fileID: 5912792905480282614}
   viewIdField: 0
   InstantiationId: 0
   isRuntimeInstantiated: 0
