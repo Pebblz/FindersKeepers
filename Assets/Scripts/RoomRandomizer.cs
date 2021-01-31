@@ -5,6 +5,7 @@ using Photon.Realtime;
 using ExitGames.Client.Photon;
 using Photon.Pun;
 using System.Linq;
+using UnityEditor;
 
 public class RoomRandomizer : MonoBehaviour/*, IOnEventCallback*/
 {
@@ -37,7 +38,9 @@ public class RoomRandomizer : MonoBehaviour/*, IOnEventCallback*/
         // go through the spawnpoint array
         for (int i = 0; i < rooms.Count; i++)
         {
-            PhotonNetwork.Instantiate(rooms[i].name, roomSpawnpoints[i].transform.position, roomSpawnpoints[i].transform.rotation);
+            GameObject temp = PhotonNetwork.Instantiate(rooms[i].name, roomSpawnpoints[i].transform.position, roomSpawnpoints[i].transform.rotation);
+            PrefabUtility.UnpackPrefabInstance(temp,PrefabUnpackMode.Completely,InteractionMode.AutomatedAction);
+            temp.transform.DetachChildren();
         }
 
         if(todolist != null)
@@ -56,6 +59,7 @@ public class RoomRandomizer : MonoBehaviour/*, IOnEventCallback*/
             rooms[i].transform.rotation = roomSpawnpoints[rng].transform.rotation;
             roomSpawnpoints.Remove(roomSpawnpoints[rng]);
         }
+
     }
 
 }
