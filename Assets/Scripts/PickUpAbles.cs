@@ -15,11 +15,10 @@ public class PickUpAbles : MonoBehaviourPunCallbacks, IPunObservable
     public GameObject PlayerThatPickUpOBJ;
     public PhotonView pv;
     public bool useGravity;
-    Vector3 OriginalPos;
+    public Vector3 OriginalPos;
     public bool IsThisOBJForPoints;
-    Quaternion startingRot;
-    [SerializeField]
-    bool hasGravity = true;
+    public Quaternion startingRot;
+    public bool hasGravity = true;
     public Sprite image;
 
     //this is an awake because it'll do this whenever this object gets spawned
@@ -47,14 +46,15 @@ public class PickUpAbles : MonoBehaviourPunCallbacks, IPunObservable
                 if (player.GetComponent<PlayerPickUp>().isHoldingOBJ == false &&
                     player.GetComponent<PlayerPickUp>().isPickingUpOBJ == true && IsPickedUped == false)
                 {
-                    this.gameObject.transform.parent = null;
+                    photonView.RPC("unparent", RpcTarget.All);
+
                     GetComponent<Rigidbody>().constraints = RigidbodyConstraints.None;
                     player.GetComponent<PlayerPickUp>().PlayerPickUpSound();
                     UseGravity(true);
                     player.GetComponent<PlayerPickUp>().SetPickUpOBJ(this.gameObject);
                     player.GetComponent<PlayerPickUp>().isHoldingOBJ = true;
-                    PlayerThatPickUpOBJ = player;
-                    ChangeOwnerShip();
+                    PlayerThatPickUpOBJ = player;                 
+                    ChangeOwnerShip();                   
                     IsPickedUped = true;
                 }
 
@@ -77,6 +77,18 @@ public class PickUpAbles : MonoBehaviourPunCallbacks, IPunObservable
     {
         pv.TransferOwnership(PhotonNetwork.LocalPlayer);
     }
+
+    [PunRPC]
+    public void unparent()
+    {
+        this.gameObject.transform.parent = null;
+    }
+
+    [PunRPC]
+    public void DestroyThis()
+    {
+        Destroy(this.gameObject);
+    }
     //Drops the GameObject
     public void DropPickUp()
     {
@@ -88,12 +100,12 @@ public class PickUpAbles : MonoBehaviourPunCallbacks, IPunObservable
     //Resets the Position of the GameObject
     //to the position that it started at 
     [PunRPC]
-    void ResetPos()
+    public void ResetPos()
     {
 
-        GetComponent<Rigidbody>().velocity = Vector3.zero;
-        GetComponent<Rigidbody>().rotation = startingRot;
-        transform.position = OriginalPos;
+        this.GetComponent<Rigidbody>().velocity = Vector3.zero;
+        this.GetComponent<Rigidbody>().rotation = startingRot;
+        this.transform.position = OriginalPos;
         if (hasGravity == false)
         {
             GetComponent<Rigidbody>().useGravity = hasGravity;

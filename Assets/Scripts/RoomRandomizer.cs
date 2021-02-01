@@ -60,17 +60,56 @@ public class RoomRandomizer : MonoBehaviourPunCallbacks, IPunObservable
 
         if(todolist != null)
         {        
-                todolist.Active();           
+            todolist.Active();           
         }
     }
 
     void SpawnRooms()
     {
-
         // go through the spawnpoint array
         for (int i = 0; i < rooms.Count; i++)
         {
+            //GameObject g = Instantiate(rooms[i], roomSpawnpoints[i].transform.position, roomSpawnpoints[i].transform.rotation);
+
+           // g.transform.DetachChildren();
+
+            //for (int a = 0; a < g.transform.childCount; a++)
+            //{
+            //    GameObject c = g.transform.GetChild(a).gameObject;
+            //    c.gameObject.transform.parent = null;
+            //    g.gameObject.transform.GetChild(a).gameObject.transform.parent = c.transform.parent;
+            //    Destroy(c);
+            //}
+
+            //string[] n = g.name.Split('(');
+            //Debug.Log(n[0]);
+
+           // g.name = n[0];
+
             PhotonNetwork.Instantiate(rooms[i].name, roomSpawnpoints[i].transform.position, roomSpawnpoints[i].transform.rotation);
+           // Destroy(g);
+            //t.transform.DetachChildren();
+
+            //string[] m = t.name.Split('(');
+            //Debug.Log(m[0]);
+
+            //t.name = m[0];
+
+            //PhotonNetwork.Instantiate(t.name, t.transform.position, t.transform.rotation);
+            //Destroy(t);
+
+            //for (int a = 0; a < g.transform.childCount; a++)
+            //{
+            //    string[] t = g.transform.GetChild(a).name.Split('(');
+            //    Debug.Log(t[0]);
+
+            //    g.name = t[0];
+
+            //    PhotonNetwork.Instantiate(g.transform.GetChild(a).name, g.transform.GetChild(a).transform.position, g.transform.GetChild(a).transform.rotation);
+            //}
+
+            //PhotonNetwork.Instantiate(rooms[i].name, roomSpawnpoints[i].transform.position, roomSpawnpoints[i].transform.rotation);
+
         }
 
         if (todolist != null)
