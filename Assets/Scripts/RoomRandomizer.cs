@@ -14,6 +14,7 @@ public class RoomRandomizer : MonoBehaviourPunCallbacks, IPunObservable
     public List<GameObject> rooms;
     //  private HashSet<int> roomIdxSpawned;
     [SerializeField] TodoList todolist;
+    public bool hardMode = false;
 
 
     // Start is called before the first frame update
@@ -26,8 +27,40 @@ public class RoomRandomizer : MonoBehaviourPunCallbacks, IPunObservable
         //roomIdxSpawned = new HashSet<int>();
         if (PhotonNetwork.IsMasterClient)
         {
-            SpawnRooms();
-            //RandomizeRooms();
+            if (hardMode)
+            {
+                SpawnRoomsHardMode();
+            }
+            else
+            {
+                SpawnRooms();
+            }
+        }
+    }
+
+    void SpawnRoomsHardMode()
+    {
+        for (int i = 0; i < rooms.Count; i++)
+        {
+            GameObject g = rooms[i];
+            
+            int rng = Random.Range(0, roomSpawnpoints.Count);
+            
+            g.transform.position = roomSpawnpoints[rng].transform.position;
+            g.transform.rotation = roomSpawnpoints[rng].transform.rotation;
+            roomSpawnpoints.Remove(roomSpawnpoints[rng]);
+         
+            string[] n = g.name.Split('(');
+            Debug.Log(n[0]);
+
+            g.name = n[0];
+
+            PhotonNetwork.Instantiate(g.name, g.transform.position, g.transform.rotation);
+        }
+
+        if(todolist != null)
+        {        
+                todolist.Active();           
         }
     }
 
@@ -37,31 +70,12 @@ public class RoomRandomizer : MonoBehaviourPunCallbacks, IPunObservable
         // go through the spawnpoint array
         for (int i = 0; i < rooms.Count; i++)
         {
-            GameObject g = rooms[i];
-
-            int rng = Random.Range(0, roomSpawnpoints.Count);
-
-            g.transform.position = roomSpawnpoints[rng].transform.position;
-            g.transform.rotation = roomSpawnpoints[rng].transform.rotation;
-            roomSpawnpoints.Remove(roomSpawnpoints[rng]);
-
-            string[] n = g.name.Split('(');
-            Debug.Log(n[0]);
-
-            g.name = n[0];
-
-            PhotonNetwork.Instantiate(g.name, g.transform.position, g.transform.rotation);
+            PhotonNetwork.Instantiate(rooms[i].name, roomSpawnpoints[i].transform.position, roomSpawnpoints[i].transform.rotation);
         }
 
-            //PhotonNetwork.Instantiate(g.name, g.transform.position, g.transform.rotation);
-
-            //PrefabUtility.UnpackPrefabInstance(temp.gameObject,PrefabUnpackMode.Completely,InteractionMode.AutomatedAction);
-            //temp.transform.DetachChildren();
-        
-
-        if(todolist != null)
-        {        
-                todolist.Active();           
+        if (todolist != null)
+        {
+            todolist.Active();
         }
     }
 
@@ -69,23 +83,11 @@ public class RoomRandomizer : MonoBehaviourPunCallbacks, IPunObservable
     {
         if (stream.IsWriting)
         {
+            stream.SendNext(hardMode);
         }
         else
         {
+            hardMode = (bool)stream.ReceiveNext();
         }
     }
-    //void RandomizeRooms()
-    //{
-
-    //    for (int i = 0; i < rooms.Count; i++)
-    //    {
-    //        int rng = Random.Range(0, roomSpawnpoints.Count);
-
-    //        rooms[i].transform.position = roomSpawnpoints[rng].transform.position;
-    //        rooms[i].transform.rotation = roomSpawnpoints[rng].transform.rotation;
-    //        roomSpawnpoints.Remove(roomSpawnpoints[rng]);
-    //    }
-
-    //}
-
 }

@@ -4183,6 +4183,11 @@ PrefabInstance:
       propertyPath: todolist
       value: 
       objectReference: {fileID: 217779529}
+    - target: {fileID: 5227203648487104175, guid: 3b0593e8474656c408721ca7689c87a8,
+        type: 3}
+      propertyPath: hardMode
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 5275669910214295779, guid: 3b0593e8474656c408721ca7689c87a8,
         type: 3}
       propertyPath: m_Name
