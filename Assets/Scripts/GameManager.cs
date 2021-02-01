@@ -297,7 +297,7 @@ public class GameManager : MonoBehaviourPunCallbacks
                 return 5;
                 break;
             case GameState.The_Game:
-                return 500;
+                return 20;
                 break;
         }
         return 1;
