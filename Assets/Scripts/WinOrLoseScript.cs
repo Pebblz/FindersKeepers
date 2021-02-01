@@ -64,6 +64,10 @@ public class WinOrLoseScript : MonoBehaviour
         //{
         //    image.gameObject.SetActive(false);
         //}
+        for(int i = players.Length; i < podiums.Length; i++)
+        {
+            podiums[i].gameObject.SetActive(false);
+        }
         Display(players);
         StartCoroutine("Flash");
     }
@@ -83,9 +87,9 @@ public class WinOrLoseScript : MonoBehaviour
             cam.transform.position = player.transform.position - new Vector3(0, 0, 4);
             cam.transform.parent = player.transform;
             incrementation++;
-            player.enabled = false;
-            player.freeLookCam.SetActive(false);
-            player.GetComponent<PlayerMovement>().enabled = false;
+            //player.enabled = false;
+            //player.freeLookCam.SetActive(false);
+            //player.GetComponent<Player_Movement>().enabled = false;
         }
     }
 

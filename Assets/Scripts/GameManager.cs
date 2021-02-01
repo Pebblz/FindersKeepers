@@ -228,6 +228,12 @@ public class GameManager : MonoBehaviourPunCallbacks
         if ((int)gameState > 3)
         { //if gameover
             gameState = GameState.The_Run; //static so this variable must be manually reset
+            foreach(Player player in FindObjectsOfType<Player>())
+            {
+                player.GetComponent<Player_Movement>().enabled = false;
+                player.freeLookCam.SetActive(false);
+            }
+            FindObjectOfType<Camera>().gameObject.SetActive(false);
             SceneManager.LoadScene("WinOrLose"); //end of game load endscreen   scene doesnt exist yet
         }
         else
