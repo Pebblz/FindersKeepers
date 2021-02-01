@@ -294,10 +294,10 @@ public class GameManager : MonoBehaviourPunCallbacks
         switch (gameState)
         {
             case GameState.The_Run:
-                return 5;
+                return 20;
                 break;
             case GameState.The_Game:
-                return 20;
+                return 200;
                 break;
         }
         return 1;
