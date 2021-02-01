@@ -2,8 +2,9 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using Photon.Pun;
 
-public class TodoList : MonoBehaviour
+public class TodoList : MonoBehaviourPunCallbacks, IPunObservable
 {
     /*Flower Boxing again
      * Programmer Patrick Naatz
@@ -105,13 +106,17 @@ public class TodoList : MonoBehaviour
         }
         Debug.Log(left.Count);
         int nextObject = Random.Range(0, left.Count);
-        PickUpAbles newObject = left.ToArray()[nextObject];
-        Debug.Log(newObject.gameObject.name);
-        img.sprite = newObject.image;
+        if (left.ToArray()[nextObject] != null)
+        {
+            PickUpAbles newObject = left.ToArray()[nextObject];
 
-        //added to coordinate with pick up spawner
-        left[nextObject].tag = "PointsPickUp"; //sets tag
-        left[nextObject].IsThisOBJForPoints = true; //set true for points
+            img.sprite = newObject.image;
+
+
+            //added to coordinate with pick up spawner
+            left[nextObject].tag = "PointsPickUp"; //sets tag
+            left[nextObject].IsThisOBJForPoints = true; //set true for points
+        }
         FindObjectOfType<PickUpableSpawner>().FindOBJ();
     }
 
@@ -147,6 +152,16 @@ public class TodoList : MonoBehaviour
                 FillImage(image3);
             }
             list[obj] = true;
+        }
+    }
+
+    public void OnPhotonSerializeView(PhotonStream stream, PhotonMessageInfo info)
+    {
+        if (stream.IsWriting)
+        {
+        }
+        else
+        {
         }
     }
 }

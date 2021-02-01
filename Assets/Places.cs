@@ -40,7 +40,10 @@ public class Places : MonoBehaviour
         int incrementer = 1;
         foreach (Player player in players)
         {
-            text.text = text.text + "\n" + incrementer.ToString() + " " + player.gameObject.name;
+            if (player != null)
+            {
+                text.text = text.text + "\n" + incrementer.ToString() + " " + player.gameObject.name;
+            }
             incrementer++;
         }
     }

@@ -113,7 +113,9 @@ MonoBehaviour:
   PlayerThatPickUpOBJ: {fileID: 0}
   pv: {fileID: 0}
   useGravity: 1
+  OriginalPos: {x: 0, y: 0, z: 0}
   IsThisOBJForPoints: 0
+  startingRot: {x: 0, y: 0, z: 0, w: 0}
   hasGravity: 1
   image: {fileID: 21300000, guid: e503880261315814f9ef521724ea14ae, type: 3}
 --- !u!114 &6218579012449409615
@@ -305,7 +307,9 @@ MonoBehaviour:
   PlayerThatPickUpOBJ: {fileID: 0}
   pv: {fileID: 0}
   useGravity: 1
+  OriginalPos: {x: 0, y: 0, z: 0}
   IsThisOBJForPoints: 0
+  startingRot: {x: 0, y: 0, z: 0, w: 0}
   hasGravity: 1
   image: {fileID: 21300000, guid: f38cd7b127b7a854cb4a0a80d0c847fe, type: 3}
 --- !u!1 &985717376978011639
@@ -463,7 +467,9 @@ MonoBehaviour:
   PlayerThatPickUpOBJ: {fileID: 0}
   pv: {fileID: 0}
   useGravity: 1
+  OriginalPos: {x: 0, y: 0, z: 0}
   IsThisOBJForPoints: 0
+  startingRot: {x: 0, y: 0, z: 0, w: 0}
   hasGravity: 1
   image: {fileID: 21300000, guid: 69f6b396bf4ee464ea86d92a1a8a5aae, type: 3}
 --- !u!114 &2910306406194428689
@@ -694,7 +700,9 @@ MonoBehaviour:
   PlayerThatPickUpOBJ: {fileID: 0}
   pv: {fileID: 0}
   useGravity: 1
+  OriginalPos: {x: 0, y: 0, z: 0}
   IsThisOBJForPoints: 0
+  startingRot: {x: 0, y: 0, z: 0, w: 0}
   hasGravity: 1
   image: {fileID: 21300000, guid: 69f6b396bf4ee464ea86d92a1a8a5aae, type: 3}
 --- !u!114 &689630145876634440
@@ -841,7 +849,9 @@ MonoBehaviour:
   PlayerThatPickUpOBJ: {fileID: 0}
   pv: {fileID: 0}
   useGravity: 1
+  OriginalPos: {x: 0, y: 0, z: 0}
   IsThisOBJForPoints: 0
+  startingRot: {x: 0, y: 0, z: 0, w: 0}
   hasGravity: 1
   image: {fileID: 21300000, guid: 3f6cf0d9b01f1574fabc4fd44b9b9e80, type: 3}
 --- !u!114 &6788927629403269631
@@ -905,8 +915,8 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4168288699973449023}
-  m_LocalRotation: {x: 0, y: 0.7071068, z: 0, w: 0.7071068}
-  m_LocalPosition: {x: 0.993, y: 0.475, z: 16.776}
+  m_LocalRotation: {x: 0, y: 1, z: 0, w: 0}
+  m_LocalPosition: {x: -8.27, y: 0.468, z: -6.1}
   m_LocalScale: {x: 0.0047187987, y: 0.0047187987, z: 0.0047187987}
   m_Children:
   - {fileID: 4864695470072306982}
@@ -997,7 +1007,7 @@ MonoBehaviour:
   prefixField: -1
   observableSearch: 2
   Synchronization: 1
-  OwnershipTransfer: 0
+  OwnershipTransfer: 1
   ObservedComponents:
   - {fileID: 550044383005175687}
   viewIdField: 0
@@ -1079,7 +1089,9 @@ MonoBehaviour:
   PlayerThatPickUpOBJ: {fileID: 0}
   pv: {fileID: 0}
   useGravity: 0
+  OriginalPos: {x: 0, y: 0, z: 0}
   IsThisOBJForPoints: 0
+  startingRot: {x: 0, y: 0, z: 0, w: 0}
   hasGravity: 1
   image: {fileID: 21300000, guid: bdce5584f3ac61c45a99fa76f5b9dff4, type: 3}
 --- !u!114 &1928225279332076862
@@ -1255,7 +1267,9 @@ MonoBehaviour:
   PlayerThatPickUpOBJ: {fileID: 0}
   pv: {fileID: 0}
   useGravity: 1
+  OriginalPos: {x: 0, y: 0, z: 0}
   IsThisOBJForPoints: 0
+  startingRot: {x: 0, y: 0, z: 0, w: 0}
   hasGravity: 1
   image: {fileID: 21300000, guid: 8b4203cd0085d2b40b849171375fefa9, type: 3}
 --- !u!54 &1486051524833536871
@@ -1374,7 +1388,9 @@ MonoBehaviour:
   PlayerThatPickUpOBJ: {fileID: 0}
   pv: {fileID: 0}
   useGravity: 1
+  OriginalPos: {x: 0, y: 0, z: 0}
   IsThisOBJForPoints: 0
+  startingRot: {x: 0, y: 0, z: 0, w: 0}
   hasGravity: 1
   image: {fileID: 21300000, guid: f38cd7b127b7a854cb4a0a80d0c847fe, type: 3}
 --- !u!54 &8923390131890222353
@@ -1464,7 +1480,9 @@ MonoBehaviour:
   PlayerThatPickUpOBJ: {fileID: 0}
   pv: {fileID: 0}
   useGravity: 1
+  OriginalPos: {x: 0, y: 0, z: 0}
   IsThisOBJForPoints: 0
+  startingRot: {x: 0, y: 0, z: 0, w: 0}
   hasGravity: 1
   image: {fileID: 21300000, guid: c7f4be0c484c2a443beabbe7ed74e274, type: 3}
 --- !u!114 &7809365073914315836
@@ -1596,7 +1614,9 @@ MonoBehaviour:
   PlayerThatPickUpOBJ: {fileID: 0}
   pv: {fileID: 0}
   useGravity: 1
+  OriginalPos: {x: 0, y: 0, z: 0}
   IsThisOBJForPoints: 0
+  startingRot: {x: 0, y: 0, z: 0, w: 0}
   hasGravity: 1
   image: {fileID: 21300000, guid: 54bd13ea50f4dff429d75b9ca97f8035, type: 3}
 --- !u!114 &8113531532394025871

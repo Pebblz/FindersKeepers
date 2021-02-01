@@ -1948,34 +1948,34 @@ MonoBehaviour:
   ShowParameterInspector: 1
   m_SynchronizeParameters:
   - Type: 4
-    SynchronizeType: 1
+    SynchronizeType: 2
     Name: IsRunning
   - Type: 4
-    SynchronizeType: 1
+    SynchronizeType: 2
     Name: IsCarry
   - Type: 4
-    SynchronizeType: 1
+    SynchronizeType: 2
     Name: IsJumping
   - Type: 4
-    SynchronizeType: 1
+    SynchronizeType: 2
     Name: IsStunned
   - Type: 4
-    SynchronizeType: 1
+    SynchronizeType: 2
     Name: IsShooting
   - Type: 4
-    SynchronizeType: 1
+    SynchronizeType: 2
     Name: IsThrowing
   - Type: 4
-    SynchronizeType: 0
+    SynchronizeType: 2
     Name: First
   - Type: 4
-    SynchronizeType: 0
+    SynchronizeType: 2
     Name: Second
   - Type: 4
-    SynchronizeType: 0
+    SynchronizeType: 2
     Name: Third
   - Type: 4
-    SynchronizeType: 0
+    SynchronizeType: 2
     Name: Fourth
   m_SynchronizeLayers:
   - SynchronizeType: 1
