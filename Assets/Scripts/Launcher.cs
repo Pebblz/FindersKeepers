@@ -10,6 +10,15 @@ using UnityEngine.SceneManagement;
 
 public class Launcher : MonoBehaviourPunCallbacks
 {
+    /*Flower Box
+     * 
+     * Editor: Pat Naatz
+     * Added: Button funcitonality for
+     *          -Quit
+     *          -Credit Scene
+     *          -How to Play Scene
+     *          -Feedback
+     */
 
     [SerializeField]
     private GameObject controlPanel;
@@ -72,22 +81,31 @@ public class Launcher : MonoBehaviourPunCallbacks
         }
     }
 
-
-    public void LoadCreditScene()
+    #region Buttons
+    /// <summary>
+    /// Load Credit Scene
+    /// </summary>
+    public void LoadCreditScene() //add to the credits button
     {
         SceneManager.LoadScene("Credits");
     }
 
-
-    public void LoadHowToPlay()
+    /// <summary>
+    /// Load How To Play Scene
+    /// </summary>
+    public void LoadHowToPlay() //add to the How To Play button
     {
         SceneManager.LoadScene("HowToPlay");
     }
 
-    public void Quit()
+    /// <summary>
+    /// Quits the game
+    /// </summary>
+    public void Quit() //add to quit button
     {
         Quit();
     }
+    #endregion
     #endregion
 
     #region PhotonCallbacks
