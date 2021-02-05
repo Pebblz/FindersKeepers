@@ -36,37 +36,37 @@ public class PickUpAbles : MonoBehaviourPunCallbacks, IPunObservable
         {
             player = GameObject.FindGameObjectWithTag("Player");
         }
-
+        photonView.RPC("unparent", RpcTarget.All);
         //added this because of a error when a player leaves and rejoins
-        if (player != null)
+        //if (player != null)
+        //{
+        //    if (Vector3.Distance(this.gameObject.transform.position, player.transform.position) < 3.5f)
+        //    {
+
+        //        if (player.GetComponent<PlayerPickUp>().isHoldingOBJ == false &&
+        //            player.GetComponent<PlayerPickUp>().isPickingUpOBJ == true && IsPickedUped == false)
+        //        {
+                    
+
+        //            //GetComponent<Rigidbody>().constraints = RigidbodyConstraints.None;
+        //            //player.GetComponent<PlayerPickUp>().PlayerPickUpSound();
+        //            //UseGravity(true);
+        //            //player.GetComponent<PlayerPickUp>().SetPickUpOBJ(this.gameObject);
+        //            //player.GetComponent<PlayerPickUp>().isHoldingOBJ = true;
+        //            //PlayerThatPickUpOBJ = player;                 
+        //            //ChangeOwnerShip();                   
+        //            //IsPickedUped = true;
+        //        }
+
+
+
+
+        //    }
+        //}
+        if (this.gameObject == player.GetComponent<PlayerPickUp>().PickUp && IsPickedUped == true)
         {
-            if (Vector3.Distance(this.gameObject.transform.position, player.transform.position) < 3.5f)
-            {
-
-                if (player.GetComponent<PlayerPickUp>().isHoldingOBJ == false &&
-                    player.GetComponent<PlayerPickUp>().isPickingUpOBJ == true && IsPickedUped == false)
-                {
-                    photonView.RPC("unparent", RpcTarget.All);
-
-                    GetComponent<Rigidbody>().constraints = RigidbodyConstraints.None;
-                    player.GetComponent<PlayerPickUp>().PlayerPickUpSound();
-                    UseGravity(true);
-                    player.GetComponent<PlayerPickUp>().SetPickUpOBJ(this.gameObject);
-                    player.GetComponent<PlayerPickUp>().isHoldingOBJ = true;
-                    PlayerThatPickUpOBJ = player;                 
-                    ChangeOwnerShip();                   
-                    IsPickedUped = true;
-                }
-
-
-                if (this.gameObject == player.GetComponent<PlayerPickUp>().PickUp)
-                {
-                    gameObject.transform.position = player.transform.position + new Vector3(0, 2.5f, 0);
-                }
-
-            }
+            gameObject.transform.position = player.transform.position + new Vector3(0, 2.5f, 0);
         }
-
         if (this.transform.position.y <= -100)
         {
             pv.RPC("ResetPos", RpcTarget.All);
@@ -117,7 +117,7 @@ public class PickUpAbles : MonoBehaviourPunCallbacks, IPunObservable
     }
     //this is for pictures, or anything that we would want to float
     //but still be pickupable
-    void UseGravity(bool does_it)
+    public void UseGravity(bool does_it)
     {
         if (GetComponent<Rigidbody>().useGravity == false)
         {

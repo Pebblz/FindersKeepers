@@ -48,13 +48,40 @@ public class PlayerPickUp : MonoBehaviourPunCallbacks, IPunObservable, IOnEventC
 
         if (photonView.IsMine)
         {
+
             //if the player holds q
             if (Input.GetButtonDown("Fire1") && pickUpTimer < 0)
             {
                 if (PickUp == null)
                 {
                     isPickingUpOBJ = true;
-                
+                    Vector3 start = this.gameObject.transform.position + new Vector3(0, .5f, 0);
+                    RaycastHit hit;
+                    for (float i = -4; i <= 4; i += .5f)
+                    {
+                        print(i);
+                        if (Physics.Raycast(start, transform.TransformDirection(Vector3.forward) + new Vector3(0,i/8,0), out hit, 3.5f) && PickUp == null)
+                        {
+
+                            if (hit.collider.gameObject.GetComponent<PickUpAbles>() != null)
+                            {
+
+                                hit.collider.gameObject.GetComponent<Rigidbody>().constraints = RigidbodyConstraints.None;
+                                hit.collider.gameObject.GetComponent<PickUpAbles>().UseGravity(true);
+                                hit.collider.gameObject.GetComponent<PickUpAbles>().PlayerThatPickUpOBJ = this.gameObject;
+                                PlayerPickUpSound();
+
+                                isHoldingOBJ = true;
+                                hit.collider.gameObject.GetComponent<PickUpAbles>().IsPickedUped = true;
+                                hit.collider.gameObject.GetComponent<PickUpAbles>().ChangeOwnerShip();
+                                SetPickUpOBJ(hit.collider.gameObject);
+                            }
+
+                        } else
+                        {
+                            Debug.DrawRay(start, transform.TransformDirection(Vector3.forward) + new Vector3(0, i, 0), Color.yellow);
+                        }
+                    }
                 }
                 else
                 {
@@ -64,6 +91,10 @@ public class PlayerPickUp : MonoBehaviourPunCallbacks, IPunObservable, IOnEventC
                     PlayerPickUpSound();
                 }
                 pickUpTimer = 1;
+            }
+            if(PickUp != null)
+            {
+                print(PickUp.name);
             }
             else
             {
