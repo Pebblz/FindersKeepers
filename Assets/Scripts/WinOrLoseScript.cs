@@ -65,7 +65,7 @@ public class WinOrLoseScript : MonoBehaviour
         //}
         for(int i = players.Length; i < podiums.Length; i++)
         {
-            podiums[i].gameObject.SetActive(false);
+            //podiums[i].gameObject.SetActive(false);
         }
         Display(players);
         StartCoroutine("Flash");
@@ -94,15 +94,12 @@ public class WinOrLoseScript : MonoBehaviour
 
     IEnumerator Flash()
     {
-        //int incrementation = 0;
-        //foreach (Player player in players)
-        //{
             yield return new WaitForSeconds(6);
-        //    //images[incrementation].gameObject.SetActive(true);
-        //    incrementation++;
-        //}
 
-        podiums[players.Length-1].gameObject.SetActive(false);
+        if (players.Length > 1)
+        {
+            podiums[players.Length - 1].gameObject.SetActive(false);
+        }
     }
 
     Player[] Order(Player[] scores)
