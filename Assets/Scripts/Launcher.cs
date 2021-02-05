@@ -88,6 +88,11 @@ public class Launcher : MonoBehaviourPunCallbacks
     {
         Quit();
     }
+
+    public void Feedback()
+    {
+        Application.OpenURL("https://docs.google.com/forms/d/e/1FAIpQLSetF1gEaPddTyZkeTUrGenpkXh-FmJ8iOQrpkEK4qoCXqiGMg/viewform?usp=sf_link");
+    }
     #endregion
 
     #region PhotonCallbacks
