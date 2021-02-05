@@ -29,7 +29,7 @@ public class Player_Movement : MonoBehaviourPunCallbacks, IPunObservable
 
     void Awake()
     {
-        distToGround = GetComponent<Collider>().bounds.extents.y;
+        distToGround = GetComponent<Collider>().bounds.extents.y -.6f;
         ThisPlayer = GetComponent<Player>();
         if (rb == null)
         {
@@ -89,12 +89,15 @@ public class Player_Movement : MonoBehaviourPunCallbacks, IPunObservable
             }
             if (Input.GetKeyDown(KeyCode.Space) && IsGrounded())
             {
-                Anim.SetBool("IsJumping", true);
                 rb.velocity = new Vector3(direction.x, jumpspeed, direction.z);
             }
-            if(!IsGrounded())
+
+            if(IsGrounded())
             {
                 Anim.SetBool("IsJumping", false);
+            } else
+            {
+                Anim.SetBool("IsJumping", true);
             }
         #endregion
 
@@ -110,7 +113,7 @@ public class Player_Movement : MonoBehaviourPunCallbacks, IPunObservable
     }
     bool IsGrounded()
     {
-        return Physics.Raycast(transform.position, -Vector3.up, distToGround + 0.1f);
+        return Physics.Raycast(transform.position, -Vector3.up, distToGround + 0.01f);
     }
     public void OnPhotonSerializeView(PhotonStream stream, PhotonMessageInfo info)
     {

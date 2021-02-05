@@ -36,33 +36,11 @@ public class PickUpAbles : MonoBehaviourPunCallbacks, IPunObservable
         {
             player = GameObject.FindGameObjectWithTag("Player");
         }
-        photonView.RPC("unparent", RpcTarget.All);
-        //added this because of a error when a player leaves and rejoins
-        //if (player != null)
-        //{
-        //    if (Vector3.Distance(this.gameObject.transform.position, player.transform.position) < 3.5f)
-        //    {
+        if (transform.parent != null)
+        {
+            photonView.RPC("unparent", RpcTarget.All);
+        }
 
-        //        if (player.GetComponent<PlayerPickUp>().isHoldingOBJ == false &&
-        //            player.GetComponent<PlayerPickUp>().isPickingUpOBJ == true && IsPickedUped == false)
-        //        {
-                    
-
-        //            //GetComponent<Rigidbody>().constraints = RigidbodyConstraints.None;
-        //            //player.GetComponent<PlayerPickUp>().PlayerPickUpSound();
-        //            //UseGravity(true);
-        //            //player.GetComponent<PlayerPickUp>().SetPickUpOBJ(this.gameObject);
-        //            //player.GetComponent<PlayerPickUp>().isHoldingOBJ = true;
-        //            //PlayerThatPickUpOBJ = player;                 
-        //            //ChangeOwnerShip();                   
-        //            //IsPickedUped = true;
-        //        }
-
-
-
-
-        //    }
-        //}
         if (this.gameObject == player.GetComponent<PlayerPickUp>().PickUp && IsPickedUped == true)
         {
             gameObject.transform.position = player.transform.position + new Vector3(0, 2.5f, 0);
