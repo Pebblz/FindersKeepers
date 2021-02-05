@@ -21,7 +21,6 @@ public class WinOrLoseScript : MonoBehaviour
 
     [SerializeField] Camera[] cameras;
     [SerializeField] Transform[] podiums;
-    //[SerializeField] RawImage[] images;
 
     Player[] players;
 
