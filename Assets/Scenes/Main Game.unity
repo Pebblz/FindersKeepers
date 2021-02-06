@@ -718,9 +718,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9442e2e0c116a384d9dffde70e447b3e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  image: {fileID: 611214168}
-  image2: {fileID: 1725614826}
-  image3: {fileID: 1281381737}
+  images:
+  - {fileID: 611214168}
+  - {fileID: 1725614826}
+  - {fileID: 1281381737}
   gameManager: {fileID: 261794780}
 --- !u!114 &217779530
 MonoBehaviour:
