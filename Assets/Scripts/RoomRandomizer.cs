@@ -57,11 +57,6 @@ public class RoomRandomizer : MonoBehaviourPunCallbacks, IPunObservable
 
             PhotonNetwork.Instantiate(g.name, g.transform.position, g.transform.rotation);
         }
-
-        if(todolist != null)
-        {        
-            todolist.Active();           
-        }
     }
 
     void SpawnRooms()
@@ -111,11 +106,7 @@ public class RoomRandomizer : MonoBehaviourPunCallbacks, IPunObservable
             //PhotonNetwork.Instantiate(rooms[i].name, roomSpawnpoints[i].transform.position, roomSpawnpoints[i].transform.rotation);
 
         }
-
-        if (todolist != null)
-        {
-            todolist.Active();
-        }
+        
     }
 
     public void OnPhotonSerializeView(PhotonStream stream, PhotonMessageInfo info)

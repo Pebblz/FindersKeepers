@@ -20,11 +20,27 @@ public class TodoList : MonoBehaviourPunCallbacks, IPunObservable
     [SerializeField] GameManager gameManager;
     Dictionary<PickUpAbles, bool> list = new Dictionary<PickUpAbles, bool>();
 
+    private void Start()
+    {
+        //disable all images
+        foreach(Image image in images)
+        {
+            image.gameObject.SetActive(false);
+        }
+    }
+
     /// <summary>
     /// call this function when you want to load and display the list
     /// </summary>
     public void Active()
     {
+        //activate all images
+        foreach(Image image in images)
+        {
+            image.gameObject.SetActive(true);
+        }
+
+
         FillList();
         LoadList();
     }
