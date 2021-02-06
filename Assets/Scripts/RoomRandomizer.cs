@@ -9,6 +9,12 @@ using UnityEditor;
 
 public class RoomRandomizer : MonoBehaviourPunCallbacks, IPunObservable
 {
+    /*Flower box
+     * 
+     * Edited by: Pat Naatz
+     * Changes:
+     *      Removed unneccessary calls to ToList.Activate function, it was screwing up the in game play
+     */
     // arrays of spawnpoints and rooms respectively 
     public List<GameObject> roomSpawnpoints;
     public List<GameObject> rooms;
