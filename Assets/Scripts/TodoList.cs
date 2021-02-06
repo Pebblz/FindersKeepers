@@ -11,8 +11,9 @@ public class TodoList : MonoBehaviourPunCallbacks, IPunObservable
      * this class when initiated randomly splits up the pickupable objects amungst whatever amount of players there are
      * It DOES allow player to have the same object as eachother on their list and this was done intentionally
      * 
-     * Todo:
+     * Completed:
      * Revamp the images so it works out of an array
+     * Timer changes available in the game manager script
      */
 
     [SerializeField] Image[] images;
