@@ -12,7 +12,6 @@ public class Timer : MonoBehaviour
 
 
     [SerializeField] Text text;
-    //[SerializeField] int minutes = 1;
     [SerializeField] int seconds = 30;
 
 
@@ -30,8 +29,6 @@ public class Timer : MonoBehaviour
                 Destroy(this);
             }
         }
-        //seconds += minutes * 60;
-        //minutes = 0;
 
         seconds++; //buffer for coroutine
 
