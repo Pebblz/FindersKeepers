@@ -3224,6 +3224,7 @@ GameObject:
   - component: {fileID: 1486132092}
   - component: {fileID: 1486132091}
   - component: {fileID: 1486132089}
+  - component: {fileID: 1486132090}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: Untagged
@@ -3265,6 +3266,14 @@ MonoBehaviour:
   m_CameraActivatedEvent:
     m_PersistentCalls:
       m_Calls: []
+--- !u!81 &1486132090
+AudioListener:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1486132088}
+  m_Enabled: 1
 --- !u!20 &1486132091
 Camera:
   m_ObjectHideFlags: 0
@@ -4270,12 +4279,19 @@ PrefabInstance:
       propertyPath: m_audioClip
       value: 
       objectReference: {fileID: 8300000, guid: 3988e743131652b49b5bced831662ee6, type: 3}
+    - target: {fileID: 5386687294505745766, guid: 1712e7d6a5df77249ab70fbc8e36d410,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5386687294505745767, guid: 1712e7d6a5df77249ab70fbc8e36d410,
         type: 3}
       propertyPath: m_Name
       value: BackgroundMusic
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 114982805935274154, guid: 1712e7d6a5df77249ab70fbc8e36d410, type: 3}
+    - {fileID: 82203254181159904, guid: 1712e7d6a5df77249ab70fbc8e36d410, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 1712e7d6a5df77249ab70fbc8e36d410, type: 3}
 --- !u!1001 &1861896419
 PrefabInstance:

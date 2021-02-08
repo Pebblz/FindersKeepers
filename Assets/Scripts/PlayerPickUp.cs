@@ -6,7 +6,7 @@ using UnityEngine.SceneManagement;
 using Photon.Realtime;
 using ExitGames.Client.Photon;
 
-[RequireComponent(typeof(AudioSource))]
+[RequireComponent(typeof(Player))]
 public class PlayerPickUp : MonoBehaviourPunCallbacks, IPunObservable, IOnEventCallback
 {
     /*Flower Box
@@ -14,6 +14,7 @@ public class PlayerPickUp : MonoBehaviourPunCallbacks, IPunObservable, IOnEventC
      * Edited By: Pat Naatz
      * 
      * Added Pick Up Sound
+     * Added Requirement of player for sound
      */
 
 
@@ -27,16 +28,17 @@ public class PlayerPickUp : MonoBehaviourPunCallbacks, IPunObservable, IOnEventC
     float pickUpTimer;
 
     GameObject PickUpSpawner;
-    AudioSource Sound;
-    [SerializeField]
-    AudioClip PickUpSound;
+
+    [SerializeField] AudioClip PickUpSound;
+
+    Player player;
 
     // Start is called before the first frame update
     void Awake()
     {
         Anim = GetComponent<Animator>();
-        Sound = GetComponent<AudioSource>();
         rb = GetComponent<Rigidbody>();
+        player = GetComponent<Player>();
     }
 
 
@@ -71,7 +73,7 @@ public class PlayerPickUp : MonoBehaviourPunCallbacks, IPunObservable, IOnEventC
                                 hit.collider.gameObject.GetComponent<Rigidbody>().constraints = RigidbodyConstraints.None;
                                 hit.collider.gameObject.GetComponent<PickUpAbles>().UseGravity(true);
                                 hit.collider.gameObject.GetComponent<PickUpAbles>().PlayerThatPickUpOBJ = this.gameObject;
-                                PlayerPickUpSound();
+                                PlayPickUpSound();
                                 isHoldingOBJ = true;
                                 hit.collider.gameObject.GetComponent<PickUpAbles>().IsPickedUped = true;
                                 hit.collider.gameObject.GetComponent<PickUpAbles>().ChangeOwnerShip();
@@ -88,7 +90,7 @@ public class PlayerPickUp : MonoBehaviourPunCallbacks, IPunObservable, IOnEventC
                     DropOBJ();
                     PickUp = null;
                     isHoldingOBJ = false;
-                    PlayerPickUpSound();
+                    PlayPickUpSound();
                 }
                 pickUpTimer = 1;
             }
@@ -122,9 +124,9 @@ public class PlayerPickUp : MonoBehaviourPunCallbacks, IPunObservable, IOnEventC
     }
 
 
-    public void PlayerPickUpSound()
+    public void PlayPickUpSound()
     {
-        Sound.PlayOneShot(PickUpSound); //play pickup sound
+        player.PlaySound(PickUpSound); //play pickup sound
     }
 
     //you'll never guess what this func does 
@@ -142,6 +144,7 @@ public class PlayerPickUp : MonoBehaviourPunCallbacks, IPunObservable, IOnEventC
     public void ThrowOBJ(int Force)
     {
         Anim.SetBool("IsThrowing", true);
+        PlayPickUpSound();
         if (PickUp != null)
         {
 

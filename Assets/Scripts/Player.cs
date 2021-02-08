@@ -3,9 +3,16 @@ using System.Collections.Generic;
 using UnityEngine;
 using Photon.Pun;
 
+[RequireComponent(typeof(AudioSource))]
 public class Player : MonoBehaviourPunCallbacks, IPunObservable
 {
-
+    /*Box O' Flowers
+     * 
+     * Edited By: Pat Naatz
+     * 
+     * Added requirement for Audio Source
+     * Added Play Sound Function
+     */
 
     //List of the scripts that should only be active for the local
     //player (ex. PlayerController, MouseLook etc.)
@@ -35,6 +42,8 @@ public class Player : MonoBehaviourPunCallbacks, IPunObservable
     public Player_Movement pm;
     Animator Anim;
 
+    AudioSource audioSource;
+    
     #region monobehaviour callbacks
 
 
@@ -58,7 +67,8 @@ public class Player : MonoBehaviourPunCallbacks, IPunObservable
         DontDestroyOnLoad(this);
 
 
-
+        audioSource = GetComponent<AudioSource>(); //required
+        audioSource.Play(); //wont play one shots if play isnt called for some reason
 
 
     }
@@ -125,6 +135,7 @@ public class Player : MonoBehaviourPunCallbacks, IPunObservable
         currentPowerUp.deactivate(this);
         powerUpTimer = 0;
     }
+
     public void updatePowerUp()
     {
         if (powerUpTimer > 0)
@@ -136,6 +147,16 @@ public class Player : MonoBehaviourPunCallbacks, IPunObservable
         {
             deactivatePowerUp();
         }
+    }
+
+    /// <summary>
+    /// Play all player sounds theough here (as OneShot)
+    /// </summary>
+    /// <param name="clip"></param>
+    public void PlaySound(AudioClip clip)
+    {
+        Debug.Log(clip.name);
+        audioSource.PlayOneShot(clip); //plays the clip
     }
 
     public void OnPhotonSerializeView(PhotonStream stream, PhotonMessageInfo info)

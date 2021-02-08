@@ -3,14 +3,16 @@ using System.Collections.Generic;
 using UnityEngine;
 using Photon.Pun;
 
-[RequireComponent(typeof(AudioSource))]
+[RequireComponent(typeof(AudioSource), typeof(Player))]
 public class Player_Movement : MonoBehaviourPunCallbacks, IPunObservable
 {
     /*Flower box
      * 
      * Edited by: Pat Naatz
      * 
-     * Added walking sound
+     * Added:
+     * walking sound
+     * requirement for audio source and player
      */
 
     float speed = 5;
@@ -25,7 +27,8 @@ public class Player_Movement : MonoBehaviourPunCallbacks, IPunObservable
     public float turnSmoothTime = 0.1f;
     float turnSmoothVelocity;
 
-    AudioSource Sound;
+    [SerializeField] AudioSource Sound;
+    [SerializeField] AudioClip walkingSound;
 
     void Awake()
     {
@@ -37,7 +40,9 @@ public class Player_Movement : MonoBehaviourPunCallbacks, IPunObservable
         }
         mainCam = GameObject.Find("Main Camera").GetComponent<Transform>();
         Anim = GetComponent<Animator>();
-        Sound = GetComponent<AudioSource>();
+
+        Sound.clip = walkingSound;
+        Sound.Play();
     }
 
     // Update is called once per frame
@@ -74,7 +79,10 @@ public class Player_Movement : MonoBehaviourPunCallbacks, IPunObservable
 
                     rb.MovePosition(transform.position += moveDir.normalized * speed * Time.deltaTime);
                     Anim.SetBool("IsRunning", true);
-                    Sound.Play(); //play running sound
+                    if (!Sound.isPlaying)
+                    {
+                        Sound.Play(); //play running sound
+                    }
                 }
                 else
                 {
@@ -85,7 +93,10 @@ public class Player_Movement : MonoBehaviourPunCallbacks, IPunObservable
             else
             {
                 Anim.SetBool("IsRunning", false);
-                Sound.Stop(); //stop running sound
+                if (Sound.isPlaying)
+                {
+                    Sound.Stop(); //stops sound
+                }
             }
             if (Input.GetKeyDown(KeyCode.Space) && IsGrounded())
             {
