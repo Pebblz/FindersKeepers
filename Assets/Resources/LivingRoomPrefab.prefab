@@ -657,7 +657,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 100000, guid: ca2bcfc64ddba684d84e6c7f765e014f, type: 3}
       propertyPath: m_Name
-      value: sofa
+      value: living sofa
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: ca2bcfc64ddba684d84e6c7f765e014f, type: 3}
       propertyPath: m_LocalPosition.x

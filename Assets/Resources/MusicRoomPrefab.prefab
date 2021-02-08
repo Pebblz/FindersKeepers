@@ -986,7 +986,7 @@ PrefabInstance:
     - target: {fileID: 8106195669673278028, guid: 497ab644fab73fc4a9939e4a4f2c28d8,
         type: 3}
       propertyPath: m_Name
-      value: darwin
+      value: darwin painting
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 497ab644fab73fc4a9939e4a4f2c28d8, type: 3}
@@ -1093,7 +1093,7 @@ PrefabInstance:
     - target: {fileID: 1811409539878286115, guid: 6caae6f5f9e31af42bc6638d1e138ba0,
         type: 3}
       propertyPath: m_Name
-      value: avionair
+      value: avionair painting
       objectReference: {fileID: 0}
     - target: {fileID: 1811409539878448899, guid: 6caae6f5f9e31af42bc6638d1e138ba0,
         type: 3}
