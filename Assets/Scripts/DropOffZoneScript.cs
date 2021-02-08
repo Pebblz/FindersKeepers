@@ -8,16 +8,27 @@ using ExitGames.Client.Photon;
 
 public class DropOffZoneScript : MonoBehaviourPunCallbacks
 {
-    //so guess what this little thing does 
-    //i'll give you a sec to figure it out 
-    //so what it does is if you enter the trigger it does the stuff 
+    /*so guess what this little thing does 
+    *i'll give you a sec to figure it out 
+    *so what it does is if you enter the trigger it does the stuff 
+    * 
+    * Edited by: Patrick Naatz
+    * Added:
+    *   Coordination with todolist
+    *   collection sound
+    */
 
     PhotonView pv;
     GameObject pickup;
     GameObject player;
+
+    AudioSource audioSource;
+    [SerializeField] AudioClip collectionSound;
+
     private void Start()
     {
         pv = PhotonView.Get(this);
+        audioSource = GetComponent<AudioSource>();
     }
 
     public void Update()
@@ -28,34 +39,39 @@ public class DropOffZoneScript : MonoBehaviourPunCallbacks
     private void OnTriggerEnter(Collider c)
     {
         //if a Player enters the room
-        if(c.tag == "Player")
-        {           
+        if (c.tag == "Player")
+        {
             pickup = c.GetComponent<PlayerPickUp>().PickUp;
             //player = c.gameObject;
-                //then it makes sure to see if the players holding an object
-                if (c.GetComponent<PlayerPickUp>().isHoldingOBJ == true)
+            //then it makes sure to see if the players holding an object
+            if (c.GetComponent<PlayerPickUp>().isHoldingOBJ == true)
+            {
+                if (c.GetComponent<PlayerPickUp>().PickUp.GetComponent<PickUpAbles>().IsThisOBJForPoints == true)
                 {
-                    if (c.GetComponent<PlayerPickUp>().PickUp.GetComponent<PickUpAbles>().IsThisOBJForPoints == true)
+                    //then it'll encroment the score by 1 
+                    c.GetComponent<Player>().score += 1;
+                    //pv.RPC("incrementScore", RpcTarget.All, c.gameObject.name);
+                    if (c.GetComponent<PlayerPickUp>().PickUp.GetComponent<SoundtrackManager>() != null)
                     {
-                        //then it'll encroment the score by 1 
-                        c.GetComponent<Player>().score += 1;
-                        //pv.RPC("incrementScore", RpcTarget.All, c.gameObject.name);
-                        if (c.GetComponent<PlayerPickUp>().PickUp.GetComponent<SoundtrackManager>() != null)
-                        {
-                            c.GetComponent<PlayerPickUp>()
-                                .PickUp.
-                                    GetComponent<SoundtrackManager>().resumeOriginalTrack();
-                        }
+                        c.GetComponent<PlayerPickUp>()
+                            .PickUp.
+                                GetComponent<SoundtrackManager>().resumeOriginalTrack();
+                    }
 
-                        FindObjectOfType<TodoList>().ObjectFound(c.GetComponent<PlayerPickUp>().PickUp.GetComponent<PickUpAbles>());
+                    //tell the todo list about the object you have picked up
+                    FindObjectOfType<TodoList>().ObjectFound(c.GetComponent<PlayerPickUp>().PickUp.GetComponent<PickUpAbles>());
 
-                    /*c.*/GetComponent<PhotonView>().RPC("ResetDropOffPos", RpcTarget.All);
+                    audioSource.PlayOneShot(collectionSound);
+
+                    /*c.*/
+                    GetComponent<PhotonView>().RPC("ResetDropOffPos", RpcTarget.All);
                     c.GetComponent<PlayerPickUp>().DropPickUp();
-            
+
                 }
             }
         }
     }
+
     [PunRPC]
     public void ResetDropOffPos()
     {

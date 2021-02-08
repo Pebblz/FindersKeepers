@@ -148,7 +148,7 @@ public class TodoList : MonoBehaviourPunCallbacks, IPunObservable
                 if (image.sprite == obj.image)
                 {//if image is the target image
                     list[obj] = true; //set found to true
-                    FillImage(image); //refill image
+                    FillImage(image);
                     break; //no need to loop anymore
                 }
             }
