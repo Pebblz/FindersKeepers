@@ -28,7 +28,7 @@ public class Player_Movement : MonoBehaviourPunCallbacks, IPunObservable
     float turnSmoothVelocity;
 
     [SerializeField] AudioSource Sound;
-    [SerializeField] AudioClip walkingSound;
+    [SerializeField] AudioClip walkingSound, jumpingSound;
 
     void Awake()
     {
@@ -101,6 +101,7 @@ public class Player_Movement : MonoBehaviourPunCallbacks, IPunObservable
             if (Input.GetKeyDown(KeyCode.Space) && IsGrounded())
             {
                 rb.velocity = new Vector3(direction.x, jumpspeed, direction.z);
+                ThisPlayer.PlaySound(jumpingSound);
             }
 
             if(IsGrounded())

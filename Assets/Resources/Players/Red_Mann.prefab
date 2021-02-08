@@ -939,6 +939,7 @@ MonoBehaviour:
   turnSmoothTime: 0.1
   Sound: {fileID: 5990354821252040407}
   walkingSound: {fileID: 8300000, guid: be06f5d398eb2fc4cb9efb4e807c844e, type: 3}
+  jumpingSound: {fileID: 8300000, guid: 55e7e9519ebbcfb4aac5a5b881e8b49f, type: 3}
 --- !u!114 &963548593296933559
 MonoBehaviour:
   m_ObjectHideFlags: 0
