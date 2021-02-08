@@ -202,22 +202,21 @@ public class WinOrLoseScript : MonoBehaviourPunCallbacks
             {
                 //move to space above designated podium
 
-                player.transform.rotation = quickRot.transform.rotation;
-                player.transform.position = podiums[incrementation].position + Vector3.up * 30; //creates a 3 second fall for dramatic effect
-                Debug.Log("Moved: " + player.name + " to: " + player.transform.position);
+                GetComponent<PhotonView>().RPC("MoveHere", RpcTarget.All, incrementation, player.name);
                 //prep for next incrementation
                 incrementation++;
             }
         }
     }
 
-    //[PunRPC]
-    //public void MoveHere(int podiumNumber, string playerName)
-    //{
-    //    Transform player = GameObject.Find(playerName).transform;
-        
-    //    Debug.Log(playerName);
-    //}
+    [PunRPC]
+    public void MoveHere(int podiumNumber, string playerName)
+    {
+        Transform player = GameObject.Find(playerName).transform;
+        player.transform.rotation = quickRot.transform.rotation;
+        player.transform.position = podiums[podiumNumber].position + Vector3.up * 30; //creates a 3 second fall for dramatic effect
+        Debug.Log("Moved: " + player.name + " to: " + player.transform.position);
+    }
 
     private int PrepPlayersForPlacement()
     {
