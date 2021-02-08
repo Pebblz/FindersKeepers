@@ -7,7 +7,7 @@ using System;
 using Photon.Pun;
 using System.Linq;
 
-public class WinOrLoseScript : MonoBehaviour
+public class WinOrLoseScript : MonoBehaviourPunCallbacks
 {
     /*Flower Box
      * Programmer: Patrick Naatz
@@ -93,18 +93,19 @@ public class WinOrLoseScript : MonoBehaviour
             //save position
             Vector3 position = oldPodium.position;
             
+            Destroy(oldPodium.gameObject);
 
             //generate replacement podium
             Transform replacementPodium = podiums[podiumNumber - 1];
             Transform newPodium = Instantiate(replacementPodium.gameObject).transform;
 
             //set new podium location logic according to ISROT rules
-            newPodium = oldPodium;
+            newPodium.localScale = replacementPodium.localScale;
+            newPodium.rotation = replacementPodium.rotation;
+            newPodium.position = position;
 
             //replace old podium with new one
             podiums[podiumNumber] = newPodium;
-
-            Destroy(oldPodium.gameObject);
         }
     }
 
@@ -197,8 +198,11 @@ public class WinOrLoseScript : MonoBehaviour
         foreach (Player player in players)
         {
             //move to space above designated podium
-            player.transform.rotation = quickRot.transform.rotation;
-            player.transform.position = podiums[incrementation].position + Vector3.up * 30; //creates a 3 second fall for dramatic effect
+            if (photonView.IsMine)
+            {
+                player.transform.rotation = quickRot.transform.rotation;
+                player.transform.position = podiums[incrementation].position + Vector3.up * 30; //creates a 3 second fall for dramatic effect
+            }
             //prep for next incrementation
             incrementation++;
         }
