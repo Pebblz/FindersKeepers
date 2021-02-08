@@ -176,7 +176,7 @@ public class WinOrLoseScript : MonoBehaviour
             {//if everyone doesnt win
                 foreach (int i in biggestLosers)
                 {
-                    players[i + winners.Count].GetComponent<Animator>().SetBool("Fourth", true); //set player crying animation
+                    players[i + winners.Count - 1].GetComponent<Animator>().SetBool("Fourth", true); //set player crying animation
                 }
             }
         }
