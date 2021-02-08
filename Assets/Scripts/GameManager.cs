@@ -18,7 +18,7 @@ public class GameManager : MonoBehaviourPunCallbacks
     [SerializeField]
     private GameObject playerPrefab;
     public GameObject startButton;
-
+    public bool isGameScene;
     bool PressPlayButtonOnce;
 
     enum GameState
@@ -47,11 +47,9 @@ public class GameManager : MonoBehaviourPunCallbacks
     void Start()
     {
         // do some linq stuff to order the players
-        var playerfabs = Resources.LoadAll<GameObject>("Players");
-        var temp = from s in playerfabs
-                   orderby s.name descending
-                   select s;
-        playerPrefabs = temp.ToArray();
+        var playerfabs = Resources.LoadAll<GameObject>("Players").ToArray();
+
+    
         playerPrefabs = GameManager.Randomize(playerPrefabs);
 
 
@@ -182,7 +180,12 @@ public class GameManager : MonoBehaviourPunCallbacks
     #endregion
 
     void LoadArena()
-    {
+    {   
+
+        if (isGameScene)
+        {
+            return;
+        }
         if (!PhotonNetwork.IsMasterClient)
         {
             Debug.LogError("A non master client attempted to load level");
