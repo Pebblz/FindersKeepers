@@ -926,12 +926,12 @@ PrefabInstance:
     - target: {fileID: 3127317433066119693, guid: 06ee9b4d778946b449b4163b67b0ae5f,
         type: 3}
       propertyPath: seconds.RunTime
-      value: 3
+      value: 20
       objectReference: {fileID: 0}
     - target: {fileID: 3127317433066119693, guid: 06ee9b4d778946b449b4163b67b0ae5f,
         type: 3}
       propertyPath: seconds.PlayTime
-      value: 10
+      value: 120
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 06ee9b4d778946b449b4163b67b0ae5f, type: 3}
