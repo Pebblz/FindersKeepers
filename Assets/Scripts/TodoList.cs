@@ -120,21 +120,6 @@ public class TodoList : MonoBehaviourPunCallbacks, IPunObservable
         FindObjectOfType<PickUpableSpawner>().FindOBJ();
     }
 
-    //Call this function when a pickupable is picked up
-    public void PickUpObject(PickUpAbles pickUpAble)
-    {
-        if (list.ContainsKey(pickUpAble))
-        {
-            //declares as picked up
-            list[pickUpAble] = true;
-            Debug.Log(list[pickUpAble]);
-
-            //TODO change the list to signify said item was picked up
-            list.Remove(pickUpAble);
-            PrintList();
-        }
-    }
-
     public void ObjectFound(PickUpAbles obj)
     {
         if (list.ContainsKey(obj))
