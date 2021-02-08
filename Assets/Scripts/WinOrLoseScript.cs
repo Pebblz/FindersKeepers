@@ -5,6 +5,7 @@ using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 using System;
 using Photon.Pun;
+using System.Linq;
 
 public class WinOrLoseScript : MonoBehaviour
 {
@@ -229,7 +230,7 @@ public class WinOrLoseScript : MonoBehaviour
     IEnumerator Reveal()
     {
         //properly organize players to drop at same or different times
-        List<List<Player>> order = new List<List<Player>>();
+        List<List<Player>> order = new List<List<Player>>(); //have to use nested list because people can tie with eachother
         foreach(Player player in players)
         {
             order.Add(new List<Player>());
@@ -353,19 +354,7 @@ public class WinOrLoseScript : MonoBehaviour
 
     void Order()
     {
-        for(int current = 0; current < players.Length; current++)
-        {
-            for(int after = current + 1; after < players.Length; after++)
-            {
-                if(players[after].score > players[current].score)
-                {
-                    //swap players
-                    Player temp = players[current];
-                    players[current] = players[after];
-                    players[after] = temp;
-                }
-            }
-        }
+        players = players.OrderByDescending(p => p.score).ToArray();
     }
     #endregion
 

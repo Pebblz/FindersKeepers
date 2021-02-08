@@ -306,10 +306,8 @@ public class GameManager : MonoBehaviourPunCallbacks
         {
             case GameState.The_Run:
                 return seconds.RunTime;
-                break;
             case GameState.The_Game:
                 return seconds.PlayTime;
-                break;
         }
         return 1;
     }

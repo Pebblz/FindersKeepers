@@ -14,6 +14,7 @@ public class TodoList : MonoBehaviourPunCallbacks, IPunObservable
      * Completed:
      * Revamp the images so it works out of an array
      * Timer changes available in the game manager script
+     * Made it so the same image doesnt display at the same time
      */
 
     [SerializeField] Image[] images;
@@ -87,13 +88,13 @@ public class TodoList : MonoBehaviourPunCallbacks, IPunObservable
 
 
     void FillImage(Image img)
-    {//TODO make it so the images don't get repeated
+    {
 
         //generate list of objects that still haven't been found
         List<PickUpAbles> left = new List<PickUpAbles>();
         foreach (PickUpAbles obj in list.Keys)
         {
-            if (!list[obj])
+            if (!list[obj] && IsAlreadyDisplayed(obj))
             { //if object not already found by player
                 left.Add(obj);
             }
@@ -117,6 +118,18 @@ public class TodoList : MonoBehaviourPunCallbacks, IPunObservable
         }
 
         FindObjectOfType<PickUpableSpawner>().FindOBJ(); //called to coordinate something with pickupablespawner
+    }
+
+    bool IsAlreadyDisplayed(PickUpAbles pickUpAble)
+    {
+        foreach(Image image in images)
+        {
+            if(image.sprite == pickUpAble.image)
+            {
+                return true;
+            }
+        }
+        return false;
     }
 
     //DIDNT DELETE THIS because it could be used in the future
