@@ -200,7 +200,7 @@ public class WinOrLoseScript : MonoBehaviourPunCallbacks
         {
             //move to space above designated podium
 
-            GetComponent<PhotonView>().RPC("MoveHere", RpcTarget.All, incrementation);
+            GetComponent<PhotonView>().RPC("MoveHere", RpcTarget.All, incrementation, player.name);
 
             //prep for next incrementation
             incrementation++;
@@ -208,11 +208,12 @@ public class WinOrLoseScript : MonoBehaviourPunCallbacks
     }
 
     [PunRPC]
-    public void MoveHere(int podiumNumber)
+    public void MoveHere(int podiumNumber, string playerName)
     {
-        Transform player = GameObject.FindGameObjectWithTag("Player").transform;
+        Transform player = GameObject.Find(playerName).transform;
         transform.rotation = quickRot.transform.rotation;
         transform.position = podiums[podiumNumber].position + Vector3.up * 30; //creates a 3 second fall for dramatic effect
+        Debug.Log(playerName);
     }
 
     private int PrepPlayersForPlacement()
