@@ -48,22 +48,53 @@ public class PlayerPickUp : MonoBehaviourPunCallbacks, IPunObservable, IOnEventC
 
         if (photonView.IsMine)
         {
+
             //if the player holds q
             if (Input.GetButtonDown("Fire1") && pickUpTimer < 0)
             {
+                //this checks to see if the players picking up an obj
                 if (PickUp == null)
                 {
                     isPickingUpOBJ = true;
-                
-                }
+                    Vector3 start = this.gameObject.transform.position + new Vector3(0, .5f, 0);
+                    RaycastHit hit;
+                    //this will create 9 ray casts
+                    for (float i = -4; i <= 4; i += .5f)
+                    {
+
+                        if (Physics.Raycast(start, transform.TransformDirection(Vector3.forward) + new Vector3(0, i / 8, 0), out hit, 3.5f) && PickUp == null)
+                        {
+                            //this checks if any of the rays hit an object with pickupables script
+                            if (hit.collider.gameObject.GetComponent<PickUpAbles>() != null)
+                            {
+                                //if it does so all this
+                                hit.collider.gameObject.GetComponent<Rigidbody>().constraints = RigidbodyConstraints.None;
+                                hit.collider.gameObject.GetComponent<PickUpAbles>().UseGravity(true);
+                                hit.collider.gameObject.GetComponent<PickUpAbles>().PlayerThatPickUpOBJ = this.gameObject;
+                                PlayerPickUpSound();
+                                isHoldingOBJ = true;
+                                hit.collider.gameObject.GetComponent<PickUpAbles>().IsPickedUped = true;
+                                hit.collider.gameObject.GetComponent<PickUpAbles>().ChangeOwnerShip();
+                                SetPickUpOBJ(hit.collider.gameObject);
+                            }
+                        }
+                        //this is commented out just incase someone needs to look at the rays 
+                        //Debug.DrawRay(start, transform.TransformDirection(Vector3.forward) + new Vector3(0, i, 0), Color.yellow);
+                    }
+                }//the else will instead of picking up the object will put down the obj
                 else
                 {
+
                     DropOBJ();
                     PickUp = null;
                     isHoldingOBJ = false;
                     PlayerPickUpSound();
                 }
                 pickUpTimer = 1;
+            }
+            if (PickUp != null)
+            {
+                print(PickUp.name);
             }
             else
             {
@@ -76,11 +107,11 @@ public class PlayerPickUp : MonoBehaviourPunCallbacks, IPunObservable, IOnEventC
             if (isHoldingOBJ == true)
             {
                 Anim.SetBool("IsCarry", true);
-               
+
             }
             else
             {
-                if (Anim.GetCurrentAnimatorStateInfo(0).length > 
+                if (Anim.GetCurrentAnimatorStateInfo(0).length >
                     Anim.GetCurrentAnimatorStateInfo(0).normalizedTime)
                 {
                     Anim.SetBool("IsThrowing", false);
@@ -107,7 +138,7 @@ public class PlayerPickUp : MonoBehaviourPunCallbacks, IPunObservable, IOnEventC
         isHoldingOBJ = false;
 
     }
-   
+
     public void ThrowOBJ(int Force)
     {
         Anim.SetBool("IsThrowing", true);
@@ -166,7 +197,7 @@ public class PlayerPickUp : MonoBehaviourPunCallbacks, IPunObservable, IOnEventC
     public void OnEvent(EventData photonEvent)
     {
         byte eventCode = photonEvent.Code;
-        
+
         //remove all objects player is carrying when the scene is switched
         if (eventCode == NetworkCodes.NetworkSceneChangedEventCode)
         {
@@ -179,9 +210,7 @@ public class PlayerPickUp : MonoBehaviourPunCallbacks, IPunObservable, IOnEventC
         else if (eventCode == NetworkCodes.DeleteObjectInDropoffCode)
         {
             int id = (int)((object[])photonEvent.CustomData)[0];
-           // DestroyPickUp(id);
+            // DestroyPickUp(id);
         }
-
-
     }
 }
