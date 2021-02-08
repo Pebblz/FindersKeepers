@@ -912,6 +912,11 @@ PrefabInstance:
       propertyPath: RespawnPoints.Array.data[3]
       value: 
       objectReference: {fileID: 699262986}
+    - target: {fileID: 3127317433066119693, guid: 06ee9b4d778946b449b4163b67b0ae5f,
+        type: 3}
+      propertyPath: isGameScene
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 06ee9b4d778946b449b4163b67b0ae5f, type: 3}
 --- !u!114 &261794780 stripped

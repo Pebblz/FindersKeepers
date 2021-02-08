@@ -18,7 +18,7 @@ public class GameManager : MonoBehaviourPunCallbacks
     [SerializeField]
     private GameObject playerPrefab;
     public GameObject startButton;
-
+    public bool isGameScene;
     bool PressPlayButtonOnce;
 
     enum GameState
@@ -177,7 +177,12 @@ public class GameManager : MonoBehaviourPunCallbacks
     #endregion
 
     void LoadArena()
-    {
+    {   
+
+        if (isGameScene)
+        {
+            return;
+        }
         if (!PhotonNetwork.IsMasterClient)
         {
             Debug.LogError("A non master client attempted to load level");
