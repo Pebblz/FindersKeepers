@@ -12,6 +12,7 @@ public class Player_Movement : MonoBehaviourPunCallbacks, IPunObservable
      * 
      * Added:
      * walking sound
+     * jumping sound
      * requirement for audio source and player
      */
 
