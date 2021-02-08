@@ -47,8 +47,6 @@ public class GameManager : MonoBehaviourPunCallbacks
     }
     [SerializeField] InSeconds seconds;
 
-    static GameState gameState = GameState.The_Run;
-
     [SerializeField] Transform[] RespawnPoints;
     [SerializeField] TodoList list;
 
