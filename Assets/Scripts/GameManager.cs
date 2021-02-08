@@ -34,8 +34,7 @@ public class GameManager : MonoBehaviourPunCallbacks
     Transform[] RespawnPoints;
     [SerializeField]
     TodoList list;
-    // [SerializeField]
-    //private GameObject speedPowerPrefab;
+
 
     public static GameObject[] Randomize(IEnumerable<GameObject> source)
     {
@@ -46,13 +45,9 @@ public class GameManager : MonoBehaviourPunCallbacks
 
     void Start()
     {
-        // do some linq stuff to order the players
-        var playerfabs = Resources.LoadAll<GameObject>("Players");
-        var temp = from s in playerfabs
-                   orderby s.name descending
-                   select s;
-        playerPrefabs = temp.ToArray();
-        playerPrefabs = GameManager.Randomize(playerPrefabs);
+
+        GameObject[] playerfabs = Resources.LoadAll<GameObject>("Players").ToArray();
+        playerPrefabs = GameManager.Randomize(playerfabs);
 
 
         Instance = this;
@@ -65,14 +60,14 @@ public class GameManager : MonoBehaviourPunCallbacks
             Debug.Log("Adding player #" + PhotonNetwork.CurrentRoom.PlayerCount);
 
 
-            int thatFuckingIdx = (PhotonNetwork.CurrentRoom.PlayerCount > 1) ? FindFirstNotUsedSkin() : 0;
-            Debug.Log("Loading player skin: " + this.playerPrefabs[thatFuckingIdx].name);
+            int idx = (PhotonNetwork.CurrentRoom.PlayerCount > 1) ? FindFirstNotUsedSkin() : 0;
+            Debug.Log("Loading player skin: " + this.playerPrefabs[idx].name);
 
 
-            PhotonNetwork.Instantiate("Players/" + this.playerPrefabs[thatFuckingIdx].name, new Vector3(0f, 1f, 0f), Quaternion.identity);
+            PhotonNetwork.Instantiate("Players/" + this.playerPrefabs[idx].name, new Vector3(0f, 1f, 0f), Quaternion.identity);
 
             var props = new ExitGames.Client.Photon.Hashtable();
-            props.Add("skin", this.playerPrefabs[thatFuckingIdx].name);
+            props.Add("skin", this.playerPrefabs[idx].name);
             PhotonNetwork.PlayerList[PhotonNetwork.CurrentRoom.PlayerCount - 1].SetCustomProperties(props);
 
         }
