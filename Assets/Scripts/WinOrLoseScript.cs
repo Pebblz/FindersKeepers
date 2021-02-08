@@ -200,7 +200,7 @@ public class WinOrLoseScript : MonoBehaviourPunCallbacks
         {
             //move to space above designated podium
 
-            GetComponent<PhotonView>().RPC("MoveHere", RpcTarget.All);
+            GetComponent<PhotonView>().RPC("MoveHere", RpcTarget.All, incrementation);
 
             //prep for next incrementation
             incrementation++;
