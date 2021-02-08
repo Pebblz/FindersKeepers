@@ -195,18 +195,19 @@ public class WinOrLoseScript : MonoBehaviourPunCallbacks
 
     private void PlacePlayersAccordingly()
     {
-        int incrementation = 0;
-        foreach (Player player in players)
+        if (PhotonNetwork.IsMasterClient)
         {
-            //move to space above designated podium
-            if (PhotonNetwork.IsMasterClient)
+            int incrementation = 0;
+            foreach (Player player in players)
             {
+                //move to space above designated podium
+
                 player.transform.rotation = quickRot.transform.rotation;
                 player.transform.position = podiums[incrementation].position + Vector3.up * 30; //creates a 3 second fall for dramatic effect
+                Debug.Log("Moved: " + player.name + " to: " + player.transform.position);
+                //prep for next incrementation
+                incrementation++;
             }
-
-            //prep for next incrementation
-            incrementation++;
         }
     }
 
