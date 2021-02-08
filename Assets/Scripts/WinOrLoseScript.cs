@@ -199,22 +199,24 @@ public class WinOrLoseScript : MonoBehaviourPunCallbacks
         foreach (Player player in players)
         {
             //move to space above designated podium
-
-            GetComponent<PhotonView>().RPC("MoveHere", RpcTarget.All, incrementation, player.name);
+            if (PhotonNetwork.IsMasterClient)
+            {
+                player.transform.rotation = quickRot.transform.rotation;
+                player.transform.position = podiums[incrementation].position + Vector3.up * 30; //creates a 3 second fall for dramatic effect
+            }
 
             //prep for next incrementation
             incrementation++;
         }
     }
 
-    [PunRPC]
-    public void MoveHere(int podiumNumber, string playerName)
-    {
-        Transform player = GameObject.Find(playerName).transform;
-        transform.rotation = quickRot.transform.rotation;
-        transform.position = podiums[podiumNumber].position + Vector3.up * 30; //creates a 3 second fall for dramatic effect
-        Debug.Log(playerName);
-    }
+    //[PunRPC]
+    //public void MoveHere(int podiumNumber, string playerName)
+    //{
+    //    Transform player = GameObject.Find(playerName).transform;
+        
+    //    Debug.Log(playerName);
+    //}
 
     private int PrepPlayersForPlacement()
     {
