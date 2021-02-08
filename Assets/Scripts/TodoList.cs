@@ -94,7 +94,7 @@ public class TodoList : MonoBehaviourPunCallbacks, IPunObservable
         List<PickUpAbles> left = new List<PickUpAbles>();
         foreach (PickUpAbles obj in list.Keys)
         {
-            if (!list[obj] && IsAlreadyDisplayed(obj))
+            if (!list[obj] && !IsAlreadyDisplayed(obj))
             { //if object not already found by player
                 left.Add(obj);
             }
@@ -124,6 +124,10 @@ public class TodoList : MonoBehaviourPunCallbacks, IPunObservable
     {
         foreach(Image image in images)
         {
+            if(image.sprite == null)
+            {//error prevention
+                return false;
+            }
             if(image.sprite == pickUpAble.image)
             {
                 return true;
