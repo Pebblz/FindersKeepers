@@ -1336,7 +1336,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 100000, guid: d4f7618ab27c61d48a891b61445da699, type: 3}
       propertyPath: m_Name
-      value: study bookcase
+      value: bookcase
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: d4f7618ab27c61d48a891b61445da699, type: 3}
       propertyPath: m_LocalPosition.x

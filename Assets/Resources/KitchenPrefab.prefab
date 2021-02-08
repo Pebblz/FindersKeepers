@@ -893,7 +893,7 @@ MonoBehaviour:
   IsThisOBJForPoints: 0
   startingRot: {x: 0, y: 0, z: 0, w: 0}
   hasGravity: 1
-  image: {fileID: 21300000, guid: 3c0bad0637abad94788cf36ad210223e, type: 3}
+  image: {fileID: 21300000, guid: 7e127dc2da44d524192dd2393514b7a3, type: 3}
 --- !u!114 &3713433728840445598
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1568,7 +1568,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 100000, guid: b3ef8de9f23bd2d4fb0e9df3e53f8821, type: 3}
       propertyPath: m_Name
-      value: sink
+      value: kitchen sink
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: b3ef8de9f23bd2d4fb0e9df3e53f8821, type: 3}
       propertyPath: m_LocalPosition.x
@@ -1649,7 +1649,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 100000, guid: b3ef8de9f23bd2d4fb0e9df3e53f8821, type: 3}
       propertyPath: m_Name
-      value: sink (1)
+      value: kitchen sink (1)
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: b3ef8de9f23bd2d4fb0e9df3e53f8821, type: 3}
       propertyPath: m_LocalPosition.x

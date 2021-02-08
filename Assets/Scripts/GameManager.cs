@@ -10,6 +10,18 @@ using ExitGames.Client.Photon;
 
 public class GameManager : MonoBehaviourPunCallbacks
 {
+    /*Flower box
+     * 
+     * Edited by: Pat Naatz
+     * Added:
+     *  Continue function
+     *  Respawn function
+     *  SetTime function
+     *  ListActivated function
+     *  GameState enum
+     *  InSeconds Struct for play time
+     */
+
     static public GameManager Instance;
     public bool OnlyOnePlayer = false;
     private GameObject instance;
@@ -18,24 +30,26 @@ public class GameManager : MonoBehaviourPunCallbacks
     [SerializeField]
     private GameObject playerPrefab;
     public GameObject startButton;
-
+    public bool isGameScene;
     bool PressPlayButtonOnce;
 
     enum GameState
     {//Enum Gamestate instead of Scene management because we dont want to swap scenes to avoid online issues
-        //Finding_Players = 1, //set to 1 for timer functionality
         The_Run = 2,
         The_Game
     }
+    static GameState gameState = GameState.The_Run; //static to hold between scenes, the first time this variable is used Thr Run will be relevant
+    
+    //Game time class
+    [System.Serializable] struct InSeconds
+    {
+        public int RunTime, PlayTime;
+    }
+    [SerializeField] InSeconds seconds;
 
-    static GameState gameState = GameState.The_Run;
+    [SerializeField] Transform[] RespawnPoints;
+    [SerializeField] TodoList list;
 
-    [SerializeField]
-    Transform[] RespawnPoints;
-    [SerializeField]
-    TodoList list;
-    // [SerializeField]
-    //private GameObject speedPowerPrefab;
 
     public static GameObject[] Randomize(IEnumerable<GameObject> source)
     {
@@ -46,13 +60,9 @@ public class GameManager : MonoBehaviourPunCallbacks
 
     void Start()
     {
-        // do some linq stuff to order the players
-        var playerfabs = Resources.LoadAll<GameObject>("Players");
-        var temp = from s in playerfabs
-                   orderby s.name descending
-                   select s;
-        playerPrefabs = temp.ToArray();
-        playerPrefabs = GameManager.Randomize(playerPrefabs);
+
+        GameObject[] playerfabs = Resources.LoadAll<GameObject>("Players").ToArray();
+        playerPrefabs = GameManager.Randomize(playerfabs);
 
 
         Instance = this;
@@ -65,14 +75,14 @@ public class GameManager : MonoBehaviourPunCallbacks
             Debug.Log("Adding player #" + PhotonNetwork.CurrentRoom.PlayerCount);
 
 
-            int thatFuckingIdx = (PhotonNetwork.CurrentRoom.PlayerCount > 1) ? FindFirstNotUsedSkin() : 0;
-            Debug.Log("Loading player skin: " + this.playerPrefabs[thatFuckingIdx].name);
+            int idx = (PhotonNetwork.CurrentRoom.PlayerCount > 1) ? FindFirstNotUsedSkin() : 0;
+            Debug.Log("Loading player skin: " + this.playerPrefabs[idx].name);
 
 
-            PhotonNetwork.Instantiate("Players/" + this.playerPrefabs[thatFuckingIdx].name, new Vector3(0f, 1f, 0f), Quaternion.identity);
+            PhotonNetwork.Instantiate("Players/" + this.playerPrefabs[idx].name, new Vector3(0f, 1f, 0f), Quaternion.identity);
 
             var props = new ExitGames.Client.Photon.Hashtable();
-            props.Add("skin", this.playerPrefabs[thatFuckingIdx].name);
+            props.Add("skin", this.playerPrefabs[idx].name);
             PhotonNetwork.PlayerList[PhotonNetwork.CurrentRoom.PlayerCount - 1].SetCustomProperties(props);
 
         }
@@ -182,7 +192,12 @@ public class GameManager : MonoBehaviourPunCallbacks
     #endregion
 
     void LoadArena()
-    {
+    {   
+
+        if (isGameScene)
+        {
+            return;
+        }
         if (!PhotonNetwork.IsMasterClient)
         {
             Debug.LogError("A non master client attempted to load level");
@@ -274,13 +289,12 @@ public class GameManager : MonoBehaviourPunCallbacks
         {
             //move player to assigned position
             player.gameObject.transform.position = RespawnPoints[assignedRespawn].position;
-            //player.gameObject.transform.rotation = RespawnPoints[assignedRespawn].rotation;   I dont think we will care about rotation
             assignedRespawn++;
         }
 
-        Debug.Log("hello");
-        Object.FindObjectOfType<TodoList>().FillList();
-        Object.FindObjectOfType<TodoList>().PrintList();
+        //this funciton is only called once during the transfer between The_Run and The_Game
+        //Start the todo list
+        Object.FindObjectOfType<TodoList>().Active();
     }
     #endregion
 
@@ -294,11 +308,9 @@ public class GameManager : MonoBehaviourPunCallbacks
         switch (gameState)
         {
             case GameState.The_Run:
-                return 20;
-                break;
+                return seconds.RunTime;
             case GameState.The_Game:
-                return 200;
-                break;
+                return seconds.PlayTime;
         }
         return 1;
     }

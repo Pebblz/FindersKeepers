@@ -718,9 +718,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9442e2e0c116a384d9dffde70e447b3e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  image: {fileID: 611214168}
-  image2: {fileID: 1725614826}
-  image3: {fileID: 1281381737}
+  images:
+  - {fileID: 611214168}
+  - {fileID: 1725614826}
+  - {fileID: 1281381737}
   gameManager: {fileID: 261794780}
 --- !u!114 &217779530
 MonoBehaviour:
@@ -912,6 +913,26 @@ PrefabInstance:
       propertyPath: RespawnPoints.Array.data[3]
       value: 
       objectReference: {fileID: 699262986}
+    - target: {fileID: 3127317433066119693, guid: 06ee9b4d778946b449b4163b67b0ae5f,
+        type: 3}
+      propertyPath: RunTime
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3127317433066119693, guid: 06ee9b4d778946b449b4163b67b0ae5f,
+        type: 3}
+      propertyPath: PlayTime
+      value: 120
+      objectReference: {fileID: 0}
+    - target: {fileID: 3127317433066119693, guid: 06ee9b4d778946b449b4163b67b0ae5f,
+        type: 3}
+      propertyPath: seconds.RunTime
+      value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 3127317433066119693, guid: 06ee9b4d778946b449b4163b67b0ae5f,
+        type: 3}
+      propertyPath: seconds.PlayTime
+      value: 120
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 06ee9b4d778946b449b4163b67b0ae5f, type: 3}
 --- !u!114 &261794780 stripped
