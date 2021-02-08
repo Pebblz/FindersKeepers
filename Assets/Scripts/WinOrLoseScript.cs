@@ -195,27 +195,34 @@ public class WinOrLoseScript : MonoBehaviourPunCallbacks
 
     private void PlacePlayersAccordingly()
     {
+        //we have to use RPC to move each character because each game loads in character in a different order but they all have the photon transform on them.
         if (PhotonNetwork.IsMasterClient)
-        {
+        {//since we have to use an RPC we only want everything to happen once, so we only allow the master client to go in
             int incrementation = 0;
             foreach (Player player in players)
             {
                 //move to space above designated podium
-
                 GetComponent<PhotonView>().RPC("MoveHere", RpcTarget.All, incrementation, player.name);
+                
                 //prep for next incrementation
                 incrementation++;
             }
         }
     }
 
+    /// <summary>
+    /// Prevents teleportation problems occuring during winscene
+    /// </summary>
+    /// <param name="podiumNumber"></param>
+    /// <param name="playerName"></param>
     [PunRPC]
     public void MoveHere(int podiumNumber, string playerName)
     {
-        Transform player = GameObject.Find(playerName).transform;
+        Transform player = GameObject.Find(playerName).transform; //find player by name
+
+        //move them to position, reverse ISROT
         player.transform.rotation = quickRot.transform.rotation;
         player.transform.position = podiums[podiumNumber].position + Vector3.up * 30; //creates a 3 second fall for dramatic effect
-        Debug.Log("Moved: " + player.name + " to: " + player.transform.position);
     }
 
     private int PrepPlayersForPlacement()
