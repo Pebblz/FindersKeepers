@@ -169,14 +169,14 @@ public class WinOrLoseScript : MonoBehaviour
 
     void MakeLastPlayerCry()
     {
-        if (!SinglePlayer)
+        if (!SinglePlayer && winners.Count != players.Count())
         {
             List<int> biggestLosers = GenerateBigestLosersList();
             if (biggestLosers.Count != players.Length)
             {//if everyone doesnt win
                 foreach (int i in biggestLosers)
                 {
-                    players[i + winners.Count - 1].GetComponent<Animator>().SetBool("Fourth", true); //make player cry
+                    players[i + winners.Count].GetComponent<Animator>().SetBool("Fourth", true); //make player cry
                 }
             }
         }
