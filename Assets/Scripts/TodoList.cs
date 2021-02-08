@@ -10,48 +10,56 @@ public class TodoList : MonoBehaviourPunCallbacks, IPunObservable
      * Programmer Patrick Naatz
      * this class when initiated randomly splits up the pickupable objects amungst whatever amount of players there are
      * It DOES allow player to have the same object as eachother on their list and this was done intentionally
+     * 
+     * Completed:
+     * Revamp the images so it works out of an array
+     * Timer changes available in the game manager script
+     * Made it so the same image doesnt display at the same time
      */
 
-    //[SerializeField] Text text;
-    [SerializeField] Image image;
-    [SerializeField] Image image2;
-    [SerializeField] Image image3;
+    [SerializeField] Image[] images;
 
     [SerializeField] GameManager gameManager;
     Dictionary<PickUpAbles, bool> list = new Dictionary<PickUpAbles, bool>();
 
-    void Start()
+    private void Start()
     {
-        //if(text == null)
-        //{ //if text isnt filled
-        //    text = GetComponent<Text>(); //fill the text
-        //    if(text == null)
-        //    {//if text is still not filled
-        //        Destroy(text);
-        //    }
-        //}
-
-        
+        //disable all images
+        foreach(Image image in images)
+        {
+            image.gameObject.SetActive(false);
+        }
     }
 
+    /// <summary>
+    /// call this function when you want to load and display the list
+    /// </summary>
     public void Active()
     {
+        //activate all images
+        foreach(Image image in images)
+        {
+            image.gameObject.SetActive(true);
+        }
+
+
         FillList();
-        PrintList();
+        LoadList();
     }
 
+    /// <summary>
+    /// Fills the todo list with apropriate objects
+    /// </summary>
     public void FillList()
     {
         //player count
         int playerCount = Object.FindObjectsOfType<Player>().Length;
-        Debug.Log("Players Found " + playerCount);
 
         //get list of pickupables in game
         List<PickUpAbles> pickUpAbleList = new List<PickUpAbles>(Object.FindObjectsOfType<PickUpAbles>());
-        Debug.Log("Pickupables found " + pickUpAbleList.Count);
         
         int objectsPerPerson = pickUpAbleList.Count / playerCount;
-        Debug.Log("Objects per person " + objectsPerPerson);
+
         //fill list randomly
         int place = 0;
         while (list.Count < objectsPerPerson)
@@ -67,47 +75,35 @@ public class TodoList : MonoBehaviourPunCallbacks, IPunObservable
         }
     }
 
-    public void PrintList()
+    /// <summary>
+    /// Fills all the images in the UI
+    /// </summary>
+    public void LoadList()
     {
-        ////if (gameManager.listActive())
-        ////{//if we want the list to show
-        //    text.text = "List: \n";
-        //    foreach (KeyValuePair<PickUpAbles, bool> kvp in list)
-        //    {//foreach item in list
-        //        text.text += '\n' + kvp.Key.gameObject.name; //add name to list
-        //    }
-        ////} else
-        //{//if we dont
-        //  //  text.text = "";
-        //}
-
-        Debug.Log(list.Count);
-
-        FillImage(image);
-        Debug.Log("2");
-        FillImage(image2);
-        Debug.Log("3");
-        FillImage(image3);
-        //foreach(Image image in images)
-        //{
-        //    FillImage(image);
-        //}
+        foreach(Image image in images)
+        {
+            FillImage(image);
+        }
     }
+
 
     void FillImage(Image img)
     {
+
+        //generate list of objects that still haven't been found
         List<PickUpAbles> left = new List<PickUpAbles>();
         foreach (PickUpAbles obj in list.Keys)
         {
-            if (!list[obj])
-            {
+            if (!list[obj] && !IsAlreadyDisplayed(obj))
+            { //if object not already found by player
                 left.Add(obj);
             }
         }
-        Debug.Log(left.Count);
+
+        //chooses a random object from the list
         int nextObject = Random.Range(0, left.Count);
-        if (left.ToArray()[nextObject] != null)
-        {
+        if (left[nextObject] != null)
+        { //there should be no objects found that dont exist
             PickUpAbles newObject = left.ToArray()[nextObject];
 
             img.sprite = newObject.image;
@@ -116,30 +112,51 @@ public class TodoList : MonoBehaviourPunCallbacks, IPunObservable
             //added to coordinate with pick up spawner
             left[nextObject].tag = "PointsPickUp"; //sets tag
             left[nextObject].IsThisOBJForPoints = true; //set true for points
+        } else
+        {
+            Debug.Log("tried to load object that doesnt exist");
         }
-        FindObjectOfType<PickUpableSpawner>().FindOBJ();
+
+        FindObjectOfType<PickUpableSpawner>().FindOBJ(); //called to coordinate something with pickupablespawner
     }
 
+    bool IsAlreadyDisplayed(PickUpAbles pickUpAble)
+    {
+        foreach(Image image in images)
+        {
+            if(image.sprite == null)
+            {//error prevention
+                return false;
+            }
+            if(image.sprite == pickUpAble.image)
+            {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    /// <summary>
+    /// Call this function when you try to collect a object on the list, it will refill the image
+    /// </summary>
+    /// <param name="obj"></param>
     public void ObjectFound(PickUpAbles obj)
     {
         if (list.ContainsKey(obj))
-        {
-            
-            if(image.sprite == obj.image)
-            {
-                    FillImage(image);
+        {//if object was on list
+            foreach (Image image in images) {
+                if (image.sprite == obj.image)
+                {//if image is the target image
+                    list[obj] = true; //set found to true
+                    FillImage(image); //refill image
+                    break; //no need to loop anymore
+                }
             }
-            else if(image2.sprite == obj.image)
-            {
-                FillImage(image2);
-            } else if(image3.sprite == obj.image)
-            {
-                FillImage(image3);
-            }
-            list[obj] = true;
+
         }
     }
 
+    //this function exists to comply with IPunObservable, I dont know why, ask Jimmy
     public void OnPhotonSerializeView(PhotonStream stream, PhotonMessageInfo info)
     {
         if (stream.IsWriting)
