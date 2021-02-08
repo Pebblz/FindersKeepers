@@ -1187,7 +1187,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 100000, guid: 0f66f1dd23a9d834fb53f220f55ca516, type: 3}
       propertyPath: m_Name
-      value: stool
+      value: billiard stool
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 0f66f1dd23a9d834fb53f220f55ca516, type: 3}
       propertyPath: m_LocalPosition.x

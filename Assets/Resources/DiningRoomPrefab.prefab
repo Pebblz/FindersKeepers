@@ -943,7 +943,7 @@ PrefabInstance:
     - target: {fileID: 6006641564493216404, guid: 6c1bdd64f0e137846b704e0055ea6492,
         type: 3}
       propertyPath: m_Name
-      value: 'chair '
+      value: 'dining room chair '
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6c1bdd64f0e137846b704e0055ea6492, type: 3}
@@ -1078,7 +1078,7 @@ PrefabInstance:
     - target: {fileID: 6006641564493216404, guid: 6c1bdd64f0e137846b704e0055ea6492,
         type: 3}
       propertyPath: m_Name
-      value: chair (3)
+      value: dining room chair (3)
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6c1bdd64f0e137846b704e0055ea6492, type: 3}
@@ -1122,7 +1122,7 @@ PrefabInstance:
     - target: {fileID: 282369017897859339, guid: ffdac5a87d250624ca1ecf3dd5ce2159,
         type: 3}
       propertyPath: m_Name
-      value: table
+      value: dining room table
       objectReference: {fileID: 0}
     - target: {fileID: 282369017898280235, guid: ffdac5a87d250624ca1ecf3dd5ce2159,
         type: 3}
@@ -1283,7 +1283,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 100000, guid: 2c9add3a308180a4ea72f003702ede65, type: 3}
       propertyPath: m_Name
-      value: turnip statue
+      value: turnip knight statue
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 2c9add3a308180a4ea72f003702ede65, type: 3}
       propertyPath: m_LocalPosition.x
@@ -1456,7 +1456,7 @@ PrefabInstance:
     - target: {fileID: 6006641564493216404, guid: 6c1bdd64f0e137846b704e0055ea6492,
         type: 3}
       propertyPath: m_Name
-      value: chair (1)
+      value: dining room chair (1)
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6c1bdd64f0e137846b704e0055ea6492, type: 3}
@@ -1555,7 +1555,7 @@ PrefabInstance:
     - target: {fileID: 3241138129790632808, guid: 569661da531fa86488020289198030f0,
         type: 3}
       propertyPath: m_Name
-      value: darwin
+      value: darwin painting
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 569661da531fa86488020289198030f0, type: 3}
@@ -1672,7 +1672,7 @@ PrefabInstance:
     - target: {fileID: 6006641564493216404, guid: 6c1bdd64f0e137846b704e0055ea6492,
         type: 3}
       propertyPath: m_Name
-      value: chair (2)
+      value: dining room chair (2)
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6c1bdd64f0e137846b704e0055ea6492, type: 3}

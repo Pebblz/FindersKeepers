@@ -121,19 +121,19 @@ public class TodoList : MonoBehaviourPunCallbacks, IPunObservable
     }
 
     //Call this function when a pickupable is picked up
-    //public void PickUpObject(PickUpAbles pickUpAble)
-    //{
-    //    if (list.ContainsKey(pickUpAble))
-    //    {
-    //        //declares as picked up
-    //        list[pickUpAble] = true;
-    //        Debug.Log(list[pickUpAble]);
+    public void PickUpObject(PickUpAbles pickUpAble)
+    {
+        if (list.ContainsKey(pickUpAble))
+        {
+            //declares as picked up
+            list[pickUpAble] = true;
+            Debug.Log(list[pickUpAble]);
 
-    //        //TODO change the list to signify said item was picked up
-    //        list.Remove(pickUpAble);
-    //        PrintList();
-    //    }
-    //}
+            //TODO change the list to signify said item was picked up
+            list.Remove(pickUpAble);
+            PrintList();
+        }
+    }
 
     public void ObjectFound(PickUpAbles obj)
     {
@@ -141,9 +141,9 @@ public class TodoList : MonoBehaviourPunCallbacks, IPunObservable
         {
             
             if(image.sprite == obj.image)
-                {
+            {
                     FillImage(image);
-                }
+            }
             else if(image2.sprite == obj.image)
             {
                 FillImage(image2);

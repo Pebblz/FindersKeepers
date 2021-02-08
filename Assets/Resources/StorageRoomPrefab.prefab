@@ -333,7 +333,7 @@ GameObject:
   - component: {fileID: 3479165095489916865}
   - component: {fileID: 7064247329747216432}
   m_Layer: 0
-  m_Name: storage rack
+  m_Name: storage shelf
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -566,7 +566,7 @@ GameObject:
   - component: {fileID: 8435242629533327227}
   - component: {fileID: 5842855611800392603}
   m_Layer: 0
-  m_Name: storage rack (1)
+  m_Name: storage shelf (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
