@@ -8,10 +8,9 @@ public class PlayButton : MonoBehaviourPunCallbacks
     {
         if (!PhotonNetwork.IsMasterClient)
         {
-            if (GetComponent<PhotonView>().IsMine)
-            {
-                this.gameObject.SetActive(false);
-            }
+
+            this.gameObject.SetActive(false);
+
         }
     }
 }
