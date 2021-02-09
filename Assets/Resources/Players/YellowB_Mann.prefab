@@ -296,9 +296,9 @@ GameObject:
   - component: {fileID: 8542927087427324113}
   - component: {fileID: 8542469046426242091}
   - component: {fileID: 8636038715065015555}
+  - component: {fileID: 8242933436294029575}
   - component: {fileID: 8542239798627771845}
   - component: {fileID: 8542807384354678397}
-  - component: {fileID: 8542657175711333515}
   - component: {fileID: 8542255714994844769}
   - component: {fileID: 8645808281358165135}
   - component: {fileID: 82045703675229434}
@@ -432,8 +432,8 @@ MonoBehaviour:
   ObservedComponents:
   - {fileID: 8542926619542387465}
   - {fileID: 8542927087427324113}
+  - {fileID: 8242933436294029575}
   - {fileID: 8542807384354678397}
-  - {fileID: 8542657175711333515}
   - {fileID: 8542255714994844769}
   viewIdField: 0
   InstantiationId: 0
@@ -454,6 +454,21 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 80
   m_CollisionDetection: 0
+--- !u!114 &8242933436294029575
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1328171535694887774}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0c21ccdf1ded1a144b5d4d101ffb2fd3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  mainCam: {fileID: 0}
+  rb: {fileID: 8636038715065015555}
+  turnSmoothTime: 0.1
 --- !u!114 &8542239798627771845
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -485,21 +500,6 @@ MonoBehaviour:
   isPickingUpOBJ: 0
   ThrowForce: 10
   PickUpSound: {fileID: 8300000, guid: 454563ed0f0b6554bbdca4c6225028af, type: 3}
---- !u!114 &8542657175711333515
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1328171535694887774}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4fa06d28e9f534b4ea811177266ee732, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  mainCam: {fileID: 0}
-  rb: {fileID: 0}
-  turnSmoothTime: 0.1
 --- !u!114 &8542255714994844769
 MonoBehaviour:
   m_ObjectHideFlags: 0

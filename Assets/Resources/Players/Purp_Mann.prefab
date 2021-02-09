@@ -1632,9 +1632,9 @@ GameObject:
   - component: {fileID: 3027241716144655543}
   - component: {fileID: 3027231026284730829}
   - component: {fileID: 3123025213788896339}
+  - component: {fileID: 2552667986283247290}
   - component: {fileID: 3026847308779858237}
   - component: {fileID: 3027537049901234845}
-  - component: {fileID: 3029920177628803415}
   - component: {fileID: 3027161190387459167}
   - component: {fileID: 3133802002501714401}
   - component: {fileID: 82271896144124406}
@@ -1768,8 +1768,8 @@ MonoBehaviour:
   ObservedComponents:
   - {fileID: 3029928486475763519}
   - {fileID: 3027241716144655543}
+  - {fileID: 2552667986283247290}
   - {fileID: 3027537049901234845}
-  - {fileID: 3029920177628803415}
   - {fileID: 3027161190387459167}
   viewIdField: 0
   InstantiationId: 0
@@ -1790,6 +1790,21 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 80
   m_CollisionDetection: 0
+--- !u!114 &2552667986283247290
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6276375194769605389}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0c21ccdf1ded1a144b5d4d101ffb2fd3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  mainCam: {fileID: 0}
+  rb: {fileID: 3123025213788896339}
+  turnSmoothTime: 0.1
 --- !u!114 &3026847308779858237
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1821,21 +1836,6 @@ MonoBehaviour:
   isPickingUpOBJ: 0
   ThrowForce: 10
   PickUpSound: {fileID: 8300000, guid: 454563ed0f0b6554bbdca4c6225028af, type: 3}
---- !u!114 &3029920177628803415
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6276375194769605389}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4fa06d28e9f534b4ea811177266ee732, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  mainCam: {fileID: 0}
-  rb: {fileID: 0}
-  turnSmoothTime: 0.1
 --- !u!114 &3027161190387459167
 MonoBehaviour:
   m_ObjectHideFlags: 0
