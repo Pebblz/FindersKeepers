@@ -16,4 +16,10 @@ public class Button_Script : MonoBehaviour
     {
         SceneManager.LoadScene("Settings");
     }
+
+    //if this creates a conflict just delete this function
+    public void MainScene()
+    {
+        SceneManager.LoadScene("Launcher");
+    }
 }
