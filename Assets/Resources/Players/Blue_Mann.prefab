@@ -1202,8 +1202,8 @@ GameObject:
   - component: {fileID: 5157927995024768509}
   - component: {fileID: 3884950032110372102}
   - component: {fileID: 4054979202836804194}
+  - component: {fileID: 2646057673603608100}
   - component: {fileID: 195702218381905716}
-  - component: {fileID: 3932338617543299152}
   - component: {fileID: 2072708874087932319}
   - component: {fileID: 8757885532714352811}
   - component: {fileID: 82829182901033488}
@@ -1337,8 +1337,8 @@ MonoBehaviour:
   ObservedComponents:
   - {fileID: 3720524212406555462}
   - {fileID: 3061774486078456382}
+  - {fileID: 2646057673603608100}
   - {fileID: 195702218381905716}
-  - {fileID: 3932338617543299152}
   - {fileID: 2072708874087932319}
   viewIdField: 0
   InstantiationId: 0
@@ -1373,6 +1373,21 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   taserOBJ: {fileID: 4751874367746483087, guid: cc0600f2633c23d488311098e39e359c,
     type: 3}
+--- !u!114 &2646057673603608100
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4521306636031681356}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0c21ccdf1ded1a144b5d4d101ffb2fd3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  mainCam: {fileID: 0}
+  rb: {fileID: 3884950032110372102}
+  turnSmoothTime: 0.1
 --- !u!114 &195702218381905716
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1390,21 +1405,6 @@ MonoBehaviour:
   isPickingUpOBJ: 0
   ThrowForce: 10
   PickUpSound: {fileID: 8300000, guid: 454563ed0f0b6554bbdca4c6225028af, type: 3}
---- !u!114 &3932338617543299152
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4521306636031681356}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4fa06d28e9f534b4ea811177266ee732, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  mainCam: {fileID: 0}
-  rb: {fileID: 0}
-  turnSmoothTime: 0.1
 --- !u!114 &2072708874087932319
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1419,7 +1419,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   localScripts:
   - {fileID: 4054979202836804194}
-  - {fileID: 3932338617543299152}
+  - {fileID: 0}
   - {fileID: 195702218381905716}
   - {fileID: 2072708874087932319}
   localObject:

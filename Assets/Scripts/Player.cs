@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using Photon.Pun;
+using UnityEngine.SceneManagement;
 
 public class Player : MonoBehaviourPunCallbacks, IPunObservable
 {
@@ -63,32 +64,43 @@ public class Player : MonoBehaviourPunCallbacks, IPunObservable
 
     }
 
-    // Start is called before the first frame update
-    void Start()
-    {
-    }
-
-    // Update is called once per frame
     void Update()
     {
         if (powerUpTimerActive)
         {
             updatePowerUp();
-        }    
-        
-        if(GetComponent<PhotonView>().IsMine)
+        }
+
+        if (GetComponent<PhotonView>().IsMine)
         {
-            if(StunCounter > 0)
+
+            //Finds current scene
+            Scene scene = SceneManager.GetActiveScene();
+            if (scene.name == "Main Game")
+            {
+                //if you're in game it'll lock your cursor and hide it 
+                Cursor.visible = false;
+                Cursor.lockState = CursorLockMode.Locked;
+            }
+            else
+            {
+                //if you're not in game it'll unlock your cursor and make it visable
+                Cursor.visible = true;
+                Cursor.lockState = CursorLockMode.None;
+            }
+
+            if (StunCounter > 0)
             {
                 Anim.SetBool("IsStunned", true);
                 Anim.SetBool("IsJumping", false);
                 Anim.SetBool("IsCarry", false);
                 Anim.SetBool("IsRunning", false);
-            } else
+            }
+            else
             {
                 Anim.SetBool("IsStunned", false);
             }
-        }   
+        }
     }
 
     #endregion
@@ -98,7 +110,7 @@ public class Player : MonoBehaviourPunCallbacks, IPunObservable
 
     public void StunPlayer()
     {
-  
+
         StunCounter = 3;
     }
 
@@ -144,18 +156,11 @@ public class Player : MonoBehaviourPunCallbacks, IPunObservable
 
         if (stream.IsWriting)
         {
-            //data that gets sent to other players
-            //stream.SendNext(isFiring);
             stream.SendNext(score);
-
         }
         else
         {
-            //data recieved from other players
-            //this.isFiring = (bool)stream.ReceiveNext();
             this.score = (int)stream.ReceiveNext();
-
-
         }
     }
 }
