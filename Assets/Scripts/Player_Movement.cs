@@ -11,6 +11,7 @@ public class Player_Movement : MonoBehaviourPunCallbacks, IPunObservable
      * Edited by: Pat Naatz
      * 
      * Added walking sound
+     * Added MoveToHere RPC
      */
 
     float speed = 5;
@@ -118,5 +119,16 @@ public class Player_Movement : MonoBehaviourPunCallbacks, IPunObservable
     public void OnPhotonSerializeView(PhotonStream stream, PhotonMessageInfo info)
     {
 
+    }
+
+    /// <summary>
+    /// Moves player to certain position
+    /// Only the master client should call this functiton
+    /// </summary>
+    /// <param name="position"></param>
+    [PunRPC]
+    public void MoveToHere(Vector3 position)
+    {
+        transform.position = position;
     }
 }
