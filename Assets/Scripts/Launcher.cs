@@ -48,6 +48,15 @@ public class Launcher : MonoBehaviourPunCallbacks
         progressLabel.SetActive(false);
         controlPanel.SetActive(true);
     }
+    private void Update()
+    {
+        //in unity return means enter for some reason
+       if(Input.GetKeyDown(KeyCode.Return) && roomCode.text != "" ||
+            Input.GetKeyDown(KeyCode.KeypadEnter) && roomCode.text != "")
+        {
+            Connect();
+        }
+    }
     #endregion
 
 

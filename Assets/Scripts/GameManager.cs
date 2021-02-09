@@ -105,26 +105,6 @@ public class GameManager : MonoBehaviourPunCallbacks
             }
         }
     }
-    void Update()
-    {
-        if (photonView.IsMine)
-        {
-            //Finds current scene
-            Scene scene = SceneManager.GetActiveScene();
-            if (scene.name == "Main Game")
-            {
-                //if you're in game it'll lock your cursor and hide it 
-                Cursor.visible = false;
-                Cursor.lockState = CursorLockMode.Locked;
-            }
-            else
-            {
-                //if you're not in game it'll unlock your cursor and make it visable
-                Cursor.visible = true;
-                Cursor.lockState = CursorLockMode.None;
-            }
-        }
-    }
     public int FindFirstNotUsedSkin()
     {
 
