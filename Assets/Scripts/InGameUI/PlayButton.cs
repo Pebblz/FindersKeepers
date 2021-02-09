@@ -4,7 +4,7 @@ using UnityEngine;
 using Photon.Pun;
 public class PlayButton : MonoBehaviourPunCallbacks
 {
-    void Update()
+    void Start()
     {
         if (!PhotonNetwork.IsMasterClient)
         {
