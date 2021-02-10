@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
@@ -11,13 +12,113 @@ public class Settings : MonoBehaviour
      * Objective: Make a script for setting values for game play then communicating them into the game
      */
 
-    [SerializeField] GameMode gameMode;
+    public static GameMode gameMode;
     bool canAdjustTime = true;
+
+    [SerializeField] Dropdown gameModeDropDownMenu;
+    Dictionary<string, Transform> editedPanels = new Dictionary<string, Transform>();
+
+    //Prefabs
+    public GameObject panelPrefab;
+    public GameObject togglePrefab;
+    public GameObject timePrefab;
 
     // Start is called before the first frame update
     void Start()
     {
+        LoadGameMode();
         //Load last saved settings
+    }
+
+    public void LoadGameMode()
+    {
+        if(gameMode != null)
+        {
+            editedPanels[gameMode.name].gameObject.SetActive(false);
+        }
+        gameMode = Resources.Load<GameMode>("Game Modes/" + gameModeDropDownMenu.options[gameModeDropDownMenu.value].text);
+        if (editedPanels.ContainsKey(gameMode.name))
+        {
+            editedPanels[gameMode.name].gameObject.SetActive(true);
+        } else
+        {
+            LoadPanel();
+        }
+    }
+
+    private void LoadPanel()
+    {
+        Transform panel = Instantiate(panelPrefab, transform).transform;
+        editedPanels.Add(gameMode.name, panel);
+        Transform togglePanel = panel.transform.Find("Toggles");
+        foreach(GameMode.Toggles toggle in gameMode.toggles)
+        {
+            Toggle UIToggle = Instantiate(togglePrefab, togglePanel).GetComponent<Toggle>();
+            UIToggle.name = toggle.name;
+            UIToggle.transform.localScale += Vector3.one * this.GetComponent<CanvasScaler>().scaleFactor;
+            UIToggle.onValueChanged.AddListener(delegate
+            {
+                Toggle(UIToggle.name);
+            });
+            UIToggle.transform.Find("Label").GetComponent<Text>().text = toggle.name;
+        }
+
+        Transform timingPanel = panel.transform.Find("Timers");
+        foreach (GameMode.TimeInSeconds timer in gameMode.Times)
+        {
+            Transform UITimer = Instantiate(timePrefab, timingPanel).transform;
+
+            UITimer.name = timer.name;
+            UITimer.Find("Text").GetComponent<Text>().text = timer.name;
+
+            UITimer.transform.localScale += Vector3.one * this.GetComponent<CanvasScaler>().scaleFactor;
+
+            Slider slider = UITimer.Find("Slider").GetComponent<Slider>();
+
+            UITimer.Find("Min").GetComponent<Text>().text = timer.min.ToString();
+            slider.minValue = timer.min;
+
+            UITimer.Find("Max").GetComponent<Text>().text = timer.max.ToString();
+            slider.maxValue = timer.max;
+
+            slider.value = timer.current;
+            slider.onValueChanged.AddListener(delegate
+            {
+                Timer(UITimer.name);
+            });
+        }
+    }
+
+    public void Toggle(string name)
+    {
+        GameMode.Toggles thisToggle;
+        foreach(GameMode.Toggles toggle in gameMode.toggles)
+        {
+            if(toggle.name == name)
+            {
+                thisToggle = toggle;
+            }
+        }
+        thisToggle.value = editedPanels[gameMode.name].Find("Toggles").Find(name).GetComponent<Toggle>().isOn;
+    }
+
+    public void Timer(string name)
+    {
+        //get values
+        Slider from = EventSystem.current.currentSelectedGameObject.GetComponent<Slider>();
+        GameMode.TimeInSeconds thisTimer;
+        foreach (GameMode.TimeInSeconds timer in gameMode.Times)
+        {
+            if (timer.name == name)
+            {
+                thisTimer = timer;
+            }
+        }
+        float value = from.value;
+        int minutes = (int)value;
+        value -= minutes;
+        int seconds = (int)(value * 100.0f);
+        thisTimer.current = minutes * 60 + seconds;
     }
 
     #region Time Management
