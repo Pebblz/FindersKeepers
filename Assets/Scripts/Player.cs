@@ -41,7 +41,7 @@ public class Player : MonoBehaviourPunCallbacks, IPunObservable
 
     private void Awake()
     {
-        SoundManager = this.GetComponentInChildren<SoundManager>();
+        soundManager  = this.GetComponentInChildren<SoundManager>();
         if (photonView.IsMine)
         {
             Anim = GetComponent<Animator>();
