@@ -73,16 +73,19 @@ public class SoundManager : MonoBehaviour, IOnEventCallback
 
     public void PlayJump()
     {
+        if (Jump.isPlaying) return;
         Jump.Play();
     }
 
     public void PlayPickUp()
     {
+        if (PickUp.isPlaying) return;
         PickUp.Play();
     }
 
     public void PlayPointGot()
     {
+        if (PointGot.isPlaying) return;
         PointGot.Play();
     }
 

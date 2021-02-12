@@ -84,7 +84,9 @@ public class Player_Movement : MonoBehaviourPunCallbacks, IPunObservable
             }
             if (Input.GetKeyDown(KeyCode.Space) && IsGrounded())
             {
+                this.sfxManager.PlayJump();
                 rb.velocity = new Vector3(direction.x, jumpspeed, direction.z);
+                
             }
 
             if (IsGrounded())
@@ -94,7 +96,7 @@ public class Player_Movement : MonoBehaviourPunCallbacks, IPunObservable
             else
             {
                 Anim.SetBool("IsJumping", true);
-                this.sfxManager.PlayJump();
+                
             }
             #endregion
             ThisPlayer.StunCounter -= Time.deltaTime;
