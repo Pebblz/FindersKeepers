@@ -15,11 +15,14 @@ public class SoundManager : MonoBehaviour, IOnEventCallback
     [SerializeField] AudioSource PickUp;
     [SerializeField] AudioSource Jump;
     [SerializeField] AudioSource PointGot;
+    [SerializeField] AudioSource Walking;
+    [SerializeField] AudioSource Running;
+
     
 
     [SerializeField] bool ignoreEvents = false;
     [SerializeField] AudioMixerGroup outputGroup;
-    [SerializeField] bool isRemotePlayer;
+    public bool isRemotePlayer;
     AudioMixerGroup sfx;
     AudioMixerGroup music;
     AudioSource SceneTheme; // default music supposed to playing in a scene
@@ -48,7 +51,8 @@ public class SoundManager : MonoBehaviour, IOnEventCallback
         Jump.outputAudioMixerGroup = sfx;
         PointGot.outputAudioMixerGroup = sfx;
         PickUp.outputAudioMixerGroup = sfx;
-
+        Walking.outputAudioMixerGroup = sfx;
+        Running.outputAudioMixerGroup = sfx;
     }
 
 
@@ -81,6 +85,22 @@ public class SoundManager : MonoBehaviour, IOnEventCallback
     public void PlayPointGot()
     {
         PointGot.Play();
+    }
+
+    public void PlayRunning()
+    {
+        Running.loop = true;
+        Running.Play();
+    }
+
+    public void StopRunningSFX()
+    {
+        Running.Stop();
+    }
+
+    public void PlayWalking()
+    {
+        Walking.Play();
     }
 
     #endregion

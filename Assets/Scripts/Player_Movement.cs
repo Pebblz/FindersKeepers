@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using UnityEngine;
 using Photon.Pun;
 
-[RequireComponent(typeof(AudioSource))]
 public class Player_Movement : MonoBehaviourPunCallbacks, IPunObservable
 {
     /*Flower box
@@ -25,8 +24,8 @@ public class Player_Movement : MonoBehaviourPunCallbacks, IPunObservable
     Vector3 moveDir;
     public float turnSmoothTime = 0.1f;
     float turnSmoothVelocity;
+    private SoundManager sfxManager;
 
-    AudioSource Sound;
 
     void Awake()
     {
@@ -38,7 +37,7 @@ public class Player_Movement : MonoBehaviourPunCallbacks, IPunObservable
         }
         mainCam = GameObject.Find("Main Camera").GetComponent<Transform>();
         Anim = GetComponent<Animator>();
-        Sound = GetComponent<AudioSource>();
+        sfxManager = this.GetComponentInChildren<SoundManager>();
     }
 
     // Update is called once per frame
@@ -75,13 +74,13 @@ public class Player_Movement : MonoBehaviourPunCallbacks, IPunObservable
 
                     rb.MovePosition(transform.position += moveDir.normalized * speed * Time.deltaTime);
                     Anim.SetBool("IsRunning", true);
-                    Sound.Play(); //play running sound
                 }
             }
             else
             {
                 Anim.SetBool("IsRunning", false);
-                Sound.Stop(); //stop running sound
+                sfxManager.StopRunningSFX();
+                                                                          
             }
             if (Input.GetKeyDown(KeyCode.Space) && IsGrounded())
             {
@@ -95,6 +94,7 @@ public class Player_Movement : MonoBehaviourPunCallbacks, IPunObservable
             else
             {
                 Anim.SetBool("IsJumping", true);
+                this.sfxManager.PlayJump();
             }
             #endregion
             ThisPlayer.StunCounter -= Time.deltaTime;

@@ -6,7 +6,6 @@ using UnityEngine.SceneManagement;
 using Photon.Realtime;
 using ExitGames.Client.Photon;
 
-[RequireComponent(typeof(AudioSource))]
 public class PlayerPickUp : MonoBehaviourPunCallbacks, IPunObservable, IOnEventCallback
 {
     /*Flower Box
@@ -30,6 +29,7 @@ public class PlayerPickUp : MonoBehaviourPunCallbacks, IPunObservable, IOnEventC
     AudioSource Sound;
     [SerializeField]
     AudioClip PickUpSound;
+    SoundManager sfxManager;
 
     // Start is called before the first frame update
     void Awake()
@@ -37,6 +37,8 @@ public class PlayerPickUp : MonoBehaviourPunCallbacks, IPunObservable, IOnEventC
         Anim = GetComponent<Animator>();
         Sound = GetComponent<AudioSource>();
         rb = GetComponent<Rigidbody>();
+        sfxManager = this.gameObject.GetComponentInChildren<SoundManager>();
+
     }
 
 
@@ -72,7 +74,7 @@ public class PlayerPickUp : MonoBehaviourPunCallbacks, IPunObservable, IOnEventC
                                     hit.collider.gameObject.GetComponent<Rigidbody>().constraints = RigidbodyConstraints.None;
                                     hit.collider.gameObject.GetComponent<PickUpAbles>().UseGravity(true);
                                     hit.collider.gameObject.GetComponent<PickUpAbles>().PlayerThatPickUpOBJ = this.gameObject;
-                                    PlayerPickUpSound();
+                                    sfxManager.PlayPickUp();
                                     isHoldingOBJ = true;
                                     hit.collider.gameObject.GetComponent<PickUpAbles>().IsPickedUped = true;
                                     hit.collider.gameObject.GetComponent<PickUpAbles>().ChangeOwnerShip();
@@ -93,7 +95,6 @@ public class PlayerPickUp : MonoBehaviourPunCallbacks, IPunObservable, IOnEventC
                     DropOBJ();
                     PickUp = null;
                     isHoldingOBJ = false;
-                    PlayerPickUpSound();
                 }
                 pickUpTimer = 1;
             }
@@ -127,10 +128,6 @@ public class PlayerPickUp : MonoBehaviourPunCallbacks, IPunObservable, IOnEventC
     }
 
 
-    public void PlayerPickUpSound()
-    {
-        Sound.PlayOneShot(PickUpSound); //play pickup sound
-    }
 
     //you'll never guess what this func does 
     //no you really won't based off this name
