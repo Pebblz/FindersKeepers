@@ -17,26 +17,26 @@ public class TelePorter : MonoBehaviourPunCallbacks
     }
     void Update()
     {
-        if (photonView.IsMine)
+
+        if (Player == null)
         {
-            if (Player == null)
-            {
-                Player = GameObject.FindGameObjectWithTag("Player");
-            }
-            if (Vector3.Distance(this.gameObject.transform.position, Player.transform.position) < 2)
-            {
-                Q.SetActive(true);
-                Vector3 temp = camera.gameObject.transform.forward;
-                temp.y = 90;
-                Q.transform.rotation = Quaternion.LookRotation(-temp);
-            }
-            else
-            {
-                Q.SetActive(false);
-            }
+            Player = GameObject.FindGameObjectWithTag("Player");
         }
+        if (Vector3.Distance(this.gameObject.transform.position, Player.transform.position) < 2)
+        {
+            Q.SetActive(true);
+            Vector3 temp = camera.gameObject.transform.forward;
+            temp.y = 90;
+            Q.transform.rotation = Quaternion.LookRotation(-temp);
+        }
+        else
+        {
+            Q.SetActive(false);
+        }
+
         TimeToTelePort -= Time.deltaTime;
     }
+
     private void OnTriggerStay(Collider col)
     {
 
