@@ -8,7 +8,9 @@ public class PlayerTaser : MonoBehaviourPunCallbacks
 {
     [SerializeField]
     GameObject taserOBJ;
-
+    //you need to keep a instance of the prefab to be able to delete it
+    //and this is that instance
+    public GameObject taserInstance;
     int TasersLeft = 2;
     Animator Anim;
     void Awake()
@@ -39,11 +41,11 @@ public class PlayerTaser : MonoBehaviourPunCallbacks
     {
 
         //this spawns the bullet 
-        GameObject projectile = PhotonNetwork.Instantiate("Test_Taser", this.gameObject.transform.position + new Vector3(0, 1.2f,0), Quaternion.identity);
+         taserInstance = PhotonNetwork.Instantiate("Test_Taser", this.gameObject.transform.position + new Vector3(0, 1.2f,0), Quaternion.identity);
         //this makes sure player doesn't shoot himself 
-        projectile.GetComponent<Taser>().PlayerWhoShotThis = gameObject;
+        taserInstance.GetComponent<Taser>().PlayerWhoShotThis = gameObject;
         //bullet go forward
-        projectile.GetComponent<Rigidbody>().velocity = transform.forward * 10f;
+        taserInstance.GetComponent<Rigidbody>().velocity = transform.forward * 10f;
         //you lose a taser if you shoot a taser
         TasersLeft -= 1;
         GetComponent<Player>().isFiring = false;

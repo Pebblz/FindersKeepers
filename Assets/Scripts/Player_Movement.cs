@@ -17,7 +17,7 @@ public class Player_Movement : MonoBehaviourPunCallbacks, IPunObservable
     float speed = 5;
 
     public Transform mainCam;
-    Animator Anim; 
+    Animator Anim;
     Player ThisPlayer;
     public Rigidbody rb;
     float distToGround;
@@ -30,7 +30,7 @@ public class Player_Movement : MonoBehaviourPunCallbacks, IPunObservable
 
     void Awake()
     {
-        distToGround = GetComponent<Collider>().bounds.extents.y -.6f;
+        distToGround = GetComponent<Collider>().bounds.extents.y - .6f;
         ThisPlayer = GetComponent<Player>();
         if (rb == null)
         {
@@ -59,7 +59,7 @@ public class Player_Movement : MonoBehaviourPunCallbacks, IPunObservable
 
             if (direction.magnitude >= 0.1f)
             {
-                if (ThisPlayer.StunCounter <= 0)
+                if (ThisPlayer.StunCounter < 0)
                 {
                     //sees how much is needed to rotate to match camera
                     float targetAngle = Mathf.Atan2(direction.x, direction.z) * Mathf.Rad2Deg + mainCam.localEulerAngles.y;
@@ -77,11 +77,6 @@ public class Player_Movement : MonoBehaviourPunCallbacks, IPunObservable
                     Anim.SetBool("IsRunning", true);
                     Sound.Play(); //play running sound
                 }
-                else
-                {
-                    ThisPlayer.StunCounter -= Time.deltaTime;
-
-                }
             }
             else
             {
@@ -93,15 +88,16 @@ public class Player_Movement : MonoBehaviourPunCallbacks, IPunObservable
                 rb.velocity = new Vector3(direction.x, jumpspeed, direction.z);
             }
 
-            if(IsGrounded())
+            if (IsGrounded())
             {
                 Anim.SetBool("IsJumping", false);
-            } else
+            }
+            else
             {
                 Anim.SetBool("IsJumping", true);
             }
-        #endregion
-
+            #endregion
+            ThisPlayer.StunCounter -= Time.deltaTime;
         }
     }
     public void setSpeed(float newSpeed)
