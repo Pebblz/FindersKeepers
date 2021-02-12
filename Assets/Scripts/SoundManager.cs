@@ -45,14 +45,13 @@ public class SoundManager : MonoBehaviour, IOnEventCallback
 
         LobbyTheme.outputAudioMixerGroup = music;
         GameTheme.outputAudioMixerGroup = music;
-        SceneTheme.outputAudioMixerGroup = music;
         this.SceneTheme = LobbyTheme;
 
         Jump.outputAudioMixerGroup = sfx;
         PointGot.outputAudioMixerGroup = sfx;
         PickUp.outputAudioMixerGroup = sfx;
-        Walking.outputAudioMixerGroup = sfx;
-        Running.outputAudioMixerGroup = sfx;
+        PlayLobbyTheme();
+        
     }
 
 
@@ -89,18 +88,17 @@ public class SoundManager : MonoBehaviour, IOnEventCallback
 
     public void PlayRunning()
     {
-        Running.loop = true;
-        Running.Play();
+        return;
     }
 
     public void StopRunningSFX()
     {
-        Running.Stop();
+        return;
     }
 
     public void PlayWalking()
     {
-        Walking.Play();
+        return;
     }
 
     #endregion

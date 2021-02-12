@@ -309,6 +309,8 @@ MonoBehaviour:
   PickUp: {fileID: 2471628772854570581}
   Jump: {fileID: 2471628774350681238}
   PointGot: {fileID: 2471628773667496259}
+  Walking: {fileID: 0}
+  Running: {fileID: 0}
   ignoreEvents: 0
   outputGroup: {fileID: 0}
   isRemotePlayer: 0
