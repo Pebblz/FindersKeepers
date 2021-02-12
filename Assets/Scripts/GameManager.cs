@@ -32,6 +32,7 @@ public class GameManager : MonoBehaviourPunCallbacks
     public GameObject startButton;
     public bool isGameScene;
     bool PressPlayButtonOnce;
+    [SerializeField] GameObject backgroundMusicPrefab;
 
     enum GameState
     {//Enum Gamestate instead of Scene management because we dont want to swap scenes to avoid online issues
@@ -64,11 +65,18 @@ public class GameManager : MonoBehaviourPunCallbacks
         GameObject[] playerfabs = Resources.LoadAll<GameObject>("Players").ToArray();
         playerPrefabs = GameManager.Randomize(playerfabs);
 
+        //check if the music object is already loaded into the scene
+        if (GameObject.FindGameObjectWithTag("BackgroundMusic") == null)
+        {
+            GameObject music = PhotonNetwork.Instantiate(backgroundMusicPrefab.name, new Vector3(0f, 0f, 0f), Quaternion.identity);
+            DontDestroyOnLoad(music);
+        }
 
         Instance = this;
         if (OnlyOnePlayer)
         {
             PhotonNetwork.Instantiate(playerPrefab.name, new Vector3(0f, 1f, 0f), Quaternion.identity);
+       
         }
         else if (Player.localInstance == null)
         {
