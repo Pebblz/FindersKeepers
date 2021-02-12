@@ -32,7 +32,7 @@ public class GameManager : MonoBehaviourPunCallbacks
     public GameObject startButton;
     public bool isGameScene;
     bool PressPlayButtonOnce;
-    [SerializeField] GameObject backgroundMusicPrefab;
+
 
     enum GameState
     {//Enum Gamestate instead of Scene management because we dont want to swap scenes to avoid online issues
