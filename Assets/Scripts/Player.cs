@@ -20,7 +20,7 @@ public class Player : MonoBehaviourPunCallbacks, IPunObservable
 
     public int score = 0;
     public bool isFiring = false;
-    [SerializeField] GameObject soundManager;
+    SoundManager soundManager;
 
     Rigidbody rb;
     public float StunCounter;
@@ -41,6 +41,7 @@ public class Player : MonoBehaviourPunCallbacks, IPunObservable
 
     private void Awake()
     {
+        SoundManager = this.GetComponentInChildren<SoundManager>();
         if (photonView.IsMine)
         {
             Anim = GetComponent<Animator>();
@@ -55,7 +56,7 @@ public class Player : MonoBehaviourPunCallbacks, IPunObservable
         {
             freeLookCam.SetActive(false);
             GetComponent<AudioListener>().enabled = false;
-            soundManager.GetComponent<SoundManager>().isRemotePlayer = true;
+            soundManager.isRemotePlayer = true;
         }
         DontDestroyOnLoad(this);
 
