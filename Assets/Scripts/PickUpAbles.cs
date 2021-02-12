@@ -10,7 +10,6 @@ using ExitGames.Client.Photon;
 public class PickUpAbles : MonoBehaviourPunCallbacks, IPunObservable
 {
     public GameObject player;
-    GameObject[] gs = new GameObject[4];
     public bool IsPickedUped;
     public GameObject PlayerThatPickUpOBJ;
     public PhotonView pv;
@@ -20,7 +19,7 @@ public class PickUpAbles : MonoBehaviourPunCallbacks, IPunObservable
     public Quaternion startingRot;
     public bool hasGravity = true;
     public Sprite image;
-
+    public float throwIntoZoneTimer;
     //this is an awake because it'll do this whenever this object gets spawned
     void Awake()
     {
@@ -41,7 +40,7 @@ public class PickUpAbles : MonoBehaviourPunCallbacks, IPunObservable
             photonView.RPC("unparent", RpcTarget.All);
         }
 
-        if (this.gameObject == player.GetComponent<PlayerPickUp>().PickUp && IsPickedUped == true)
+        if (this.gameObject == player.GetComponent<PlayerPickUp>().PickUp && IsPickedUped)
         {
             gameObject.transform.position = player.transform.position + new Vector3(0, 2.5f, 0);
         }
@@ -90,8 +89,6 @@ public class PickUpAbles : MonoBehaviourPunCallbacks, IPunObservable
             GetComponent<Rigidbody>().constraints = RigidbodyConstraints.FreezePositionY;
             GetComponent<Rigidbody>().constraints = RigidbodyConstraints.FreezeRotation;
         }
-   
-        //ChangeOwnerShip();
     }
     //this is for pictures, or anything that we would want to float
     //but still be pickupable
@@ -109,13 +106,11 @@ public class PickUpAbles : MonoBehaviourPunCallbacks, IPunObservable
         {
             stream.SendNext(IsPickedUped);
             stream.SendNext(useGravity);
-            //stream.SendNext(OriginalPos);
         }
         else
         {
             IsPickedUped = (bool)stream.ReceiveNext();
             this.GetComponent<Rigidbody>().useGravity = (bool)stream.ReceiveNext();
-            //OriginalPos = (Vector3)stream.ReceiveNext();
         }
 
     }

@@ -9,24 +9,13 @@ using ExitGames.Client.Photon;
 [RequireComponent(typeof(AudioSource))]
 public class PlayerPickUp : MonoBehaviourPunCallbacks, IPunObservable, IOnEventCallback
 {
-    /*Flower Box
-     * 
-     * Edited By: Pat Naatz
-     * 
-     * Added Pick Up Sound
-     */
-
-
     public GameObject PickUp;
     public bool isHoldingOBJ = false;
     public bool isPickingUpOBJ = false;
-    Rigidbody rb;
     [SerializeField]
     int ThrowForce;
     Animator Anim;
     float pickUpTimer;
-
-    GameObject PickUpSpawner;
     AudioSource Sound;
     [SerializeField]
     AudioClip PickUpSound;
@@ -36,7 +25,6 @@ public class PlayerPickUp : MonoBehaviourPunCallbacks, IPunObservable, IOnEventC
     {
         Anim = GetComponent<Animator>();
         Sound = GetComponent<AudioSource>();
-        rb = GetComponent<Rigidbody>();
     }
 
 

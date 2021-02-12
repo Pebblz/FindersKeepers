@@ -8,53 +8,47 @@ using ExitGames.Client.Photon;
 
 public class DropOffZoneScript : MonoBehaviourPunCallbacks
 {
-    //so guess what this little thing does 
-    //i'll give you a sec to figure it out 
-    //so what it does is if you enter the trigger it does the stuff 
-
-    PhotonView pv;
     GameObject pickup;
-    GameObject player;
-    private void Start()
-    {
-        pv = PhotonView.Get(this);
-    }
 
-    public void Update()
-    {
-
-    }
 
     private void OnTriggerEnter(Collider c)
     {
         //if a Player enters the room
-        if(c.tag == "Player")
-        {           
+        if (c.tag == "Player")
+        {
             pickup = c.GetComponent<PlayerPickUp>().PickUp;
-            //player = c.gameObject;
-                //then it makes sure to see if the players holding an object
-                if (c.GetComponent<PlayerPickUp>().isHoldingOBJ == true)
+            //then it makes sure to see if the players holding an object
+            if (c.GetComponent<PlayerPickUp>().isHoldingOBJ)
+            {
+                if (c.GetComponent<PlayerPickUp>().PickUp.GetComponent<PickUpAbles>().IsThisOBJForPoints)
                 {
-                    if (c.GetComponent<PlayerPickUp>().PickUp.GetComponent<PickUpAbles>().IsThisOBJForPoints == true)
+                    //then it'll encroment the score by 1 
+                    c.GetComponent<Player>().score += 1;
+                    if (c.GetComponent<PlayerPickUp>().PickUp.GetComponent<SoundtrackManager>() != null)
                     {
-                        //then it'll encroment the score by 1 
-                        c.GetComponent<Player>().score += 1;
-                        //pv.RPC("incrementScore", RpcTarget.All, c.gameObject.name);
-                        if (c.GetComponent<PlayerPickUp>().PickUp.GetComponent<SoundtrackManager>() != null)
-                        {
-                            c.GetComponent<PlayerPickUp>()
-                                .PickUp.
-                                    GetComponent<SoundtrackManager>().resumeOriginalTrack();
-                        }
+                        c.GetComponent<PlayerPickUp>().PickUp.GetComponent<SoundtrackManager>().resumeOriginalTrack();
+                    }
 
-                        FindObjectOfType<TodoList>().ObjectFound(c.GetComponent<PlayerPickUp>().PickUp.GetComponent<PickUpAbles>());
+                    FindObjectOfType<TodoList>().ObjectFound(c.GetComponent<PlayerPickUp>().PickUp.GetComponent<PickUpAbles>());
 
-                    /*c.*/GetComponent<PhotonView>().RPC("ResetDropOffPos", RpcTarget.All);
+                    /*c.*/
+                    GetComponent<PhotonView>().RPC("ResetDropOffPos", RpcTarget.All);
                     c.GetComponent<PlayerPickUp>().DropPickUp();
-            
+
                 }
             }
         }
+        //if(c.tag != "Player" && c.GetComponent<PickUpAbles>() != null)
+        //{
+        //    if(c.GetComponent<PickUpAbles>().PlayerThatPickUpOBJ != null && c.GetComponent<PickUpAbles>().throwIntoZoneTimer > 0)
+        //    {
+        //        c.GetComponent<PickUpAbles>().PlayerThatPickUpOBJ.GetComponent<Player>().score += 1;
+
+        //        FindObjectOfType<TodoList>().ObjectFound(c.GetComponent<PickUpAbles>());
+
+        //        GetComponent<PhotonView>().RPC("ResetDropOffPos", RpcTarget.All);
+        //    }
+        //}
     }
     [PunRPC]
     public void ResetDropOffPos()
@@ -71,7 +65,6 @@ public class DropOffZoneScript : MonoBehaviourPunCallbacks
                 pickup.GetComponent<Rigidbody>().constraints = RigidbodyConstraints.FreezeRotation;
             }
         }
-        //ChangeOwnerShip();
     }
 
     [PunRPC]
@@ -79,16 +72,4 @@ public class DropOffZoneScript : MonoBehaviourPunCallbacks
     {
         Destroy(pickup);
     }
-
-    /// <summary>
-    /// Raises an event to delete gameobject for a given photonViewId
-    /// </summary>
-    /// <param name="photonViewId">Id of object to be deleted</param>
-    private void deleteObjectInDropoffEvent(int photonViewId)
-    {
-        object[] content = new object[] { photonViewId };
-        RaiseEventOptions options = new RaiseEventOptions { Receivers = ReceiverGroup.All };
-        PhotonNetwork.RaiseEvent(NetworkCodes.DeleteObjectInDropoffCode, content, options, SendOptions.SendReliable);
-    }
-
 }
