@@ -40,11 +40,11 @@ public class DropOffZoneScript : MonoBehaviourPunCallbacks
                         //then it'll encroment the score by 1 
                         c.GetComponent<Player>().score += 1;
                         //pv.RPC("incrementScore", RpcTarget.All, c.gameObject.name);
-                        if (c.GetComponent<PlayerPickUp>().PickUp.GetComponent<SoundtrackManager>() != null)
+                        if (c.GetComponent<PlayerPickUp>().PickUp.GetComponent<SoundManager>() != null)
                         {
                             c.GetComponent<PlayerPickUp>()
                                 .PickUp.
-                                    GetComponent<SoundtrackManager>().resumeOriginalTrack();
+                                    GetComponent<SoundManager>().resumeOriginalTrack();
                         }
 
                         FindObjectOfType<TodoList>().ObjectFound(c.GetComponent<PlayerPickUp>().PickUp.GetComponent<PickUpAbles>());
