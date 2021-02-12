@@ -5,7 +5,7 @@ using Photon.Pun;
 using Photon.Realtime;
 using ExitGames.Client.Photon;
 
-public class SoundtrackManager : MonoBehaviour, IOnEventCallback
+public class SoundtrackManager : MonoBehaviour, IOnEventCallback, IPunObservable
 {
     [SerializeField] AudioSource soundtrack;
     [SerializeField] AudioSource GameTheme;
@@ -59,6 +59,20 @@ public class SoundtrackManager : MonoBehaviour, IOnEventCallback
             {
                 this.GameTheme.Play();
             }
+        }
+    }
+
+    public void OnPhotonSerializeView(PhotonStream stream, PhotonMessageInfo info)
+    {
+        if (stream.IsReading)
+        {
+            this.soundtrack.time = (float)stream.ReceiveNext();
+            this.GameTheme.time = (float)stream.ReceiveNext();
+
+        } else
+        {
+            stream.SendNext(this.soundtrack.time);
+            stream.SendNext(this.GameTheme.time);
         }
     }
 }
