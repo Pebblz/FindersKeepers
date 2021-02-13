@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using System.Linq;
 
 public class Places : MonoBehaviour
 {
@@ -13,29 +14,18 @@ public class Places : MonoBehaviour
         players = FindObjectsOfType<Player>();
     }
 
-    Player[] Order(Player[] scores)
-    {
-        for (int current = 0; current < scores.Length; current++)
-        {
-            for (int after = current + 1; after < scores.Length; after++)
-            {
-                if (scores[after].score > scores[current].score)
-                {
-                    //swap scores
-                    Player temp = scores[current];
-                    scores[current] = scores[after];
-                    scores[after] = temp;
-                }
-            }
-        }
+   
 
-        return scores;
+    void Order()
+    {
+        players = players.OrderByDescending(p => p.score).ToArray();
+
     }
 
     // Update is called once per frame
     void Update()
     {
-        players = Order(players);
+        Order();
         text.text = "";
         int incrementer = 1;
         foreach (Player player in players)

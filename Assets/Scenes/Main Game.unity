@@ -742,7 +742,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_FontData:
-    m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
+    m_Font: {fileID: 12800000, guid: 5144d5e941ba23a468dfb7470b76f805, type: 3}
     m_FontSize: 30
     m_FontStyle: 0
     m_BestFit: 0
@@ -932,6 +932,11 @@ PrefabInstance:
         type: 3}
       propertyPath: seconds.PlayTime
       value: 120
+      objectReference: {fileID: 0}
+    - target: {fileID: 3127317433066119693, guid: 06ee9b4d778946b449b4163b67b0ae5f,
+        type: 3}
+      propertyPath: isGameScene
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 06ee9b4d778946b449b4163b67b0ae5f, type: 3}
@@ -3498,7 +3503,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_FontData:
-    m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
+    m_Font: {fileID: 12800000, guid: 5144d5e941ba23a468dfb7470b76f805, type: 3}
     m_FontSize: 35
     m_FontStyle: 0
     m_BestFit: 0
