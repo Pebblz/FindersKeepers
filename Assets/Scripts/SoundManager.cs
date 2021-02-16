@@ -9,9 +9,9 @@ using System;
 
 public class SoundManager : MonoBehaviour, IOnEventCallback
 {
-    [SerializeField] AudioSource LobbyTheme;
-    [SerializeField] AudioSource GameTheme;
-    [SerializeField] AudioSource CPUTheme;
+    public AudioSource LobbyTheme;
+    public AudioSource GameTheme;
+    public AudioSource CPUTheme;
     [SerializeField] AudioSource PickUp;
     [SerializeField] AudioSource Jump;
     [SerializeField] AudioSource PointGot;
@@ -25,7 +25,7 @@ public class SoundManager : MonoBehaviour, IOnEventCallback
     public bool isRemotePlayer;
     AudioMixerGroup sfx;
     AudioMixerGroup music;
-    AudioSource SceneTheme; // default music supposed to playing in a scene
+    public AudioSource SceneTheme; // default music supposed to playing in a scene
 
 
     private void Awake()
@@ -136,16 +136,15 @@ public class SoundManager : MonoBehaviour, IOnEventCallback
 
     public void OnEvent(EventData photonEvent)
     {
-        if (ignoreEvents)
+    
+        byte eventCode = photonEvent.Code;
+        Debug.Log("Recieved Event code: " + NetworkCodes.getNameForCode(eventCode));
+        if (eventCode == NetworkCodes.ChangeToGameMusicEvent)
         {
-            byte eventCode = photonEvent.Code;
-            if (eventCode == NetworkCodes.ChangeToGameMusicEvent)
-            {
-                this.SceneTheme.Stop();
-                this.SceneTheme = GameTheme;
-                this.SceneTheme.Play();
-            }
+            this.SceneTheme.Stop();
+            this.PlayGameTheme();
         }
+        
     }
 }
 

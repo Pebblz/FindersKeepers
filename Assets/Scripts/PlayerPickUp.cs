@@ -203,9 +203,10 @@ public class PlayerPickUp : MonoBehaviourPunCallbacks, IPunObservable, IOnEventC
             PickUp = null;
             isHoldingOBJ = false;
         }
-        else if (eventCode == NetworkCodes.DeleteObjectInDropoffCode)
+        else if (eventCode == NetworkCodes.ChangeToGameMusicEvent)
         {
-            int id = (int)((object[])photonEvent.CustomData)[0];
+            this.GetComponentInChildren<SoundManager>().SceneTheme.Stop();
+            this.GetComponentInChildren<SoundManager>().PlayGameTheme();
         }
     }
 }
