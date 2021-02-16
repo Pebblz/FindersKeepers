@@ -25,7 +25,6 @@ public class PlayerPickUp : MonoBehaviourPunCallbacks, IPunObservable, IOnEventC
     {
         Anim = GetComponent<Animator>();
         Sound = GetComponent<AudioSource>();
-        rb = GetComponent<Rigidbody>();
         sfxManager = this.gameObject.GetComponentInChildren<SoundManager>();
 
     }
