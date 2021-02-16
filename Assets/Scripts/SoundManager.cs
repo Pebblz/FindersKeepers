@@ -9,6 +9,23 @@ using System;
 
 public class SoundManager : MonoBehaviour, IOnEventCallback
 {
+
+    /*=========================Description==================*/
+    /*The purpose of the sound manager script is to play all sounds. It helps us by keeping the sound effects
+     in one spot. Each player has its own sound Manager Currently, the Sound Manager uses two main Audio Mixer 
+    groups, one for the local player, and the other for the remote player. 
+    Each These has a sub group for sound effects and music. By default the remote
+    player group is muted, so we don't hear duplicate sounds. */
+
+    /*=========Adding Sounds===========*/
+    /*  1) Create an empty game object as a child of the prefab
+        2) Name the Object after the sound effect or music
+        3) Add an Field For the AudioSource, then drag and drop the child in
+        4) Add a play Method in the Play_Functions Regions
+    
+    Notes: Adding a an empty game object to the sound manager is not necessary, but it makes it easier to understand
+           The play_functions region also contains things for stoping sound effects like running/walking*/
+
     public AudioSource LobbyTheme;
     public AudioSource GameTheme;
     public AudioSource CPUTheme;
@@ -30,6 +47,10 @@ public class SoundManager : MonoBehaviour, IOnEventCallback
 
     private void Awake()
     {
+        // when a player is loaded through the game manager it will determine
+        // where audio for that player is routed by default, all remote players are muted
+        // this can be expanded upon later on to utilize unity's 3d audio for player player sfx
+        // when two players are close to eachother. However, there will need to be More Audio Mixer groups
         AudioMixer mix = Resources.Load("PlayerSounds") as AudioMixer;
         if (isRemotePlayer)
         {
@@ -136,7 +157,8 @@ public class SoundManager : MonoBehaviour, IOnEventCallback
 
     public void OnEvent(EventData photonEvent)
     {
-    
+        //for some reason this function never gets called, but it works in player pickup 
+        //~(^_^)~
         byte eventCode = photonEvent.Code;
         Debug.Log("Recieved Event code: " + NetworkCodes.getNameForCode(eventCode));
         if (eventCode == NetworkCodes.ChangeToGameMusicEvent)

@@ -203,6 +203,7 @@ public class PlayerPickUp : MonoBehaviourPunCallbacks, IPunObservable, IOnEventC
             PickUp = null;
             isHoldingOBJ = false;
         }
+        //added this if statement here, because it doesn't want to work in the SoundManager script
         else if (eventCode == NetworkCodes.ChangeToGameMusicEvent)
         {
             this.GetComponentInChildren<SoundManager>().SceneTheme.Stop();
