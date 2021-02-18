@@ -30,24 +30,13 @@ public class DropOffZoneScript : MonoBehaviourPunCallbacks
        
                         FindObjectOfType<TodoList>().ObjectFound(c.GetComponent<PlayerPickUp>().PickUp.GetComponent<PickUpAbles>());
 
-                        /*c.*/
                         GetComponent<PhotonView>().RPC("ResetDropOffPos", RpcTarget.All);
                         c.GetComponent<PlayerPickUp>().DropPickUp();
 
                     }
                 }
             }
-            //if(c.tag != "Player" && c.GetComponent<PickUpAbles>() != null)
-            //{
-            //    if(c.GetComponent<PickUpAbles>().PlayerThatPickUpOBJ != null && c.GetComponent<PickUpAbles>().throwIntoZoneTimer > 0)
-            //    {
-            //        c.GetComponent<PickUpAbles>().PlayerThatPickUpOBJ.GetComponent<Player>().score += 1;
 
-            //        FindObjectOfType<TodoList>().ObjectFound(c.GetComponent<PickUpAbles>());
-
-            //        GetComponent<PhotonView>().RPC("ResetDropOffPos", RpcTarget.All);
-            //    }
-            //}
         }
     }
     [PunRPC]
