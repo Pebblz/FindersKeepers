@@ -55,10 +55,12 @@ public class SoundManager : MonoBehaviour
         AudioMixer mix = Resources.Load("PlayerSounds") as AudioMixer;
         if (isRemotePlayer)
         {
+            //returns an array of 1
             outputGroup = mix.FindMatchingGroups("RemotePlayer")[0];
 
         } else
         {
+            //returns an array of 1
             outputGroup = mix.FindMatchingGroups("LocalPlayer")[0];
         }
 
@@ -128,33 +130,6 @@ public class SoundManager : MonoBehaviour
 
     #endregion
 
-
-    private void OnTriggerEnter(Collider other)
-    {
-        if (other.gameObject.tag == "Player")
-        {
-            switchAudioTracks();
-        }
-    }
-
-
-    private void OnTriggerExit(Collider other)
-    {
-        if (other.gameObject.tag == "Player")
-        {
-            resumeOriginalTrack();
-        }
-    }
-
-    public void resumeOriginalTrack()
-    {
-        throw new NotImplementedException();
-    }
-
-    public void switchAudioTracks()
-    {
-        throw new NotImplementedException();
-    }
 
 }
 
