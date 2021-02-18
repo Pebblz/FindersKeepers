@@ -655,7 +655,7 @@ GameObject:
   - component: {fileID: 7892538749245058602}
   - component: {fileID: 7841496702857733904}
   - component: {fileID: 7841747155992405682}
-  - component: {fileID: 7840815308456119116}
+  - component: {fileID: 989039984186194413}
   - component: {fileID: 7841016285988203082}
   - component: {fileID: 7903726455655163254}
   - component: {fileID: 82676115048042366}
@@ -790,7 +790,7 @@ MonoBehaviour:
   - {fileID: 7841502379999783600}
   - {fileID: 7841879826950030386}
   - {fileID: 7841747155992405682}
-  - {fileID: 7840815308456119116}
+  - {fileID: 989039984186194413}
   - {fileID: 7841016285988203082}
   viewIdField: 0
   InstantiationId: 0
@@ -842,7 +842,7 @@ MonoBehaviour:
   isPickingUpOBJ: 0
   ThrowForce: 10
   PickUpSound: {fileID: 8300000, guid: 454563ed0f0b6554bbdca4c6225028af, type: 3}
---- !u!114 &7840815308456119116
+--- !u!114 &989039984186194413
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -851,11 +851,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 7803280100954126013}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4fa06d28e9f534b4ea811177266ee732, type: 3}
+  m_Script: {fileID: 11500000, guid: 0c21ccdf1ded1a144b5d4d101ffb2fd3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   mainCam: {fileID: 0}
-  rb: {fileID: 0}
+  rb: {fileID: 7892538749245058602}
   turnSmoothTime: 0.1
 --- !u!114 &7841016285988203082
 MonoBehaviour:

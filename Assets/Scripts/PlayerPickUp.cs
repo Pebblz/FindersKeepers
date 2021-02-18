@@ -9,24 +9,13 @@ using ExitGames.Client.Photon;
 [RequireComponent(typeof(AudioSource))]
 public class PlayerPickUp : MonoBehaviourPunCallbacks, IPunObservable, IOnEventCallback
 {
-    /*Flower Box
-     * 
-     * Edited By: Pat Naatz
-     * 
-     * Added Pick Up Sound
-     */
-
-
     public GameObject PickUp;
     public bool isHoldingOBJ = false;
     public bool isPickingUpOBJ = false;
-    Rigidbody rb;
     [SerializeField]
     int ThrowForce;
     Animator Anim;
     float pickUpTimer;
-
-    GameObject PickUpSpawner;
     AudioSource Sound;
     [SerializeField]
     AudioClip PickUpSound;
@@ -36,7 +25,6 @@ public class PlayerPickUp : MonoBehaviourPunCallbacks, IPunObservable, IOnEventC
     {
         Anim = GetComponent<Animator>();
         Sound = GetComponent<AudioSource>();
-        rb = GetComponent<Rigidbody>();
     }
 
 
@@ -58,28 +46,33 @@ public class PlayerPickUp : MonoBehaviourPunCallbacks, IPunObservable, IOnEventC
                     isPickingUpOBJ = true;
                     Vector3 start = this.gameObject.transform.position + new Vector3(0, .5f, 0);
                     RaycastHit hit;
-                    //this will create 9 ray casts
-                    for (float i = -4; i <= 4; i += .5f)
+                    for (float x = -.5f; x <= .5f; x += .5f)
                     {
-
-                        if (Physics.Raycast(start, transform.TransformDirection(Vector3.forward) + new Vector3(0, i / 8, 0), out hit, 3.5f) && PickUp == null)
+                        for (float y = -4; y <= 4; y += .6f)
                         {
-                            //this checks if any of the rays hit an object with pickupables script
-                            if (hit.collider.gameObject.GetComponent<PickUpAbles>() != null)
+
+                            if (Physics.Raycast(start, transform.TransformDirection(Vector3.forward) + new Vector3(x, y / 8, 0), out hit, 3.5f) && PickUp == null)
                             {
-                                //if it does so all this
-                                hit.collider.gameObject.GetComponent<Rigidbody>().constraints = RigidbodyConstraints.None;
-                                hit.collider.gameObject.GetComponent<PickUpAbles>().UseGravity(true);
-                                hit.collider.gameObject.GetComponent<PickUpAbles>().PlayerThatPickUpOBJ = this.gameObject;
-                                PlayerPickUpSound();
-                                isHoldingOBJ = true;
-                                hit.collider.gameObject.GetComponent<PickUpAbles>().IsPickedUped = true;
-                                hit.collider.gameObject.GetComponent<PickUpAbles>().ChangeOwnerShip();
-                                SetPickUpOBJ(hit.collider.gameObject);
+                                //this checks if any of the rays hit an object with pickupables script
+                                if (hit.collider.gameObject.GetComponent<PickUpAbles>() != null)
+                                {
+                                    //if it does so all this
+                                    hit.collider.gameObject.GetComponent<Rigidbody>().constraints = RigidbodyConstraints.None;
+                                    hit.collider.gameObject.GetComponent<PickUpAbles>().UseGravity(true);
+                                    hit.collider.gameObject.GetComponent<PickUpAbles>().PlayerThatPickUpOBJ = this.gameObject;
+                                    PlayerPickUpSound();
+                                    isHoldingOBJ = true;
+                                    hit.collider.gameObject.GetComponent<PickUpAbles>().IsPickedUped = true;
+                                    hit.collider.gameObject.GetComponent<PickUpAbles>().ChangeOwnerShip();
+                                    SetPickUpOBJ(hit.collider.gameObject);
+                                }
+                            }
+                            else
+                            {
+                                //this is commented out just incase someone needs to look at the rays 
+                                Debug.DrawRay(start, transform.TransformDirection(Vector3.forward) + new Vector3(x, y, 0), Color.yellow);
                             }
                         }
-                        //this is commented out just incase someone needs to look at the rays 
-                        //Debug.DrawRay(start, transform.TransformDirection(Vector3.forward) + new Vector3(0, i, 0), Color.yellow);
                     }
                 }//the else will instead of picking up the object will put down the obj
                 else
@@ -104,7 +97,7 @@ public class PlayerPickUp : MonoBehaviourPunCallbacks, IPunObservable, IOnEventC
             {
                 ThrowOBJ(ThrowForce);
             }
-            if (isHoldingOBJ == true)
+            if (isHoldingOBJ)
             {
                 Anim.SetBool("IsCarry", true);
 
@@ -178,17 +171,11 @@ public class PlayerPickUp : MonoBehaviourPunCallbacks, IPunObservable, IOnEventC
         {
             //data that gets sent to other players
             stream.SendNext(isPickingUpOBJ);
-            //stream.SendNext(PlayerThatPickUpOBJ);
-
-
         }
         else
         {
             //data recieved from other players
             isPickingUpOBJ = (bool)stream.ReceiveNext();
-            //PlayerThatPickUpOBJ.transform.position = (Vector3)stream.ReceiveNext();
-
-
         }
 
     }
@@ -210,7 +197,6 @@ public class PlayerPickUp : MonoBehaviourPunCallbacks, IPunObservable, IOnEventC
         else if (eventCode == NetworkCodes.DeleteObjectInDropoffCode)
         {
             int id = (int)((object[])photonEvent.CustomData)[0];
-            // DestroyPickUp(id);
         }
     }
 }

@@ -105,26 +105,6 @@ public class GameManager : MonoBehaviourPunCallbacks
             }
         }
     }
-    void Update()
-    {
-        if (photonView.IsMine)
-        {
-            //Finds current scene
-            Scene scene = SceneManager.GetActiveScene();
-            if (scene.name == "Main Game")
-            {
-                //if you're in game it'll lock your cursor and hide it 
-                Cursor.visible = false;
-                Cursor.lockState = CursorLockMode.Locked;
-            }
-            else
-            {
-                //if you're not in game it'll unlock your cursor and make it visable
-                Cursor.visible = true;
-                Cursor.lockState = CursorLockMode.None;
-            }
-        }
-    }
     public int FindFirstNotUsedSkin()
     {
 
@@ -281,15 +261,20 @@ public class GameManager : MonoBehaviourPunCallbacks
 
     void Respawn()
     {
-        //assign neccesary variables
-        Player[] players = FindObjectsOfType<Player>();
-        int assignedRespawn = 0;
-
-        foreach (Player player in players)
+        if (PhotonNetwork.IsMasterClient)
         {
-            //move player to assigned position
-            player.gameObject.transform.position = RespawnPoints[assignedRespawn].position;
-            assignedRespawn++;
+            //assign neccesary variables
+            Player[] players = FindObjectsOfType<Player>();
+            int assignedRespawn = 0;
+
+            foreach (Player player in players)
+            {
+                //move player to assigned position
+                player.photonView.RPC("MoveToHere", RpcTarget.All, RespawnPoints[assignedRespawn].position);
+
+                //setup for next rotation
+                assignedRespawn++;
+            }
         }
 
         //this funciton is only called once during the transfer between The_Run and The_Game

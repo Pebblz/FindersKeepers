@@ -255,7 +255,7 @@ MonoBehaviour:
   m_LineType: 0
   m_HideMobileInput: 0
   m_CharacterValidation: 0
-  m_CharacterLimit: 0
+  m_CharacterLimit: 4
   m_OnEndEdit:
     m_PersistentCalls:
       m_Calls: []
@@ -1149,7 +1149,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.126, y: 0.31531653}
   m_AnchorMax: {x: 0.8847368, y: 0.69900006}
-  m_AnchoredPosition: {x: -8, y: -2.800003}
+  m_AnchoredPosition: {x: -7.9999847, y: -2.800003}
   m_SizeDelta: {x: 42.6, y: 23.700005}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &814418052
@@ -1500,7 +1500,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 509866910}
+      - m_Target: {fileID: 1822659242}
         m_MethodName: Quit
         m_Mode: 1
         m_Arguments:
@@ -1681,8 +1681,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 509866910}
-        m_MethodName: LoadHowToPlay
+      - m_Target: {fileID: 1822659242}
+        m_MethodName: HowToPlayScene
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -1882,8 +1882,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 509866910}
-        m_MethodName: LoadCreditScene
+      - m_Target: {fileID: 1822659242}
+        m_MethodName: CreditScene
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -1971,7 +1971,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 509866910}
+      - m_Target: {fileID: 1822659242}
         m_MethodName: Feedback
         m_Mode: 1
         m_Arguments:
@@ -2236,6 +2236,7 @@ GameObject:
   - component: {fileID: 1822659236}
   - component: {fileID: 1822659241}
   - component: {fileID: 1822659240}
+  - component: {fileID: 1822659242}
   m_Layer: 5
   m_Name: Canvas
   m_TagString: Untagged
@@ -2369,6 +2370,18 @@ MonoBehaviour:
   viewIdField: 1
   InstantiationId: 0
   isRuntimeInstantiated: 0
+--- !u!114 &1822659242
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1822659235}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7e9091527b8304f4bb4338749f37166f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &1838129659
 PrefabInstance:
   m_ObjectHideFlags: 0

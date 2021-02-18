@@ -432,17 +432,4 @@ public class WinOrLoseScript : MonoBehaviourPunCallbacks
         audioVaraibles.audioSource.PlayOneShot(audioClip);
     }
     #endregion
-
-    #region Button Functions
-    public void PlayAgain()
-    {
-        //Get roomcode from before
-        //SceneManager.LoadScene("Lobby 1");  commented out because I need to ask josh if scene loading works this way
-    }
-
-    public void Quit()
-    {
-       Application.Quit();
-    }
-    #endregion
 }
