@@ -38,7 +38,6 @@ public class SoundManager : MonoBehaviour
 
     
 
-    [SerializeField] bool ignoreEvents = false;
     [SerializeField] AudioMixerGroup outputGroup;
     public bool isRemotePlayer;
     AudioMixerGroup sfx;
