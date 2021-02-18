@@ -8,6 +8,10 @@ using ExitGames.Client.Photon;
 
 public class PlayerPickUp : MonoBehaviourPunCallbacks, IPunObservable, IOnEventCallback
 {
+    /*Flower Box
+     * Your name
+     *
+     */
     public GameObject PickUp;
     public bool isHoldingOBJ = false;
     public bool isPickingUpOBJ = false;
@@ -118,7 +122,7 @@ public class PlayerPickUp : MonoBehaviourPunCallbacks, IPunObservable, IOnEventC
 
 
     //you'll never guess what this func does 
-    //no you really won't based off this name
+
     [PunRPC]
     public void DropPickUp()
     {
@@ -194,8 +198,8 @@ public class PlayerPickUp : MonoBehaviourPunCallbacks, IPunObservable, IOnEventC
         //added this if statement here, because it doesn't want to work in the SoundManager script
         else if (eventCode == NetworkCodes.ChangeToGameMusicEvent)
         {
-            this.GetComponentInChildren<SoundManager>().SceneTheme.Stop();
-            this.GetComponentInChildren<SoundManager>().PlayGameTheme();
+            sfxManager.SceneTheme.Stop();
+            sfxManager.PlayGameTheme();
         }
     }
 }
