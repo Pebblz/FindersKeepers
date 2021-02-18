@@ -62,11 +62,6 @@ public class GameManager : MonoBehaviourPunCallbacks
     void Start()
     {
 
-        if (isGameScene)
-        {
-            MusicChangeRaiseEvent();
-        }
-
         GameObject[] playerfabs = Resources.LoadAll<GameObject>("Players").ToArray();
         playerPrefabs = GameManager.Randomize(playerfabs);
 
