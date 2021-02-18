@@ -7,7 +7,7 @@ using ExitGames.Client.Photon;
 using UnityEngine.Audio;
 using System;
 
-public class SoundManager : MonoBehaviour, IOnEventCallback
+public class SoundManager : MonoBehaviour
 {
 
     /*=========================Description==================*/
@@ -21,7 +21,8 @@ public class SoundManager : MonoBehaviour, IOnEventCallback
     /*  1) Create an empty game object as a child of the prefab
         2) Name the Object after the sound effect or music
         3) Add an Field For the AudioSource, then drag and drop the child in
-        4) Add a play Method in the Play_Functions Regions
+        4) In the awake method tell which mixer the sound has to go to
+        5) Add a play Method in the Play_Functions Regions
     
     Notes: Adding a an empty game object to the sound manager is not necessary, but it makes it easier to understand
            The play_functions region also contains things for stoping sound effects like running/walking*/
@@ -155,18 +156,5 @@ public class SoundManager : MonoBehaviour, IOnEventCallback
         throw new NotImplementedException();
     }
 
-    public void OnEvent(EventData photonEvent)
-    {
-        //for some reason this function never gets called, but it works in player pickup 
-        //~(^_^)~
-        byte eventCode = photonEvent.Code;
-        Debug.Log("Recieved Event code: " + NetworkCodes.getNameForCode(eventCode));
-        if (eventCode == NetworkCodes.ChangeToGameMusicEvent)
-        {
-            this.SceneTheme.Stop();
-            this.PlayGameTheme();
-        }
-        
-    }
 }
 
