@@ -74,6 +74,7 @@ public class Player_Movement : MonoBehaviourPunCallbacks, IPunObservable
 
                     rb.MovePosition(transform.position += moveDir.normalized * speed * Time.deltaTime);
                     Anim.SetBool("IsRunning", true);
+                    sfxManager.PlayRunning();
                 }
             }
             else
