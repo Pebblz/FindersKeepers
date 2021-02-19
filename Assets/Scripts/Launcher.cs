@@ -119,6 +119,7 @@ public class Launcher : MonoBehaviourPunCallbacks
         {
             Debug.Log("Loading the Lobby");
             PhotonNetwork.LocalPlayer.NickName = playerName.text;
+            Debug.Log("Nickname set to " + PhotonNetwork.LocalPlayer.NickName);
             PhotonNetwork.LoadLevel("Lobby_1");
         }
     }
