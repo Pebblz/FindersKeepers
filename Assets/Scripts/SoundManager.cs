@@ -29,13 +29,14 @@ public class SoundManager : MonoBehaviour
 
     public AudioSource LobbyTheme;
     public AudioSource GameTheme;
+    public AudioSource GameIntro;
     public AudioSource CPUTheme;
     [SerializeField] AudioSource PickUp;
     [SerializeField] AudioSource Jump;
     [SerializeField] AudioSource PointGot;
     [SerializeField] AudioSource Walking;
     [SerializeField] AudioSource Running;
-
+    
     
 
     [SerializeField] AudioMixerGroup outputGroup;
@@ -68,6 +69,7 @@ public class SoundManager : MonoBehaviour
 
         LobbyTheme.outputAudioMixerGroup = music;
         GameTheme.outputAudioMixerGroup = music;
+        GameIntro.outputAudioMixerGroup = music;
         this.SceneTheme = LobbyTheme;
 
         Jump.outputAudioMixerGroup = sfx;
@@ -91,7 +93,10 @@ public class SoundManager : MonoBehaviour
     {
         this.SceneTheme = GameTheme;
         this.SceneTheme.loop = true;
-        this.SceneTheme.Play();
+
+        this.GameIntro.Play();
+        this.SceneTheme.PlayDelayed(GameIntro.clip.length);
+        
     }
 
     public void PlayJump()
