@@ -115,11 +115,12 @@ public class Launcher : MonoBehaviourPunCallbacks
 
     public override void OnJoinedRoom()
     {
+        PhotonNetwork.LocalPlayer.NickName = playerName.text;
+        Debug.Log("Nickname set to " + PhotonNetwork.LocalPlayer.NickName);
+
         if (PhotonNetwork.CurrentRoom.PlayerCount == 1)
         {
             Debug.Log("Loading the Lobby");
-            PhotonNetwork.LocalPlayer.NickName = playerName.text;
-            Debug.Log("Nickname set to " + PhotonNetwork.LocalPlayer.NickName);
             PhotonNetwork.LoadLevel("Lobby_1");
         }
     }
