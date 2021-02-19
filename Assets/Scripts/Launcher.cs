@@ -15,7 +15,6 @@ public class Launcher : MonoBehaviourPunCallbacks
     private GameObject controlPanel;
     [SerializeField]
     private GameObject progressLabel;
-
     
     bool isConnecting;
 
@@ -119,8 +118,7 @@ public class Launcher : MonoBehaviourPunCallbacks
         if (PhotonNetwork.CurrentRoom.PlayerCount == 1)
         {
             Debug.Log("Loading the Lobby");
-
-
+            PhotonNetwork.LocalPlayer.NickName = playerName.text;
             PhotonNetwork.LoadLevel("Lobby_1");
         }
     }
