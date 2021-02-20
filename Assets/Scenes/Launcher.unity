@@ -725,7 +725,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   controlPanel: {fileID: 1976634385}
   progressLabel: {fileID: 322132695}
-  tempPlayerName: {fileID: 0}
   maxPlayersPerRoom: 4
   playerName: {fileID: 1394900759}
   roomCode: {fileID: 1963490369}
@@ -1084,7 +1083,7 @@ MonoBehaviour:
   m_LineType: 0
   m_HideMobileInput: 0
   m_CharacterValidation: 0
-  m_CharacterLimit: 6
+  m_CharacterLimit: 10
   m_OnEndEdit:
     m_PersistentCalls:
       m_Calls: []
@@ -1635,7 +1634,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.30625, y: 0}
   m_AnchorMax: {x: 0.48000002, y: 0.18210849}
-  m_AnchoredPosition: {x: 410, y: -4.4300537}
+  m_AnchoredPosition: {x: 410, y: -4.430176}
   m_SizeDelta: {x: -39, y: 18}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1317191002

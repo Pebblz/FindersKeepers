@@ -61,13 +61,23 @@ public class Launcher : MonoBehaviourPunCallbacks
     {
         
         string roomName = roomCode.text;
-        PhotonNetwork.NickName = playerName.text;
-        Debug.Log("Nickname set to " + PhotonNetwork.LocalPlayer.NickName);
-        if (string.IsNullOrEmpty(roomName))
+
+       
+        if (string.IsNullOrEmpty(playerName.text))
         {
-            Debug.LogError("Room name was not provided");
+            Debug.LogError("Name was not provided");
             return;
         }
+
+        if (string.IsNullOrEmpty(roomName))
+        {
+            Debug.LogError("Room code was not provided");
+            return;
+        }
+
+        PhotonNetwork.NickName = playerName.text;
+        Debug.Log("Nickname set to " + PhotonNetwork.LocalPlayer.NickName);
+
         progressLabel.SetActive(true);
         controlPanel.SetActive(false);
 
