@@ -64,6 +64,7 @@ public class SoundManager : MonoBehaviour
             outputGroup = mix.FindMatchingGroups("LocalPlayer")[0];
         }
 
+        //will allways return an array so we have to access the 0th element
         sfx = mix.FindMatchingGroups($"{outputGroup.name}/SFX")[0];
         music = mix.FindMatchingGroups($"{outputGroup.name}/Music")[0];
 
