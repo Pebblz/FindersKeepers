@@ -90,6 +90,7 @@ MonoBehaviour:
   startingRot: {x: 0, y: 0, z: 0, w: 0}
   hasGravity: 1
   image: {fileID: 21300000, guid: 6dcb6733d6d3feb4faf182389b40d466, type: 3}
+  throwIntoZoneTimer: 0
 --- !u!114 &2027702232267423871
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -223,6 +224,7 @@ MonoBehaviour:
   startingRot: {x: 0, y: 0, z: 0, w: 0}
   hasGravity: 1
   image: {fileID: 21300000, guid: 65100b01b1f767644b21751299858f15, type: 3}
+  throwIntoZoneTimer: 0
 --- !u!114 &4095449733884652945
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -322,6 +324,7 @@ MonoBehaviour:
   startingRot: {x: 0, y: 0, z: 0, w: 0}
   hasGravity: 1
   image: {fileID: 21300000, guid: 4a13c23a9ab60bd4eb8b491e649cd0c8, type: 3}
+  throwIntoZoneTimer: 0
 --- !u!114 &2347410196393558376
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -414,6 +417,7 @@ MonoBehaviour:
   startingRot: {x: 0, y: 0, z: 0, w: 0}
   hasGravity: 1
   image: {fileID: 21300000, guid: 13922044a4cbd8046a5e87de4a440542, type: 3}
+  throwIntoZoneTimer: 0
 --- !u!114 &373550397995998034
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -580,6 +584,7 @@ MonoBehaviour:
   startingRot: {x: 0, y: 0, z: 0, w: 0}
   hasGravity: 1
   image: {fileID: 21300000, guid: d4465a69487b1a24680785c0226b19df, type: 3}
+  throwIntoZoneTimer: 0
 --- !u!54 &3180290357719399247
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -647,6 +652,7 @@ MonoBehaviour:
   startingRot: {x: 0, y: 0, z: 0, w: 0}
   hasGravity: 1
   image: {fileID: 21300000, guid: ee2c7abe858b75f4ebcda5d1dccc3284, type: 3}
+  throwIntoZoneTimer: 0
 --- !u!114 &5912792905480282614
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -717,8 +723,8 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 9025338216164495600}
-  m_LocalRotation: {x: 0, y: 1, z: 0, w: 0}
-  m_LocalPosition: {x: -8.27, y: 0.468, z: -6.1}
+  m_LocalRotation: {x: 0, y: 0.7071068, z: 0, w: 0.7071068}
+  m_LocalPosition: {x: 0.993, y: 0.475, z: 16.776}
   m_LocalScale: {x: 0.0047187987, y: 0.0047187987, z: 0.0047187987}
   m_Children:
   - {fileID: 294430780246679774}

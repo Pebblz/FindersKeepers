@@ -108,6 +108,7 @@ MonoBehaviour:
   startingRot: {x: 0, y: 0, z: 0, w: 0}
   hasGravity: 1
   image: {fileID: 21300000, guid: 9d7dc8ea0a6fa394398968e6cef86469, type: 3}
+  throwIntoZoneTimer: 0
 --- !u!54 &2778311068603541794
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -191,6 +192,7 @@ MonoBehaviour:
   startingRot: {x: 0, y: 0, z: 0, w: 0}
   hasGravity: 1
   image: {fileID: 21300000, guid: 9f9281d0c9e5375488e7a139f7e47382, type: 3}
+  throwIntoZoneTimer: 0
 --- !u!114 &8446431300019685238
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -292,6 +294,7 @@ MonoBehaviour:
   startingRot: {x: 0, y: 0, z: 0, w: 0}
   hasGravity: 1
   image: {fileID: 21300000, guid: 4be6c02071b455f4792724ea6ea66bb6, type: 3}
+  throwIntoZoneTimer: 0
 --- !u!114 &5893632098937350631
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -375,6 +378,7 @@ MonoBehaviour:
   startingRot: {x: 0, y: 0, z: 0, w: 0}
   hasGravity: 1
   image: {fileID: 21300000, guid: 9f9281d0c9e5375488e7a139f7e47382, type: 3}
+  throwIntoZoneTimer: 0
 --- !u!114 &5374002611261416938
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -461,8 +465,8 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4993982542871755094}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -18.0862, y: 0.472, z: 2.4}
+  m_LocalRotation: {x: 0, y: -1, z: 0, w: 0}
+  m_LocalPosition: {x: 20.043, y: 0.37594, z: -0.096}
   m_LocalScale: {x: 0.0047187987, y: 0.0047187987, z: 0.0047187987}
   m_Children:
   - {fileID: 4837544148595080204}
@@ -683,6 +687,7 @@ MonoBehaviour:
   startingRot: {x: 0, y: 0, z: 0, w: 0}
   hasGravity: 1
   image: {fileID: 21300000, guid: 4e997e301f870a44fbfd84197f783ffb, type: 3}
+  throwIntoZoneTimer: 0
 --- !u!114 &8585723627152293954
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -829,6 +834,7 @@ MonoBehaviour:
   startingRot: {x: 0, y: 0, z: 0, w: 0}
   hasGravity: 1
   image: {fileID: 21300000, guid: 4e997e301f870a44fbfd84197f783ffb, type: 3}
+  throwIntoZoneTimer: 0
 --- !u!54 &2179573747919853042
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -894,6 +900,7 @@ MonoBehaviour:
   startingRot: {x: 0, y: 0, z: 0, w: 0}
   hasGravity: 1
   image: {fileID: 21300000, guid: 7e127dc2da44d524192dd2393514b7a3, type: 3}
+  throwIntoZoneTimer: 0
 --- !u!114 &3713433728840445598
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1057,6 +1064,7 @@ MonoBehaviour:
   startingRot: {x: 0, y: 0, z: 0, w: 0}
   hasGravity: 1
   image: {fileID: 21300000, guid: 7e127dc2da44d524192dd2393514b7a3, type: 3}
+  throwIntoZoneTimer: 0
 --- !u!114 &9167973647133580887
 MonoBehaviour:
   m_ObjectHideFlags: 0

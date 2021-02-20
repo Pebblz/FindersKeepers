@@ -522,7 +522,6 @@ MonoBehaviour:
   - {fileID: 0}
   score: 0
   isFiring: 0
-  soundManager: {fileID: 5710103406955738607}
   StunCounter: 0
   mainCam: {fileID: 0}
   freeLookCam: {fileID: 9024240542668442149}
@@ -2358,12 +2357,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ee4914fefa0fdd949994486504fde762, type: 3}
---- !u!1 &5710103406955738607 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 2471628773554936443, guid: ee4914fefa0fdd949994486504fde762,
-    type: 3}
-  m_PrefabInstance: {fileID: 7886543527297445780}
-  m_PrefabAsset: {fileID: 0}
 --- !u!4 &5710103406955738602 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 2471628773554936446, guid: ee4914fefa0fdd949994486504fde762,
