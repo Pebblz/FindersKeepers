@@ -263,8 +263,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2471628773554936446}
-  - component: {fileID: 2471628773554936447}
   - component: {fileID: 5189114558639420496}
+  - component: {fileID: 6589507764681460019}
   m_Layer: 0
   m_Name: SoundManager
   m_TagString: Untagged
@@ -293,30 +293,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &2471628773554936447
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2471628773554936443}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: cb0a4a1ac40e8ce4e802fd8e6af3a23e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  LobbyTheme: {fileID: 2471628774470412286}
-  GameTheme: {fileID: 2471628772961601744}
-  GameIntro: {fileID: 8293933576330616653}
-  CPUTheme: {fileID: 2471628774347921384}
-  PickUp: {fileID: 2471628772854570581}
-  Jump: {fileID: 2471628774350681238}
-  PointGot: {fileID: 2471628773667496259}
-  Walking: {fileID: 0}
-  Running: {fileID: 0}
-  outputGroup: {fileID: 0}
-  isRemotePlayer: 0
-  SceneTheme: {fileID: 0}
 --- !u!114 &5189114558639420496
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -339,6 +315,30 @@ MonoBehaviour:
   viewIdField: 0
   InstantiationId: 0
   isRuntimeInstantiated: 0
+--- !u!114 &6589507764681460019
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2471628773554936443}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1095d88f9a4adee41b8c5b9a47a67f40, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  LobbyTheme: {fileID: 2471628774470412286}
+  GameTheme: {fileID: 2471628772961601744}
+  GameIntro: {fileID: 8293933576330616653}
+  CPUTheme: {fileID: 2471628774347921384}
+  PickUp: {fileID: 2471628772854570581}
+  Jump: {fileID: 2471628774350681238}
+  PointGot: {fileID: 2471628773667496259}
+  Walking: {fileID: 0}
+  Running: {fileID: 0}
+  outputGroup: {fileID: 0}
+  isRemotePlayer: 0
+  SceneTheme: {fileID: 0}
 --- !u!1 &2471628773667496284
 GameObject:
   m_ObjectHideFlags: 0
