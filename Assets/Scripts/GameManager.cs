@@ -253,7 +253,7 @@ public class GameManager : MonoBehaviourPunCallbacks
                 player.freeLookCam.SetActive(false);
             }
             FindObjectOfType<Camera>().gameObject.SetActive(false);
-            SceneManager.LoadScene("WinOrLose"); //end of game load endscreen   scene doesnt exist yet
+            PhotonNetwork.LoadLevel("WinOrLose"); //end of game load endscreen   scene doesnt exist yet
         }
         else
         {
