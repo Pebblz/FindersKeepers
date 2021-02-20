@@ -9,9 +9,13 @@ using ExitGames.Client.Photon;
 public class PlayerPickUp : MonoBehaviourPunCallbacks, IPunObservable, IOnEventCallback
 {
     /*Flower Box
-     * Your name
-     *
+     * Josh
+     * 
+     * Patrick Naatz
+     * Edited:
+     * added the networkevents byte conversion
      */
+
     public GameObject PickUp;
     public bool isHoldingOBJ = false;
     public bool isPickingUpOBJ = false;
@@ -187,19 +191,13 @@ public class PlayerPickUp : MonoBehaviourPunCallbacks, IPunObservable, IOnEventC
         byte eventCode = photonEvent.Code;
 
         //remove all objects player is carrying when the scene is switched
-        if (eventCode == NetworkCodes.NetworkSceneChangedEventCode)
+        if (eventCode == (byte)NetworkCodes.NetworkSceneChangedEventCode)
         {
             Debug.Log("Event Code: " + eventCode);
             DropOBJ();
             isPickingUpOBJ = false;
             PickUp = null;
             isHoldingOBJ = false;
-        }
-        //added this if statement here, because it doesn't want to work in the SoundManager script
-        else if (eventCode == NetworkCodes.ChangeToGameMusicEvent)
-        {
-            sfxManager.SceneTheme.Stop();
-            sfxManager.PlayGameTheme();
         }
     }
 }

@@ -25,7 +25,6 @@ public class WinOrLoseScript : MonoBehaviourPunCallbacks
      *  endless regions
      * Todo:
      *  Change quickRot so the rotation is set and doesnt need to exist
-     *  Finish Play Again Button
      */
 
     #region variables

@@ -7,6 +7,7 @@ using UnityEngine.SceneManagement;
 using Photon.Pun;
 using Photon.Realtime;
 using ExitGames.Client.Photon;
+using System;
 
 public class GameManager : MonoBehaviourPunCallbacks
 {
@@ -20,6 +21,12 @@ public class GameManager : MonoBehaviourPunCallbacks
      *  ListActivated function
      *  GameState enum
      *  InSeconds Struct for play time
+     *  WinLoseScene function
+     * Edited:
+     *  Some of the Network code events
+     *  Continue function
+     * TODO:
+     * Reflections for net event code
      */
 
     static public GameManager Instance;
@@ -215,7 +222,7 @@ public class GameManager : MonoBehaviourPunCallbacks
     {
         object[] content = new object[] { };
         RaiseEventOptions options = new RaiseEventOptions { Receivers = ReceiverGroup.All };
-        PhotonNetwork.RaiseEvent(NetworkCodes.NetworkSceneChangedEventCode, content, options, SendOptions.SendReliable);
+        PhotonNetwork.RaiseEvent((byte)NetworkCodes.NetworkSceneChangedEventCode, content, options, SendOptions.SendReliable);
     }
 
     private void MusicChangeRaiseEvent()
@@ -223,15 +230,15 @@ public class GameManager : MonoBehaviourPunCallbacks
         
         object[] content = new object[] { };
         RaiseEventOptions options = new RaiseEventOptions { Receivers = ReceiverGroup.All };
-        bool worked = PhotonNetwork.RaiseEvent(NetworkCodes.ChangeToGameMusicEvent, content, options, SendOptions.SendReliable);
+        bool worked = PhotonNetwork.RaiseEvent((byte)NetworkCodes.ChangeToGameMusicEventCode, content, options, SendOptions.SendReliable);
         Debug.Log("Music Event: " + worked);
     }
 
-    private void RandomRoomEvent()
+    private void ChangeToWinOrLoseSceneRaiseEvent()
     {
         object[] content = new object[] { };
         RaiseEventOptions options = new RaiseEventOptions { Receivers = ReceiverGroup.All };
-        PhotonNetwork.RaiseEvent(NetworkCodes.RandomRoomEventCode, content, options, SendOptions.SendReliable);
+        PhotonNetwork.RaiseEvent((byte)NetworkCodes.SwitchToWinOrLoseSceneEventCode, content, options, SendOptions.SendReliable);
     }
     #endregion
 
@@ -247,12 +254,9 @@ public class GameManager : MonoBehaviourPunCallbacks
         if ((int)gameState > 3)
         { //if gameover
             gameState = GameState.The_Run; //static so this variable must be manually reset
-            foreach (Player player in FindObjectsOfType<Player>())
-            {
-                player.GetComponent<Player_Movement>().enabled = false;
-                player.freeLookCam.SetActive(false);
-            }
-            FindObjectOfType<Camera>().gameObject.SetActive(false);
+
+            ChangeToWinOrLoseSceneRaiseEvent();
+
             PhotonNetwork.LoadLevel("WinOrLose"); //end of game load endscreen   scene doesnt exist yet
         }
         else
@@ -282,7 +286,7 @@ public class GameManager : MonoBehaviourPunCallbacks
 
         //this funciton is only called once during the transfer between The_Run and The_Game
         //Start the todo list
-        Object.FindObjectOfType<TodoList>().Active();
+        GameObject.FindObjectOfType<TodoList>().Active();
     }
     #endregion
 
