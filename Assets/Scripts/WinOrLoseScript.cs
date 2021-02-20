@@ -7,7 +7,7 @@ using System;
 using Photon.Pun;
 using System.Linq;
 
-public class WinOrLoseScript : MonoBehaviour
+public class WinOrLoseScript : MonoBehaviourPunCallbacks
 {
     /*Flower Box
      * Programmer: Patrick Naatz
@@ -169,14 +169,14 @@ public class WinOrLoseScript : MonoBehaviour
 
     void MakeLastPlayerCry()
     {
-        if (!SinglePlayer)
+        if (!SinglePlayer && winners.Count != players.Count())
         {
             List<int> biggestLosers = GenerateBigestLosersList();
             if (biggestLosers.Count != players.Length)
             {//if everyone doesnt win
                 foreach (int i in biggestLosers)
                 {
-                    players[i + winners.Count - 1].GetComponent<Animator>().SetBool("Fourth", true); //set player crying animation
+                    players[i + winners.Count].GetComponent<Animator>().SetBool("Fourth", true); //make player cry
                 }
             }
         }
@@ -192,18 +192,37 @@ public class WinOrLoseScript : MonoBehaviour
         PlacePlayersAccordingly();
     }
 
+
     private void PlacePlayersAccordingly()
     {
-        int incrementation = 0;
-        foreach (Player player in players)
-        {
-            //move to space above designated podium
-            player.transform.position = podiums[incrementation].position + Vector3.up * 30; //creates a 3 second fall for dramatic effect
-            player.transform.rotation = quickRot.transform.rotation;
-
-            //prep for next incrementation
-            incrementation++;
+        //we have to use RPC to move each character because each game loads in character in a different order but they all have the photon transform on them.
+        if (PhotonNetwork.IsMasterClient)
+        {//since we have to use an RPC we only want everything to happen once, so we only allow the master client to go in
+            int incrementation = 0;
+            foreach (Player player in players)
+            {
+                //move to space above designated podium
+                GetComponent<PhotonView>().RPC("MoveHere", RpcTarget.All, incrementation, player.name);
+                
+                //prep for next incrementation
+                incrementation++;
+            }
         }
+    }
+
+    /// <summary>
+    /// Prevents teleportation problems occuring during winscene
+    /// </summary>
+    /// <param name="podiumNumber"></param>
+    /// <param name="playerName"></param>
+    [PunRPC]
+    public void MoveHere(int podiumNumber, string playerName)
+    {
+        Transform player = GameObject.Find(playerName).transform; //find player by name
+
+        //move them to position, reverse ISROT
+        player.transform.rotation = quickRot.transform.rotation;
+        player.transform.position = podiums[podiumNumber].position + Vector3.up * 30; //creates a 3 second fall for dramatic effect
     }
 
     private int PrepPlayersForPlacement()
