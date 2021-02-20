@@ -11,6 +11,7 @@ TagManager:
   - Room
   - LocationForPickUp
   - PointsPickUp
+  - BackgroundMusic
   layers:
   - Default
   - TransparentFX
