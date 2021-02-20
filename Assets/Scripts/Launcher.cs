@@ -15,7 +15,6 @@ public class Launcher : MonoBehaviourPunCallbacks
     private GameObject controlPanel;
     [SerializeField]
     private GameObject progressLabel;
-
     
     bool isConnecting;
 
@@ -60,8 +59,9 @@ public class Launcher : MonoBehaviourPunCallbacks
     /// <param name="roomName">name of the room to connect to</param>
     public void Connect()
     {
+        Debug.Log("Nickname set to " + PhotonNetwork.LocalPlayer.NickName);
         string roomName = roomCode.text;
-
+        PhotonNetwork.NickName = playerName.text;
         if (string.IsNullOrEmpty(roomName))
         {
             Debug.LogError("Room name was not provided");
@@ -116,11 +116,12 @@ public class Launcher : MonoBehaviourPunCallbacks
 
     public override void OnJoinedRoom()
     {
+        
+        
+
         if (PhotonNetwork.CurrentRoom.PlayerCount == 1)
         {
             Debug.Log("Loading the Lobby");
-
-
             PhotonNetwork.LoadLevel("Lobby_1");
         }
     }
