@@ -40,6 +40,7 @@ public class GameManager : MonoBehaviourPunCallbacks
     public bool isGameScene;
     bool PressPlayButtonOnce;
 
+
     enum GameState
     {//Enum Gamestate instead of Scene management because we dont want to swap scenes to avoid online issues
         The_Run = 2,
@@ -71,11 +72,11 @@ public class GameManager : MonoBehaviourPunCallbacks
         GameObject[] playerfabs = Resources.LoadAll<GameObject>("Players").ToArray();
         playerPrefabs = GameManager.Randomize(playerfabs);
 
-
         Instance = this;
         if (OnlyOnePlayer)
         {
             PhotonNetwork.Instantiate(playerPrefab.name, new Vector3(0f, 1f, 0f), Quaternion.identity);
+       
         }
         else if (Player.localInstance == null)
         {
@@ -199,8 +200,8 @@ public class GameManager : MonoBehaviourPunCallbacks
 
         if (PhotonNetwork.IsMasterClient && PressPlayButtonOnce == false)
         {
-            NetworkSceneChangedRaiseEvent();
             MusicChangeRaiseEvent();
+            NetworkSceneChangedRaiseEvent();
             PhotonNetwork.LoadLevel("Main Game");
             PressPlayButtonOnce = true;
 
@@ -226,6 +227,7 @@ public class GameManager : MonoBehaviourPunCallbacks
 
     private void MusicChangeRaiseEvent()
     {
+        
         object[] content = new object[] { };
         RaiseEventOptions options = new RaiseEventOptions { Receivers = ReceiverGroup.All };
         bool worked = PhotonNetwork.RaiseEvent((byte)NetworkCodes.ChangeToGameMusicEventCode, content, options, SendOptions.SendReliable);

@@ -34,6 +34,12 @@ public class PickUpAbles : MonoBehaviourPunCallbacks, IPunObservable
         if (player == null)
         {
             player = GameObject.FindGameObjectWithTag("Player");
+            
+            //Don't do anything if a player is not found
+            if(player == null)
+            {
+                return;
+            }
         }
         if (transform.parent != null)
         {

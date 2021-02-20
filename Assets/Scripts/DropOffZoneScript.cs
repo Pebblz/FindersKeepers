@@ -24,31 +24,20 @@ public class DropOffZoneScript : MonoBehaviourPunCallbacks
                 {
                     //then it'll encroment the score by 1 
                     c.GetComponent<Player>().score += 1;
-                    if (c.GetComponent<PlayerPickUp>().PickUp.GetComponent<SoundtrackManager>() != null)
+                    if (c.GetComponent<PlayerPickUp>().PickUp != null)
                     {
-                        c.GetComponent<PlayerPickUp>().PickUp.GetComponent<SoundtrackManager>().resumeOriginalTrack();
+                
+       
+                        FindObjectOfType<TodoList>().ObjectFound(c.GetComponent<PlayerPickUp>().PickUp.GetComponent<PickUpAbles>());
+
+                        GetComponent<PhotonView>().RPC("ResetDropOffPos", RpcTarget.All);
+                        c.GetComponent<PlayerPickUp>().DropPickUp();
+
                     }
-
-                    FindObjectOfType<TodoList>().ObjectFound(c.GetComponent<PlayerPickUp>().PickUp.GetComponent<PickUpAbles>());
-
-                    /*c.*/
-                    GetComponent<PhotonView>().RPC("ResetDropOffPos", RpcTarget.All);
-                    c.GetComponent<PlayerPickUp>().DropPickUp();
-
                 }
             }
+
         }
-        //if(c.tag != "Player" && c.GetComponent<PickUpAbles>() != null)
-        //{
-        //    if(c.GetComponent<PickUpAbles>().PlayerThatPickUpOBJ != null && c.GetComponent<PickUpAbles>().throwIntoZoneTimer > 0)
-        //    {
-        //        c.GetComponent<PickUpAbles>().PlayerThatPickUpOBJ.GetComponent<Player>().score += 1;
-
-        //        FindObjectOfType<TodoList>().ObjectFound(c.GetComponent<PickUpAbles>());
-
-        //        GetComponent<PhotonView>().RPC("ResetDropOffPos", RpcTarget.All);
-        //    }
-        //}
     }
     [PunRPC]
     public void ResetDropOffPos()
