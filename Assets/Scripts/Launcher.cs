@@ -59,9 +59,10 @@ public class Launcher : MonoBehaviourPunCallbacks
     /// <param name="roomName">name of the room to connect to</param>
     public void Connect()
     {
-        Debug.Log("Nickname set to " + PhotonNetwork.LocalPlayer.NickName);
+        
         string roomName = roomCode.text;
         PhotonNetwork.NickName = playerName.text;
+        Debug.Log("Nickname set to " + PhotonNetwork.LocalPlayer.NickName);
         if (string.IsNullOrEmpty(roomName))
         {
             Debug.LogError("Room name was not provided");

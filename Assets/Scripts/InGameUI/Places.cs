@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
-
+using Photon.Pun;
 public class Places : MonoBehaviour
 {
     Player[] players;
@@ -42,7 +42,8 @@ public class Places : MonoBehaviour
         {
             if (player != null)
             {
-                text.text = text.text + "\n" + incrementer.ToString() + " " + player.gameObject.name;
+                string name = player.GetComponent<PhotonView>().Owner.NickName;
+                text.text = text.text + "\n" + incrementer.ToString() + " " + name;
             }
             incrementer++;
         }
