@@ -3,10 +3,17 @@ using System.Collections.Generic;
 using UnityEngine;
 using Photon.Pun;
 using UnityEngine.SceneManagement;
+using Photon.Realtime;
+using ExitGames.Client.Photon;
 
-public class Player : MonoBehaviourPunCallbacks, IPunObservable
+public class Player : MonoBehaviourPunCallbacks, IPunObservable, IOnEventCallback
 {
-
+    /*Fb
+     * 
+     * Edited By: Patrick Naatz
+     * Added:
+     *    the WinOrLoseSceneEvent functionality into the onevent function
+     */
 
     //List of the scripts that should only be active for the local
     //player (ex. PlayerController, MouseLook etc.)
@@ -161,6 +168,23 @@ public class Player : MonoBehaviourPunCallbacks, IPunObservable
         else
         {
             this.score = (int)stream.ReceiveNext();
+        }
+    }
+
+    /// <summary>
+    /// If you're not photon network you should not be calling this function
+    /// </summary>
+    /// <param name="photonEvent"></param>
+    public void OnEvent(EventData photonEvent)
+    {
+        byte eventCode = photonEvent.Code;
+
+        //remove all objects player is carrying when the scene is switched
+        if (eventCode == (byte)NetworkCodes.SwitchToWinOrLoseSceneEventCode)
+        {
+            Debug.Log("Event Code: " + eventCode);
+            GameObject.FindGameObjectWithTag("Player").GetComponent<Player_Movement>().enabled = false;
+            Destroy(FindObjectOfType<Camera>().gameObject);
         }
     }
 }

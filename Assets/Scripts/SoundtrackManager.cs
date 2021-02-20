@@ -55,7 +55,7 @@ public class SoundtrackManager : MonoBehaviour, IOnEventCallback
         if (ignoreEvents)
         {
             byte eventCode = photonEvent.Code;
-            if (eventCode == NetworkCodes.ChangeToGameMusicEvent)
+            if (eventCode == (byte)NetworkCodes.ChangeToGameMusicEventCode)
             {
                 this.GameTheme.Play();
             }

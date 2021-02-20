@@ -2,12 +2,15 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+/*Fower Box
+ * 
+ * Edited By: Patrick Naatz
+ * changed the NetworkCodes class to an enum
+ */ 
 
-// class that stores the network codes for raising events over the photon network
-public static class NetworkCodes
+public enum NetworkCodes : byte
 {
-    public const byte NetworkSceneChangedEventCode = 1;
-    public const byte RandomRoomEventCode = 2;
-    public const byte DeleteObjectInDropoffCode = 3;
-    public const byte ChangeToGameMusicEvent = 4;
+    NetworkSceneChangedEventCode = 1,
+    ChangeToGameMusicEventCode,
+    SwitchToWinOrLoseSceneEventCode
 }
