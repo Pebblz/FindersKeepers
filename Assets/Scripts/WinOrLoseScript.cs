@@ -225,7 +225,6 @@ public class WinOrLoseScript : MonoBehaviourPunCallbacks
 
     IEnumerator Reveal()
     {
-        Debug.Log("revealing");
         //properly organize players to drop at same or different times
         List<List<Player>> order = new List<List<Player>>(); //have to use nested list because people can tie with eachother
         foreach(Player player in players)
@@ -329,12 +328,15 @@ public class WinOrLoseScript : MonoBehaviourPunCallbacks
     private List<int> GenerateBigestLosersList()
     {
         if(losers.Count == 0)
-        {
+        {//protects from error of everyone winning cause if everyone wins there are technically no losers
+            
+            //fill list with all players in game
             List<int> fullList = new List<int>();
             for(int i = 0; i < players.Count(); i++)
             {
                 fullList.Add(i);
             }
+
             return fullList;
         }
 
