@@ -100,9 +100,9 @@ public class WinOrLoseScript : MonoBehaviourPunCallbacks
             Transform newPodium = Instantiate(replacementPodium.gameObject).transform;
 
             //set new podium location logic according to ISROT rules
-            newPodium.localScale = replacementPodium.localScale;
-            newPodium.rotation = replacementPodium.rotation;
             newPodium.position = position;
+            newPodium.rotation = replacementPodium.rotation;
+            newPodium.localScale = replacementPodium.localScale;
 
             //replace old podium with new one
             podiums[podiumNumber] = newPodium;
@@ -186,9 +186,6 @@ public class WinOrLoseScript : MonoBehaviourPunCallbacks
     #region locational logic
     void Display()
     {
-        //moves players away from eachother to prevent accidental bumping
-        PrepPlayersForPlacement();
-
         PlacePlayersAccordingly();
     }
 
@@ -198,6 +195,7 @@ public class WinOrLoseScript : MonoBehaviourPunCallbacks
         //we have to use RPC to move each character because each game loads in character in a different order but they all have the photon transform on them.
         if (PhotonNetwork.IsMasterClient)
         {//since we have to use an RPC we only want everything to happen once, so we only allow the master client to go in
+            Debug.Log("is master");
             int incrementation = 0;
             foreach (Player player in players)
             {
@@ -225,27 +223,6 @@ public class WinOrLoseScript : MonoBehaviourPunCallbacks
         player.transform.position = podiums[podiumNumber].position + Vector3.up * 30; //creates a 3 second fall for dramatic effect
     }
 
-    private int PrepPlayersForPlacement()
-    {
-        int incrementation = 1;
-        foreach (Player player in players)
-        {
-            //prevents movement
-            Rigidbody rb = player.GetComponent<Rigidbody>();
-            rb.useGravity = false;
-            rb.velocity = Vector3.zero;
-            rb.constraints = RigidbodyConstraints.FreezeRotation | RigidbodyConstraints.FreezePositionX | RigidbodyConstraints.FreezePositionZ;
-
-            //moves to isolated location
-            player.transform.position = new Vector3(incrementation * 100, incrementation * 100, incrementation * 100);
-
-            //setup for next incrementation
-            incrementation++;
-        }
-
-        return incrementation;
-    }
-
     IEnumerator Reveal()
     {
         //properly organize players to drop at same or different times
@@ -269,11 +246,13 @@ public class WinOrLoseScript : MonoBehaviourPunCallbacks
                 p--;
             }
         }
-
+        int place = 0;
         foreach (List<Player> ties in order)
         {
+            place++;
             foreach (Player player in ties)
             {
+                Debug.Log(place.ToString() + " " + player.name);
                 player.GetComponent<Rigidbody>().useGravity = true; //turns on gravity for said player
             }
 
@@ -349,8 +328,16 @@ public class WinOrLoseScript : MonoBehaviourPunCallbacks
     private List<int> GenerateBigestLosersList()
     {
         if(losers.Count == 0)
-        {
-            return new List<int>(new int[] { 0, 1, 2, 3 });
+        {//protects from error of everyone winning cause if everyone wins there are technically no losers
+            
+            //fill list with all players in game
+            List<int> fullList = new List<int>();
+            for(int i = 0; i < players.Count(); i++)
+            {
+                fullList.Add(i);
+            }
+
+            return fullList;
         }
 
         int index = losers.Count - 1; //starts on player in last
