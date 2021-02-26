@@ -23,20 +23,28 @@ public class Launcher : MonoBehaviourPunCallbacks
     [SerializeField]
     private byte maxPlayersPerRoom = 4;
 
-    public Text playerName;
-    public Text roomCode;
+    public InputField playerName;
+    public InputField roomCode;
 
     #region MonoBehaviour CallBacks
 
     private void Awake()
     {
         PhotonNetwork.AutomaticallySyncScene = true;
+        
+    }
+
+    public void SetTextToUpper(InputField f)
+    {
+        f.text = f.text.ToUpper();
     }
 
     private void Start()
     {
         progressLabel.SetActive(false);
         controlPanel.SetActive(true);
+        playerName.onValueChanged.AddListener(delegate { SetTextToUpper(playerName); });
+        roomCode.onValueChanged.AddListener(delegate { SetTextToUpper(roomCode); });
     }
     private void Update()
     {
@@ -61,7 +69,7 @@ public class Launcher : MonoBehaviourPunCallbacks
     {
         
         string roomName = roomCode.text;
-
+        
        
         if (string.IsNullOrEmpty(playerName.text))
         {
@@ -75,7 +83,7 @@ public class Launcher : MonoBehaviourPunCallbacks
             return;
         }
 
-        PhotonNetwork.NickName = playerName.text;
+        PhotonNetwork.NickName = playerName.text.ToUpper();
         Debug.Log("Nickname set to " + PhotonNetwork.LocalPlayer.NickName);
 
         progressLabel.SetActive(true);
@@ -83,7 +91,7 @@ public class Launcher : MonoBehaviourPunCallbacks
 
         if (PhotonNetwork.IsConnected)
         {
-            PhotonNetwork.JoinRoom(roomName);
+            PhotonNetwork.JoinRoom(roomName.ToUpper());
         }
         else
         {
@@ -92,6 +100,8 @@ public class Launcher : MonoBehaviourPunCallbacks
         }
     }
     #endregion
+
+   
 
     #region PhotonCallbacks
 
