@@ -726,8 +726,8 @@ MonoBehaviour:
   controlPanel: {fileID: 1976634385}
   progressLabel: {fileID: 322132695}
   maxPlayersPerRoom: 4
-  playerName: {fileID: 1394900759}
-  roomCode: {fileID: 1963490369}
+  playerName: {fileID: 670370600}
+  roomCode: {fileID: 148698790}
 --- !u!4 &509866911
 Transform:
   m_ObjectHideFlags: 0
