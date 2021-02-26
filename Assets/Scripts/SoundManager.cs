@@ -90,6 +90,7 @@ public class SoundManager : MonoBehaviour
         this.SceneTheme.Play();
     }
 
+    [PunRPC]
     public void PlayGameTheme()
     {
         this.SceneTheme = GameTheme;

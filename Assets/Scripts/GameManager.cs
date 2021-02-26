@@ -61,6 +61,11 @@ public class GameManager : MonoBehaviourPunCallbacks
 
     void Start()
     {
+        if (isGameScene)
+        {
+            PhotonView p = PhotonView.Get(this);
+            p.RPC("PlayGameTheme", RpcTarget.All);
+        }
 
         GameObject[] playerfabs = Resources.LoadAll<GameObject>("Players").ToArray();
         playerPrefabs = GameManager.Randomize(playerfabs);
@@ -193,7 +198,7 @@ public class GameManager : MonoBehaviourPunCallbacks
 
         if (PhotonNetwork.IsMasterClient && PressPlayButtonOnce == false)
         {
-            MusicChangeRaiseEvent();
+            //MusicChangeRaiseEvent();
             NetworkSceneChangedRaiseEvent();
             PhotonNetwork.LoadLevel("Main Game");
             PressPlayButtonOnce = true;
