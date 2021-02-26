@@ -199,5 +199,9 @@ public class PlayerPickUp : MonoBehaviourPunCallbacks, IPunObservable, IOnEventC
             PickUp = null;
             isHoldingOBJ = false;
         }
+        else if (eventCode == (byte)NetworkCodes.ChangeToGameMusicEventCode)
+        {
+            sfxManager.PlayGameTheme();
+        }
     }
 }

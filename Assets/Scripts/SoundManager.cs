@@ -92,6 +92,9 @@ public class SoundManager : MonoBehaviour
 
     public void PlayGameTheme()
     {
+        //stop lobby theme
+        this.SceneTheme.Stop();
+
         this.SceneTheme = GameTheme;
         this.SceneTheme.loop = true;
 
