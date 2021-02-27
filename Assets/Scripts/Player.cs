@@ -186,7 +186,11 @@ public class Player : MonoBehaviourPunCallbacks, IPunObservable, IOnEventCallbac
         {
             Debug.Log("Event Code: " + eventCode);
             GameObject.FindGameObjectWithTag("Player").GetComponent<Player_Movement>().enabled = false;
-            Destroy(FindObjectOfType<Camera>().gameObject);
+            if (PhotonNetwork.IsMasterClient)
+            {
+                Destroy(FindObjectOfType<Camera>().gameObject);
+            }
+            
         }
     }
 }
