@@ -20,6 +20,8 @@ public class PickUpAbles : MonoBehaviourPunCallbacks, IPunObservable
     public bool hasGravity = true;
     public Sprite image;
     public float throwIntoZoneTimer;
+    [HideInInspector]
+    public bool IsNotPickUpable;
     //this is an awake because it'll do this whenever this object gets spawned
     void Awake()
     {
@@ -72,6 +74,14 @@ public class PickUpAbles : MonoBehaviourPunCallbacks, IPunObservable
     {
         Destroy(this.gameObject);
     }
+
+    public void LockIntoPlace(Transform LockedPosition)
+    {
+        transform.position = LockedPosition.position;
+        transform.rotation = LockedPosition.rotation;
+        IsNotPickUpable = true;
+    }
+
     //Drops the GameObject
     public void DropPickUp()
     {

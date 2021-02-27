@@ -64,7 +64,8 @@ public class PlayerPickUp : MonoBehaviourPunCallbacks, IPunObservable, IOnEventC
                             if (Physics.Raycast(start, transform.TransformDirection(Vector3.forward) + new Vector3(x, y / 8, 0), out hit, 3.5f) && PickUp == null)
                             {
                                 //this checks if any of the rays hit an object with pickupables script
-                                if (hit.collider.gameObject.GetComponent<PickUpAbles>() != null)
+                                if (hit.collider.gameObject.GetComponent<PickUpAbles>() != null && 
+                                    !hit.collider.gameObject.GetComponent<PickUpAbles>().IsNotPickUpable)
                                 {
                                     //if it does so all this
                                     hit.collider.gameObject.GetComponent<Rigidbody>().constraints = RigidbodyConstraints.None;
@@ -134,7 +135,7 @@ public class PlayerPickUp : MonoBehaviourPunCallbacks, IPunObservable, IOnEventC
         PickUp = null;
         isPickingUpOBJ = false;
         isHoldingOBJ = false;
-
+        Anim.SetBool("IsCarry", false);
     }
 
     public void ThrowOBJ(int Force)
