@@ -2,28 +2,31 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class FlickeringLight : MonoBehaviour
+namespace com.pebblz.finderskeepers
 {
-    Light thisLight;
-    [SerializeField]
-    float minWaitTimeForFlicker;
-    [SerializeField]
-    float maxWaitTimeForFlicker;
-    // Start is called before the first frame update
-    void Start()
+    public class FlickeringLight : MonoBehaviour
     {
-        thisLight = GetComponent<Light>();
-        StartCoroutine(Flashing());
-    }
-
-    IEnumerator Flashing()
-    {
-        while (true)
+        Light thisLight;
+        [SerializeField]
+        float minWaitTimeForFlicker;
+        [SerializeField]
+        float maxWaitTimeForFlicker;
+        // Start is called before the first frame update
+        void Start()
         {
-            //it'll wait a random time between min and max times set
-            yield return new WaitForSeconds(Random.Range(minWaitTimeForFlicker, maxWaitTimeForFlicker));
-            //it'll flicker on and off 
-            thisLight.enabled = ! thisLight.enabled;
+            thisLight = GetComponent<Light>();
+            StartCoroutine(Flashing());
+        }
+
+        IEnumerator Flashing()
+        {
+            while (true)
+            {
+                //it'll wait a random time between min and max times set
+                yield return new WaitForSeconds(Random.Range(minWaitTimeForFlicker, maxWaitTimeForFlicker));
+                //it'll flicker on and off 
+                thisLight.enabled = !thisLight.enabled;
+            }
         }
     }
 }

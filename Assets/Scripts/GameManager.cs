@@ -8,290 +8,293 @@ using Photon.Pun;
 using Photon.Realtime;
 using ExitGames.Client.Photon;
 using System;
-
-public class GameManager : MonoBehaviourPunCallbacks
+namespace com.pebblz.finderskeepers
 {
-    /*Flower box
-     * 
-     * Edited by: Pat Naatz
-     * Added:
-     *  Continue function
-     *  Respawn function
-     *  SetTime function
-     *  ListActivated function
-     *  GameState enum
-     *  InSeconds Struct for play time
-     *  WinLoseScene function
-     * Edited:
-     *  Some of the Network code events
-     *  Continue function
-     * TODO:
-     * Reflections for net event code
-     */
-
-    static public GameManager Instance;
-    public bool OnlyOnePlayer = false;
-    private GameObject instance;
-    [Tooltip("The prefab used to load multiple players")]
-    public GameObject[] playerPrefabs;
-    [SerializeField]
-    private GameObject playerPrefab;
-    public GameObject startButton;
-    private NetworkManager netManager;
-    public bool isGameScene;
-    bool PressPlayButtonOnce;
-
-
-    enum GameState
-    {//Enum Gamestate instead of Scene management because we dont want to swap scenes to avoid online issues
-        The_Run = 2,
-        The_Game
-    }
-    static GameState gameState = GameState.The_Run; //static to hold between scenes, the first time this variable is used Thr Run will be relevant
-    
-    //Game time class
-    [System.Serializable] struct InSeconds
+    public class GameManager : MonoBehaviourPunCallbacks
     {
-        public int RunTime, PlayTime;
-    }
-    [SerializeField] InSeconds seconds;
+        /*Flower box
+         * 
+         * Edited by: Pat Naatz
+         * Added:
+         *  Continue function
+         *  Respawn function
+         *  SetTime function
+         *  ListActivated function
+         *  GameState enum
+         *  InSeconds Struct for play time
+         *  WinLoseScene function
+         * Edited:
+         *  Some of the Network code events
+         *  Continue function
+         * TODO:
+         * Reflections for net event code
+         */
 
-    [SerializeField] Transform[] RespawnPoints;
-    [SerializeField] TodoList list;
+        static public GameManager Instance;
+        public bool OnlyOnePlayer = false;
+        private GameObject instance;
+        [Tooltip("The prefab used to load multiple players")]
+        public GameObject[] playerPrefabs;
+        [SerializeField]
+        private GameObject playerPrefab;
+        public GameObject startButton;
+        private NetworkManager netManager;
+        public bool isGameScene;
+        bool PressPlayButtonOnce;
 
 
-    public static GameObject[] Randomize(IEnumerable<GameObject> source)
-    {
-        System.Random rnd = new System.Random();
-        return source.OrderBy<GameObject, int>((item) => rnd.Next()).ToArray();
-    }
-
-
-    void Start()
-    {
-        netManager = this.GetComponent<NetworkManager>();
-        GameObject[] playerfabs = Resources.LoadAll<GameObject>("Players").ToArray();
-        playerPrefabs = GameManager.Randomize(playerfabs);
-
-        Instance = this;
-        if (OnlyOnePlayer)
-        {
-            PhotonNetwork.Instantiate(playerPrefab.name, new Vector3(0f, 1f, 0f), Quaternion.identity);
-       
+        enum GameState
+        {//Enum Gamestate instead of Scene management because we dont want to swap scenes to avoid online issues
+            The_Run = 2,
+            The_Game
         }
-        else if (Player.localInstance == null)
+        static GameState gameState = GameState.The_Run; //static to hold between scenes, the first time this variable is used Thr Run will be relevant
+
+        //Game time class
+        [System.Serializable]
+        struct InSeconds
         {
-            Debug.Log("Adding player #" + PhotonNetwork.CurrentRoom.PlayerCount);
-
-
-            int idx = (PhotonNetwork.CurrentRoom.PlayerCount > 1) ? FindFirstNotUsedSkin() : 0;
-            Debug.Log("Loading player skin: " + this.playerPrefabs[idx].name);
-
-
-            PhotonNetwork.Instantiate("Players/" + this.playerPrefabs[idx].name, new Vector3(0f, 1f, 0f), Quaternion.identity);
-
-            var props = new ExitGames.Client.Photon.Hashtable();
-            props.Add("skin", this.playerPrefabs[idx].name);
-            PhotonNetwork.PlayerList[PhotonNetwork.CurrentRoom.PlayerCount - 1].SetCustomProperties(props);
-
+            public int RunTime, PlayTime;
         }
-        else
-        {
+        [SerializeField] InSeconds seconds;
 
-            Debug.Log("Ignoring PLayer load");
+        [SerializeField] Transform[] RespawnPoints;
+        [SerializeField] TodoList list;
+
+
+        public static GameObject[] Randomize(IEnumerable<GameObject> source)
+        {
+            System.Random rnd = new System.Random();
+            return source.OrderBy<GameObject, int>((item) => rnd.Next()).ToArray();
         }
 
-        if (startButton != null)
+
+        void Start()
         {
-            startButton = GameObject.FindGameObjectWithTag("StartButton");
-            if (PhotonNetwork.IsMasterClient)
+            netManager = this.GetComponent<NetworkManager>();
+            GameObject[] playerfabs = Resources.LoadAll<GameObject>("Players").ToArray();
+            playerPrefabs = GameManager.Randomize(playerfabs);
+
+            Instance = this;
+            if (OnlyOnePlayer)
             {
-                startButton.SetActive(true);
+                PhotonNetwork.Instantiate(playerPrefab.name, new Vector3(0f, 1f, 0f), Quaternion.identity);
+
+            }
+            else if (Player.localInstance == null)
+            {
+                Debug.Log("Adding player #" + PhotonNetwork.CurrentRoom.PlayerCount);
+
+
+                int idx = (PhotonNetwork.CurrentRoom.PlayerCount > 1) ? FindFirstNotUsedSkin() : 0;
+                Debug.Log("Loading player skin: " + this.playerPrefabs[idx].name);
+
+
+                PhotonNetwork.Instantiate("Players/" + this.playerPrefabs[idx].name, new Vector3(0f, 1f, 0f), Quaternion.identity);
+
+                var props = new ExitGames.Client.Photon.Hashtable();
+                props.Add("skin", this.playerPrefabs[idx].name);
+                PhotonNetwork.PlayerList[PhotonNetwork.CurrentRoom.PlayerCount - 1].SetCustomProperties(props);
+
             }
             else
             {
-                startButton.SetActive(false);
+
+                Debug.Log("Ignoring PLayer load");
+            }
+
+            if (startButton != null)
+            {
+                startButton = GameObject.FindGameObjectWithTag("StartButton");
+                if (PhotonNetwork.IsMasterClient)
+                {
+                    startButton.SetActive(true);
+                }
+                else
+                {
+                    startButton.SetActive(false);
+                }
             }
         }
-    }
-    public int FindFirstNotUsedSkin()
-    {
+        public int FindFirstNotUsedSkin()
+        {
 
-        List<string> allPlayerTypes = new List<string>();
-        foreach (var p in this.playerPrefabs)
-        {
-            allPlayerTypes.Add(p.name);
-        }
+            List<string> allPlayerTypes = new List<string>();
+            foreach (var p in this.playerPrefabs)
+            {
+                allPlayerTypes.Add(p.name);
+            }
 
-        List<string> activePlayerTypes = getActivePlayerTypes();
-        string str = "";
-        foreach (string s in activePlayerTypes)
-        {
-            str += s + ", ";
-        }
-        Debug.Log("Active Player Types: " + str);
-        if (activePlayerTypes.Count == 1)
-        {
+            List<string> activePlayerTypes = getActivePlayerTypes();
+            string str = "";
+            foreach (string s in activePlayerTypes)
+            {
+                str += s + ", ";
+            }
+            Debug.Log("Active Player Types: " + str);
+            if (activePlayerTypes.Count == 1)
+            {
+                return 0;
+            }
+            var firstItem = allPlayerTypes.Except(activePlayerTypes).ToArray()[0];
+            for (int i = 0; i < allPlayerTypes.Count; i++)
+            {
+                if (allPlayerTypes[i] == firstItem)
+                {
+                    return i;
+                }
+            }
             return 0;
         }
-        var firstItem = allPlayerTypes.Except(activePlayerTypes).ToArray()[0];
-        for (int i = 0; i < allPlayerTypes.Count; i++)
+
+        public List<string> getActivePlayerTypes()
         {
-            if (allPlayerTypes[i] == firstItem)
+            List<string> typesOfColors = new List<string>();
+            foreach (var player in PhotonNetwork.PlayerList)
             {
-                return i;
+                typesOfColors.Add((string)player.CustomProperties["skin"]);
+            }
+            return typesOfColors;
+        }
+
+        #region photon callbacks
+        public override void OnLeftRoom()
+        {
+            SceneManager.LoadScene(0);
+        }
+
+        public override void OnPlayerEnteredRoom(Photon.Realtime.Player newPlayer)
+        {
+            if (PhotonNetwork.IsMasterClient)
+            {
+                LoadArena();
             }
         }
-        return 0;
-    }
 
-    public List<string> getActivePlayerTypes()
-    {
-        List<string> typesOfColors = new List<string>();
-        foreach (var player in PhotonNetwork.PlayerList)
+
+        public override void OnPlayerLeftRoom(Photon.Realtime.Player otherPlayer)
         {
-            typesOfColors.Add((string)player.CustomProperties["skin"]);
+            if (PhotonNetwork.IsMasterClient)
+            {
+                LoadArena();
+            }
         }
-        return typesOfColors;
-    }
 
-    #region photon callbacks
-    public override void OnLeftRoom()
-    {
-        SceneManager.LoadScene(0);
-    }
+        #endregion
 
-    public override void OnPlayerEnteredRoom(Photon.Realtime.Player newPlayer)
-    {
-        if (PhotonNetwork.IsMasterClient)
+        void LoadArena()
         {
-            LoadArena();
-        }
-    }
 
-
-    public override void OnPlayerLeftRoom(Photon.Realtime.Player otherPlayer)
-    {
-        if (PhotonNetwork.IsMasterClient)
-        {
-            LoadArena();
-        }
-    }
-
-    #endregion
-
-    void LoadArena()
-    {   
-
-        if (isGameScene)
-        {
-            return;
-        }
-        if (!PhotonNetwork.IsMasterClient)
-        {
-            Debug.LogError("A non master client attempted to load level");
-        }
-        netManager.NetworkSceneChangedEvent();
-        PhotonNetwork.LoadLevel("Lobby_" + PhotonNetwork.CurrentRoom.PlayerCount);
-
-    }
-
-    public void LoadGame()
-    {
-
-        if (PhotonNetwork.IsMasterClient && PressPlayButtonOnce == false)
-        {
-            netManager.ChangeToGameMusicEvent();
+            if (isGameScene)
+            {
+                return;
+            }
+            if (!PhotonNetwork.IsMasterClient)
+            {
+                Debug.LogError("A non master client attempted to load level");
+            }
             netManager.NetworkSceneChangedEvent();
-            PhotonNetwork.LoadLevel("Main Game");
-            PressPlayButtonOnce = true;
-
+            PhotonNetwork.LoadLevel("Lobby_" + PhotonNetwork.CurrentRoom.PlayerCount);
 
         }
-    }
 
-
-    public void LeaveRoom()
-    {
-        PhotonNetwork.LeaveRoom();
-    }
-
-    #region Network Events
-    
-    #endregion
-
-    #region In game Scene Management
-    /// <summary>
-    /// Continues the game without having to swap between scenes due to how the online portion works
-    /// </summary>
-    public void Continue()
-    {
-        gameState++; //increment gamestate
-
-
-        if ((int)gameState > 3)
-        { //if gameover
-            gameState = GameState.The_Run; //static so this variable must be manually reset
-
-            netManager.ChangeToWinOrLoseSceneEvent();
-
-            PhotonNetwork.LoadLevel("WinOrLose"); //end of game load endscreen   scene doesnt exist yet
-        }
-        else
+        public void LoadGame()
         {
-            Respawn();
-            //the timer is handled internally
-        }
-    }
 
-    void Respawn()
-    {
-        if (PhotonNetwork.IsMasterClient)
-        {
-            //assign neccesary variables
-            Player[] players = FindObjectsOfType<Player>();
-            int assignedRespawn = 0;
-
-            foreach (Player player in players)
+            if (PhotonNetwork.IsMasterClient && PressPlayButtonOnce == false)
             {
-                //move player to assigned position
-                player.photonView.RPC("MoveToHere", RpcTarget.All, RespawnPoints[assignedRespawn].position);
+                netManager.ChangeToGameMusicEvent();
+                netManager.NetworkSceneChangedEvent();
+                PhotonNetwork.LoadLevel("Main Game");
+                PressPlayButtonOnce = true;
 
-                //setup for next rotation
-                assignedRespawn++;
+
             }
         }
 
-        //this funciton is only called once during the transfer between The_Run and The_Game
-        //Start the todo list
-        GameObject.FindObjectOfType<TodoList>().Active();
-    }
-    #endregion
 
-    #region in game data checks
-    /// <summary>
-    /// returns the time this GameState should have ot be played out
-    /// </summary>
-    /// <returns></returns>
-    public int setTime()
-    {//for timer reseting
-        switch (gameState)
+        public void LeaveRoom()
         {
-            case GameState.The_Run:
-                return seconds.RunTime;
-            case GameState.The_Game:
-                return seconds.PlayTime;
+            PhotonNetwork.LeaveRoom();
         }
-        return 1;
-    }
 
-    /// <summary>
-    /// Activates or deactivates the list
-    /// </summary>
-    /// <returns></returns>
-    public bool listActive()
-    {//for activating the list
-        return gameState >= GameState.The_Game;
+        #region Network Events
+
+        #endregion
+
+        #region In game Scene Management
+        /// <summary>
+        /// Continues the game without having to swap between scenes due to how the online portion works
+        /// </summary>
+        public void Continue()
+        {
+            gameState++; //increment gamestate
+
+
+            if ((int)gameState > 3)
+            { //if gameover
+                gameState = GameState.The_Run; //static so this variable must be manually reset
+
+                netManager.ChangeToWinOrLoseSceneEvent();
+
+                PhotonNetwork.LoadLevel("WinOrLose"); //end of game load endscreen   scene doesnt exist yet
+            }
+            else
+            {
+                Respawn();
+                //the timer is handled internally
+            }
+        }
+
+        void Respawn()
+        {
+            if (PhotonNetwork.IsMasterClient)
+            {
+                //assign neccesary variables
+                Player[] players = FindObjectsOfType<Player>();
+                int assignedRespawn = 0;
+
+                foreach (Player player in players)
+                {
+                    //move player to assigned position
+                    player.photonView.RPC("MoveToHere", RpcTarget.All, RespawnPoints[assignedRespawn].position);
+
+                    //setup for next rotation
+                    assignedRespawn++;
+                }
+            }
+
+            //this funciton is only called once during the transfer between The_Run and The_Game
+            //Start the todo list
+            GameObject.FindObjectOfType<TodoList>().Active();
+        }
+        #endregion
+
+        #region in game data checks
+        /// <summary>
+        /// returns the time this GameState should have ot be played out
+        /// </summary>
+        /// <returns></returns>
+        public int setTime()
+        {//for timer reseting
+            switch (gameState)
+            {
+                case GameState.The_Run:
+                    return seconds.RunTime;
+                case GameState.The_Game:
+                    return seconds.PlayTime;
+            }
+            return 1;
+        }
+
+        /// <summary>
+        /// Activates or deactivates the list
+        /// </summary>
+        /// <returns></returns>
+        public bool listActive()
+        {//for activating the list
+            return gameState >= GameState.The_Game;
+        }
+        #endregion
     }
-    #endregion
 }

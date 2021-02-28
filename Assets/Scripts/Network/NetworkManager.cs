@@ -5,37 +5,40 @@ using Photon.Pun;
 using Photon.Realtime;
 using ExitGames.Client.Photon;
 
-public class NetworkManager : MonoBehaviourPunCallbacks
+namespace com.pebblz.finderskeepers
 {
-    // the flag for raising a Network Event
-
-    public void NetworkSceneChangedEvent()
+    public class NetworkManager : MonoBehaviourPunCallbacks
     {
-        object[] content = new object[] { };
-        RaiseEventOptions options = new RaiseEventOptions { Receivers = ReceiverGroup.All };
-        PhotonNetwork.RaiseEvent((byte)NetworkCodes.NetworkSceneChanged, content, options, SendOptions.SendReliable);
-    }
+        // the flag for raising a Network Event
 
-    public void ChangeToGameMusicEvent()
-    {
+        public void NetworkSceneChangedEvent()
+        {
+            object[] content = new object[] { };
+            RaiseEventOptions options = new RaiseEventOptions { Receivers = ReceiverGroup.All };
+            PhotonNetwork.RaiseEvent((byte)NetworkCodes.NetworkSceneChanged, content, options, SendOptions.SendReliable);
+        }
 
-        object[] content = new object[] { };
-        RaiseEventOptions options = new RaiseEventOptions { Receivers = ReceiverGroup.All };
-        bool worked = PhotonNetwork.RaiseEvent((byte)NetworkCodes.ChangeToGameMusic, content, options, SendOptions.SendReliable);
-        Debug.Log("Music Event: " + worked);
-    }
+        public void ChangeToGameMusicEvent()
+        {
 
-    public void ChangeToWinOrLoseSceneEvent()
-    {
-        object[] content = new object[] { };
-        RaiseEventOptions options = new RaiseEventOptions { Receivers = ReceiverGroup.All };
-        PhotonNetwork.RaiseEvent((byte)NetworkCodes.SwitchToWinOrLoseScene, content, options, SendOptions.SendReliable);
-    }
+            object[] content = new object[] { };
+            RaiseEventOptions options = new RaiseEventOptions { Receivers = ReceiverGroup.All };
+            bool worked = PhotonNetwork.RaiseEvent((byte)NetworkCodes.ChangeToGameMusic, content, options, SendOptions.SendReliable);
+            Debug.Log("Music Event: " + worked);
+        }
 
-    public void ResetToLobbyEvent()
-    {
-        object[] content = new object[] { };
-        RaiseEventOptions options = new RaiseEventOptions { Receivers = ReceiverGroup.All };
-        PhotonNetwork.RaiseEvent((byte)NetworkCodes.ResetToLobby, content, options, SendOptions.SendReliable);
+        public void ChangeToWinOrLoseSceneEvent()
+        {
+            object[] content = new object[] { };
+            RaiseEventOptions options = new RaiseEventOptions { Receivers = ReceiverGroup.All };
+            PhotonNetwork.RaiseEvent((byte)NetworkCodes.SwitchToWinOrLoseScene, content, options, SendOptions.SendReliable);
+        }
+
+        public void ResetToLobbyEvent()
+        {
+            object[] content = new object[] { };
+            RaiseEventOptions options = new RaiseEventOptions { Receivers = ReceiverGroup.All };
+            PhotonNetwork.RaiseEvent((byte)NetworkCodes.ResetToLobby, content, options, SendOptions.SendReliable);
+        }
     }
 }

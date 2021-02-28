@@ -2,17 +2,20 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class WallPowerUp : PowerUp
+namespace com.pebblz.finderskeepers
 {
-    public void activate(Player player)
+    public class WallPowerUp : PowerUp
     {
-        player.pm.rb.isKinematic = true;
-        player.freeLookCam.GetComponent<Cinemachine.CinemachineCollider>().enabled = false;
-    }
+        public void activate(Player player)
+        {
+            player.pm.rb.isKinematic = true;
+            player.freeLookCam.GetComponent<Cinemachine.CinemachineCollider>().enabled = false;
+        }
 
-    public void deactivate(Player player)
-    {
-        player.pm.rb.isKinematic = false;
-        player.freeLookCam.GetComponent<Cinemachine.CinemachineCollider>().enabled = true;
+        public void deactivate(Player player)
+        {
+            player.pm.rb.isKinematic = false;
+            player.freeLookCam.GetComponent<Cinemachine.CinemachineCollider>().enabled = true;
+        }
     }
 }
