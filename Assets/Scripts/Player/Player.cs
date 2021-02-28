@@ -29,7 +29,7 @@ public class Player : MonoBehaviourPunCallbacks, IPunObservable, IOnEventCallbac
     public float StunCounter;
 
 
-    
+
     public Transform mainCam;
     public GameObject freeLookCam;
 
@@ -44,7 +44,7 @@ public class Player : MonoBehaviourPunCallbacks, IPunObservable, IOnEventCallbac
 
     [HideInInspector]
     public bool isPaused;
-    
+
     float pauseTimer;
 
     #region monobehaviour callbacks
@@ -52,7 +52,7 @@ public class Player : MonoBehaviourPunCallbacks, IPunObservable, IOnEventCallbac
 
     private void Awake()
     {
-        soundManager  = this.GetComponentInChildren<SoundManager>();
+        soundManager = this.GetComponentInChildren<SoundManager>();
         if (photonView.IsMine)
         {
             StartPosition = transform.position;
@@ -87,7 +87,7 @@ public class Player : MonoBehaviourPunCallbacks, IPunObservable, IOnEventCallbac
 
         if (GetComponent<PhotonView>().IsMine)
         {
-            if(Input.GetKeyDown(KeyCode.Escape) && pauseTimer <= 0)
+            if (Input.GetKeyDown(KeyCode.Escape) && pauseTimer <= 0)
             {
                 isPaused = !isPaused;
                 pauseTimer = 1f;
@@ -178,9 +178,13 @@ public class Player : MonoBehaviourPunCallbacks, IPunObservable, IOnEventCallbac
     }
     public void ResetPosition()
     {
-        Anim.SetBool("Reset", true);
-        transform.position = StartPosition;
-        GetComponent<PlayerMovement>().enabled = true;
+        if (GetComponent<PhotonView>().IsMine)
+        {
+            Anim.SetBool("Reset", true);
+            transform.position = StartPosition;
+
+            GetComponent<PlayerMovement>().enabled = true;
+        }
     }
     public void OnPhotonSerializeView(PhotonStream stream, PhotonMessageInfo info)
     {
@@ -217,7 +221,7 @@ public class Player : MonoBehaviourPunCallbacks, IPunObservable, IOnEventCallbac
             // find camera by the cinemachine brain instead so it does
             // not delete the camera in win or lose scene
             var camToDestroy = FindObjectOfType<CinemachineBrain>();
-            if(camToDestroy != null)
+            if (camToDestroy != null)
             {
                 Destroy(camToDestroy.gameObject);
             }
@@ -235,7 +239,8 @@ public class Player : MonoBehaviourPunCallbacks, IPunObservable, IOnEventCallbac
         else if (eventCode == (byte)NetworkCodes.ChangeToGameMusic)
         {
             GetComponentInChildren<SoundManager>().PlayGameTheme();
-        } else if (eventCode == (byte)NetworkCodes.ResetToLobby)
+        }
+        else if (eventCode == (byte)NetworkCodes.ResetToLobby)
         {
             ResetPosition();
         }
