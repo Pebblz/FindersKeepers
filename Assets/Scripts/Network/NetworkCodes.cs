@@ -10,8 +10,8 @@ using UnityEngine;
 
 public enum NetworkCodes : byte
 {
-    NetworkSceneChangedEventCode = 1,
-    ChangeToGameMusicEventCode,
-    SwitchToWinOrLoseSceneEventCode,
-    ResetToLobbyCode
+    NetworkSceneChanged = 1,
+    ChangeToGameMusic,
+    SwitchToWinOrLoseScene,
+    ResetToLobby
 }

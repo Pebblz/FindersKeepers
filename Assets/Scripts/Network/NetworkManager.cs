@@ -9,33 +9,33 @@ public class NetworkManager : MonoBehaviourPunCallbacks
 {
     // the flag for raising a Network Event
 
-    public void NetworkSceneChangedRaiseEvent()
+    public void NetworkSceneChangedEvent()
     {
         object[] content = new object[] { };
         RaiseEventOptions options = new RaiseEventOptions { Receivers = ReceiverGroup.All };
-        PhotonNetwork.RaiseEvent((byte)NetworkCodes.NetworkSceneChangedEventCode, content, options, SendOptions.SendReliable);
+        PhotonNetwork.RaiseEvent((byte)NetworkCodes.NetworkSceneChanged, content, options, SendOptions.SendReliable);
     }
 
-    public void MusicChangeRaiseEvent()
+    public void ChangeToGameMusicEvent()
     {
 
         object[] content = new object[] { };
         RaiseEventOptions options = new RaiseEventOptions { Receivers = ReceiverGroup.All };
-        bool worked = PhotonNetwork.RaiseEvent((byte)NetworkCodes.ChangeToGameMusicEventCode, content, options, SendOptions.SendReliable);
+        bool worked = PhotonNetwork.RaiseEvent((byte)NetworkCodes.ChangeToGameMusic, content, options, SendOptions.SendReliable);
         Debug.Log("Music Event: " + worked);
     }
 
-    public void ChangeToWinOrLoseSceneRaiseEvent()
+    public void ChangeToWinOrLoseSceneEvent()
     {
         object[] content = new object[] { };
         RaiseEventOptions options = new RaiseEventOptions { Receivers = ReceiverGroup.All };
-        PhotonNetwork.RaiseEvent((byte)NetworkCodes.SwitchToWinOrLoseSceneEventCode, content, options, SendOptions.SendReliable);
+        PhotonNetwork.RaiseEvent((byte)NetworkCodes.SwitchToWinOrLoseScene, content, options, SendOptions.SendReliable);
     }
 
-    public void ResetToLobbyRaiseEvent()
+    public void ResetToLobbyEvent()
     {
         object[] content = new object[] { };
         RaiseEventOptions options = new RaiseEventOptions { Receivers = ReceiverGroup.All };
-        PhotonNetwork.RaiseEvent((byte)NetworkCodes.ResetToLobbyCode, content, options, SendOptions.SendReliable);
+        PhotonNetwork.RaiseEvent((byte)NetworkCodes.ResetToLobby, content, options, SendOptions.SendReliable);
     }
 }

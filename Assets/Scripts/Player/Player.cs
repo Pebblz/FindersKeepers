@@ -203,7 +203,7 @@ public class Player : MonoBehaviourPunCallbacks, IPunObservable, IOnEventCallbac
         byte eventCode = photonEvent.Code;
 
         //remove all objects player is carrying when the scene is switched
-        if (eventCode == (byte)NetworkCodes.SwitchToWinOrLoseSceneEventCode)
+        if (eventCode == (byte)NetworkCodes.SwitchToWinOrLoseScene)
         {
             Debug.Log("Event Code: " + eventCode);
             GameObject.FindGameObjectWithTag("Player").GetComponent<Player_Movement>().enabled = false;

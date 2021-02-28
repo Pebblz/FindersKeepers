@@ -191,7 +191,7 @@ public class GameManager : MonoBehaviourPunCallbacks
         {
             Debug.LogError("A non master client attempted to load level");
         }
-        netManager.NetworkSceneChangedRaiseEvent();
+        netManager.NetworkSceneChangedEvent();
         PhotonNetwork.LoadLevel("Lobby_" + PhotonNetwork.CurrentRoom.PlayerCount);
 
     }
@@ -201,8 +201,8 @@ public class GameManager : MonoBehaviourPunCallbacks
 
         if (PhotonNetwork.IsMasterClient && PressPlayButtonOnce == false)
         {
-            netManager.MusicChangeRaiseEvent();
-            netManager.NetworkSceneChangedRaiseEvent();
+            netManager.ChangeToGameMusicEvent();
+            netManager.NetworkSceneChangedEvent();
             PhotonNetwork.LoadLevel("Main Game");
             PressPlayButtonOnce = true;
 
@@ -233,7 +233,7 @@ public class GameManager : MonoBehaviourPunCallbacks
         { //if gameover
             gameState = GameState.The_Run; //static so this variable must be manually reset
 
-            netManager.ChangeToWinOrLoseSceneRaiseEvent();
+            netManager.ChangeToWinOrLoseSceneEvent();
 
             PhotonNetwork.LoadLevel("WinOrLose"); //end of game load endscreen   scene doesnt exist yet
         }

@@ -191,7 +191,7 @@ public class PlayerPickUp : MonoBehaviourPunCallbacks, IPunObservable, IOnEventC
         byte eventCode = photonEvent.Code;
 
         //remove all objects player is carrying when the scene is switched
-        if (eventCode == (byte)NetworkCodes.NetworkSceneChangedEventCode)
+        if (eventCode == (byte)NetworkCodes.NetworkSceneChanged)
         {
             Debug.Log("Event Code: " + eventCode);
             DropOBJ();
@@ -199,7 +199,7 @@ public class PlayerPickUp : MonoBehaviourPunCallbacks, IPunObservable, IOnEventC
             PickUp = null;
             isHoldingOBJ = false;
         }
-        else if (eventCode == (byte)NetworkCodes.ChangeToGameMusicEventCode)
+        else if (eventCode == (byte)NetworkCodes.ChangeToGameMusic)
         {
             sfxManager.PlayGameTheme();
         }
