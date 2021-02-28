@@ -28,11 +28,10 @@ public class Button_Script : MonoBehaviourPunCallbacks
     /// </summary>
     public void MainScene()
     {
-        if (PhotonNetwork.IsConnected)
-        {
+
             PhotonNetwork.Disconnect();
             print("Works2");
-        }
+        
         SceneManager.LoadScene("Launcher");
     }
 
