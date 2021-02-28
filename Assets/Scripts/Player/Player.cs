@@ -209,7 +209,11 @@ public class Player : MonoBehaviourPunCallbacks, IPunObservable, IOnEventCallbac
         {
             Debug.Log("Event Code: " + eventCode);
             GetComponent<Player_Movement>().enabled = false;
-            Anim.SetBool("Reset", false);
+
+            if (GetComponent<PhotonView>().IsMine)
+            {
+                Anim.SetBool("Reset", false);
+            }
             // find camera by the cinemachine brain instead so it does
             // not delete the camera in win or lose scene
             var camToDestroy = FindObjectOfType<CinemachineBrain>();
