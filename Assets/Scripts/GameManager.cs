@@ -37,6 +37,7 @@ public class GameManager : MonoBehaviourPunCallbacks
     [SerializeField]
     private GameObject playerPrefab;
     public GameObject startButton;
+    private NetworkManager netManager;
     public bool isGameScene;
     bool PressPlayButtonOnce;
 
@@ -68,7 +69,7 @@ public class GameManager : MonoBehaviourPunCallbacks
 
     void Start()
     {
-
+        netManager = this.GetComponent<NetworkManager>();
         GameObject[] playerfabs = Resources.LoadAll<GameObject>("Players").ToArray();
         playerPrefabs = GameManager.Randomize(playerfabs);
 
@@ -190,7 +191,7 @@ public class GameManager : MonoBehaviourPunCallbacks
         {
             Debug.LogError("A non master client attempted to load level");
         }
-        NetworkSceneChangedRaiseEvent();
+        netManager.NetworkSceneChangedRaiseEvent();
         PhotonNetwork.LoadLevel("Lobby_" + PhotonNetwork.CurrentRoom.PlayerCount);
 
     }
@@ -200,8 +201,8 @@ public class GameManager : MonoBehaviourPunCallbacks
 
         if (PhotonNetwork.IsMasterClient && PressPlayButtonOnce == false)
         {
-            MusicChangeRaiseEvent();
-            NetworkSceneChangedRaiseEvent();
+            netManager.MusicChangeRaiseEvent();
+            netManager.NetworkSceneChangedRaiseEvent();
             PhotonNetwork.LoadLevel("Main Game");
             PressPlayButtonOnce = true;
 
@@ -216,30 +217,7 @@ public class GameManager : MonoBehaviourPunCallbacks
     }
 
     #region Network Events
-    // the flag for raising a Network Event
-
-    private void NetworkSceneChangedRaiseEvent()
-    {
-        object[] content = new object[] { };
-        RaiseEventOptions options = new RaiseEventOptions { Receivers = ReceiverGroup.All };
-        PhotonNetwork.RaiseEvent((byte)NetworkCodes.NetworkSceneChangedEventCode, content, options, SendOptions.SendReliable);
-    }
-
-    private void MusicChangeRaiseEvent()
-    {
-        
-        object[] content = new object[] { };
-        RaiseEventOptions options = new RaiseEventOptions { Receivers = ReceiverGroup.All };
-        bool worked = PhotonNetwork.RaiseEvent((byte)NetworkCodes.ChangeToGameMusicEventCode, content, options, SendOptions.SendReliable);
-        Debug.Log("Music Event: " + worked);
-    }
-
-    private void ChangeToWinOrLoseSceneRaiseEvent()
-    {
-        object[] content = new object[] { };
-        RaiseEventOptions options = new RaiseEventOptions { Receivers = ReceiverGroup.All };
-        PhotonNetwork.RaiseEvent((byte)NetworkCodes.SwitchToWinOrLoseSceneEventCode, content, options, SendOptions.SendReliable);
-    }
+    
     #endregion
 
     #region In game Scene Management
@@ -255,7 +233,7 @@ public class GameManager : MonoBehaviourPunCallbacks
         { //if gameover
             gameState = GameState.The_Run; //static so this variable must be manually reset
 
-            ChangeToWinOrLoseSceneRaiseEvent();
+            netManager.ChangeToWinOrLoseSceneRaiseEvent();
 
             PhotonNetwork.LoadLevel("WinOrLose"); //end of game load endscreen   scene doesnt exist yet
         }

@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 3127317433066119693}
   - component: {fileID: 3127317432469538028}
   - component: {fileID: 3127317432469538029}
+  - component: {fileID: 4522631035504317771}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -49,8 +50,13 @@ MonoBehaviour:
   playerPrefabs: []
   playerPrefab: {fileID: 5695364295554685960, guid: 3d4ebffe9e80f354881176f281dcc62f,
     type: 3}
-  speedPowerPrefab: {fileID: 4443697703682703854, guid: e2a1a0d6c55c78942b6b05c0a1553b52,
-    type: 3}
+  startButton: {fileID: 0}
+  isGameScene: 0
+  seconds:
+    RunTime: 0
+    PlayTime: 0
+  RespawnPoints: []
+  list: {fileID: 0}
 --- !u!114 &3127317432469538028
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -90,3 +96,15 @@ MonoBehaviour:
   viewIdField: 0
   InstantiationId: 0
   isRuntimeInstantiated: 0
+--- !u!114 &4522631035504317771
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3127317433066119692}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8b50cbcc894ad654e8d9b866b69f4aee, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
