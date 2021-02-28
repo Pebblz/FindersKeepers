@@ -183,6 +183,10 @@ public class Player : MonoBehaviourPunCallbacks, IPunObservable, IOnEventCallbac
         if (GetComponent<PhotonView>().IsMine)
         {
             Anim.SetBool("Reset", true);
+            Anim.SetBool("First", false);
+            Anim.SetBool("Second", false);
+            Anim.SetBool("Third", false);
+            Anim.SetBool("Fourth", false);
             transform.position = StartPosition;
 
             GetComponent<PlayerMovement>().enabled = true;
