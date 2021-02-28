@@ -12,5 +12,6 @@ public enum NetworkCodes : byte
 {
     NetworkSceneChangedEventCode = 1,
     ChangeToGameMusicEventCode,
-    SwitchToWinOrLoseSceneEventCode
+    SwitchToWinOrLoseSceneEventCode,
+    ResetToLobbyCode
 }
