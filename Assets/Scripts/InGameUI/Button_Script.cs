@@ -2,8 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
-
-public class Button_Script : MonoBehaviour
+using Photon.Pun;
+public class Button_Script : MonoBehaviourPunCallbacks
 {
     /*Flowery Box
      * Programmer: Patrick Naatz
@@ -15,6 +15,11 @@ public class Button_Script : MonoBehaviour
     /// </summary>
     public void Quit()
     {
+        if (PhotonNetwork.IsConnected)
+        {
+            PhotonNetwork.Disconnect();
+            print("Works");
+        }
         Application.Quit();
     }
 
@@ -23,6 +28,11 @@ public class Button_Script : MonoBehaviour
     /// </summary>
     public void MainScene()
     {
+        if (PhotonNetwork.IsConnected)
+        {
+            PhotonNetwork.Disconnect();
+            print("Works2");
+        }
         SceneManager.LoadScene("Launcher");
     }
 
@@ -56,5 +66,6 @@ public class Button_Script : MonoBehaviour
     public void PlayAgain()
     {
         //this can be tricky because of room codes
+        PhotonNetwork.LoadLevel("Lobby_" + PhotonNetwork.CurrentRoom.PlayerCount);   
     }
 }

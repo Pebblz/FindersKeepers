@@ -540,6 +540,7 @@ MonoBehaviour:
   startingRot: {x: 0, y: 0, z: 0, w: 0}
   hasGravity: 1
   image: {fileID: 21300000, guid: 151e78443a9d0df4e9daac96c6e8233f, type: 3}
+  throwIntoZoneTimer: 0
 --- !u!114 &261850007
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -706,15 +707,15 @@ RectTransform:
   m_GameObject: {fileID: 329137956}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.84486425, y: 0.84486425, z: 0.42243212}
+  m_LocalScale: {x: 1, y: 1, z: 0}
   m_Children: []
   m_Father: {fileID: 874509536}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0.84000003}
-  m_AnchorMax: {x: 0.2025, y: 1}
-  m_AnchoredPosition: {x: -8.437988, y: 2.3969727}
-  m_SizeDelta: {x: 18.498962, y: 8}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 107, y: -57}
+  m_SizeDelta: {x: 180.49896, y: 80}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &329137958
 MonoBehaviour:
@@ -1048,6 +1049,7 @@ MonoBehaviour:
   startingRot: {x: 0, y: 0, z: 0, w: 0}
   hasGravity: 1
   image: {fileID: 21300000, guid: 4ba034d57839a7d4e8de8b3022dcf50a, type: 3}
+  throwIntoZoneTimer: 0
 --- !u!114 &462888320
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1364,6 +1366,7 @@ MonoBehaviour:
   startingRot: {x: 0, y: 0, z: 0, w: 0}
   hasGravity: 1
   image: {fileID: 21300000, guid: 111189e6b65e17f4581a274558c461cc, type: 3}
+  throwIntoZoneTimer: 0
 --- !u!114 &569703278
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1533,15 +1536,15 @@ RectTransform:
   m_GameObject: {fileID: 727726110}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.84486425, y: 0.84486425, z: 0.42243212}
+  m_LocalScale: {x: 1, y: 1.5, z: 0}
   m_Children: []
   m_Father: {fileID: 874509536}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.79375005, y: 0.8666667}
+  m_AnchorMin: {x: 1, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 7.5, y: 4}
-  m_SizeDelta: {x: 15.498962, y: 0}
+  m_AnchoredPosition: {x: -106, y: -57}
+  m_SizeDelta: {x: 180.49896, y: 60}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &727726112
 MonoBehaviour:
@@ -1901,6 +1904,7 @@ MonoBehaviour:
   startingRot: {x: 0, y: 0, z: 0, w: 0}
   hasGravity: 1
   image: {fileID: 21300000, guid: ddae05eceb3686d4cbac0c177d8c8087, type: 3}
+  throwIntoZoneTimer: 0
 --- !u!114 &870204856
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2423,6 +2427,7 @@ MonoBehaviour:
   startingRot: {x: 0, y: 0, z: 0, w: 0}
   hasGravity: 1
   image: {fileID: 21300000, guid: 37eb54dc082df434398ef293a416373d, type: 3}
+  throwIntoZoneTimer: 0
 --- !u!114 &1092485786
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3169,6 +3174,7 @@ MonoBehaviour:
   startingRot: {x: 0, y: 0, z: 0, w: 0}
   hasGravity: 1
   image: {fileID: 21300000, guid: 85a18eb5698c5c14a88ea7878e84128e, type: 3}
+  throwIntoZoneTimer: 0
 --- !u!114 &1421674468
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3574,6 +3580,7 @@ MonoBehaviour:
   startingRot: {x: 0, y: 0, z: 0, w: 0}
   hasGravity: 1
   image: {fileID: 0}
+  throwIntoZoneTimer: 0
 --- !u!114 &1556218536
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3833,6 +3840,7 @@ MonoBehaviour:
   startingRot: {x: 0, y: 0, z: 0, w: 0}
   hasGravity: 1
   image: {fileID: 21300000, guid: 57e44160690e84749af2e56124334829, type: 3}
+  throwIntoZoneTimer: 0
 --- !u!114 &1575391440
 MonoBehaviour:
   m_ObjectHideFlags: 0

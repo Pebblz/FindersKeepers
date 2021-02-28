@@ -26,6 +26,7 @@ public class Player : MonoBehaviourPunCallbacks, IPunObservable, IOnEventCallbac
     public static GameObject localInstance;
 
     public int score = 0;
+    [HideInInspector]
     public bool isFiring = false;
     SoundManager soundManager;
 
@@ -33,7 +34,7 @@ public class Player : MonoBehaviourPunCallbacks, IPunObservable, IOnEventCallbac
     public float StunCounter;
 
 
-
+    
     public Transform mainCam;
     public GameObject freeLookCam;
 
@@ -42,6 +43,12 @@ public class Player : MonoBehaviourPunCallbacks, IPunObservable, IOnEventCallbac
     public bool powerUpTimerActive = false;
     public Player_Movement pm;
     Animator Anim;
+
+
+    [HideInInspector]
+    public bool isPaused;
+    
+    float pauseTimer;
 
     #region monobehaviour callbacks
 
@@ -82,14 +89,26 @@ public class Player : MonoBehaviourPunCallbacks, IPunObservable, IOnEventCallbac
 
         if (GetComponent<PhotonView>().IsMine)
         {
-
+            if(Input.GetKeyDown(KeyCode.Escape) && pauseTimer <= 0)
+            {
+                isPaused = !isPaused;
+                pauseTimer = 1f;
+            }
             //Finds current scene
             Scene scene = SceneManager.GetActiveScene();
             if (scene.name == "Main Game")
             {
-                //if you're in game it'll lock your cursor and hide it 
-                Cursor.visible = false;
-                Cursor.lockState = CursorLockMode.Locked;
+                if (isPaused)
+                {
+                    Cursor.visible = true;
+                    Cursor.lockState = CursorLockMode.None;
+                }
+                else
+                {
+                    //if you're in game it'll lock your cursor and hide it 
+                    Cursor.visible = false;
+                    Cursor.lockState = CursorLockMode.Locked;
+                }
             }
             else
             {
@@ -109,6 +128,7 @@ public class Player : MonoBehaviourPunCallbacks, IPunObservable, IOnEventCallbac
             {
                 Anim.SetBool("IsStunned", false);
             }
+            pauseTimer -= Time.deltaTime;
         }
     }
 
