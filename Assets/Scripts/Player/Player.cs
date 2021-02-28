@@ -155,17 +155,19 @@ namespace com.pebblz.finderskeepers
         {
             return currentPowerUp;
         }
-    }
-    public void ResetPosition()
-    {
-        if (GetComponent<PhotonView>().IsMine)
+
+        public void ResetPosition()
         {
-            Anim.SetBool("Reset", true);
-            Anim.SetBool("First", false);
-            Anim.SetBool("Second", false);
-            Anim.SetBool("Third", false);
-            Anim.SetBool("Fourth", false);
-            transform.position = StartPosition;
+            if (GetComponent<PhotonView>().IsMine)
+            {
+                Anim.SetBool("Reset", true);
+                Anim.SetBool("First", false);
+                Anim.SetBool("Second", false);
+                Anim.SetBool("Third", false);
+                Anim.SetBool("Fourth", false);
+                transform.position = StartPosition;
+            }
+        }
 
         public void activatePowerUp()
         {
@@ -189,16 +191,6 @@ namespace com.pebblz.finderskeepers
             else
             {
                 deactivatePowerUp();
-            }
-        }
-        public void ResetPosition()
-        {
-            if (GetComponent<PhotonView>().IsMine)
-            {
-                Anim.SetBool("Reset", true);
-                transform.position = StartPosition;
-
-                pm.enabled = true;
             }
         }
         public void OnPhotonSerializeView(PhotonStream stream, PhotonMessageInfo info)
@@ -264,4 +256,5 @@ namespace com.pebblz.finderskeepers
             }
         }
     }
+
 }
