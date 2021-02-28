@@ -2,55 +2,59 @@
 using System.Collections.Generic;
 using UnityEngine;
 using Photon.Pun;
-public class TelePorter : MonoBehaviourPunCallbacks
+
+namespace com.pebblz.finderskeepers
 {
-    [SerializeField]
-    GameObject OtherTelePorter;
-
-    public float TimeToTelePort;
-    GameObject Player;
-    public GameObject Q;
-    GameObject camera;
-    private void Start()
+    public class TelePorter : MonoBehaviourPunCallbacks
     {
-        camera = GameObject.FindGameObjectWithTag("MainCamera");
-    }
-    void Update()
-    {
+        [SerializeField]
+        GameObject OtherTelePorter;
 
-        if (Player == null)
+        public float TimeToTelePort;
+        GameObject Player;
+        public GameObject Q;
+        GameObject camera;
+        private void Start()
         {
-            Player = GameObject.FindGameObjectWithTag("Player");
+            camera = GameObject.FindGameObjectWithTag("MainCamera");
         }
-        if (Vector3.Distance(this.gameObject.transform.position, Player.transform.position) < 2)
-        {
-            Q.SetActive(true);
-            Vector3 temp = camera.gameObject.transform.forward;
-            temp.y = 90;
-            Q.transform.rotation = Quaternion.LookRotation(-temp);
-        }
-        else
-        {
-            Q.SetActive(false);
-        }
-
-        TimeToTelePort -= Time.deltaTime;
-    }
-
-    private void OnTriggerStay(Collider col)
-    {
-
-        if (col.tag == "Player")
+        void Update()
         {
 
-            if (TimeToTelePort < 0 && Input.GetKey(KeyCode.Q))
+            if (Player == null)
             {
-                col.transform.position = OtherTelePorter.transform.position;
-                col.GetComponent<PlayerPickUp>().ResetPickUpPos();
-                OtherTelePorter.GetComponent<TelePorter>().TimeToTelePort = .5f;
-
+                Player = GameObject.FindGameObjectWithTag("Player");
             }
+            if (Vector3.Distance(this.gameObject.transform.position, Player.transform.position) < 2)
+            {
+                Q.SetActive(true);
+                Vector3 temp = camera.gameObject.transform.forward;
+                temp.y = 90;
+                Q.transform.rotation = Quaternion.LookRotation(-temp);
+            }
+            else
+            {
+                Q.SetActive(false);
+            }
+
+            TimeToTelePort -= Time.deltaTime;
         }
 
+        private void OnTriggerStay(Collider col)
+        {
+
+            if (col.tag == "Player")
+            {
+
+                if (TimeToTelePort < 0 && Input.GetKey(KeyCode.Q))
+                {
+                    col.transform.position = OtherTelePorter.transform.position;
+                    col.GetComponent<PlayerPickUp>().ResetPickUpPos();
+                    OtherTelePorter.GetComponent<TelePorter>().TimeToTelePort = .5f;
+
+                }
+            }
+
+        }
     }
 }

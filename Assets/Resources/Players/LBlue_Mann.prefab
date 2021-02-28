@@ -691,17 +691,20 @@ MonoBehaviour:
     SynchronizeType: 1
     Name: IsThrowing
   - Type: 4
-    SynchronizeType: 0
+    SynchronizeType: 1
     Name: First
   - Type: 4
-    SynchronizeType: 0
+    SynchronizeType: 1
     Name: Second
   - Type: 4
-    SynchronizeType: 0
+    SynchronizeType: 1
     Name: Third
   - Type: 4
-    SynchronizeType: 0
+    SynchronizeType: 1
     Name: Fourth
+  - Type: 4
+    SynchronizeType: 1
+    Name: Reset
   m_SynchronizeLayers:
   - SynchronizeType: 1
     LayerIndex: 0
@@ -838,6 +841,8 @@ MonoBehaviour:
   powerUpTimer: 0
   powerUpTimerActive: 0
   pm: {fileID: 0}
+  StartPosition: {x: 0, y: 1, z: 2}
+  isPaused: 0
 --- !u!65 &877896608455135955
 BoxCollider:
   m_ObjectHideFlags: 0
