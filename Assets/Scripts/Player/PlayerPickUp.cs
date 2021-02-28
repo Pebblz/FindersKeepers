@@ -6,7 +6,7 @@ using UnityEngine.SceneManagement;
 using Photon.Realtime;
 using ExitGames.Client.Photon;
 
-public class PlayerPickUp : MonoBehaviourPunCallbacks, IPunObservable, IOnEventCallback
+public class PlayerPickUp : MonoBehaviourPunCallbacks, IPunObservable
 {
     /*Flower Box
      * Josh
@@ -186,22 +186,5 @@ public class PlayerPickUp : MonoBehaviourPunCallbacks, IPunObservable, IOnEventC
     }
 
 
-    public void OnEvent(EventData photonEvent)
-    {
-        byte eventCode = photonEvent.Code;
 
-        //remove all objects player is carrying when the scene is switched
-        if (eventCode == (byte)NetworkCodes.NetworkSceneChanged)
-        {
-            Debug.Log("Event Code: " + eventCode);
-            DropOBJ();
-            isPickingUpOBJ = false;
-            PickUp = null;
-            isHoldingOBJ = false;
-        }
-        else if (eventCode == (byte)NetworkCodes.ChangeToGameMusic)
-        {
-            sfxManager.PlayGameTheme();
-        }
-    }
 }

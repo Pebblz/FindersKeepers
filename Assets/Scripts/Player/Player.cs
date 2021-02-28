@@ -218,5 +218,19 @@ public class Player : MonoBehaviourPunCallbacks, IPunObservable, IOnEventCallbac
                 Destroy(camToDestroy.gameObject);
             }
         }
+
+        else if (eventCode == (byte)NetworkCodes.NetworkSceneChanged)
+        {
+            var playerPickUp = GetComponent<PlayerPickUp>();
+            Debug.Log("Event Code: " + eventCode);
+            playerPickUp.DropOBJ();
+            playerPickUp.isPickingUpOBJ = false;
+            playerPickUp.PickUp = null;
+            playerPickUp.isHoldingOBJ = false;
+        }
+        else if (eventCode == (byte)NetworkCodes.ChangeToGameMusic)
+        {
+            GetComponentInChildren<SoundManager>().PlayGameTheme();
+        }
     }
 }
