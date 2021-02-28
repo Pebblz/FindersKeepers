@@ -9,13 +9,6 @@ using Cinemachine;
 
 public class Player : MonoBehaviourPunCallbacks, IPunObservable, IOnEventCallback
 {
-    /*Fb
-     * 
-     * Edited By: Patrick Naatz
-     * Added:
-     *    the WinOrLoseSceneEvent functionality into the onevent function
-     */
-
     //List of the scripts that should only be active for the local
     //player (ex. PlayerController, MouseLook etc.)
     [SerializeField]
@@ -185,6 +178,7 @@ public class Player : MonoBehaviourPunCallbacks, IPunObservable, IOnEventCallbac
     }
     public void ResetPosition()
     {
+        Anim.SetBool("Reset", true);
         transform.position = StartPosition;
         GetComponent<PlayerMovement>().enabled = true;
     }
@@ -215,7 +209,7 @@ public class Player : MonoBehaviourPunCallbacks, IPunObservable, IOnEventCallbac
         {
             Debug.Log("Event Code: " + eventCode);
             GetComponent<Player_Movement>().enabled = false;
-            
+            Anim.SetBool("Reset", false);
             // find camera by the cinemachine brain instead so it does
             // not delete the camera in win or lose scene
             var camToDestroy = FindObjectOfType<CinemachineBrain>();
