@@ -163,7 +163,7 @@ namespace com.pebblz.finderskeepers
                 Anim.SetBool("Second", false);
                 Anim.SetBool("Third", false);
                 Anim.SetBool("Fourth", false);
-                transform.position = StartPosition + new Vector3(Random.Range(0, 2), 1, Random.Range(0, 2));
+                transform.position = StartPosition + new Vector3(Random.Range(0, 2), 1.5f, Random.Range(0, 2));
             }
         }
 
