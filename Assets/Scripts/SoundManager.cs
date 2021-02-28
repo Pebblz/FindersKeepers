@@ -88,7 +88,8 @@ namespace com.pebblz.finderskeepers
 
         public void PlayLobbyTheme()
         {
-            this.SceneTheme.Stop();
+            if(this.SceneTheme == null)
+                this.SceneTheme.Stop();
             this.SceneTheme = LobbyTheme;
             this.SceneTheme.loop = true;
             this.SceneTheme.Play();
