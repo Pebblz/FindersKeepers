@@ -58,7 +58,6 @@ namespace com.pebblz.finderskeepers
             camToHide = FindObjectOfType<CinemachineBrain>();
             if (photonView.IsMine)
             {
-
                 StartPosition = transform.position;
                 Anim = GetComponent<Animator>();
                 gameObject.tag = "Player";
@@ -165,7 +164,7 @@ namespace com.pebblz.finderskeepers
                 Anim.SetBool("Second", false);
                 Anim.SetBool("Third", false);
                 Anim.SetBool("Fourth", false);
-                transform.position = StartPosition;
+                transform.position = StartPosition + new Vector3(Random.Range(0, 5), 1, Random.Range(0, 5));
             }
         }
 
@@ -251,7 +250,7 @@ namespace com.pebblz.finderskeepers
             }
             else if (eventCode == (byte)NetworkCodes.ResetToLobby)
             {
-                if(pm != null)
+                if (pm != null)
                     pm.enabled = true;
                 ResetPosition();
                 camToHide.gameObject.SetActive(true);
