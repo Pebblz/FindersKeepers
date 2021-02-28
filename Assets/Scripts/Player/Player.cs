@@ -41,7 +41,7 @@ namespace com.pebblz.finderskeepers
         Animator Anim;
         CinemachineBrain camToHide;
         [HideInInspector]
-        public Vector3 StartPosition;
+        public Vector3 StartPosition = new Vector3(0, 1, 2);
 
         [HideInInspector]
         public bool isPaused;
@@ -58,7 +58,6 @@ namespace com.pebblz.finderskeepers
             camToHide = FindObjectOfType<CinemachineBrain>();
             if (photonView.IsMine)
             {
-                StartPosition = transform.position;
                 Anim = GetComponent<Animator>();
                 gameObject.tag = "Player";
                 Player.localInstance = gameObject;
@@ -164,7 +163,7 @@ namespace com.pebblz.finderskeepers
                 Anim.SetBool("Second", false);
                 Anim.SetBool("Third", false);
                 Anim.SetBool("Fourth", false);
-                transform.position = StartPosition + new Vector3(Random.Range(0, 5), 1, Random.Range(0, 5));
+                transform.position = StartPosition + new Vector3(Random.Range(0, 2), 1, Random.Range(0, 2));
             }
         }
 
