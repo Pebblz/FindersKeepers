@@ -251,6 +251,7 @@ namespace com.pebblz.finderskeepers
             }
             else if (eventCode == (byte)NetworkCodes.ResetToLobby)
             {
+                pm.enabled = true;
                 ResetPosition();
                 camToHide.gameObject.SetActive(true);
                 soundManager.PlayLobbyTheme();
