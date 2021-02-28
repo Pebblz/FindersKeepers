@@ -65,6 +65,8 @@ public class Button_Script : MonoBehaviourPunCallbacks
     public void PlayAgain()
     {
         //this can be tricky because of room codes
+        var networkManager = FindObjectOfType<NetworkManager>();
+        networkManager.ResetToLobbyEvent();
         PhotonNetwork.LoadLevel("Lobby_" + PhotonNetwork.CurrentRoom.PlayerCount);   
     }
 }
