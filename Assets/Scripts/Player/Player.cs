@@ -28,7 +28,7 @@ public class Player : MonoBehaviourPunCallbacks, IPunObservable, IOnEventCallbac
     Rigidbody rb;
     public float StunCounter;
 
-
+    PlayerMovement PM;
 
     public Transform mainCam;
     public GameObject freeLookCam;
@@ -57,6 +57,7 @@ public class Player : MonoBehaviourPunCallbacks, IPunObservable, IOnEventCallbac
         camToHide = FindObjectOfType<CinemachineBrain>();
         if (photonView.IsMine)
         {
+            PM = GetComponent<PlayerMovement>();
             StartPosition = transform.position;
             Anim = GetComponent<Animator>();
             gameObject.tag = "Player";
@@ -185,7 +186,7 @@ public class Player : MonoBehaviourPunCallbacks, IPunObservable, IOnEventCallbac
             Anim.SetBool("Reset", true);
             transform.position = StartPosition;
 
-            GetComponent<PlayerMovement>().enabled = true;
+            PM.enabled = true;
         }
     }
     public void OnPhotonSerializeView(PhotonStream stream, PhotonMessageInfo info)
@@ -215,7 +216,7 @@ public class Player : MonoBehaviourPunCallbacks, IPunObservable, IOnEventCallbac
         {
             
             Debug.Log("Event Code: " + eventCode);
-            GetComponent<Player_Movement>().enabled = false;
+            PM.enabled = false;
 
             if (GetComponent<PhotonView>().IsMine)
             {
