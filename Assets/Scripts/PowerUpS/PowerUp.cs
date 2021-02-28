@@ -2,8 +2,11 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public interface PowerUp
+namespace com.pebblz.finderskeepers
 {
-    void activate(Player player);
-    void deactivate(Player player);
+    public interface PowerUp
+    {
+        void activate(Player player);
+        void deactivate(Player player);
+    }
 }

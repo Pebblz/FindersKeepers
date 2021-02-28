@@ -6,12 +6,14 @@ using UnityEngine;
  * 
  * Edited By: Patrick Naatz
  * changed the NetworkCodes class to an enum
- */ 
-
-public enum NetworkCodes : byte
+ */
+namespace com.pebblz.finderskeepers
 {
-    NetworkSceneChanged = 1,
-    ChangeToGameMusic,
-    SwitchToWinOrLoseScene,
-    ResetToLobby
+    public enum NetworkCodes : byte
+    {
+        NetworkSceneChanged = 1,
+        ChangeToGameMusic,
+        SwitchToWinOrLoseScene,
+        ResetToLobby
+    }
 }

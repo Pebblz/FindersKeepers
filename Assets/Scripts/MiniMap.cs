@@ -2,20 +2,23 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class MiniMap : MonoBehaviour
+namespace com.pebblz.finderskeepers
 {
-    GameObject Player;
-
-
-    // Update is called once per frame
-    void Update()
+    public class MiniMap : MonoBehaviour
     {
-        if(Player == null)
+        GameObject Player;
+
+
+        // Update is called once per frame
+        void Update()
         {
-            Player = GameObject.FindGameObjectWithTag("Player");
+            if (Player == null)
+            {
+                Player = GameObject.FindGameObjectWithTag("Player");
+            }
+
+            transform.position = new Vector3(Player.transform.position.x, transform.position.y, Player.transform.position.z);
+
         }
-
-        transform.position = new Vector3(Player.transform.position.x, transform.position.y, Player.transform.position.z);
-
     }
 }

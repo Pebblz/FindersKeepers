@@ -2,15 +2,19 @@
 using System.Collections.Generic;
 using UnityEngine;
 using Photon.Pun;
-public class PlayButton : MonoBehaviourPunCallbacks
+
+namespace com.pebblz.finderskeepers
 {
-    void Start()
+    public class PlayButton : MonoBehaviourPunCallbacks
     {
-        if (!PhotonNetwork.IsMasterClient)
+        void Start()
         {
+            if (!PhotonNetwork.IsMasterClient)
+            {
 
-            this.gameObject.SetActive(false);
+                this.gameObject.SetActive(false);
 
+            }
         }
     }
 }
