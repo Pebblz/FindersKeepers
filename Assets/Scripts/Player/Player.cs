@@ -38,7 +38,7 @@ public class Player : MonoBehaviourPunCallbacks, IPunObservable, IOnEventCallbac
     public bool powerUpTimerActive = false;
     public Player_Movement pm;
     Animator Anim;
-
+    CinemachineBrain camToHide;
     [HideInInspector]
     public Vector3 StartPosition;
 
@@ -52,7 +52,9 @@ public class Player : MonoBehaviourPunCallbacks, IPunObservable, IOnEventCallbac
 
     private void Awake()
     {
+
         soundManager = this.GetComponentInChildren<SoundManager>();
+        camToHide = FindObjectOfType<CinemachineBrain>();
         if (photonView.IsMine)
         {
             StartPosition = transform.position;
@@ -211,6 +213,7 @@ public class Player : MonoBehaviourPunCallbacks, IPunObservable, IOnEventCallbac
         //remove all objects player is carrying when the scene is switched
         if (eventCode == (byte)NetworkCodes.SwitchToWinOrLoseScene)
         {
+            
             Debug.Log("Event Code: " + eventCode);
             GetComponent<Player_Movement>().enabled = false;
 
@@ -220,10 +223,10 @@ public class Player : MonoBehaviourPunCallbacks, IPunObservable, IOnEventCallbac
             }
             // find camera by the cinemachine brain instead so it does
             // not delete the camera in win or lose scene
-            var camToDestroy = FindObjectOfType<CinemachineBrain>();
-            if (camToDestroy != null)
+            
+            if (camToHide != null)
             {
-                Destroy(camToDestroy.gameObject);
+                camToHide.gameObject.SetActive(false);
             }
         }
 
@@ -238,12 +241,13 @@ public class Player : MonoBehaviourPunCallbacks, IPunObservable, IOnEventCallbac
         }
         else if (eventCode == (byte)NetworkCodes.ChangeToGameMusic)
         {
-            GetComponentInChildren<SoundManager>().PlayGameTheme();
+            soundManager.PlayGameTheme();
         }
         else if (eventCode == (byte)NetworkCodes.ResetToLobby)
         {
             ResetPosition();
-            GetComponentInChildren<SoundManager>().PlayLobbyTheme();
+            camToHide.gameObject.SetActive(true);
+            soundManager.PlayLobbyTheme();
         }
     }
 }
