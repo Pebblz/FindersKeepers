@@ -153,7 +153,7 @@ namespace com.pebblz.finderskeepers
         {
             return currentPowerUp;
         }
-
+        
         public void ResetPosition()
         {
             if (GetComponent<PhotonView>().IsMine)
