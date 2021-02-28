@@ -220,11 +220,12 @@ namespace com.pebblz.finderskeepers
             {
 
                 Debug.Log("Event Code: " + eventCode);
-                pm.enabled = false;
+
 
                 if (GetComponent<PhotonView>().IsMine)
                 {
                     Anim.SetBool("Reset", false);
+                    pm.enabled = false;
                 }
                 // find camera by the cinemachine brain instead so it does
                 // not delete the camera in win or lose scene
