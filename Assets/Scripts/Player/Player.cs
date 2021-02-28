@@ -238,6 +238,7 @@ public class Player : MonoBehaviourPunCallbacks, IPunObservable, IOnEventCallbac
         } else if (eventCode == (byte)NetworkCodes.ResetToLobby)
         {
             ResetPosition();
+            GetComponentInChildren<SoundManager>().PlayLobbyTheme();
         }
     }
 }
