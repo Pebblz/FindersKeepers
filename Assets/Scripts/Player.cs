@@ -187,8 +187,14 @@ public class Player : MonoBehaviourPunCallbacks, IPunObservable, IOnEventCallbac
         {
             Debug.Log("Event Code: " + eventCode);
             GameObject.FindGameObjectWithTag("Player").GetComponent<Player_Movement>().enabled = false;
+            
+            // find camera by the cinemachine brain instead so it does
+            // not delete the camera in win or lose scene
             var camToDestroy = FindObjectOfType<CinemachineBrain>();
-            Destroy(camToDestroy.gameObject);
+            if(camToDestroy != null)
+            {
+                Destroy(camToDestroy.gameObject);
+            }
         }
     }
 }
