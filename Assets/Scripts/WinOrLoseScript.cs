@@ -31,14 +31,6 @@ public class WinOrLoseScript : MonoBehaviourPunCallbacks
     #region pre set
     [SerializeField] Text text;
 
-    //Audio Variables
-    [System.Serializable] struct Audio_Variables
-    {
-        public AudioSource audioSource;
-        public AudioClip winSound, loseSound;
-    }
-    [SerializeField] Audio_Variables audioVaraibles;
-    
     [SerializeField] Transform[] podiums;
 
     [SerializeField] GameObject quickRot;
@@ -378,14 +370,15 @@ public class WinOrLoseScript : MonoBehaviourPunCallbacks
 
     void Win(Player winner)
     {
-        PlaySound(audioVaraibles.winSound);
+        
+        
         text.text = "YOU WON!";
         winner.GetComponent<Animator>().SetBool("First", true); //plays the winning animation now because the 1-4 animations are already playing
     }
 
     void Lose()
     {
-        PlaySound(audioVaraibles.loseSound);
+
         text.text = "You Lost";
     }
     #endregion
@@ -413,9 +406,5 @@ public class WinOrLoseScript : MonoBehaviourPunCallbacks
         return false;
     }
 
-    void PlaySound(AudioClip audioClip)
-    {
-        audioVaraibles.audioSource.PlayOneShot(audioClip);
-    }
     #endregion
 }
