@@ -5,6 +5,7 @@ using Photon.Pun;
 using UnityEngine.SceneManagement;
 using Photon.Realtime;
 using ExitGames.Client.Photon;
+using Cinemachine;
 
 public class Player : MonoBehaviourPunCallbacks, IPunObservable, IOnEventCallback
 {
@@ -186,7 +187,14 @@ public class Player : MonoBehaviourPunCallbacks, IPunObservable, IOnEventCallbac
         {
             Debug.Log("Event Code: " + eventCode);
             GameObject.FindGameObjectWithTag("Player").GetComponent<Player_Movement>().enabled = false;
-            Destroy(FindObjectOfType<Camera>().gameObject);
+            
+            // find camera by the cinemachine brain instead so it does
+            // not delete the camera in win or lose scene
+            var camToDestroy = FindObjectOfType<CinemachineBrain>();
+            if(camToDestroy != null)
+            {
+                Destroy(camToDestroy.gameObject);
+            }
         }
     }
 }
