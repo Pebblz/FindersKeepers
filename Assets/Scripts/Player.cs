@@ -5,6 +5,7 @@ using Photon.Pun;
 using UnityEngine.SceneManagement;
 using Photon.Realtime;
 using ExitGames.Client.Photon;
+using Cinemachine;
 
 public class Player : MonoBehaviourPunCallbacks, IPunObservable, IOnEventCallback
 {
@@ -186,11 +187,8 @@ public class Player : MonoBehaviourPunCallbacks, IPunObservable, IOnEventCallbac
         {
             Debug.Log("Event Code: " + eventCode);
             GameObject.FindGameObjectWithTag("Player").GetComponent<Player_Movement>().enabled = false;
-            if (PhotonNetwork.IsMasterClient)
-            {
-                Destroy(FindObjectOfType<Camera>().gameObject);
-            }
-            
+            var camToDestroy = FindObjectOfType<CinemachineBrain>();
+            Destroy(camToDestroy.gameObject);
         }
     }
 }
