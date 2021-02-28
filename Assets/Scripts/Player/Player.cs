@@ -18,7 +18,8 @@ public class Player : MonoBehaviourPunCallbacks, IPunObservable, IOnEventCallbac
 
     //List of the scripts that should only be active for the local
     //player (ex. PlayerController, MouseLook etc.)
-    public MonoBehaviour[] localScripts;
+    [SerializeField]
+    MonoBehaviour[] localScripts;
 
     //List of the GameObjects that should only be active for the local 
     //player (ex. Camera, AudioListener etc.)
@@ -45,6 +46,8 @@ public class Player : MonoBehaviourPunCallbacks, IPunObservable, IOnEventCallbac
     public Player_Movement pm;
     Animator Anim;
 
+    [HideInInspector]
+    public Vector3 StartPosition;
 
     [HideInInspector]
     public bool isPaused;
@@ -59,6 +62,7 @@ public class Player : MonoBehaviourPunCallbacks, IPunObservable, IOnEventCallbac
         soundManager  = this.GetComponentInChildren<SoundManager>();
         if (photonView.IsMine)
         {
+            StartPosition = transform.position;
             Anim = GetComponent<Animator>();
             gameObject.tag = "Player";
             Player.localInstance = gameObject;
@@ -179,7 +183,11 @@ public class Player : MonoBehaviourPunCallbacks, IPunObservable, IOnEventCallbac
             deactivatePowerUp();
         }
     }
-
+    public void ResetPosition()
+    {
+        transform.position = StartPosition;
+        GetComponent<PlayerMovement>().enabled = true;
+    }
     public void OnPhotonSerializeView(PhotonStream stream, PhotonMessageInfo info)
     {
 
@@ -206,7 +214,7 @@ public class Player : MonoBehaviourPunCallbacks, IPunObservable, IOnEventCallbac
         if (eventCode == (byte)NetworkCodes.SwitchToWinOrLoseScene)
         {
             Debug.Log("Event Code: " + eventCode);
-            GameObject.FindGameObjectWithTag("Player").GetComponent<Player_Movement>().enabled = false;
+            GetComponent<Player_Movement>().enabled = false;
             
             // find camera by the cinemachine brain instead so it does
             // not delete the camera in win or lose scene
