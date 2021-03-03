@@ -58,7 +58,7 @@ namespace com.pebblz.finderskeepers
 
                 Vector3 direction = new Vector3(H, 0, V).normalized;
 
-                if (direction.magnitude >= 0.1f)
+                if (direction.magnitude >= 0.1f && !ThisPlayer.isPaused)
                 {
                     if (ThisPlayer.StunCounter < 0)
                     {
@@ -85,7 +85,7 @@ namespace com.pebblz.finderskeepers
                     sfxManager.StopRunningSFX();
 
                 }
-                if (Input.GetKeyDown(KeyCode.Space) && IsGrounded())
+                if (Input.GetKeyDown(KeyCode.Space) && IsGrounded() && !ThisPlayer.isPaused)
                 {
                     this.sfxManager.PlayJump();
                     rb.velocity = new Vector3(direction.x, jumpspeed, direction.z);

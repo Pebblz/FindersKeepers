@@ -28,18 +28,26 @@ namespace com.pebblz.finderskeepers
         SoundManager soundManager;
 
         Rigidbody rb;
-        public float StunCounter;
 
+        [HideInInspector]
+        public float StunCounter;
 
         public Transform mainCam;
         public GameObject freeLookCam;
 
+        [HideInInspector]
         public PowerUp currentPowerUp;
+        [HideInInspector]
         public float powerUpTimer = 0;
+        [HideInInspector]
         public bool powerUpTimerActive = false;
+        [HideInInspector]
         public Player_Movement pm;
+
         Animator Anim;
+
         CinemachineBrain camToHide;
+
         [HideInInspector]
         public Vector3 StartPosition = new Vector3(0, 1, 2);
 
@@ -73,11 +81,6 @@ namespace com.pebblz.finderskeepers
                 soundManager.isRemotePlayer = true;
             }
             DontDestroyOnLoad(this);
-
-
-
-
-
         }
 
         void Update()

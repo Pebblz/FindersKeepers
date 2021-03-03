@@ -43,8 +43,6 @@ namespace com.pebblz.finderskeepers
             {
                 image.gameObject.SetActive(true);
             }
-
-
             FillList();
             LoadList();
         }

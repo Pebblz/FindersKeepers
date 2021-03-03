@@ -24,9 +24,9 @@ namespace com.pebblz.finderskeepers
         {
             if (photonView.IsMine)
             {
-                if (Input.GetKeyDown(KeyCode.E) && TasersLeft > 0)
+                if (Input.GetKeyDown(KeyCode.E) && TasersLeft > 0 && !GetComponent<Player>().isPaused)
                 {
-                    if (GetComponent<PlayerPickUp>().isHoldingOBJ == false)
+                    if (!GetComponent<PlayerPickUp>().isHoldingOBJ)
                     {
                         GetComponent<Player>().isFiring = true;
                         shootTaser();
