@@ -1,18 +1,19 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-using Photon.Pun;
-public class DisableButtonForNonMaster : MonoBehaviourPunCallbacks
+﻿using Photon.Pun;
+namespace com.pebblz.finderskeepers
 {
-
-    void Update()
+    public class DisableButtonForNonMaster : MonoBehaviourPunCallbacks
     {
-        if(!PhotonNetwork.IsMasterClient)
+
+        void Update()
         {
-            gameObject.SetActive(false);
-        } else
-        {
-            gameObject.SetActive(true);
+            if (!PhotonNetwork.IsMasterClient)
+            {
+                gameObject.SetActive(false);
+            }
+            else
+            {
+                gameObject.SetActive(true);
+            }
         }
     }
 }

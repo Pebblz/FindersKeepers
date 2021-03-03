@@ -1,20 +1,10 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 using Photon.Pun;
 
 namespace com.pebblz.finderskeepers
 {
-    public class Player_Movement : MonoBehaviourPunCallbacks, IPunObservable
+    public class Player_Movement : MonoBehaviourPunCallbacks
     {
-        /*Flower box
-         * 
-         * Edited by: Pat Naatz
-         * 
-         * Added walking sound
-         * Added MoveToHere RPC
-         */
-
         float speed = 5;
 
         public Transform mainCam;
@@ -117,11 +107,6 @@ namespace com.pebblz.finderskeepers
         {
             return Physics.Raycast(transform.position, -Vector3.up, distToGround + 0.01f);
         }
-        public void OnPhotonSerializeView(PhotonStream stream, PhotonMessageInfo info)
-        {
-
-        }
-
         /// <summary>
         /// Moves player to certain position
         /// Only the master client should call this functiton

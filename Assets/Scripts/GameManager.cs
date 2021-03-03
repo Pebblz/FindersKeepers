@@ -12,24 +12,6 @@ namespace com.pebblz.finderskeepers
 {
     public class GameManager : MonoBehaviourPunCallbacks
     {
-        /*Flower box
-         * 
-         * Edited by: Pat Naatz
-         * Added:
-         *  Continue function
-         *  Respawn function
-         *  SetTime function
-         *  ListActivated function
-         *  GameState enum
-         *  InSeconds Struct for play time
-         *  WinLoseScene function
-         * Edited:
-         *  Some of the Network code events
-         *  Continue function
-         * TODO:
-         * Reflections for net event code
-         */
-
         static public GameManager Instance;
         public bool OnlyOnePlayer = false;
         private GameObject instance;

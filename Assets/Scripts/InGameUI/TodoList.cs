@@ -6,19 +6,8 @@ using Photon.Pun;
 
 namespace com.pebblz.finderskeepers
 {
-    public class TodoList : MonoBehaviourPunCallbacks, IPunObservable
+    public class TodoList : MonoBehaviourPunCallbacks
     {
-        /*Flower Boxing again
-         * Programmer Patrick Naatz
-         * this class when initiated randomly splits up the pickupable objects amungst whatever amount of players there are
-         * It DOES allow player to have the same object as eachother on their list and this was done intentionally
-         * 
-         * Completed:
-         * Revamp the images so it works out of an array
-         * Timer changes available in the game manager script
-         * Made it so the same image doesnt display at the same time
-         */
-
         [SerializeField] Image[] images;
 
         [SerializeField] GameManager gameManager;
@@ -155,17 +144,6 @@ namespace com.pebblz.finderskeepers
                     }
                 }
 
-            }
-        }
-
-        //this function exists to comply with IPunObservable, I dont know why, ask Jimmy
-        public void OnPhotonSerializeView(PhotonStream stream, PhotonMessageInfo info)
-        {
-            if (stream.IsWriting)
-            {
-            }
-            else
-            {
             }
         }
     }
