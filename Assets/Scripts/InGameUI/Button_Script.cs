@@ -21,7 +21,6 @@ namespace com.pebblz.finderskeepers
             if (PhotonNetwork.IsConnected)
             {
                 PhotonNetwork.Disconnect();
-                print("Works");
             }
             Application.Quit();
         }
@@ -33,8 +32,6 @@ namespace com.pebblz.finderskeepers
         {
 
             PhotonNetwork.Disconnect();
-            print("Works2");
-
             SceneManager.LoadScene("Launcher");
         }
 
@@ -53,7 +50,6 @@ namespace com.pebblz.finderskeepers
         {
             SceneManager.LoadScene("HowToPlay");
         }
-
         /// <summary>
         /// Opens the feedback form in a new tab
         /// </summary>
