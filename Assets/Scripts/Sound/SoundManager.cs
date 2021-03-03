@@ -48,6 +48,13 @@ namespace com.pebblz.finderskeepers
         public AudioSource SceneTheme; // default music supposed to playing in a scene
 
 
+        //volume variable names
+        [SerializeField]
+        float defaultVolumeValue = 0.6f;
+        private const string musicVol = "MusicVol";
+        private const string sfxVol = "SFXVol";
+
+
         private void Awake()
         {
             // when a player is loaded through the game manager it will determine
@@ -83,6 +90,38 @@ namespace com.pebblz.finderskeepers
 
         }
 
+        public void setSFXVol(float value)
+        {
+            sfx.audioMixer.SetFloat(sfxVol, Mathf.Log10(value) * 20);
+        }
+
+        public void setMusicVol(float value)
+        {
+            music.audioMixer.SetFloat(musicVol, Mathf.Log10(value) * 20);
+        }
+
+        public float getSFXVol()
+        {   
+            
+            sfx.audioMixer.GetFloat(sfxVol, out float val);
+            val = Mathf.Pow(val/20, 10);
+            if(val <= 0 || val > 1)
+            {
+                return defaultVolumeValue;
+            }
+            return val;
+        }
+
+        public float getMusicVol()
+        {
+            sfx.audioMixer.GetFloat(musicVol, out float val);
+            val = Mathf.Pow(val/20, 10);
+            if (val <= 0 || val > 1)
+            {
+                return defaultVolumeValue;
+            }
+            return val;
+        }
 
         #region PLAY_FUNCTIONS
 
