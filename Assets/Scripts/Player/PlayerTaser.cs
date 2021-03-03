@@ -13,7 +13,8 @@ namespace com.pebblz.finderskeepers
         //you need to keep a instance of the prefab to be able to delete it
         //and this is that instance
         public GameObject taserInstance;
-        int TasersLeft = 2;
+        
+        public int TasersLeft = 2;
         Animator Anim;
         void Awake()
         {

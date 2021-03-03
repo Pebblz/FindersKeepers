@@ -247,12 +247,17 @@ namespace com.pebblz.finderskeepers
             else if (eventCode == (byte)NetworkCodes.ChangeToGameMusic)
             {
                 soundManager.PlayGameTheme();
+                //this gets called when we switch to the game scene
+                this.GetComponent<PlayerTaser>().TasersLeft = 2;
+
             }
             else if (eventCode == (byte)NetworkCodes.ResetToLobby)
             {
                 if (pm != null)
                     pm.enabled = true;
                 ResetPosition();
+                this.score = 0;
+                this.GetComponent<PlayerTaser>().TasersLeft = 33;
                 camToHide.gameObject.SetActive(true);
                 soundManager.PlayLobbyTheme();
             }
