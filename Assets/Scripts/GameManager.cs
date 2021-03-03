@@ -215,6 +215,7 @@ namespace com.pebblz.finderskeepers
 
         public void LeaveRoom()
         {
+            PhotonNetwork.Disconnect();
             PhotonNetwork.LeaveRoom();
         }
 
