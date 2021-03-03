@@ -27,6 +27,8 @@ namespace com.pebblz.finderskeepers
 
         Rigidbody rb;
 
+        GameObject PauseScreen;
+
         [HideInInspector]
         public float StunCounter;
 
@@ -83,6 +85,11 @@ namespace com.pebblz.finderskeepers
 
         void Update()
         {
+            if(PauseScreen == null)
+            {
+                PauseScreen = GameObject.FindGameObjectWithTag("Pause_Menu");
+                PauseScreen.SetActive(false);
+            }
             if (powerUpTimerActive)
             {
                 updatePowerUp();
@@ -95,6 +102,16 @@ namespace com.pebblz.finderskeepers
                     isPaused = !isPaused;
                     pauseTimer = 1f;
                 }
+                if (isPaused)
+                {
+                    PauseScreen.SetActive(true);
+                }
+                else
+                {
+                    PauseScreen.SetActive(false);
+                }
+
+
                 //Finds current scene
                 Scene scene = SceneManager.GetActiveScene();
                 if (scene.name == "Main Game")
@@ -103,12 +120,14 @@ namespace com.pebblz.finderskeepers
                     {
                         Cursor.visible = true;
                         Cursor.lockState = CursorLockMode.None;
+                        PauseScreen.SetActive(true);
                     }
                     else
                     {
                         //if you're in game it'll lock your cursor and hide it 
                         Cursor.visible = false;
                         Cursor.lockState = CursorLockMode.Locked;
+                        PauseScreen.SetActive(false);
                     }
                 }
                 else

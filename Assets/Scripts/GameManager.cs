@@ -51,7 +51,7 @@ namespace com.pebblz.finderskeepers
         }
 
 
-        void Start()
+        void Awake()
         {
             netManager = this.GetComponent<NetworkManager>();
             GameObject[] playerfabs = Resources.LoadAll<GameObject>("Players").ToArray();

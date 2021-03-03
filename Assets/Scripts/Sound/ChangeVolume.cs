@@ -15,7 +15,7 @@ namespace com.pebblz.finderskeepers {
         SoundManager manager;
         [SerializeField]
         TargetMixer mixer;
-        private void Awake()
+        private void Start()
         {
             manager = GameObject.FindGameObjectWithTag("Player").GetComponentInChildren<SoundManager>();
             slider = this.GetComponent<Slider>();

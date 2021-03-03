@@ -12,6 +12,7 @@ TagManager:
   - LocationForPickUp
   - PointsPickUp
   - BackgroundMusic
+  - Pause_Menu
   layers:
   - Default
   - TransparentFX
