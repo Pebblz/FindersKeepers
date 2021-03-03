@@ -279,7 +279,7 @@ namespace com.pebblz.finderskeepers
                     pm.enabled = true;
                 ResetPosition();
                 this.score = 0;
-                this.GetComponent<PlayerTaser>().TasersLeft = 33;
+                this.GetComponent<PlayerTaser>().TasersLeft = 1_000_000;
                 camToHide.gameObject.SetActive(true);
                 soundManager.PlayLobbyTheme();
             }
