@@ -46,7 +46,9 @@ namespace com.pebblz.finderskeepers
                 if (player != null)
                 {
                     string name = player.GetComponent<PhotonView>().Owner.NickName;
-                    text.text = text.text + "\n" + incrementer.ToString() + " " + name;
+                    string score = player.score.ToString();
+                    //+incrementer.ToString()
+                    text.text = text.text + "\n"  + " " + name + ": " + score;
                 }
                 incrementer++;
             }
