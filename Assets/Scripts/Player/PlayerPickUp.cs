@@ -10,14 +10,6 @@ namespace com.pebblz.finderskeepers
 {
     public class PlayerPickUp : MonoBehaviourPunCallbacks, IPunObservable
     {
-        /*Flower Box
-         * Josh
-         * 
-         * Patrick Naatz
-         * Edited:
-         * added the networkevents byte conversion
-         */
-
         public GameObject PickUp;
         public bool isHoldingOBJ = false;
         public bool isPickingUpOBJ = false;
@@ -50,7 +42,7 @@ namespace com.pebblz.finderskeepers
             {
 
                 //if the player holds q
-                if (Input.GetButtonDown("Fire1") && pickUpTimer < 0)
+                if (Input.GetButtonDown("Fire1") && pickUpTimer < 0 && !GetComponent<Player>().isPaused)
                 {
                     //this checks to see if the players picking up an obj
                     if (PickUp == null)
