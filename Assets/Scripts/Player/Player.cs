@@ -85,11 +85,7 @@ namespace com.pebblz.finderskeepers
 
         void Update()
         {
-            if(PauseScreen == null)
-            {
-                PauseScreen = GameObject.FindGameObjectWithTag("Pause_Menu");
-                PauseScreen.SetActive(false);
-            }
+
             if (powerUpTimerActive)
             {
                 updatePowerUp();
@@ -97,23 +93,30 @@ namespace com.pebblz.finderskeepers
 
             if (GetComponent<PhotonView>().IsMine)
             {
-                if (Input.GetKeyDown(KeyCode.Escape) && pauseTimer <= 0)
-                {
-                    isPaused = !isPaused;
-                    pauseTimer = 1f;
-                }
-                if (isPaused)
-                {
-                    PauseScreen.SetActive(true);
-                }
-                else
-                {
-                    PauseScreen.SetActive(false);
-                }
-
 
                 //Finds current scene
                 Scene scene = SceneManager.GetActiveScene();
+                if (scene.name != "WinOrLose")
+                {
+                    if (PauseScreen == null)
+                    {
+                        PauseScreen = GameObject.FindGameObjectWithTag("Pause_Menu");
+                        PauseScreen.SetActive(false);
+                    }
+                    if (Input.GetKeyDown(KeyCode.Escape) && pauseTimer <= 0)
+                    {
+                        isPaused = !isPaused;
+                        pauseTimer = 1f;
+                    }
+                    if (isPaused)
+                    {
+                        PauseScreen.SetActive(true);
+                    }
+                    else
+                    {
+                        PauseScreen.SetActive(false);
+                    }
+                }
                 if (scene.name == "Main Game")
                 {
                     if (isPaused)
