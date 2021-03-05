@@ -22,7 +22,7 @@ namespace com.pebblz.finderskeepers
             {
                 if (camera == null)
                 {
-                    camera = GameObject.FindGameObjectWithTag("MainCamera");
+                    camera = GameObject.Find("MainCamera");
                 }
                 if (Player == null)
                 {
