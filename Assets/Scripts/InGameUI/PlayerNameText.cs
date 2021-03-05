@@ -35,7 +35,8 @@ namespace com.pebblz.finderskeepers
 
                     transform.LookAt(Player.transform);
 
-                    transform.rotation = Quaternion.Inverse(transform.rotation);
+                    transform.rotation = new Quaternion(transform.rotation.x,-transform.rotation.y,
+                        transform.rotation.z,transform.rotation.z);
                     
                     
                 }
