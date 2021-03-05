@@ -1,11 +1,10 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using Photon.Pun;
 using UnityEngine.SceneManagement;
 using Photon.Realtime;
 using ExitGames.Client.Photon;
 using Cinemachine;
+using UnityEngine.UI;
 
 namespace com.pebblz.finderskeepers
 {
@@ -28,18 +27,28 @@ namespace com.pebblz.finderskeepers
         SoundManager soundManager;
 
         Rigidbody rb;
-        public float StunCounter;
 
+        GameObject PauseScreen;
+
+        [HideInInspector]
+        public float StunCounter;
 
         public Transform mainCam;
         public GameObject freeLookCam;
 
+        [HideInInspector]
         public PowerUp currentPowerUp;
+        [HideInInspector]
         public float powerUpTimer = 0;
+        [HideInInspector]
         public bool powerUpTimerActive = false;
+        [HideInInspector]
         public Player_Movement pm;
+
         Animator Anim;
+
         CinemachineBrain camToHide;
+
         [HideInInspector]
         public Vector3 StartPosition = new Vector3(0, 1, 2);
 
@@ -73,15 +82,11 @@ namespace com.pebblz.finderskeepers
                 soundManager.isRemotePlayer = true;
             }
             DontDestroyOnLoad(this);
-
-
-
-
-
         }
 
         void Update()
         {
+
             if (powerUpTimerActive)
             {
                 updatePowerUp();
@@ -89,25 +94,30 @@ namespace com.pebblz.finderskeepers
 
             if (GetComponent<PhotonView>().IsMine)
             {
-                if (Input.GetKeyDown(KeyCode.Escape) && pauseTimer <= 0)
-                {
-                    isPaused = !isPaused;
-                    pauseTimer = 1f;
-                }
+
                 //Finds current scene
                 Scene scene = SceneManager.GetActiveScene();
-                if (scene.name == "Main Game")
+                if (scene.name != "WinOrLose")
                 {
+                    if (PauseScreen == null)
+                    {
+                        PauseScreen = GameObject.FindGameObjectWithTag("Pause_Menu");
+                        PauseScreen.SetActive(false);
+                    }
+                    if (Input.GetKeyDown(KeyCode.Escape) && pauseTimer <= 0)
+                    {
+                        isPaused = !isPaused;
+                        pauseTimer = .5f;
+                        setSliderValue();
+                    }
                     if (isPaused)
                     {
-                        Cursor.visible = true;
-                        Cursor.lockState = CursorLockMode.None;
+                        PauseScreen.SetActive(true);
+                        
                     }
                     else
                     {
-                        //if you're in game it'll lock your cursor and hide it 
-                        Cursor.visible = false;
-                        Cursor.lockState = CursorLockMode.Locked;
+                        PauseScreen.SetActive(false);
                     }
                 }
                 else
@@ -135,7 +145,14 @@ namespace com.pebblz.finderskeepers
         #endregion
 
 
-
+        private void setSliderValue()
+        {
+            GameObject[] sliders = GameObject.FindGameObjectsWithTag("SoundSlider");
+            for(int i = 0; i < sliders.Length; i++)
+            {
+                sliders[i].GetComponent<ChangeVolume>().setVolumeLevel();
+            }
+        }
 
         public void StunPlayer()
         {
@@ -246,12 +263,17 @@ namespace com.pebblz.finderskeepers
             else if (eventCode == (byte)NetworkCodes.ChangeToGameMusic)
             {
                 soundManager.PlayGameTheme();
+                //this gets called when we switch to the game scene
+                this.GetComponent<PlayerTaser>().TasersLeft = 2;
+
             }
             else if (eventCode == (byte)NetworkCodes.ResetToLobby)
             {
                 if (pm != null)
                     pm.enabled = true;
                 ResetPosition();
+                this.score = 0;
+                this.GetComponent<PlayerTaser>().TasersLeft = 1_000_000;
                 camToHide.gameObject.SetActive(true);
                 soundManager.PlayLobbyTheme();
             }

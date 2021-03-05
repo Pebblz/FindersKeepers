@@ -1,20 +1,10 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 using Photon.Pun;
 
 namespace com.pebblz.finderskeepers
 {
-    public class Player_Movement : MonoBehaviourPunCallbacks, IPunObservable
+    public class Player_Movement : MonoBehaviourPunCallbacks
     {
-        /*Flower box
-         * 
-         * Edited by: Pat Naatz
-         * 
-         * Added walking sound
-         * Added MoveToHere RPC
-         */
-
         float speed = 5;
 
         public Transform mainCam;
@@ -43,7 +33,7 @@ namespace com.pebblz.finderskeepers
         }
 
         // Update is called once per frame
-        void Update()
+        void FixedUpdate()
         {
             if (!photonView.IsMine)
             {
@@ -58,7 +48,7 @@ namespace com.pebblz.finderskeepers
 
                 Vector3 direction = new Vector3(H, 0, V).normalized;
 
-                if (direction.magnitude >= 0.1f)
+                if (direction.magnitude >= 0.1f && !ThisPlayer.isPaused)
                 {
                     if (ThisPlayer.StunCounter < 0)
                     {
@@ -85,7 +75,7 @@ namespace com.pebblz.finderskeepers
                     sfxManager.StopRunningSFX();
 
                 }
-                if (Input.GetKeyDown(KeyCode.Space) && IsGrounded())
+                if (Input.GetKeyDown(KeyCode.Space) && IsGrounded() && !ThisPlayer.isPaused)
                 {
                     this.sfxManager.PlayJump();
                     rb.velocity = new Vector3(direction.x, jumpspeed, direction.z);
@@ -117,11 +107,6 @@ namespace com.pebblz.finderskeepers
         {
             return Physics.Raycast(transform.position, -Vector3.up, distToGround + 0.01f);
         }
-        public void OnPhotonSerializeView(PhotonStream stream, PhotonMessageInfo info)
-        {
-
-        }
-
         /// <summary>
         /// Moves player to certain position
         /// Only the master client should call this functiton

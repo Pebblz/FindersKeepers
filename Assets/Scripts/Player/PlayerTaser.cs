@@ -13,7 +13,8 @@ namespace com.pebblz.finderskeepers
         //you need to keep a instance of the prefab to be able to delete it
         //and this is that instance
         public GameObject taserInstance;
-        int TasersLeft = 2;
+        
+        public int TasersLeft = 2;
         Animator Anim;
         void Awake()
         {
@@ -24,9 +25,9 @@ namespace com.pebblz.finderskeepers
         {
             if (photonView.IsMine)
             {
-                if (Input.GetKeyDown(KeyCode.E) && TasersLeft > 0)
+                if (Input.GetKeyDown(KeyCode.E) && TasersLeft > 0 && !GetComponent<Player>().isPaused)
                 {
-                    if (GetComponent<PlayerPickUp>().isHoldingOBJ == false)
+                    if (!GetComponent<PlayerPickUp>().isHoldingOBJ)
                     {
                         GetComponent<Player>().isFiring = true;
                         shootTaser();

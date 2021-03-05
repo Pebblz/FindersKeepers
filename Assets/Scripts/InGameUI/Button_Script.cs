@@ -21,7 +21,6 @@ namespace com.pebblz.finderskeepers
             if (PhotonNetwork.IsConnected)
             {
                 PhotonNetwork.Disconnect();
-                print("Works");
             }
             Application.Quit();
         }
@@ -33,8 +32,6 @@ namespace com.pebblz.finderskeepers
         {
 
             PhotonNetwork.Disconnect();
-            print("Works2");
-
             SceneManager.LoadScene("Launcher");
         }
 
@@ -53,15 +50,15 @@ namespace com.pebblz.finderskeepers
         {
             SceneManager.LoadScene("HowToPlay");
         }
-
         /// <summary>
         /// Opens the feedback form in a new tab
         /// </summary>
         public void Feedback()
         {
-            Application.OpenURL("https://docs.google.com/forms/d/e/1FAIpQLSetF1gEaPddTyZkeTUrGenpkXh-FmJ8iOQrpkEK4qoCXqiGMg/viewform?usp=sf_link");
+            Application.OpenURL("https://docs.google.com/forms/d/e/1FAIpQLSeL3_2ur0JCdU8_iJVc3yIN2NOT5URvoz2GDEVA4K7rN01yhA/viewform?usp=sf_link");
         }
-
+        //naatz link
+        //https://docs.google.com/forms/d/e/1FAIpQLSetF1gEaPddTyZkeTUrGenpkXh-FmJ8iOQrpkEK4qoCXqiGMg/viewform?usp=sf_link
         /// <summary>
         /// Rejoins the lobby
         /// </summary>

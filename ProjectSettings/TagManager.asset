@@ -12,6 +12,8 @@ TagManager:
   - LocationForPickUp
   - PointsPickUp
   - BackgroundMusic
+  - Pause_Menu
+  - SoundSlider
   layers:
   - Default
   - TransparentFX
@@ -21,7 +23,7 @@ TagManager:
   - UI
   - 
   - 
-  - 
+  - IgnoreMiniMap
   - 
   - 
   - 

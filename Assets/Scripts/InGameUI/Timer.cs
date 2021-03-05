@@ -6,12 +6,6 @@ namespace com.pebblz.finderskeepers
 {
     public class Timer : MonoBehaviour
     {
-        /*Flower boxing because im a professional
-         *coded by Pat Naatz
-         * time elapsed 10 minutes (mostly comments)
-         */
-
-
         [SerializeField] Text text;
         [SerializeField] int seconds = 30;
 

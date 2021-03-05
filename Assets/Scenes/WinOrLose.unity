@@ -575,6 +575,7 @@ GameObject:
   - component: {fileID: 801121114}
   - component: {fileID: 801121113}
   - component: {fileID: 801121112}
+  - component: {fileID: 801121115}
   m_Layer: 5
   m_Name: Play Again Button
   m_TagString: Untagged
@@ -688,6 +689,18 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 801121110}
   m_CullTransparentMesh: 0
+--- !u!114 &801121115
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 801121110}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7ad2ee22ed24c204a8895eef0d3abf4d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &896464475
 GameObject:
   m_ObjectHideFlags: 0
@@ -768,7 +781,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 1745689190}
-        m_MethodName: Quit
+        m_MethodName: MainScene
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -1856,10 +1869,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   text: {fileID: 1436383201}
-  audioVaraibles:
-    audioSource: {fileID: 0}
-    winSound: {fileID: 8300000, guid: 99b287035ecf7c544a7c01317ebee80d, type: 3}
-    loseSound: {fileID: 8300000, guid: 99b287035ecf7c544a7c01317ebee80d, type: 3}
   podiums:
   - {fileID: 1046029788}
   - {fileID: 482528693}
