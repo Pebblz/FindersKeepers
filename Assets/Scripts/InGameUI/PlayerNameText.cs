@@ -32,14 +32,16 @@ namespace com.pebblz.finderskeepers
                 }
                 if (Player != null && camera != null)
                 {
+                    Vector3 temp = camera.gameObject.transform.forward;
+                    //temp.y = 90;
+                    transform.rotation = Quaternion.LookRotation(-temp);
+                    //transform.LookAt(Player.transform);
+                    //float rotYofX = Mathf.Lerp(transform.rotation.y, -transform.rotation.y, transform.position.x);
+                    //float rotYofY = Mathf.Lerp(transform.rotation.y, -transform.rotation.y, transform.position.y);
+                    //float rotY = (rotYofX + rotYofY) / 2;
+                    //transform.rotation = new Quaternion(0,rotY,0,transform.rotation.w);
 
-                    transform.LookAt(Player.transform);
-                    float rotYofX = Mathf.Lerp(transform.rotation.y, -transform.rotation.y, transform.position.x);
-                    float rotYofY = Mathf.Lerp(transform.rotation.y, -transform.rotation.y, transform.position.y);
-                    float rotY = (rotYofX + rotYofY) / 2;
-                    transform.rotation = new Quaternion(0,rotY,0,transform.rotation.w);
-                    
-                    
+
                 }
             }
             Scene scene = SceneManager.GetActiveScene();
