@@ -10,30 +10,25 @@ namespace com.pebblz.finderskeepers {
             SFX = 1,
             MUSIC
         }
-
+        public bool loadingSettingsValue;
         Slider slider;
         SoundManager manager;
         [SerializeField]
         TargetMixer mixer;
+
         private void Start()
         {
             manager = GameObject.FindGameObjectWithTag("Player").GetComponentInChildren<SoundManager>();
             slider = this.GetComponent<Slider>();
-            switch (mixer)
-            {
-                case TargetMixer.MUSIC:
-                    slider.value = manager.getMusicVol();
-                    break;
-                case TargetMixer.SFX:
-                    slider.value = manager.getSFXVol();
-                    break;
-                default:
-                    Debug.LogWarning("No mixer selected for volume control");
-                    break;
-            }
         }
+
         public void SetLevel(float level)
         {
+            //ignore this function call if loading programmatically
+            if (loadingSettingsValue)
+            {
+                return;
+            }
             switch (mixer)
             {
                 case TargetMixer.MUSIC:
@@ -47,5 +42,26 @@ namespace com.pebblz.finderskeepers {
                     break;
             }
         }
+
+        public void setVolumeLevel()
+        {
+
+            loadingSettingsValue = true;
+            switch (mixer)
+            {
+                case TargetMixer.MUSIC:
+                    slider.value = manager.getMusicVol();
+                    break;
+                case TargetMixer.SFX:
+                    slider.value = manager.getSFXVol();
+                    break;
+                default:
+                    Debug.LogWarning("No mixer selected for volume control");
+                    break;
+            }
+
+            loadingSettingsValue = false;
+        }
+
     }
 }

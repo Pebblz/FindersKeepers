@@ -92,11 +92,13 @@ namespace com.pebblz.finderskeepers
 
         public void setSFXVol(float value)
         {
+            Debug.Log($"Changing SFX value from {value} to {Mathf.Log10(value) * 20}");
             sfx.audioMixer.SetFloat(sfxVol, Mathf.Log10(value) * 20);
         }
 
         public void setMusicVol(float value)
         {
+            Debug.Log($"Changing Music value from {value} to {Mathf.Log10(value) * 20}");
             music.audioMixer.SetFloat(musicVol, Mathf.Log10(value) * 20);
         }
 

@@ -13,6 +13,7 @@ TagManager:
   - PointsPickUp
   - BackgroundMusic
   - Pause_Menu
+  - SoundSlider
   layers:
   - Default
   - TransparentFX
