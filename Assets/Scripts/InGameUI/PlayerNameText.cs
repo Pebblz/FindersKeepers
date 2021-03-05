@@ -28,6 +28,9 @@ namespace com.pebblz.finderskeepers
                 {
                     Player = GameObject.FindGameObjectWithTag("Player");
                 }
+            }else
+            {
+                Tm.text = "";
             }
             if (Player != null)
             {
