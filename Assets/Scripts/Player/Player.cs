@@ -108,11 +108,12 @@ namespace com.pebblz.finderskeepers
                     {
                         isPaused = !isPaused;
                         pauseTimer = 1f;
+                        setSliderValue();
                     }
                     if (isPaused)
                     {
                         PauseScreen.SetActive(true);
-                        setSliderValue();
+                        
                     }
                     else
                     {

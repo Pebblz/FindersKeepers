@@ -13,13 +13,13 @@ EditorBuildSettings:
     guid: 6315e9e98413b1a4f8c44d250fc17e63
   - enabled: 1
     path: Assets/Scenes/Lobby_2.unity
-    guid: d436cbc29c90c7c489f240b084aafe53
+    guid: d0f4bc4aa5f1561489d74bdd57b4761e
   - enabled: 1
     path: Assets/Scenes/Lobby_3.unity
-    guid: 2659f238e1daf5c4b8ab8f761022cee9
+    guid: 716e286569ba6f94ebccc41b58469b9e
   - enabled: 1
     path: Assets/Scenes/Lobby_4.unity
-    guid: c7ee6c46de1520049bed37c112ae9da7
+    guid: 097e9ead063701848823fd90613d8d2f
   - enabled: 1
     path: Assets/Scenes/Main Game.unity
     guid: 5da8ac239d3b0a6438b2c0ee54c519a8

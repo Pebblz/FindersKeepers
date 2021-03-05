@@ -2119,7 +2119,7 @@ GameObject:
   - component: {fileID: 832276543}
   m_Layer: 5
   m_Name: Music_Txt
-  m_TagString: SoundSlider
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -3886,7 +3886,7 @@ GameObject:
   - component: {fileID: 1428933650}
   m_Layer: 5
   m_Name: SFX
-  m_TagString: Untagged
+  m_TagString: SoundSlider
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -5026,7 +5026,7 @@ GameObject:
   - component: {fileID: 1802058623}
   m_Layer: 5
   m_Name: SFX_Txt
-  m_TagString: SoundSlider
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -5775,7 +5775,7 @@ GameObject:
   - component: {fileID: 2073126546}
   m_Layer: 5
   m_Name: Music
-  m_TagString: Untagged
+  m_TagString: SoundSlider
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
