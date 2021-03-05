@@ -32,10 +32,10 @@ namespace com.pebblz.finderskeepers
                 }
                 if (Player != null && camera != null)
                 {
-                    Vector3 temp = camera.gameObject.transform.forward;
-                    temp.y = 90;
-                    temp.x = 0;
-                    transform.rotation = Quaternion.LookRotation(-temp);
+                    //Vector3 temp = camera.gameObject.transform.forward;
+                    //temp.y = 90;
+                    //temp.x = 0;
+                    transform.LookAt(Player.transform);
                 }
             }
             Scene scene = SceneManager.GetActiveScene();
