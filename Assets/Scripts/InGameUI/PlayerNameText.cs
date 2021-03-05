@@ -24,16 +24,10 @@ namespace com.pebblz.finderskeepers
                 {
                     camera = GameObject.FindGameObjectWithTag("MainCamera");
                 }
-                //it makes sure the that if the player is the parent to not find the parent
-                //just so you don't constently see the name above your head but
-                //but the other players see your name
-                if (transform.parent.gameObject.tag != "Player")
+                if (Player == null)
                 {
-                    if (Player == null)
-                    {
-                        Tm.text = GetComponentInParent<PhotonView>().Owner.NickName;
-                        Player = GameObject.FindGameObjectWithTag("Player");
-                    }
+                    Tm.text = GetComponentInParent<PhotonView>().Owner.NickName;
+                    Player = GameObject.FindGameObjectWithTag("Player");
                 }
                 if (Player != null)
                 {
