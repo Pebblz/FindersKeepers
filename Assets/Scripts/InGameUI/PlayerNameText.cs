@@ -29,7 +29,7 @@ namespace com.pebblz.finderskeepers
                     Tm.text = GetComponentInParent<PhotonView>().Owner.NickName;
                     Player = GameObject.FindGameObjectWithTag("Player");
                 }
-                if (Player != null)
+                if (Player != null && camera != null)
                 {
                     Vector3 temp = camera.gameObject.transform.forward;
                     temp.y = 90;
