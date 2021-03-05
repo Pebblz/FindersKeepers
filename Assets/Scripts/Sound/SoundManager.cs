@@ -33,12 +33,13 @@ namespace com.pebblz.finderskeepers
         public AudioSource GameTheme;
         public AudioSource GameIntro;
         public AudioSource CPUTheme;
+        public AudioSource VictoryTheme;
         [SerializeField] AudioSource PickUp;
         [SerializeField] AudioSource Jump;
         [SerializeField] AudioSource PointGot;
         [SerializeField] AudioSource Walking;
         [SerializeField] AudioSource Running;
-
+         
 
 
         [SerializeField] AudioMixerGroup outputGroup;
@@ -81,6 +82,7 @@ namespace com.pebblz.finderskeepers
             LobbyTheme.outputAudioMixerGroup = music;
             GameTheme.outputAudioMixerGroup = music;
             GameIntro.outputAudioMixerGroup = music;
+            VictoryTheme.outputAudioMixerGroup = music;
             this.SceneTheme = LobbyTheme;
 
             Jump.outputAudioMixerGroup = sfx;
@@ -127,6 +129,14 @@ namespace com.pebblz.finderskeepers
 
         #region PLAY_FUNCTIONS
 
+
+        public void PlayVictoryTheme()
+        {
+            this.SceneTheme.Stop();
+            this.SceneTheme = VictoryTheme;
+            this.SceneTheme.loop = true;
+            this.SceneTheme.Play();
+        }
         public void PlayLobbyTheme()
         {
             if(this.SceneTheme != null)
