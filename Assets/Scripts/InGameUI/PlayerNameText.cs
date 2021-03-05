@@ -33,7 +33,7 @@ namespace com.pebblz.finderskeepers
                 if (Player != null && camera != null)
                 {
 
-                    transform.LookAt(Player.transform.position);
+                    transform.LookAt(-Player.transform.position);
                 }
             }
             Scene scene = SceneManager.GetActiveScene();
