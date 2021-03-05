@@ -34,9 +34,10 @@ namespace com.pebblz.finderskeepers
                 {
 
                     transform.LookAt(Player.transform);
-
-                    transform.rotation = new Quaternion(0,-transform.rotation.y,
-                        0,transform.rotation.w);
+                    float rotYofX = Mathf.Lerp(transform.rotation.y, -transform.rotation.y, transform.position.x);
+                    float rotYofY = Mathf.Lerp(transform.rotation.y, -transform.rotation.y, transform.position.y);
+                    float rotY = (rotYofX + rotYofY) / 2;
+                    transform.rotation = new Quaternion(0,rotY,0,transform.rotation.w);
                     
                     
                 }
