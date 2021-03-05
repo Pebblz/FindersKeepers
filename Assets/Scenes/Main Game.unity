@@ -2111,7 +2111,7 @@ GameObject:
   - component: {fileID: 816398461}
   m_Layer: 5
   m_Name: Music
-  m_TagString: Untagged
+  m_TagString: SoundSlider
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2150,6 +2150,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 98de9e22db315634cb2817da3d306262, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  loadingSettingsValue: 0
   mixer: 2
 --- !u!114 &816398462
 MonoBehaviour:
@@ -3288,7 +3289,7 @@ GameObject:
   - component: {fileID: 1406919039}
   m_Layer: 5
   m_Name: SFX
-  m_TagString: Untagged
+  m_TagString: SoundSlider
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -3327,6 +3328,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 98de9e22db315634cb2817da3d306262, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  loadingSettingsValue: 0
   mixer: 1
 --- !u!114 &1406919040
 MonoBehaviour:
