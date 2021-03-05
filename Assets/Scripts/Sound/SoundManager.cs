@@ -92,13 +92,13 @@ namespace com.pebblz.finderskeepers
 
         public void setSFXVol(float value)
         {
-            Debug.Log($"Changing SFX value from {value} to {Mathf.Log10(value) * 20}");
+            
             sfx.audioMixer.SetFloat(sfxVol, Mathf.Log10(value) * 20);
         }
 
         public void setMusicVol(float value)
         {
-            Debug.Log($"Changing Music value from {value} to {Mathf.Log10(value) * 20}");
+            
             music.audioMixer.SetFloat(musicVol, Mathf.Log10(value) * 20);
         }
 
@@ -106,7 +106,7 @@ namespace com.pebblz.finderskeepers
         {   
             
             sfx.audioMixer.GetFloat(sfxVol, out float val);
-            val = Mathf.Pow(val/20, 10);
+            val = Mathf.Pow(10, val / 20);
             if(val <= 0 || val > 1)
             {
                 return defaultVolumeValue;
@@ -117,7 +117,7 @@ namespace com.pebblz.finderskeepers
         public float getMusicVol()
         {
             sfx.audioMixer.GetFloat(musicVol, out float val);
-            val = Mathf.Pow(val/20, 10);
+            val = Mathf.Pow(10, val / 20);
             if (val <= 0 || val > 1)
             {
                 return defaultVolumeValue;
