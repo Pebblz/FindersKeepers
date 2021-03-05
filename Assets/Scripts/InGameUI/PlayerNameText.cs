@@ -32,7 +32,10 @@ namespace com.pebblz.finderskeepers
                 }
                 if (Player != null && camera != null)
                 {
-                    transform.rotation = Quaternion.Inverse(Player.transform.rotation);
+
+                    transform.LookAt(Player.transform);
+
+                    transform.rotation = Quaternion.Inverse(transform.rotation);
                     
                     
                 }
