@@ -236,7 +236,7 @@ namespace com.pebblz.finderskeepers
 
                 Debug.Log("Event Code: " + eventCode);
 
-
+                soundManager.PlayVictoryTheme();
                 if (GetComponent<PhotonView>().IsMine)
                 {
                     Anim.SetBool("Reset", false);
@@ -277,6 +277,7 @@ namespace com.pebblz.finderskeepers
                 camToHide.gameObject.SetActive(true);
                 soundManager.PlayLobbyTheme();
             }
+
         }
     }
 
