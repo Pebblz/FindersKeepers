@@ -33,8 +33,8 @@ namespace com.pebblz.finderskeepers
                 if (Player != null && camera != null)
                 {
 
-                    transform.LookAt(Player.transform.position);
-
+                    //transform.LookAt(Player.transform.position);
+                    transform.rotation = Quaternion.Lerp(transform.rotation, Player.transform.rotation, 0.04f);
                     //transform.rotation = Quaternion.RotateTowards(transform.rotation, Player.transform.rotation, 5 * Time.deltaTime);
                 }
             }
