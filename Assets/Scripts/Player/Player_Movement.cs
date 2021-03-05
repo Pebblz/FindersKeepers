@@ -33,7 +33,7 @@ namespace com.pebblz.finderskeepers
         }
 
         // Update is called once per frame
-        void Update()
+        void FixedUpdate()
         {
             if (!photonView.IsMine)
             {

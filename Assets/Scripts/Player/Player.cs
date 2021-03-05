@@ -107,7 +107,7 @@ namespace com.pebblz.finderskeepers
                     if (Input.GetKeyDown(KeyCode.Escape) && pauseTimer <= 0)
                     {
                         isPaused = !isPaused;
-                        pauseTimer = 1f;
+                        pauseTimer = .5f;
                         setSliderValue();
                     }
                     if (isPaused)
