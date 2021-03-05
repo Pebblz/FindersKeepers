@@ -33,8 +33,7 @@ namespace com.pebblz.finderskeepers
                 if (Player != null && camera != null)
                 {
                     Vector3 temp = camera.gameObject.transform.forward;
-                    //temp.y = 90;
-                    transform.rotation = Quaternion.LookRotation(-temp);
+                    transform.rotation = Quaternion.LookRotation(temp);
                     //transform.LookAt(Player.transform);
                     //float rotYofX = Mathf.Lerp(transform.rotation.y, -transform.rotation.y, transform.position.x);
                     //float rotYofY = Mathf.Lerp(transform.rotation.y, -transform.rotation.y, transform.position.y);
