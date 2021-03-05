@@ -112,28 +112,13 @@ namespace com.pebblz.finderskeepers
                     if (isPaused)
                     {
                         PauseScreen.SetActive(true);
+                        setSliderValue();
                     }
                     else
                     {
                         PauseScreen.SetActive(false);
                     }
                 }
-                //if (scene.name == "Main Game")
-                //{
-                //    if (isPaused)
-                //    {
-                //        Cursor.visible = true;
-                //        Cursor.lockState = CursorLockMode.None;
-                //        PauseScreen.SetActive(true);
-                //    }
-                //    else
-                //    {
-                //        //if you're in game it'll lock your cursor and hide it 
-                //        Cursor.visible = false;
-                //        Cursor.lockState = CursorLockMode.Locked;
-                //        PauseScreen.SetActive(false);
-                //    }
-                //}
                 else
                 {
                     //if you're not in game it'll unlock your cursor and make it visable
