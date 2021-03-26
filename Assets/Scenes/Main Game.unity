@@ -345,7 +345,7 @@ Camera:
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
-    m_Bits: 4294967295
+    m_Bits: 311
   m_RenderingPath: -1
   m_TargetTexture: {fileID: 0}
   m_TargetDisplay: 0
@@ -3474,6 +3474,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 72c7d2652814ce346b1aa0494326a448, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Td: {fileID: 0}
+  Diamond: {fileID: 8896271967765556986, guid: ddeb19d841a969045b44fd70eb220cf5, type: 3}
 --- !u!1001 &1470266436
 PrefabInstance:
   m_ObjectHideFlags: 0

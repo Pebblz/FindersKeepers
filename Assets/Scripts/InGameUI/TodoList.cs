@@ -11,7 +11,8 @@ namespace com.pebblz.finderskeepers
         [SerializeField] Image[] images;
 
         [SerializeField] GameManager gameManager;
-        Dictionary<PickUpAbles, bool> list = new Dictionary<PickUpAbles, bool>();
+
+        public Dictionary<PickUpAbles, bool> list = new Dictionary<PickUpAbles, bool>();
 
         private void Start()
         {

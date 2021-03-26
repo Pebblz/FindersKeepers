@@ -11,8 +11,8 @@ namespace com.pebblz.finderskeepers
 {
     public class WinOrLoseScript : MonoBehaviourPunCallbacks
     {
-        /*Flower Box
-         * Programmer: Patrick Naatz
+        
+         /* Programmer: Patrick Naatz
          * 
          * Show the win or lose screen depending on whether they won or lost
          * 
@@ -213,7 +213,7 @@ namespace com.pebblz.finderskeepers
 
             //move them to position, reverse ISROT
             player.transform.rotation = quickRot.transform.rotation;
-            player.transform.position = podiums[podiumNumber].position + Vector3.up * 30; //creates a 3 second fall for dramatic effect
+            player.transform.position = podiums[podiumNumber].position + Vector3.up * 15; //creates a 3 second fall for dramatic effect
         }
 
         IEnumerator Reveal()
