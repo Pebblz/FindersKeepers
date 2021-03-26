@@ -30,9 +30,8 @@ namespace com.pebblz.finderskeepers
         /// </summary>
         public void MainScene()
         {
-
-            PhotonNetwork.Disconnect();
             SceneManager.LoadScene("Launcher");
+            PhotonNetwork.Disconnect();
         }
 
         /// <summary>
